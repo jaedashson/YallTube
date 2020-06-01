@@ -1,0 +1,19 @@
+// Creating users in dev tools
+$.ajax({
+  method: "POST",
+  url: "/api/users",
+  data: { user: { username: "user1", email: "user1@gmail.com", password: "hunter12" }}
+})
+
+// Logging out in dev tools
+$.ajax({
+  method: "DELETE",
+  url: "/api/session"
+})
+
+// Logging in in dev tools
+$.ajax({
+  method: "POST",
+  url: "/api/session",
+  data: { user: { username: "user1", password: "hunter12" }}
+})
