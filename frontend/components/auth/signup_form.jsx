@@ -11,6 +11,7 @@ class SignupForm extends React.Component {
       passwordConfirm: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.passwordConfirmError = "Those passwords didn't match. Try again.";
   }
 
   update(field) {
@@ -19,7 +20,19 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+
+    debugger
+
+    if (this.state.password !== this.state.passwordConfirm) {
+      this.props.receiveErrors([this.passwordConfirmError]);
+      return;
+    }
+
+    const user = {
+      username,
+      email,
+      password
+    };
     this.props.signup(user);
   }
 
@@ -32,6 +45,18 @@ class SignupForm extends React.Component {
           </li>
         ))}
       </ul>
+    );
+  }
+
+  renderPasswordConfirmErrors() {
+    let error = null;
+
+    if (this.props.errors.includes(this.passwordConfirmError)) {
+      error = this.passwordConfirmError;
+    }
+
+    return (
+      <p>{error}</p>
     );
   }
 
@@ -56,20 +81,25 @@ class SignupForm extends React.Component {
             />
           </label>
           <div className="password-confirm">
-            <label className="auth-label"> Password
-              <input type="password"
-                className="auth-input"
-                value={this.state.password}
-                onChange={this.update("password")}
-              />
-            </label>
-            <label className="auth-label"> Confirm
-              <input type="password"
-                className="auth-input"
-                value={this.state.passwordConfirm}
-                onChange={this.update("passwordConfirm")}
-              />
-            </label>
+            <div>
+              <label className="auth-label"> Password
+                <input type="password"
+                  className="auth-input"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                />
+              </label>
+            </div>
+            <div>
+              <label className="auth-label"> Confirm
+                <input type="password"
+                  className="auth-input"
+                  value={this.state.passwordConfirm}
+                  onChange={this.update("passwordConfirm")}
+                />
+              </label>
+              {this.renderPasswordConfirmErrors()}
+            </div>
           </div>
 
           <div className="auth-options">

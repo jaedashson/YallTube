@@ -18,8 +18,12 @@ class User < ApplicationRecord
   has_many :comment_votes
   has_many :channel_views # sum of view count of `videos`
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
+  def self.find_by_credentials(login_name, password)
+    user = User.find_by(username: login_name)
+
+    if !user
+      user = User.find_by(email: login_name)
+    end
 
     if user && user.is_password?(password)
       user
