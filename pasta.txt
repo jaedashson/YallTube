@@ -1,19 +1,32 @@
+//// AJAX testing
+
 // Creating users in dev tools
 $.ajax({
   method: "POST",
   url: "/api/users",
   data: { user: { username: "user1", email: "user1@gmail.com", password: "hunter12" }}
-})
+});
 
 // Logging out in dev tools
 $.ajax({
   method: "DELETE",
   url: "/api/session"
-})
+});
 
 // Logging in in dev tools
 $.ajax({
   method: "POST",
   url: "/api/session",
   data: { user: { username: "user1", password: "hunter12" }}
-})
+});
+
+//// store testing
+
+// Creating users
+dispatch(signup({ username: "user4", email: "user4@gmail.com", password: "hunter12" }));
+
+// Logging in
+dispatch(login({ username: "user1", password: "hunter12" }));
+
+// Logging in
+dispatch(logout())
