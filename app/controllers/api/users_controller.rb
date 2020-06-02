@@ -4,13 +4,13 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     render :show
   end
-  
+
   # Signup
   # POST /api/users
   def create
     @user = User.new(user_params)
 
-    debugger
+    # debugger
 
     if @user.save
       login!(@user)
