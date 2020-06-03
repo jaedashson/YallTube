@@ -1,4 +1,11 @@
 class Api::UsersController < ApplicationController  
+  # GET /api/users
+  def index
+    debugger
+    @user = User.find_by(email: params[:email])
+    render :show
+  end
+  
   # GET /api/users/:userId
   def show
     @user = User.find_by(id: params[:id])

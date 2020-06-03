@@ -4,7 +4,7 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 
 // testing imports
-import { login, signup, logout } from "./actions/session_actions";
+import { login, signup, logout, getUserByEmail } from "./actions/session_actions";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.login = login;
   window.signup = signup;
   window.logout = logout;
+  window.getUserByEmail = getUserByEmail;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 

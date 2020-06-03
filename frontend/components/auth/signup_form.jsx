@@ -114,10 +114,10 @@ class SignupForm extends React.Component {
     );
   }
 
-  render () {
+  render() {
     return (
       <div className="signup-page">
-        <div className="signup-form-container">
+        <div className="auth-form-container">
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <p>[YallTube logo]</p>
             <h1>Create your YallTube Account</h1>

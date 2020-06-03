@@ -30,3 +30,6 @@ dispatch(login({ username: "user1", password: "hunter12" }));
 
 // Logging in
 dispatch(logout())
+
+// Getting user by email
+dispatch(getUserByEmail("user1@gmail.com"));
