@@ -1,0 +1,34 @@
+.signup-page {
+  display: flex;
+  justify-content: center;
+}
+
+.signup-form-container {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  padding: 30px;
+}
+
+.signup-form-container h1 {
+  font-size: 28px;
+}
+
+.signup-form-container h2 {
+  font-size: 20px;
+}
+
+.auth-error {
+  color: red;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.auth-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

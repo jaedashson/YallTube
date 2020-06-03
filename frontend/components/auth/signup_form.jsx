@@ -15,6 +15,7 @@ class SignupForm extends React.Component {
     this.usernameBlankError = "Enter username";
     this.emailBlankError = "Enter email";
     this.emailInvalidError = "Don't forget to include the '@'."
+    this.passwordShortError = "Password is too short (minimum is 6 characters)";
     this.passwordBlankError = "Enter a password";
     this.passwordConfirmMismatchError = "Those passwords didn't match. Try again.";
     this.passwordConfirmBlankError = "Confirm your password";
@@ -26,8 +27,6 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    // debugger
     this.props.clearErrors();
     let valid = true;
 
@@ -59,9 +58,9 @@ class SignupForm extends React.Component {
 
     if (valid) {
       const user = {
-        username,
-        email,
-        password
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password
       };
       this.props.signup(user);
     }
@@ -74,7 +73,7 @@ class SignupForm extends React.Component {
       error = this.usernameBlankError;
     }
 
-    return <p>{error}</p>;
+    return <p className="auth-error">{error}</p>;
   }
 
   renderEmailError() {
@@ -86,7 +85,7 @@ class SignupForm extends React.Component {
       error = this.emailInvalidError;
     }
 
-    return <p>{error}</p>;
+    return <p className="auth-error">{error}</p>;
   }
 
   renderPasswordError() {
@@ -94,9 +93,11 @@ class SignupForm extends React.Component {
 
     if (this.props.errors.includes(this.passwordBlankError)) {
       error = this.passwordBlankError;
+    } else if (this.props.errors.includes(this.passwordShortError)) {
+      error = "Use 6 characters or more for your password";
     }
 
-    return <p>{error}</p>;
+    return <p className="auth-error">{error}</p>;
   }
 
   renderPasswordConfirmError() {
@@ -109,70 +110,73 @@ class SignupForm extends React.Component {
     }
 
     return (
-      <p>{error}</p>
+      <p className="auth-error">{error}</p>
     );
   }
 
   render () {
     return (
-      <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          <p>YallTube</p>
-          <h1>Create your YallTube Account</h1>
+      <div className="signup-page">
+        <div className="signup-form-container">
+          <form onSubmit={this.handleSubmit} className="login-form-box">
+            <p>[YallTube logo]</p>
+            <h1>Create your YallTube Account</h1>
+            <h2>to continue to YallTube</h2>
 
-          <div className="username-container">
-            <label className="auth-label"> Username
-              <input type="text"
-                className="auth-input"
-                value={this.state.username}
-                onChange={this.update("username")}
-              />
-            </label>
-            {this.renderUsernameError()}
-          </div>
-
-          <div className="email-container">
-            <label className="auth-label"> Your email address
-              <input type="text"
-                className="auth-input"
-                value={this.state.email}
-                onChange={this.update("email")}
-              />
-            </label>
-            {this.renderEmailError()}
-          </div>
-
-          <div className="password-container">
-            <div className="password-input-container">
-              <label className="auth-label"> Password
-                <input type="password"
+            <div className="username-container">
+              <label className="auth-label"> Username
+                <input type="text"
                   className="auth-input"
-                  value={this.state.password}
-                  onChange={this.update("password")}
+                  value={this.state.username}
+                  onChange={this.update("username")}
                 />
               </label>
-              {this.renderPasswordError()}
+              {this.renderUsernameError()}
             </div>
-            <div className="password-confirm-container">
-              <label className="auth-label"> Confirm
-                <input type="password"
+
+            <div className="email-container">
+              <label className="auth-label"> Your email address
+                <input type="text"
                   className="auth-input"
-                  value={this.state.passwordConfirm}
-                  onChange={this.update("passwordConfirm")}
+                  value={this.state.email}
+                  onChange={this.update("email")}
                 />
               </label>
-              {this.renderPasswordConfirmError()}
+              {this.renderEmailError()}
             </div>
-          </div>
 
-          <div className="auth-options">
-            <Link to="/login">Sign in instead</Link>
-            <button
-              className="auth-options-button"
-              onClick={this.handleSubmit}  
-            >Next</button>
-          </div>
-        </form>
+            <div className="password-container">
+              <div className="password-input-container">
+                <label className="auth-label"> Password
+                  <input type="password"
+                    className="auth-input"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                  />
+                </label>
+                {this.renderPasswordError()}
+              </div>
+              <div className="password-confirm-container">
+                <label className="auth-label"> Confirm
+                  <input type="password"
+                    className="auth-input"
+                    value={this.state.passwordConfirm}
+                    onChange={this.update("passwordConfirm")}
+                  />
+                </label>
+                {this.renderPasswordConfirmError()}
+              </div>
+            </div>
+
+            <div className="auth-options">
+              <Link to="/login">Sign in instead</Link>
+              <button
+                className="auth-options-button"
+                onClick={this.handleSubmit}  
+              >Next</button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
