@@ -8,7 +8,7 @@ import {
 const sessionErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_SESSION_ERROR:
+    case RECEIVE_SESSION_ERROR: // New action type that I wrote which adds an error to the array instead of replacing the array
       const newState = state.slice();
       newState.push(action.error);
       return newState;

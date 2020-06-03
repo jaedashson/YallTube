@@ -2,7 +2,7 @@ class Api::SessionsController < ApplicationController
   # Login
   # POST /api/session
   def create
-    @user = User.find_by_credentials(login_params[:username], user_params[:password])
+    @user = User.find_by_credentials(user_params[:username], user_params[:password])
 
     if @user
       login!(@user)
