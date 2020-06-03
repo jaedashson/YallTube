@@ -170,10 +170,7 @@ class SignupForm extends React.Component {
 
             <div className="auth-options">
               <Link to="/login">Sign in instead</Link>
-              <button
-                className="auth-options-button"
-                onClick={this.handleSubmit}  
-              >Next</button>
+              <button className="auth-options-button">Next</button>
             </div>
           </form>
         </div>

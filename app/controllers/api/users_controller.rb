@@ -1,9 +1,14 @@
 class Api::UsersController < ApplicationController  
-  # GET /api/users
+  # GET /api/users?email=user1@gmail.com
   def index
     debugger
     @user = User.find_by(email: params[:email])
-    render :show
+
+    if @user
+      render :show
+    else
+      render json: ["Couldn't find your YallTube Account"], status: 404
+    end
   end
   
   # GET /api/users/:userId
@@ -21,8 +26,6 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render "api/users/show"
     else
-      debugger
-
       render json: @user.errors.full_messages, status: 422
     end
   end

@@ -10,6 +10,7 @@ const mSTP = ({ errors }) => {
 
 const mDTP = dispatch => {
   return {
+    getUserByEmail: email => dispatch(getUserByEmail(email)),
     login: user => dispatch(login(user))
   };
 };
