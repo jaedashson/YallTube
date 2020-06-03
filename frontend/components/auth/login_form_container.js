@@ -2,9 +2,11 @@ import LoginFormMaster from "./login_form_master";
 import { connect } from "react-redux";
 import { login, getUserByEmail, receiveError, receiveErrors, clearErrors } from "../../actions/session_actions";
 
-const mSTP = ({ errors }) => {
+const mSTP = ({ errors, entities, session }) => {
   return {
-    errors: errors.session
+    errors: errors.session,
+    attemptId: session.attemptId,
+    attemptedUser: entities.users[session.attemptId]
   };
 };
 
