@@ -1,18 +1,19 @@
 import LoginFormMaster from "./login_form_master";
 import { connect } from "react-redux";
-import { login, getUserByEmail, receiveError, receiveErrors, clearErrors } from "../../actions/session_actions";
+import { login, getUserByEmail, receiveError, receiveErrors, clearErrors, clearEmailAttempt } from "../../actions/session_actions";
 
-const mSTP = ({ errors, entities, session }) => {
+const mSTP = ({ errors, session }) => {
+  debugger
   return {
     errors: errors.session,
-    attemptId: session.attemptId,
-    attemptedUser: entities.users[session.attemptId]
+    attemptedUser: session.attemptedUser
   };
 };
 
 const mDTP = dispatch => {
   return {
     getUserByEmail: email => dispatch(getUserByEmail(email)),
+    clearEmailAttempt: () => dispatch(clearEmailAttempt()),
     login: user => dispatch(login(user)),
     receiveError: error => dispatch(receiveError(error)),
     receiveErrors: errors => dispatch(receiveErrors(errors)),

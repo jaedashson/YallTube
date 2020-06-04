@@ -8,6 +8,7 @@ import {
 
 import NavBarContainer from "./nav_bar/nav_bar_container";
 import SignupFormContainer from "./auth/signup_form_container";
+import LoginFormContainer from "./auth/login_form_container";
 
 const App = () => {
   return (

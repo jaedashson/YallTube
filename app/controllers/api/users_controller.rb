@@ -13,6 +13,7 @@ class Api::UsersController < ApplicationController
   
   # GET /api/users/:userId
   def show
+    debugger
     @user = User.find_by(id: params[:id])
     render :show
   end
@@ -20,6 +21,7 @@ class Api::UsersController < ApplicationController
   # Signup
   # POST /api/users
   def create
+    debugger
     @user = User.new(user_params)
 
     if @user.save

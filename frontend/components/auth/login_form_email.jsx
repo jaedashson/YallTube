@@ -3,34 +3,40 @@ import { Link } from "react-router-dom";
 
 class LoginFormEmail extends React.Component {
   constructor(props) {
+    debugger
     super(props);
-    this.state = { email: this.props.email }
     this.handleNext = this.handleNext.bind(this);
 
+    this.validateEmail = this.validateEmail.bind(this);
     this.emailNotFoundError = "Couldn't find your YallTube Account";
   }
-
-  // update() {
-  //   return e => this.setState({ email: e.currentTarget.value });
-  // }
 
   // Need to figure out how handleSubmit works
   handleNext(e) {
     debugger
     e.preventDefault();
 
-    this.validateEmail();
+    debugger
 
     if (this.props.errors.includes(this.emailNotFoundError)) {
       return;
     }
 
-    this.props._next
+    this.props._next();
   }
 
-  validateEmail() {
+  validateEmail(e) {
+    e.preventDefault();
     debugger
-    this.props.getUserByEmail(this.state.email);
+    this.props.getUserByEmail(this.props.email);
+  }
+
+  componentDidUpdate() {
+    debugger
+    if (this.props.attemptedUser) {
+      debugger
+      this.props._next();
+    }
   }
 
   renderEmailError() {
@@ -45,6 +51,8 @@ class LoginFormEmail extends React.Component {
 
   // How much of the form do I render?  The page too?
   render() {
+    debugger
+
     return (
       <div className="auth-form-inputs-container">
         <h1>Sign in</h1>
@@ -54,8 +62,8 @@ class LoginFormEmail extends React.Component {
           <label className="auth-label"> Email
             <input type="text"
               className="auth-input"
-              value={this.state.email}
-              onChange={this.props.handleChange("email")}
+              value={this.props.email}
+              onChange={this.props.update("email")}
             />
           </label>
           {this.renderEmailError()}
@@ -65,7 +73,7 @@ class LoginFormEmail extends React.Component {
           <Link to="signup">Create account</Link>
           <button
             className="auth-options-button"
-            onClick={this.handleNext}
+            onClick={this.validateEmail}
           >Next</button>
         </div>
       </div>

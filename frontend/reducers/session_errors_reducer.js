@@ -8,15 +8,19 @@ import {
 const sessionErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_SESSION_ERROR: // New action type that I wrote which adds an error to the array instead of replacing the array
+    case RECEIVE_SESSION_ERROR:
+      debugger
       const newState = state.slice();
       newState.push(action.error);
       return newState;
-    case RECEIVE_SESSION_ERRORS: // Sets errors to the action's errors
+    case RECEIVE_SESSION_ERRORS:
+      debugger
       return action.errors;
     case CLEAR_SESSION_ERRORS:
-      return [];
-    case RECEIVE_CURRENT_USER: // Clears the errors
+      debugger
+      return ["ERRORS CLEARED"];
+    case RECEIVE_CURRENT_USER:
+      debugger
       return [];
     default:
       return state;

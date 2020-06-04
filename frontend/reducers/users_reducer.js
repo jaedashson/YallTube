@@ -6,11 +6,11 @@ import {
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_EMAIL_ATTEMPT:
-      return Object.assign({}, state, { [action.attemptedUser.id]: action.attemptedUser });
     case RECEIVE_CURRENT_USER:
+      debugger
       return Object.assign({}, state, { [action.currentUser.id]: action.currentUser });
     default:
+      debugger
       return state;
   }
 };
