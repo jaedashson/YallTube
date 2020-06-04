@@ -9,13 +9,11 @@ class LoginFormMaster extends React.Component {
     this.state = {
       currentStep: 1,
       email: "",
-      password: ""
     };
 
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
+    this.updateEmail = this.updateEmail.bind(this);
   }
 
   _next() {
@@ -34,26 +32,8 @@ class LoginFormMaster extends React.Component {
     }
   }
 
-  update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value });
-  }
-
-  handleSubmit(e) {
-    debugger
-    e.preventDefault();
-    this.props.clearErrors(); // This triggers state change and mSTP.  Then rest of #handleSubmit continues
-    let valid = true;
-
-    // validations here
-
-    if (valid) {
-      debugger
-      const user = {
-        username: this.props.attemptedUser.username,
-        password: this.state.password
-      };
-      this.props.login(user);
-    }
+  updateEmail() {
+    return e => this.setState({ email: e.currentTarget.value });
   }
 
   renderForm() {
@@ -64,12 +44,14 @@ class LoginFormMaster extends React.Component {
         return (
           <LoginFormEmail
             currentStep={this.state.currentStep}
-            update={this.update}
+            updateEmail={this.updateEmail}
             email={this.state.email}
             _next={this._next}
             getUserByEmail={this.props.getUserByEmail}
             attemptedUser={this.props.attemptedUser}
             errors={this.props.errors}
+            receiveError={this.props.receiveError}
+            clearErrors={this.props.clearErrors}
           />
         );
       case 2:
@@ -77,11 +59,13 @@ class LoginFormMaster extends React.Component {
         return (
           <LoginFormPassword
             currentStep={this.state.currentStep}
-            update={this.update}
             attemptedUser={this.props.attemptedUser}
             clearEmailAttempt={this.props.clearEmailAttempt}
             _prev={this._prev}
-            handleSubmit={this.handleSubmit}
+            login={this.props.login}
+            errors={this.props.errors}
+            receiveError={this.props.receiveError}
+            clearErrors={this.props.clearErrors}
           />
         );
     }

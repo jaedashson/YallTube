@@ -5,19 +5,22 @@ import {
   LOGOUT_CURRENT_USER
 } from "../actions/session_actions";
 
-const _nullUser = Object.freeze({ id: null });
+const defaultState = {
+  id: null,
+  attemptedUser: null
+};
 
-const sessionReducer = (state = _nullUser, action) => {
+const sessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_EMAIL_ATTEMPT:
       debugger
       newState["attemptedUser"] = action.attemptedUser;
-      return { attemptedUser: action.attemptedUser };
+      return newState;
     case CLEAR_EMAIL_ATTEMPT:
       debugger
-      delete newState["attemptedUser"];
+      newState["attemptedUser"] = null;
       return newState;
     case RECEIVE_CURRENT_USER:
       debugger
@@ -25,7 +28,8 @@ const sessionReducer = (state = _nullUser, action) => {
       return newState;
     case LOGOUT_CURRENT_USER:
       debugger
-      return _nullUser;
+      newState["id"] = null;
+      return newState;
     default:
       debugger
       return state;

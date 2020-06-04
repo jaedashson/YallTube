@@ -13,8 +13,10 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.usernameBlankError = "Enter username";
+    this.usernameTakenError = "Username has already been taken";
     this.emailBlankError = "Enter email";
     this.emailInvalidError = "Don't forget to include the '@'."
+    this.emailTakenError = "Email has already been taken";
     this.passwordShortError = "Password is too short (minimum is 6 characters)";
     this.passwordBlankError = "Enter a password";
     this.passwordConfirmMismatchError = "Those passwords didn't match. Try again.";
@@ -71,6 +73,8 @@ class SignupForm extends React.Component {
 
     if (this.props.errors.includes(this.usernameBlankError)) {
       error = this.usernameBlankError;
+    } else if (this.props.errors.includes(this.usernameTakenError)) {
+      error = "That username is taken. Try another.";
     }
 
     return <p className="auth-error">{error}</p>;
@@ -83,6 +87,8 @@ class SignupForm extends React.Component {
       error = this.emailBlankError;
     } else if (this.props.errors.includes(this.emailInvalidError)) {
       error = this.emailInvalidError;
+    } else if (this.props.errors.includes(this.emailTakenError)) {
+      error = "That email is taken. Try another.";
     }
 
     return <p className="auth-error">{error}</p>;
@@ -103,10 +109,12 @@ class SignupForm extends React.Component {
   renderPasswordConfirmError() {
     let error = null;
 
-    if (this.props.errors.includes(this.passwordConfirmMismatchError)) {
-      error = this.passwordConfirmMismatchError;
-    } else if (this.props.errors.includes(this.passwordConfirmBlankError)) {
-      error = this.passwordConfirmBlankError;
+    if (!this.props.errors.includes(this.passwordBlankError)) {
+      if (this.props.errors.includes(this.passwordConfirmMismatchError)) {
+        error = this.passwordConfirmMismatchError;
+      } else if (this.props.errors.includes(this.passwordConfirmBlankError)) {
+        error = this.passwordConfirmBlankError;
+      }
     }
 
     return (

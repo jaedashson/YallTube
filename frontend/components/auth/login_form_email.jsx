@@ -5,29 +5,34 @@ class LoginFormEmail extends React.Component {
   constructor(props) {
     debugger
     super(props);
-    this.handleNext = this.handleNext.bind(this);
-
     this.validateEmail = this.validateEmail.bind(this);
+    // this.handleNext = this.handleNext.bind(this);
+
+    this.emailBlankError = "Enter an email";
     this.emailNotFoundError = "Couldn't find your YallTube Account";
   }
 
-  // Need to figure out how handleSubmit works
-  handleNext(e) {
-    debugger
-    e.preventDefault();
+  // handleNext(e) {
+  //   debugger
+  //   e.preventDefault();
+  //   debugger
 
-    debugger
+  //   if (this.props.errors.includes(this.emailNotFoundError)) {
+  //     return;
+  //   }
 
-    if (this.props.errors.includes(this.emailNotFoundError)) {
-      return;
-    }
-
-    this.props._next();
-  }
+  //   this.props._next();
+  // }
 
   validateEmail(e) {
     e.preventDefault();
     debugger
+
+    if (this.props.email == "") {
+      this.props.receiveError(this.emailBlankError);
+      return;
+    }
+
     this.props.getUserByEmail(this.props.email);
   }
 
@@ -35,6 +40,7 @@ class LoginFormEmail extends React.Component {
     debugger
     if (this.props.attemptedUser) {
       debugger
+      this.props.clearErrors();
       this.props._next();
     }
   }
@@ -42,14 +48,26 @@ class LoginFormEmail extends React.Component {
   renderEmailError() {
     let error = null;
 
-    if (this.props.errors.includes(this.emailNotFoundError)) {
+    if (this.props.errors.includes(this.emailBlankError)) {
+      error = this.emailBlankError;
+    } else if (this.props.errors.includes(this.emailNotFoundError)) {
       error = this.emailNotFoundError;
     }
 
     return <p className="auth-error">{error}</p>
   }
 
-  // How much of the form do I render?  The page too?
+  componentDidMount() {
+    const emailInput = document.getElementById("email-input");
+
+    emailInput.addEventListener("keyup", function(e) {
+      e.preventDefault();
+      if (e.keyCode === 13) {
+        document.getElementById("login-next-button").click();
+      }
+    });
+  }
+
   render() {
     debugger
 
@@ -61,9 +79,10 @@ class LoginFormEmail extends React.Component {
         <div className="email-container">
           <label className="auth-label"> Email
             <input type="text"
+              id="email-input"
               className="auth-input"
               value={this.props.email}
-              onChange={this.props.update("email")}
+              onChange={this.props.updateEmail()}
             />
           </label>
           {this.renderEmailError()}
@@ -72,6 +91,7 @@ class LoginFormEmail extends React.Component {
         <div className="auth-options">
           <Link to="signup">Create account</Link>
           <button
+            id="login-next-button"
             className="auth-options-button"
             onClick={this.validateEmail}
           >Next</button>
