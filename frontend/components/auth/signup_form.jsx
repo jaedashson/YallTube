@@ -124,61 +124,65 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="signup-page">
+      <div className="auth-page">
         <div className="auth-form-container">
-          <form onSubmit={this.handleSubmit} className="login-form-box">
-            <p>[YallTube logo]</p>
-            <h1>Create your YallTube Account</h1>
-            <h2>to continue to YallTube</h2>
+          <div className="yalltube-logo">YallTube</div>
+          <form className="auth-form"
+            onSubmit={this.handleSubmit}
+          >
+            <div className="auth-form-inputs-container">
+              <h1 className="auth-form-header-1">Create your YallTube Account</h1>
+              <h2 className="auth-form-header-2">to continue to YallTube</h2>
 
-            <div className="username-container">
-              <label className="auth-label"> Username
-                <input type="text"
-                  className="auth-input"
-                  value={this.state.username}
-                  onChange={this.update("username")}
-                />
-              </label>
-              {this.renderUsernameError()}
-            </div>
-
-            <div className="email-container">
-              <label className="auth-label"> Your email address
-                <input type="text"
-                  className="auth-input"
-                  value={this.state.email}
-                  onChange={this.update("email")}
-                />
-              </label>
-              {this.renderEmailError()}
-            </div>
-
-            <div className="password-container">
-              <div className="password-input-container">
-                <label className="auth-label"> Password
-                  <input type="password"
+              <div className="username-container">
+                <label className="auth-label"> Username
+                  <input type="text"
                     className="auth-input"
-                    value={this.state.password}
-                    onChange={this.update("password")}
+                    value={this.state.username}
+                    onChange={this.update("username")}
                   />
                 </label>
-                {this.renderPasswordError()}
+                {this.renderUsernameError()}
               </div>
-              <div className="password-confirm-container">
-                <label className="auth-label"> Confirm
-                  <input type="password"
+
+              <div className="email-container">
+                <label className="auth-label"> Your email address
+                  <input type="text"
                     className="auth-input"
-                    value={this.state.passwordConfirm}
-                    onChange={this.update("passwordConfirm")}
+                    value={this.state.email}
+                    onChange={this.update("email")}
                   />
                 </label>
-                {this.renderPasswordConfirmError()}
+                {this.renderEmailError()}
               </div>
-            </div>
 
-            <div className="auth-options">
-              <Link to="/login">Sign in instead</Link>
-              <button className="auth-options-button">Next</button>
+              <div className="password-container">
+                <div className="password-input-container">
+                  <label className="auth-label"> Password
+                    <input type="password"
+                      className="auth-input"
+                      value={this.state.password}
+                      onChange={this.update("password")}
+                    />
+                  </label>
+                  {this.renderPasswordError()}
+                </div>
+                <div className="password-confirm-container">
+                  <label className="auth-label"> Confirm
+                    <input type="password"
+                      className="auth-input"
+                      value={this.state.passwordConfirm}
+                      onChange={this.update("passwordConfirm")}
+                    />
+                  </label>
+                  {this.renderPasswordConfirmError()}
+                </div>
+              </div>
+
+              <div className="auth-options">
+                <Link to="/login">Sign in instead</Link>
+                <button className="auth-options-button">Next</button>
+              </div>
             </div>
           </form>
         </div>

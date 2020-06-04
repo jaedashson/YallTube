@@ -73,8 +73,8 @@ class LoginFormEmail extends React.Component {
 
     return (
       <div className="auth-form-inputs-container">
-        <h1>Sign in</h1>
-        <h2>to continue to YallTube</h2>
+        <h1 className="auth-form-header-1">Sign in</h1>
+        <h2 className="auth-form-header-2">to continue to YallTube</h2>
 
         <div className="email-container">
           <label className="auth-label"> Email
@@ -96,6 +96,7 @@ class LoginFormEmail extends React.Component {
             onClick={this.validateEmail}
           >Next</button>
         </div>
+
       </div>
     );
   }

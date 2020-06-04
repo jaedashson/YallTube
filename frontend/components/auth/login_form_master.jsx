@@ -74,13 +74,13 @@ class LoginFormMaster extends React.Component {
   render() {
     debugger
     return (
-      <div className="auth-form-container">
-        <form>
-          <p>[YallTube logo]</p>
-
-          {this.renderForm()}
-          
-        </form>
+      <div className="auth-page">
+        <div className="auth-form-container">
+          <div className="yalltube-logo">YallTube</div>
+          <form className="auth-form">
+            {this.renderForm()}
+          </form>
+        </div>
       </div>
     )
   }

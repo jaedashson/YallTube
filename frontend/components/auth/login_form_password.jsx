@@ -77,10 +77,10 @@ class LoginFormPassword extends React.Component {
     debugger
 
     return (
-      <div className="auth-form-container">
-        <h1>Hi {this.props.attemptedUser.username}</h1>
+      <div className="auth-form-inputs container">
+        <h1 className="auth-form-header-1">Hi {this.props.attemptedUser.username}</h1>
         <div
-          className="attempt-email-container"
+          className="email-attempt-container"
           onClick={this.handlePrev}
         >
           <p>{this.props.attemptedUser.email}</p>
