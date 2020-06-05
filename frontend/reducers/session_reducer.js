@@ -15,23 +15,18 @@ const sessionReducer = (state = defaultState, action) => {
   const newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_EMAIL_ATTEMPT:
-      debugger
       newState["attemptedUser"] = action.attemptedUser;
       return newState;
     case CLEAR_EMAIL_ATTEMPT:
-      debugger
       newState["attemptedUser"] = null;
       return newState;
     case RECEIVE_CURRENT_USER:
-      debugger
       newState["id"] = action.currentUser.id;
       return newState;
     case LOGOUT_CURRENT_USER:
-      debugger
       newState["id"] = null;
       return newState;
     default:
-      debugger
       return state;
   }
 };

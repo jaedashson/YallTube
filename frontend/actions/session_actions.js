@@ -53,30 +53,24 @@ export const clearErrors = () => {
 
 export const signup = user => dispatch => {
   return APIUtil.signup(user).then(user => {
-    debugger
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    debugger
     return dispatch(receiveErrors(error.responseJSON))
   })
 };
 
 export const getUserByEmail = email => dispatch => {
   return APIUtil.getUserByEmail(email).then(user => {
-    debugger
     return dispatch(receiveEmailAttempt(user))
   }, error => {
-    debugger
     return dispatch(receiveErrors(error.responseJSON))
   })
 };
 
 export const login = user => dispatch => {
   return APIUtil.login(user).then(user => {
-    debugger
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    debugger
     dispatch(receiveErrors(error.responseJSON))
   })
 };

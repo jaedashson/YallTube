@@ -14,7 +14,6 @@ class LoginFormPassword extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger
     this.props.clearEmailAttempt();
     this.props.clearErrors();
   }
@@ -24,7 +23,6 @@ class LoginFormPassword extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     this.props.clearErrors();
     let valid = true;
@@ -35,7 +33,6 @@ class LoginFormPassword extends React.Component {
     }
 
     if (valid) {
-      debugger
       const user = {
         username: this.props.attemptedUser.username,
         password: this.state.password
@@ -45,7 +42,6 @@ class LoginFormPassword extends React.Component {
   }
 
   handlePrev(e) {
-    debugger
     e.preventDefault();
     this.props._prev();
   }
@@ -74,7 +70,6 @@ class LoginFormPassword extends React.Component {
   }
 
   render() {
-    debugger
 
     return (
       <div className="auth-form-inputs container">

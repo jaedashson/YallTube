@@ -4,7 +4,6 @@ import LoginFormPassword from "./login_form_password";
 
 class LoginFormMaster extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.state = {
       currentStep: 1,
@@ -17,17 +16,13 @@ class LoginFormMaster extends React.Component {
   }
 
   _next() {
-    debugger
     if (this.state.currentStep === 1) {
-      debugger
       this.setState({ currentStep: 2 });
     }
   }
 
   _prev() {
-    debugger
     if (this.state.currentStep === 2) {
-      debugger
       this.setState({ currentStep: 1 });
     }
   }
@@ -37,10 +32,8 @@ class LoginFormMaster extends React.Component {
   }
 
   renderForm() {
-    debugger
     switch (this.state.currentStep) {
       case 1:
-        debugger
         return (
           <LoginFormEmail
             currentStep={this.state.currentStep}
@@ -55,7 +48,6 @@ class LoginFormMaster extends React.Component {
           />
         );
       case 2:
-        debugger
         return (
           <LoginFormPassword
             currentStep={this.state.currentStep}
@@ -72,7 +64,6 @@ class LoginFormMaster extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div className="auth-page">
         <div className="auth-form-container">

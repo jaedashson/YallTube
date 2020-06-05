@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { login, getUserByEmail, receiveError, receiveErrors, clearErrors, clearEmailAttempt } from "../../actions/session_actions";
 
 const mSTP = ({ errors, session }) => {
-  debugger
   return {
     errors: errors.session,
     attemptedUser: session.attemptedUser

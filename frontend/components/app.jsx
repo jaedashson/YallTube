@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div>
       <header>
-        {/* <NavBarContainer /> */}
+        <NavBarContainer />
       </header>
 
       <Switch>

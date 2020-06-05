@@ -2,7 +2,6 @@ class Api::SessionsController < ApplicationController
   # Login
   # POST /api/session
   def create
-    debugger
     @user = User.find_by_credentials(user_params[:username], user_params[:password])
 
     if @user
@@ -16,7 +15,6 @@ class Api::SessionsController < ApplicationController
   # Logout
   # DELETE /api/session
   def destroy
-    debugger
     if logged_in?
       logout!
       render json: {}

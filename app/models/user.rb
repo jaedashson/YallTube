@@ -19,7 +19,6 @@ class User < ApplicationRecord
   has_many :channel_views # sum of view count of `videos`
 
   def self.find_by_credentials(username, password)
-    debugger
     
     user = User.find_by(username: username)
 

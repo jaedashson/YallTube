@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 class LoginFormEmail extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.validateEmail = this.validateEmail.bind(this);
     // this.handleNext = this.handleNext.bind(this);
@@ -26,7 +25,6 @@ class LoginFormEmail extends React.Component {
 
   validateEmail(e) {
     e.preventDefault();
-    debugger
 
     if (this.props.email == "") {
       this.props.receiveError(this.emailBlankError);
@@ -37,9 +35,7 @@ class LoginFormEmail extends React.Component {
   }
 
   componentDidUpdate() {
-    debugger
     if (this.props.attemptedUser) {
-      debugger
       this.props.clearErrors();
       this.props._next();
     }
@@ -69,7 +65,6 @@ class LoginFormEmail extends React.Component {
   }
 
   render() {
-    debugger
 
     return (
       <div className="auth-form-inputs-container">
