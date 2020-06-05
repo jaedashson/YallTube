@@ -134,47 +134,43 @@ class SignupForm extends React.Component {
               <h1 className="auth-form-header-1">Create your YallTube Account</h1>
               <h2 className="auth-form-header-2">to continue to YallTube</h2>
 
-              <div className="username-container">
-                <label className="auth-label"> Username
-                  <input type="text"
-                    className="auth-input"
-                    value={this.state.username}
-                    onChange={this.update("username")}
-                  />
-                </label>
+              <div className="signup-username-container">
+                <input type="text"
+                  className="auth-input"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={this.update("username")}
+                />
                 {this.renderUsernameError()}
               </div>
 
               <div className="email-container">
-                <label className="auth-label"> Your email address
-                  <input type="text"
-                    className="auth-input"
-                    value={this.state.email}
-                    onChange={this.update("email")}
-                  />
-                </label>
+                <input type="text"
+                  className="auth-input"
+                  placeholder="Your email address"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                />
                 {this.renderEmailError()}
               </div>
 
               <div className="password-container">
                 <div className="password-input-container">
-                  <label className="auth-label"> Password
-                    <input type="password"
-                      className="auth-input"
-                      value={this.state.password}
-                      onChange={this.update("password")}
-                    />
-                  </label>
+                  <input type="password"
+                    className="auth-input"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                  />
                   {this.renderPasswordError()}
                 </div>
                 <div className="password-confirm-container">
-                  <label className="auth-label"> Confirm
-                    <input type="password"
-                      className="auth-input"
-                      value={this.state.passwordConfirm}
-                      onChange={this.update("passwordConfirm")}
-                    />
-                  </label>
+                  <input type="password"
+                    className="auth-input"
+                    placeholder="Confirm"
+                    value={this.state.passwordConfirm}
+                    onChange={this.update("passwordConfirm")}
+                  />
                   {this.renderPasswordConfirmError()}
                 </div>
               </div>

@@ -86,15 +86,14 @@ class LoginFormPassword extends React.Component {
           <p>{this.props.attemptedUser.email}</p>
         </div>
 
-        <div className="login-password-container">
-          <label className="auth-label">
-            <input type="password"
-              id="password-input"
-              className="auth-input"
-              value={this.props.password}
-              onChange={this.updatePassword()}
-            />
-          </label>
+        <div className="login-input-container">
+          <input type="password"
+            className="auth-input"
+            id="password-input"
+            placeholder="Password"
+            value={this.props.password}
+            onChange={this.updatePassword()}
+          />
           {this.renderPasswordError()}
         </div>
 

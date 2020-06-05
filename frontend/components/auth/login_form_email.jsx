@@ -76,16 +76,19 @@ class LoginFormEmail extends React.Component {
         <h1 className="auth-form-header-1">Sign in</h1>
         <h2 className="auth-form-header-2">to continue to YallTube</h2>
 
-        <div className="email-container">
-          <label className="auth-label"> Email
-            <input type="text"
-              id="email-input"
-              className="auth-input"
-              value={this.props.email}
-              onChange={this.props.updateEmail()}
-            />
-          </label>
+        <div className="login-input-container">
+          <input type="text"
+            className="login-input"
+            id="email-input"
+            placeholder="Email"
+            value={this.props.email}
+            onChange={this.props.updateEmail()}
+          />
           {this.renderEmailError()}
+        </div>
+
+        <div className="guest-login-container">
+          <p className="guest-login">Log in as a guest user</p>
         </div>
 
         <div className="auth-options">
