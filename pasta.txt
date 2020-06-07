@@ -28,7 +28,7 @@ dispatch(signup({ username: "user4", email: "user4@gmail.com", password: "hunter
 // Logging in
 dispatch(login({ username: "user1", password: "hunter12" }));
 
-// Logging in
+// Logging out
 dispatch(logout())
 
 // Getting user by email

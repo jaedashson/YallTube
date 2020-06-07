@@ -1,29 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AuthError from "./auth_error";
+
 
 class LoginFormEmail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isError: false
+    }
     
-
     this.validateEmail = this.validateEmail.bind(this);
-    // this.handleNext = this.handleNext.bind(this);
 
     this.emailBlankError = "Enter an email";
     this.emailNotFoundError = "Couldn't find your YallTube Account";
   }
-
-  // handleNext(e) {
-  //   debugger
-  //   e.preventDefault();
-  //   debugger
-
-  //   if (this.props.errors.includes(this.emailNotFoundError)) {
-  //     return;
-  //   }
-
-  //   this.props._next();
-  // }
 
   validateEmail(e) {
     e.preventDefault();
@@ -37,9 +29,23 @@ class LoginFormEmail extends React.Component {
   }
 
   componentDidUpdate() {
+    debugger
+    // If input email is associated with a valid user
     if (this.props.attemptedUser) {
+      debugger
       this.props.clearErrors();
+      this.setState({isError: false});
       this.props._next();
+      return;
+    }
+
+    // If input caused an error
+    if (this.props.errors.length > 0) {
+      debugger
+      if (this.state.isError === false) {
+        this.setState({ isError: true });
+      }
+      return;
     }
   }
 
@@ -52,7 +58,11 @@ class LoginFormEmail extends React.Component {
       error = this.emailNotFoundError;
     }
 
-    return <p className="auth-error">{error}</p>
+    if (error) {
+      return <AuthError error={error} />;
+    }
+
+    return null;
   }
 
   componentDidMount() {
@@ -67,6 +77,7 @@ class LoginFormEmail extends React.Component {
   }
 
   render() {
+    const loginInputErrorClass = this.state.isError ? "login-input-error" : "";
 
     return (
       <div className="auth-form-inputs-container">
@@ -75,7 +86,7 @@ class LoginFormEmail extends React.Component {
 
         <div className="login-input-container">
           <input type="text"
-            className="login-input"
+            className={`login-input ${loginInputErrorClass}`}
             id="email-input"
             placeholder="Email"
             value={this.props.email}

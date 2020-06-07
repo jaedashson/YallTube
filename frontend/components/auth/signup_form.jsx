@@ -127,7 +127,7 @@ class SignupForm extends React.Component {
     return (
       <div className="auth-page">
         <div className="auth-form-container">
-          <div className="yalltube-logo">
+          <div className="yalltube-logo yalltube-logo-signup">
             <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-icon" />
             <span>YallTube</span>
           </div>
@@ -135,10 +135,10 @@ class SignupForm extends React.Component {
             onSubmit={this.handleSubmit}
           >
             <div className="auth-form-inputs-container">
-              <h1 className="auth-form-header-1">Create your YallTube Account</h1>
-              <h2 className="auth-form-header-2">to continue to YallTube</h2>
+              <h1 className="auth-form-header-1 auth-form-header-1-signup">Create your YallTube Account</h1>
+              <h2 className="auth-form-header-2 auth-form-header-2-signup">to continue to YallTube</h2>
 
-              <div className="signup-username-container">
+              <div className="login-input-container">
                 <input type="text"
                   className="auth-input"
                   placeholder="Username"

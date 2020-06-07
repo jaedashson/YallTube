@@ -1,16 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import AuthError from "./auth_error";
+
 
 class LoginFormPassword extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { password: "" };
+    this.state = {
+      password: "",
+      isError: false
+    };
 
     this.handlePrev = this.handlePrev.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.passwordBlankError = "Enter a password";
     this.passwordWrongError = "Wrong password";
+  }
+
+  componentDidUpdate() {
+    // If input caused an error
+    if (this.props.errors.length > 0) {
+      debugger
+      if (this.state.isError === false) {
+        this.setState({ isError: true });
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -55,7 +71,11 @@ class LoginFormPassword extends React.Component {
       error = this.passwordWrongError;
     }
 
-    return <p className="auth-error">{error}</p>
+    if (error) {
+      return <AuthError error={error} />;
+    }
+
+    // return <p className="auth-error">{error}</p>
   }
 
   componentDidMount() {
@@ -74,16 +94,21 @@ class LoginFormPassword extends React.Component {
     return (
       <div className="auth-form-inputs container">
         <h1 className="auth-form-header-1">Hi {this.props.attemptedUser.username}</h1>
-        <div
-          className="email-attempt-container"
-          onClick={this.handlePrev}
-        >
-          <p>{this.props.attemptedUser.email}</p>
+
+        <div className="email-attempt-container">
+          <div
+            className="email-attempt-button"
+            onClick={this.handlePrev}
+          >
+            <div className="email-attempt-icon">{this.props.attemptedUser.username[0]}</div>
+            <p className="email-attempt-text">{this.props.attemptedUser.email}</p>
+            <FontAwesomeIcon icon="chevron-down" className="email-attempt-chevron" />
+          </div>
         </div>
 
         <div className="login-input-container">
           <input type="password"
-            className="auth-input"
+            className="login-input"
             id="password-input"
             placeholder="Password"
             value={this.props.password}
@@ -92,7 +117,8 @@ class LoginFormPassword extends React.Component {
           {this.renderPasswordError()}
         </div>
 
-        <div className="auth-options">
+        <div className="auth-options auth-options-password">
+          <div></div>
           <button
             id="login-button"
             className="auth-options-button"
