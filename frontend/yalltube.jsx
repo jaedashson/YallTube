@@ -3,6 +3,12 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 
+// FontAwesome icons
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+library.add(fab);
+
+
 // testing imports
 import { login, signup, logout, getUserByEmail } from "./actions/session_actions";
 

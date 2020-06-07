@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -126,7 +127,10 @@ class SignupForm extends React.Component {
     return (
       <div className="auth-page">
         <div className="auth-form-container">
-          <div className="yalltube-logo">YallTube</div>
+          <div className="yalltube-logo">
+            <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-icon" />
+            <span>YallTube</span>
+          </div>
           <form className="auth-form"
             onSubmit={this.handleSubmit}
           >
@@ -176,7 +180,13 @@ class SignupForm extends React.Component {
               </div>
 
               <div className="auth-options">
-                <Link to="/login">Sign in instead</Link>
+                <Link to="/login">
+                  <span className="other-auth-link-span">
+                    <div className="other-auth-link">
+                      <p className="other-auth-link-text">Sign in instead</p>
+                    </div>
+                  </span>
+                </Link>
                 <button className="auth-options-button">Next</button>
               </div>
             </div>

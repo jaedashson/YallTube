@@ -1,6 +1,7 @@
 import React from "react";
 import LoginFormEmail from "./login_form_email";
 import LoginFormPassword from "./login_form_password";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class LoginFormMaster extends React.Component {
   constructor(props) {
@@ -67,7 +68,10 @@ class LoginFormMaster extends React.Component {
     return (
       <div className="auth-page">
         <div className="auth-form-container">
-          <div className="yalltube-logo">YallTube</div>
+          <div className="yalltube-logo">
+            <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-icon" />
+            <span>YallTube</span>
+          </div>
           <form className="auth-form">
             {this.renderForm()}
           </form>

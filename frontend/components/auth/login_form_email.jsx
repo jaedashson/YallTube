@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 class LoginFormEmail extends React.Component {
   constructor(props) {
     super(props);
+    
+
     this.validateEmail = this.validateEmail.bind(this);
     // this.handleNext = this.handleNext.bind(this);
 
@@ -83,11 +85,13 @@ class LoginFormEmail extends React.Component {
         </div>
 
         <div className="guest-login-container">
-          <p className="guest-login">Log in as a guest user</p>
+          <p className="auth-link-text">Log in as a guest user</p>
         </div>
 
         <div className="auth-options">
-          <Link to="signup">Create account</Link>
+          <Link to="signup" className="other-auth-link">
+            <p className="auth-link-text">Create Account</p>
+          </Link>
           <button
             id="login-next-button"
             className="auth-options-button"

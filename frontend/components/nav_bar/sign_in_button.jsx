@@ -14,7 +14,7 @@ class SignInButton extends React.Component {
     )
   }
 
-  guest() {
+  notLoggedIn() {
     return (
       <Link to="/login">
         <span className="login-button-link">
@@ -28,11 +28,11 @@ class SignInButton extends React.Component {
   }
 
   render() {
-    const button = this.props.currentUser ? this.loggedIn() : this.guest();
+    const authButton = this.props.currentUser ? this.loggedIn() : this.notLoggedIn();
 
     return (
       <div>
-        {button}
+        {authButton}
       </div>
     );
   }
