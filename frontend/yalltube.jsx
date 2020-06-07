@@ -6,8 +6,17 @@ import Root from "./components/root";
 // FontAwesome icons
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faExclamationCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-library.add(fab, faExclamationCircle, faChevronDown);
+import {
+  faExclamationCircle,
+  faChevronDown,
+  faBars
+} from '@fortawesome/free-solid-svg-icons';
+library.add(
+  fab,
+  faExclamationCircle,
+  faChevronDown,
+  faBars
+);
 
 
 // testing imports

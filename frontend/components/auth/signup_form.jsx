@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import AuthError from "./auth_error";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -9,8 +10,10 @@ class SignupForm extends React.Component {
       username: "",
       email: "",
       password: "",
-      passwordConfirm: ""
+      passwordConfirm: "",
+      isError: false
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.usernameBlankError = "Enter username";
@@ -24,6 +27,18 @@ class SignupForm extends React.Component {
     this.passwordConfirmBlankError = "Confirm your password";
   }
 
+  componentDidUpdate() {
+    if (this.props.errors.length > 0) {
+      if (this.state.isError === false) {
+        this.setState({ isError: true });
+      }
+    } else if (this.props.errors.length === 0) {
+      if (this.state.isError === true) {
+        this.setState({ isError: false });
+      }
+    }
+  }
+
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
@@ -31,6 +46,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearErrors();
+    this.setState({ isError: false });
     let valid = true;
 
     if (this.state.username === "") {
@@ -78,7 +94,11 @@ class SignupForm extends React.Component {
       error = "That username is taken. Try another.";
     }
 
-    return <p className="auth-error">{error}</p>;
+    if (error) {
+      return <AuthError error={error} />
+    }
+
+    return null;
   }
 
   renderEmailError() {
@@ -92,7 +112,11 @@ class SignupForm extends React.Component {
       error = "That email is taken. Try another.";
     }
 
-    return <p className="auth-error">{error}</p>;
+    if (error) {
+      return <AuthError error={error} />
+    }
+
+    return null;
   }
 
   renderPasswordError() {
@@ -104,7 +128,11 @@ class SignupForm extends React.Component {
       error = "Use 6 characters or more for your password";
     }
 
-    return <p className="auth-error">{error}</p>;
+    if (error) {
+      return <AuthError error={error} />
+    }
+
+    return null;
   }
 
   renderPasswordConfirmError() {
@@ -118,16 +146,21 @@ class SignupForm extends React.Component {
       }
     }
 
-    return (
-      <p className="auth-error">{error}</p>
-    );
+    if (error) {
+      return <AuthError error={error} />
+    }
+
+    return null;
   }
 
   render() {
+    const loginInputErrorClass = this.state.isError ? "login-input-error" : "";
+    const passwordRequirementsHidden = this.state.isError ? "hidden" : "";
+
     return (
       <div className="auth-page">
         <div className="auth-form-container">
-          <div className="yalltube-logo yalltube-logo-signup">
+          <div className="yalltube-logo yalltube-logo-auth yalltube-logo-signup">
             <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-icon" />
             <span>YallTube</span>
           </div>
@@ -140,7 +173,7 @@ class SignupForm extends React.Component {
 
               <div className="login-input-container">
                 <input type="text"
-                  className="auth-input"
+                  className={`signup-input ${loginInputErrorClass}`}
                   placeholder="Username"
                   value={this.state.username}
                   onChange={this.update("username")}
@@ -148,9 +181,9 @@ class SignupForm extends React.Component {
                 {this.renderUsernameError()}
               </div>
 
-              <div className="email-container">
+              <div className="login-input-container signup-input-not-first">
                 <input type="text"
-                  className="auth-input"
+                  className={`signup-input  ${loginInputErrorClass}`}
                   placeholder="Your email address"
                   value={this.state.email}
                   onChange={this.update("email")}
@@ -158,10 +191,10 @@ class SignupForm extends React.Component {
                 {this.renderEmailError()}
               </div>
 
-              <div className="password-container">
+              <div className="password-container signup-input-not-first">
                 <div className="password-input-container">
                   <input type="password"
-                    className="auth-input"
+                    className={`signup-input  ${loginInputErrorClass}`}
                     placeholder="Password"
                     value={this.state.password}
                     onChange={this.update("password")}
@@ -170,7 +203,7 @@ class SignupForm extends React.Component {
                 </div>
                 <div className="password-confirm-container">
                   <input type="password"
-                    className="auth-input"
+                    className={`signup-input  ${loginInputErrorClass}`}
                     placeholder="Confirm"
                     value={this.state.passwordConfirm}
                     onChange={this.update("passwordConfirm")}
@@ -179,13 +212,11 @@ class SignupForm extends React.Component {
                 </div>
               </div>
 
+              <p className={`password-requirements ${passwordRequirementsHidden}`}>Use 6 or more characters</p>
+
               <div className="auth-options">
-                <Link to="/login">
-                  <span className="other-auth-link-span">
-                    <div className="other-auth-link">
-                      <p className="other-auth-link-text">Sign in instead</p>
-                    </div>
-                  </span>
+                <Link to="/login" className="other-auth-link">
+                  <p className="auth-link-text">Sign in instead</p>
                 </Link>
                 <button className="auth-options-button">Next</button>
               </div>

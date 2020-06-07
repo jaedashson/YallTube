@@ -75,7 +75,7 @@ class LoginFormPassword extends React.Component {
       return <AuthError error={error} />;
     }
 
-    // return <p className="auth-error">{error}</p>
+    return null;
   }
 
   componentDidMount() {
@@ -90,6 +90,7 @@ class LoginFormPassword extends React.Component {
   }
 
   render() {
+    const loginInputErrorClass = this.state.isError ? "login-input-error" : "";
 
     return (
       <div className="auth-form-inputs container">
@@ -108,7 +109,7 @@ class LoginFormPassword extends React.Component {
 
         <div className="login-input-container">
           <input type="password"
-            className="login-input"
+            className={`login-input ${loginInputErrorClass}`}
             id="password-input"
             placeholder="Password"
             value={this.props.password}

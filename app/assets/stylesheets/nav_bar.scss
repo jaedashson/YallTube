@@ -1,16 +1,33 @@
 .nav-bar {
+  margin-left: 26px;
+  height: 56px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav-bar .start {
+.nav-bar-start {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.guide-button-icon {
+  color: #606060;
+}
+
+.yalltube-logo-nav {
+  margin-left: 26px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  font-size: 22px;
+}
+
+.nav-bar-buttons {
   display: flex;
   flex-direction: row;
 }
 
-.nav-bar .buttons {
-  display: flex;
-  flex-direction: row;
-}

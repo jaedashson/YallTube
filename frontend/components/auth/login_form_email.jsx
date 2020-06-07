@@ -33,8 +33,8 @@ class LoginFormEmail extends React.Component {
     // If input email is associated with a valid user
     if (this.props.attemptedUser) {
       debugger
+      this.setState({ isError: false });
       this.props.clearErrors();
-      this.setState({isError: false});
       this.props._next();
       return;
     }
@@ -100,7 +100,7 @@ class LoginFormEmail extends React.Component {
         </div>
 
         <div className="auth-options">
-          <Link to="signup" className="other-auth-link">
+          <Link to="/signup" className="other-auth-link">
             <p className="auth-link-text">Create Account</p>
           </Link>
           <button

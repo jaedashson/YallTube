@@ -12,7 +12,7 @@
   margin-top: 100px;
   padding: 48px 40px 36px;
   width: 448px;
-  height: 500px;
+  min-height: 500px;
 }
 
 .auth-form-header-1 {
@@ -88,7 +88,6 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items: center;
   margin-top: 32px;
 }
 
@@ -100,7 +99,20 @@
   border-radius: 4px;
   color: #202124;
   font-family: inherit;
+  font-weight: 400;
+  outline: none;
   // Diverges from .login-input
+  font-size: 14px;
+  height: 34px;
+  padding: 7px 11px;
+}
+
+.password-input-container {
+  margin-right: 18px;
+}
+
+.signup-input-not-first {
+  margin-top: 24px;
 }
 
 .login-input {
@@ -111,12 +123,12 @@
   border-radius: 4px;
   color: #202124;
   font-family: inherit;
+  font-weight: 400;
+  outline: none;
   // Diverges from .signup-input
   font-size: 16px;
-  font-weight: 400;
   height: 56px;
   padding: 13px 15px;
-  outline: none;
 }
 
 .login-input:focus {
@@ -155,10 +167,23 @@
   margin-top: 78px;
 }
 
+.password-requirements {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 12px;
+  font-family: inherit;
+  color: #202124
+}
+
+.hidden {
+  display: none;
+}
+
 .auth-link-text {
   font-weight: 500;
   letter-spacing: .25px;
   color: #1a73e8;
+  text-decoration: none;
   font-size: 14px;
   line-height: 1.4286;
 }
@@ -187,11 +212,6 @@
   text-decoration: none;
 }
 
-.other-auth-link-text {
-  text-decoration: none;
-  color: #1a73e8;
-}
-
 .auth-options-button {
   width: 88px;
   height: 36px;
@@ -212,4 +232,5 @@
 .password-container {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
