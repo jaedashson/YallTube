@@ -7,7 +7,7 @@ import {
 
 
 const usersReducer = (state = {}, action) => {
-  debugger
+  // debugger
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
@@ -17,7 +17,7 @@ const usersReducer = (state = {}, action) => {
       debugger
       return Object.assign({}, state, { [action.user.id]: action.user });
     default:
-      debugger
+      // debugger
       return state;
   }
 };

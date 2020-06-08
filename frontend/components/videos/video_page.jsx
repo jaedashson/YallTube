@@ -7,21 +7,29 @@ class VideoPage extends React.Component {
   constructor(props) {
     debugger
     super(props);
-    this.uploader = null;
+
   };
 
   componentDidMount() {
     debugger
-    this.props.fetchVideo(this.props.match.params.videoId);
 
-    // this.props.fetchUser(this.props.video.id);
-    // How do I get the uploader from state after I've fetched them?
+    this.props.fetchVideo(this.props.match.params.videoId).then(action => {
+      debugger
+      this.props.fetchUser(action.video.uploader_id);
+    })
+
+    // this.props.fetchUser(this.props.video.uploader_id)
+    
+    debugger
+
+    // this.props.fetchUser(this.props.video.uploader_id); // This will not work because this.props.video is still undefined at this point.
+    
   };
 
   render() {
     debugger
 
-    if (!this.props.video) {
+    if (!this.props.video || !this.props.uploader) {
       return null;
     }
 
@@ -38,7 +46,7 @@ class VideoPage extends React.Component {
 
           <VideoDescription
             video={this.props.video}
-            // uploader={this.props.uploader}
+            uploader={this.props.uploader}
           />
         </div>
         <div className="video-page-col-2"></div>

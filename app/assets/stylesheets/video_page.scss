@@ -1,8 +1,9 @@
 .video-page {
-  background-color: #e6ffe6;
+  background-color: #f9f9f9;
   padding: 24px 64px;
   display: flex;
   flex-direction: row;
+  font-family: 'Roboto', sans-serif;
 }
 
 .video-page-col-1 {
@@ -14,7 +15,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 30px;
-  width: 200px;
+  width: 100%;
   border: 1px solid black;
 }
 
@@ -71,7 +72,7 @@
   align-items: center;
   color: #909090;
   font-size: 13px;
-  font-family: 'Robot', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .video-likes-item {
