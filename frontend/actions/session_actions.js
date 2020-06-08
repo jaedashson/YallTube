@@ -30,24 +30,28 @@ export const receiveCurrentUser = currentUser => {
 export const logoutCurrentUser = () => {
   return {
     type: LOGOUT_CURRENT_USER
-}};
+  }
+};
 
-export const receiveError = error => {
+export const receiveSessionError = error => {
   return {
     type: RECEIVE_SESSION_ERROR,
     error
-}};
+  }
+};
 
-export const receiveErrors = errors => {
+export const receiveSessionErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
-}};
+  }
+};
 
-export const clearErrors = () => {
+export const clearSessionErrors = () => {
   return {
     type: CLEAR_SESSION_ERRORS
-}};
+  }
+};
 
 // thunk action creators
 
@@ -55,7 +59,7 @@ export const signup = user => dispatch => {
   return APIUtil.signup(user).then(user => {
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    return dispatch(receiveErrors(error.responseJSON))
+    return dispatch(receiveSessionErrors(error.responseJSON))
   })
 };
 
@@ -63,7 +67,7 @@ export const getUserByEmail = email => dispatch => {
   return APIUtil.getUserByEmail(email).then(user => {
     return dispatch(receiveEmailAttempt(user))
   }, error => {
-    return dispatch(receiveErrors(error.responseJSON))
+    return dispatch(receiveSessionErrors(error.responseJSON))
   })
 };
 
@@ -71,7 +75,7 @@ export const login = user => dispatch => {
   return APIUtil.login(user).then(user => {
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    dispatch(receiveErrors(error.responseJSON))
+    dispatch(receiveSessionErrors(error.responseJSON))
   })
 };
 

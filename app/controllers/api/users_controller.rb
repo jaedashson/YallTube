@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController  
+  # CHANGE THIS ACTION TO A CUSTOM ROUTE
   # GET /api/users?email=user1@gmail.com
   def index
     @user = User.find_by(email: params[:email])
@@ -12,8 +13,14 @@ class Api::UsersController < ApplicationController
   
   # GET /api/users/:userId
   def show
+    debugger
     @user = User.find_by(id: params[:id])
-    render :show
+
+    if @user
+      render :show
+    else
+      render json: ["User not found"], status: 404
+    end
   end
 
   # Signup

@@ -1,0 +1,56 @@
+.video-page {
+  background-color: #e6ffe6;
+  padding: 24px 64px;
+  display: flex;
+  flex-direction: row;
+}
+
+.video-page-col-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-page-col-2 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  width: 200px;
+  border: 1px solid black;
+}
+
+.video-description-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-description-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-title {
+  display: flex;
+}
+
+.video-title-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #030303;
+}
+
+.video-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.video-views-date-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.video-likes-container {
+  display: flex;
+  flex-direction: row;
+}

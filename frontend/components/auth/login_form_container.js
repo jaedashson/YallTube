@@ -1,6 +1,6 @@
 import LoginFormMaster from "./login_form_master";
 import { connect } from "react-redux";
-import { login, getUserByEmail, receiveError, receiveErrors, clearErrors, clearEmailAttempt } from "../../actions/session_actions";
+import { login, getUserByEmail, receiveSessionError, receiveSessionErrors, clearSessionErrors, clearEmailAttempt } from "../../actions/session_actions";
 
 const mSTP = ({ errors, session }) => {
   return {
@@ -14,9 +14,9 @@ const mDTP = dispatch => {
     getUserByEmail: email => dispatch(getUserByEmail(email)),
     clearEmailAttempt: () => dispatch(clearEmailAttempt()),
     login: user => dispatch(login(user)),
-    receiveError: error => dispatch(receiveError(error)),
-    receiveErrors: errors => dispatch(receiveErrors(errors)),
-    clearErrors: () => dispatch(clearErrors())
+    receiveSessionError: error => dispatch(receiveSessionError(error)),
+    receiveSessionErrors: errors => dispatch(receiveSessionErrors(errors)),
+    clearSessionErrors: () => dispatch(clearSessionErrors())
   };
 };
 

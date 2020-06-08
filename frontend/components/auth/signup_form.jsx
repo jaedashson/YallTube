@@ -45,34 +45,34 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.clearErrors();
+    this.props.clearSessionErrors();
     this.setState({ isError: false });
     let valid = true;
 
     if (this.state.username === "") {
       valid = false;
-      this.props.receiveError(this.usernameBlankError);
+      this.props.receiveSessionError(this.usernameBlankError);
     }
 
     if (this.state.email === "") {
       valid = false;
-      this.props.receiveError(this.emailBlankError);
+      this.props.receiveSessionError(this.emailBlankError);
     } else if (!this.state.email.includes("@")) {
       valid = false;
-      this.props.receiveError(this.emailInvalidError);
+      this.props.receiveSessionError(this.emailInvalidError);
     }
 
     if (this.state.password === "") {
       valid = false;
-      this.props.receiveError(this.passwordBlankError);
+      this.props.receiveSessionError(this.passwordBlankError);
     }
 
     if (this.state.passwordConfirm === "") {
       valid = false;
-      this.props.receiveError(this.passwordConfirmBlankError);
+      this.props.receiveSessionError(this.passwordConfirmBlankError);
     } else if (this.state.password !== this.state.passwordConfirm) {
       valid = false;
-      this.props.receiveError(this.passwordConfirmMismatchError);
+      this.props.receiveSessionError(this.passwordConfirmMismatchError);
     }
 
     if (valid) {

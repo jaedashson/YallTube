@@ -21,7 +21,7 @@ class LoginFormEmail extends React.Component {
     e.preventDefault();
 
     if (this.props.email == "") {
-      this.props.receiveError(this.emailBlankError);
+      this.props.receiveSessionError(this.emailBlankError);
       return;
     }
 
@@ -34,7 +34,7 @@ class LoginFormEmail extends React.Component {
     if (this.props.attemptedUser) {
       // debugger
       this.setState({ isError: false });
-      this.props.clearErrors();
+      this.props.clearSessionErrors();
       this.props._next();
       return;
     }

@@ -10,6 +10,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import NavBar from "./nav_bar/nav_bar";
 import SignupFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
+import VideoPageContainer from "./videos/video_page_container";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/" component={NavBar} />
 
       <Switch>
+        <Route path="/videos/:videoId" component={VideoPageContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
       </Switch>

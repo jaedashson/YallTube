@@ -1,6 +1,6 @@
 import SignupForm from "./signup_form";
 import { connect } from "react-redux";
-import { signup, receiveError, receiveErrors, clearErrors } from "../../actions/session_actions";
+import { signup, receiveSessionError, receiveSessionErrors, clearSessionErrors } from "../../actions/session_actions";
 
 const mSTP = ({ errors }) => {
   return {
@@ -11,9 +11,9 @@ const mSTP = ({ errors }) => {
 const mDTP = dispatch => {
   return {
     signup: user => dispatch(signup(user)),
-    receiveError: error => dispatch(receiveError(error)),
-    receiveErrors: errors => dispatch(receiveErrors(errors)),
-    clearErrors: () => dispatch(clearErrors())
+    receiveSessionError: error => dispatch(receiveSessionError(error)),
+    receiveSessionErrors: errors => dispatch(receiveSessionErrors(errors)),
+    clearSessionErrors: () => dispatch(clearSessionErrors())
   };
 };
 

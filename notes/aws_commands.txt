@@ -1,0 +1,2 @@
+// Attaching a video file to an existing video entry
+v.video.attach(io: File.open("/home/jae-son/Desktop/Desktop backup/app_academy/full_stack/videos/corgi_snow_flop.mp4"), filename: "corgi_snow_flop.mp4")

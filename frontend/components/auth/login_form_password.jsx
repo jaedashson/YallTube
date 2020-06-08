@@ -31,7 +31,7 @@ class LoginFormPassword extends React.Component {
 
   componentWillUnmount() {
     this.props.clearEmailAttempt();
-    this.props.clearErrors();
+    this.props.clearSessionErrors();
   }
 
   updatePassword() {
@@ -40,12 +40,12 @@ class LoginFormPassword extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.clearErrors();
+    this.props.clearSessionErrors();
     let valid = true;
 
     if (this.state.password === "") {
       valid = false;
-      this.props.receiveError(this.passwordBlankError);
+      this.props.receiveSessionError(this.passwordBlankError);
     }
 
     if (valid) {

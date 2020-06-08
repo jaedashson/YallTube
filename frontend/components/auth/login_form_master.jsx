@@ -44,8 +44,8 @@ class LoginFormMaster extends React.Component {
             getUserByEmail={this.props.getUserByEmail}
             attemptedUser={this.props.attemptedUser}
             errors={this.props.errors}
-            receiveError={this.props.receiveError}
-            clearErrors={this.props.clearErrors}
+            receiveSessionError={this.props.receiveSessionError}
+            clearSessionErrors={this.props.clearSessionErrors}
           />
         );
       case 2:
@@ -57,8 +57,8 @@ class LoginFormMaster extends React.Component {
             _prev={this._prev}
             login={this.props.login}
             errors={this.props.errors}
-            receiveError={this.props.receiveError}
-            clearErrors={this.props.clearErrors}
+            receiveSessionError={this.props.receiveSessionError}
+            clearSessionErrors={this.props.clearSessionErrors}
           />
         );
     }

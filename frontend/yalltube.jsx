@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
 
-// FontAwesome icons
+// FontAwesome imports
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {
@@ -16,7 +16,9 @@ import {
   faTh,
   faEllipsisV,
   faBell,
-  faUserCircle
+  faUserCircle,
+  faThumbsUp,
+  faThumbsDown
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   fab,
@@ -29,12 +31,16 @@ library.add(
   faTh,
   faEllipsisV,
   faBell,
-  faUserCircle
+  faUserCircle,
+  faThumbsUp,
+  faThumbsDown
 );
 
 
-// testing imports
-import { login, signup, logout, getUserByEmail } from "./actions/session_actions";
+// Testing imports
+import { fetchVideo } from "./actions/videos_actions";
+import { fetchUser } from "./actions/users_actions";
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -55,12 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // window testing
-  window.login = login;
-  window.signup = signup;
-  window.logout = logout;
-  window.getUserByEmail = getUserByEmail;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.fetchVideo = fetchVideo;
+  window.fetchUser = fetchUser;
+
 
   ReactDOM.render(<Root store={store} />, root);
 });

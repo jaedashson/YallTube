@@ -1,14 +1,21 @@
 class Api::VideosController < ApplicationController
   # GET /api/videos
   def index
+    debugger
     @videos = Video.all
     render :index
   end
 
   # GET /api/videos/:videoId
   def show
-    @video = Video.find(params[:id])
-    render :show
+    # debugger
+    @video = Video.find_by(id: params[:id])
+
+    if @video
+      render :show
+    else
+      render json: ["Video not found"], status: 404
+    end
   end
   
   private
