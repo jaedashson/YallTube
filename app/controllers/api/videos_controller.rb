@@ -1,7 +1,7 @@
 class Api::VideosController < ApplicationController
   # GET /api/videos
   def index
-    debugger
+    # debugger
     @videos = Video.all
     render :index
   end

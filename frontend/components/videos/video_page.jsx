@@ -5,26 +5,36 @@ import VideoDescription from "./video_description";
 
 class VideoPage extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
     super(props);
 
   };
 
   componentDidMount() {
-    debugger
+    // debugger
 
-    this.props.fetchVideo(this.props.match.params.videoId).then(action => {
-      debugger
+    this.props.fetchVideo(this.props.videoId).then(action => {
+      // debugger
       this.props.fetchUser(action.video.uploader_id);
     })
 
-    // this.props.fetchUser(this.props.video.uploader_id)
-    
-    debugger
-
-    // this.props.fetchUser(this.props.video.uploader_id); // This will not work because this.props.video is still undefined at this point.
-    
+    // debugger
   };
+
+  componentDidUpdate(prevProps) {
+    // debugger
+
+    // If videoId changed AND
+    // If the video doesn't exist in Redux state
+    if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
+      this.props.fetchVideo(this.props.videoId).then(action => {
+        // debugger
+        this.props.fetchUser(action.video.uploader_id);
+      });
+    }
+
+    // debugger
+  }
 
   render() {
     debugger
@@ -37,10 +47,12 @@ class VideoPage extends React.Component {
       <div className="video-page">
         <div className="video-page-col-1">
           <div className="video-player-container">
+            <p>{this.props.video.videoUrl}</p>
             <video className="video-player"
+              src={this.props.video.videoUrl}
               width="900" height="auto" controls
             >
-              <source src={this.props.video.videoUrl} type="video/mp4" />
+              {/* <source src={this.props.video.videoUrl} type="video/mp4" /> */}
             </video>
           </div>
 

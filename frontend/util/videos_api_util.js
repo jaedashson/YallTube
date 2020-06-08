@@ -1,5 +1,5 @@
 export const fetchVideo = (videoId) => {
-  debugger
+  // debugger
   return $.ajax({
     method: "GET",
     url: `/api/videos/${videoId}`

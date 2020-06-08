@@ -3,16 +3,22 @@ import { connect } from "react-redux";
 import { fetchVideo, clearVideoErrors } from "../../actions/videos_actions";
 import { fetchUser, clearUserErrors } from "../../actions/users_actions";
 
-const mSTP = ({ entities, errors }, ownProps) => {  
-  const video = entities.videos[ownProps.match.params.videoId];
-  let uploader = null;
+const mSTP = ({ entities, errors }, ownProps) => {
+  // debugger
+
+  const videoId = ownProps.match.params.videoId
+
+  const video = entities.videos[videoId];
+  let uploader;
 
   if (video) {
+    // debugger
     uploader = entities.users[video.uploader_id];
   }
 
-  debugger
+  // debugger
   return {
+    videoId,
     video,
     uploader,
     errors: errors.video,
@@ -20,7 +26,7 @@ const mSTP = ({ entities, errors }, ownProps) => {
 };
 
 const mDTP = dispatch => {
-  debugger
+  // debugger
   return {
     fetchVideo: videoId => dispatch(fetchVideo(videoId)),
     clearVideoErrors: () => dispatch(clearVideoErrors()),

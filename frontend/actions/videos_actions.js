@@ -7,7 +7,7 @@ export const CLEAR_VIDEO_ERRORS = "CLEAR_VIDEO_ERRORS";
 // POJO action creators
 
 export const receiveVideo = video => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_VIDEO,
     video
@@ -15,7 +15,7 @@ export const receiveVideo = video => {
 };
 
 export const receiveVideoErrors = errors => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_VIDEO_ERRORS,
     errors
@@ -23,7 +23,7 @@ export const receiveVideoErrors = errors => {
 };
 
 export const clearVideoErrors = () => {
-  debugger
+  // debugger
   return {
     type: CLEAR_VIDEO_ERRORS
   };
@@ -32,12 +32,12 @@ export const clearVideoErrors = () => {
 // thunk action creators
 
 export const fetchVideo = videoId => dispatch => {
-  debugger
+  // debugger
   return APIUtil.fetchVideo(videoId).then(video => {
-    debugger
+    // debugger
     return dispatch(receiveVideo(video));
   }, error => {
-    debugger
+    // debugger
     return dispatch(receiveVideoErrors(error.responseJSON));
   })
 };

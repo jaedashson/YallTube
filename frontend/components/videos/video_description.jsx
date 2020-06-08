@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class VideoDescription extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
     super(props);
 
     this.handleSubscribe = this.handleSubscribe.bind(this);
   };
 
   parseDate(dateStr) {
-    debugger
+    // debugger
     let date = new Date(dateStr);
     return date.toDateString().slice(4);
   }

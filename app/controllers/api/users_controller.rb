@@ -13,7 +13,7 @@ class Api::UsersController < ApplicationController
   
   # GET /api/users/:userId
   def show
-    debugger
+    # debugger
     @user = User.find_by(id: params[:id])
 
     if @user
