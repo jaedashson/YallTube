@@ -1,37 +1,71 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SignInButton extends React.Component {
   constructor(props) {
+    // debugger;
     super(props);
+
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleSignout = this.handleSignout.bind(this);
   }
 
-  loggedIn() {
+  toggleDropdown(e) {
+    e.preventDefault();
+    document.getElementById("current-user-dropdown-menu").classList.toggle("current-user-dropdown-menu-show");
+  }
+
+  handleSignout(e) {
+    e.preventDefault();
+    this.props.logout();
+  }
+
+  renderLoggedIn() {
     return (
       <div className="current-user-container">
-        <span>{this.props.currentUser.username[0]}</span>
+        <div
+          className="current-user-icon"
+          onClick={this.toggleDropdown}
+          onBlur={this.toggleDropdown}
+        >
+          {this.props.currentUser.username[0]}
+        </div>
+        <div id="current-user-dropdown-menu" 
+          onMouseDown={e => e.preventDefault()}
+          className="current-user-dropdown-menu"
+        >
+          <div className="current-user-dropdown-heading">
+            <div className="current-user-dropdown-icon">{this.props.currentUser.username[0]}</div>
+            <p className="current-user-dropdown-username">{this.props.currentUser.username}</p>
+          </div>
+          
+          <Link to={`/users/${this.props.currentUser.id}`}
+            className="current-user-dropdown-item"
+          ><p>Your channel</p></Link>
+          <button onClick={this.handleSignout}
+            className="current-user-dropdown-item"
+          ><p>Sign out</p></button>
+        </div>
+
       </div>
     )
   }
 
-  notLoggedIn() {
+  renderLoggedOut() {
     return (
-      <Link to="/login">
-        <span className="login-button-link">
-          <div className="login-button-container">
-            <span>👤</span>
-            <span>SIGN IN</span>
-          </div>
-        </span>
+      <Link to="/login" className="sign-in-button-link">
+        <FontAwesomeIcon icon="user-circle" className="sign-in-button-icon"/>
+        <p className="sign-in-button-text">SIGN IN</p>
       </Link>
     );
   }
 
   render() {
-    const authButton = this.props.currentUser ? this.loggedIn() : this.notLoggedIn();
+    const authButton = this.props.currentUser ? this.renderLoggedIn() : this.renderLoggedOut();
 
     return (
-      <div>
+      <div className="sign-in-button">
         {authButton}
       </div>
     );

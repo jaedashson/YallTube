@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SignInButton from "./sign_in_button";
+import SearchBar from "./search_bar";
+import SignInButtonContainer from "./sign_in_button_container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class NavBar extends React.Component {
@@ -9,6 +10,12 @@ class NavBar extends React.Component {
   }
 
   render() {
+    debugger
+
+    if (this.props.location.pathname.startsWith("/login") || (this.props.location.pathname.startsWith("/signup"))) {
+      return null;
+    }
+
     return (
       <div className="nav-bar">
         <div className="nav-bar-start">
@@ -22,20 +29,23 @@ class NavBar extends React.Component {
         </div>
 
         <div className="search-container">
-          <div>SearchBar</div>
+          <SearchBar />
         </div>
 
         <div className="nav-bar-buttons">
           <div className="upload-button-container">
-            <span>📹</span>
+            <FontAwesomeIcon icon="video" className="upload-icon-video" />
+            <FontAwesomeIcon icon="plus" className="upload-icon-plus" />
           </div>
           <div className="apps-button-container">
-            <span>🖥️</span>
+            <FontAwesomeIcon icon="th" className="apps-icon" />
           </div>
           <div className="settings-button-container">
-            <span>⚙️</span>
+            <FontAwesomeIcon icon="bell" />
           </div>
-          <SignInButton currentUser={this.props.currentUser} />
+          <div className="sign-in-button-container">
+            <SignInButtonContainer />
+          </div>
         </div>
       </div>
     )

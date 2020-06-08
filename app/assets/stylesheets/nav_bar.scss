@@ -1,5 +1,5 @@
 .nav-bar {
-  margin-left: 26px;
+  margin: 0 26px;
   height: 56px;
   display: flex;
   flex-direction: row;
@@ -29,5 +29,38 @@
 .nav-bar-buttons {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  color: #606060;
 }
 
+.upload-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.upload-icon-plus {
+  color: white;
+  position: relative;
+  height: 9px;
+  right: 19px;
+  z-index: 1;
+}
+
+.apps-button-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.settings-button-container {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.sign-in-button-container {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}

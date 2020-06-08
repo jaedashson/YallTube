@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -16,19 +17,21 @@ class SearchBar extends React.Component {
 
   handleSearch(e) {
     e.preventDefault();
-
   }
 
   render() {
     return (
       <div className="search-bar">
-        <form onSubmit={}>
+        <form onSubmit={this.handleSearch}>
           <input type="text" 
             className="search-input"
             placeholder="Search"
             value={this.state.searchTerm}
             onChange={this.update()}
           />
+          <button className="search-button">
+            <FontAwesomeIcon icon="search" className="search-icon" />
+          </button>
         </form>
       </div>
     );

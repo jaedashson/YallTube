@@ -29,10 +29,10 @@ class LoginFormEmail extends React.Component {
   }
 
   componentDidUpdate() {
-    debugger
+    // debugger
     // If input email is associated with a valid user
     if (this.props.attemptedUser) {
-      debugger
+      // debugger
       this.setState({ isError: false });
       this.props.clearErrors();
       this.props._next();
@@ -41,7 +41,7 @@ class LoginFormEmail extends React.Component {
 
     // If input caused an error
     if (this.props.errors.length > 0) {
-      debugger
+      // debugger
       if (this.state.isError === false) {
         this.setState({ isError: true });
       }

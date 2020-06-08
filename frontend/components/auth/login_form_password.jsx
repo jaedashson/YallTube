@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AuthError from "./auth_error";
 
 
@@ -22,7 +22,7 @@ class LoginFormPassword extends React.Component {
   componentDidUpdate() {
     // If input caused an error
     if (this.props.errors.length > 0) {
-      debugger
+      // debugger
       if (this.state.isError === false) {
         this.setState({ isError: true });
       }

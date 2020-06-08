@@ -9,13 +9,27 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import {
   faExclamationCircle,
   faChevronDown,
-  faBars
+  faBars,
+  faSearch,
+  faVideo,
+  faPlus,
+  faTh,
+  faEllipsisV,
+  faBell,
+  faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   fab,
   faExclamationCircle,
   faChevronDown,
-  faBars
+  faBars,
+  faSearch,
+  faVideo,
+  faPlus,
+  faTh,
+  faEllipsisV,
+  faBell,
+  faUserCircle
 );
 
 
