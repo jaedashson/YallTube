@@ -4,7 +4,7 @@ import { fetchVideo, clearVideoErrors } from "../../actions/videos_actions";
 import { fetchUser, clearUserErrors } from "../../actions/users_actions";
 
 const mSTP = ({ entities, errors }, ownProps) => {
-  // debugger
+  debugger
 
   const videoId = ownProps.match.params.videoId
 
@@ -12,11 +12,11 @@ const mSTP = ({ entities, errors }, ownProps) => {
   let uploader;
 
   if (video) {
-    // debugger
+    debugger
     uploader = entities.users[video.uploader_id];
   }
 
-  // debugger
+  debugger
   return {
     videoId,
     video,
