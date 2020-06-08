@@ -22,10 +22,12 @@ class NavBar extends React.Component {
           <div className="guide-button-container">
             <FontAwesomeIcon icon="bars" className="guide-button-icon"/>
           </div>
-          <div className="yalltube-logo yalltube-logo-nav">
-            <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-nav-icon" />
-            <span className="yalltube-logo-nav-text">YallTube</span>
-          </div>
+          <Link to="/" className="yalltube-logo-link">
+            <div className="yalltube-logo yalltube-logo-nav">
+              <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-nav-icon" />
+              <span className="yalltube-logo-nav-text">YallTube</span>
+            </div>
+          </Link>
         </div>
 
         <div className="search-container">
@@ -33,10 +35,12 @@ class NavBar extends React.Component {
         </div>
 
         <div className="nav-bar-buttons">
-          <div className="upload-button-container">
-            <FontAwesomeIcon icon="video" className="upload-icon-video" />
-            <FontAwesomeIcon icon="plus" className="upload-icon-plus" />
-          </div>
+          <Link to="/upload" className="upload-button-link">
+            <div className="upload-button-container">
+              <FontAwesomeIcon icon="video" className="upload-icon-video" />
+              <FontAwesomeIcon icon="plus" className="upload-icon-plus" />
+            </div>
+          </Link>
           <div className="apps-button-container">
             <FontAwesomeIcon icon="th" className="apps-icon" />
           </div>
