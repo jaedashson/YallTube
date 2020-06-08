@@ -26,17 +26,31 @@ class VideoDescription extends React.Component {
           <div className="video-info">
             <div className="video-views-date-container">
               <p className="video-views">9,999,999 views</p>
+              <p className="video-views-date-divider">•</p>
               <p className="video-date">{uploadDate}</p>
             </div>
             <div className="video-likes-container">
-              <FontAwesomeIcon icon="thumbs-up" className="thumbs-up" />
-              <p>100K</p>
-              <FontAwesomeIcon icon="thumbs-down" className="thumbs-down" />
-              <p>5K</p>
+              <FontAwesomeIcon icon="thumbs-up" className="video-likes-item thumb" />
+              <p className="video-likes-item video-vote-count">100K</p>
+              <FontAwesomeIcon icon="thumbs-down" className="video-likes-item thumb" />
+              <p className="video-likes-item video-vote-count">5K</p>
             </div>
           </div>
         </div>
-        <div className="video-description-body"></div>
+
+        <div className="video-description-body-container">
+          <div className="video-description-body-left">
+            <div className="uploader-icon-container">Icon</div>
+            <div className="video-description-body">
+              <p className="uploader-username">uploader_username</p>
+              <p className="uploader-subscriber-count">30.4 M subscribers</p>
+              <p className="video-description-text">{this.props.video.description}</p>
+            </div>
+          </div>
+          <div className="uploader-subscribe-button-container">
+            <button onClick={(e) => e.preventDefault()}>SUBSCRIBE</button>
+          </div>
+        </div>
       </div>
     )
   };
