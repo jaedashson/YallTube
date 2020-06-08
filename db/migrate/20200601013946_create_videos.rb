@@ -9,5 +9,6 @@ class CreateVideos < ActiveRecord::Migration[5.2]
 
     add_index :videos, :title
     add_index :videos, :uploader_id
+    add_index :videos, :created_at
   end
 end
