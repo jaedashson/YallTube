@@ -60,3 +60,7 @@ const sessionReducer = (state = _nullUser, action) => {
       return state;
   }
 };
+
+
+// Making new videos in rails console
+Video.new(title: "Video 1", description: "User 1 presents Video 1", uploader_id: 1)

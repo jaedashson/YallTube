@@ -6,17 +6,20 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  # ASSOCIATIONS
-  has_many :videos
-  has_many :videos_viewed
-  has_many :video_votes
-  has_many :subscriptions_out # `subscriptions` where `subscriber_id` points to this user
-  has_many :channels_subscribed # Channels (`users`) through `subscriptions_out`
-  has_many :subscriptions_in # `subscriptions` where `channel_id` points to this user
-  has_many :subscribers # Subscribers (`users`) through `subscriptions_in`
-  has_many :comments
-  has_many :comment_votes
-  has_many :channel_views # sum of view count of `videos`
+  has_many :videos,
+    foreign_key: :uploader_id,
+    class_name: :User
+
+
+  # has_many :videos_viewed
+  # has_many :video_votes # `votes` that this user made on videos
+  # has_many :subscriptions_out # `subscriptions` where `subscriber_id` points to this user
+  # has_many :channels_subscribed # Channels (`users`) through `subscriptions_out`
+  # has_many :subscriptions_in # `subscriptions` where `channel_id` points to this user
+  # has_many :subscribers # Subscribers (`users`) through `subscriptions_in`
+  # has_many :comments
+  # has_many :comment_votes # `votes` that this user made on comments
+  # has_many :channel_views # sum of view count of `videos`
 
   def self.find_by_credentials(username, password)
     
