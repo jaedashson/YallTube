@@ -46,7 +46,7 @@ class VideoDescription extends React.Component {
 
         <div className="video-description-body-container">
           <div className="video-description-body-left">
-            <div className="uploader-icon-container">Icon</div>
+            <div className="current-user-dropdown-icon">{this.props.uploader.username[0]}</div>
             <div className="video-description-body">
               <p className="uploader-username">{this.props.uploader.username}</p>
               <p className="uploader-subscriber-count">30.4 M subscribers</p>
@@ -54,7 +54,7 @@ class VideoDescription extends React.Component {
             </div>
           </div>
           <div className="uploader-subscribe-button-container">
-            <button onClick={this.handleSubscribe}>SUBSCRIBE</button>
+            <button onClick={this.handleSubscribe} className="uploader-subscribe-button">SUBSCRIBE</button>
           </div>
         </div>
       </div>

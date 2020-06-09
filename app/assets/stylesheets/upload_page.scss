@@ -4,9 +4,11 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Roboto', sans-serif;
+  padding-top: 16px;
+  padding-bottom: 40px;
 }
 
-.upload-container {
+.upload-input-files-container {
   border: 1px solid #dadce0;
   background-color: white;
   width: 400px;
@@ -18,4 +20,13 @@
 
 .upload-icon {
   color: #cccccc; // definitive color
+  font-size: 80px;
+}
+
+.upload-input-button:hover .upload-icon {
+  color: #cc0000;
+}
+
+.upload-input {
+  display: none;
 }

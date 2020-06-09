@@ -21,7 +21,7 @@ const mSTP = ({ entities, errors }, ownProps) => {
     videoId,
     video,
     uploader,
-    errors: errors.video,
+    errors: errors.video
   };
 };
 

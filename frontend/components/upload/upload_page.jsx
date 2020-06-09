@@ -7,11 +7,13 @@ class UploadPage extends React.Component {
     super(props);
     this.state = {
       videoFile: null,
+      thumbnail: null,
       title: "",
       description: ""
     }
 
-    this.handleFile = this.handleFile.bind(this);
+    this.handleVideo = this.handleVideo.bind(this);
+    this.handleThumbnail = this.handleThumbnail.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
     this.handleCancelFile = this.handleCancelFile.bind(this);
   }
@@ -20,10 +22,28 @@ class UploadPage extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
-  handleFile(e) {
+  handleVideoInputClick(e) {
     debugger
     e.preventDefault();
-    this.setState({ videoFile: e.currentTarget.files[0]});
+    document.getElementById("video-input").click();
+  }
+
+  handleThumbnailInputClick(e) {
+    debugger
+    e.preventDefault();
+    document.getElementById("thumbnail-input").click();
+  }
+
+  handleVideo(e) {
+    debugger
+    e.preventDefault();
+    this.setState({ videoFile: e.currentTarget.files[0] });
+  }
+
+  handleThumbnail(e) {
+    debugger
+    e.preventDefault();
+    this.setState({ thumbnail: e.currentTarget.files[0] });
   }
 
   handleUpload(e) {
@@ -34,6 +54,7 @@ class UploadPage extends React.Component {
     formData.append("video[description]", this.state.description);
     formData.append("video[uploader_id]", this.props.uploaderId)
     formData.append("video[video]", this.state.videoFile);
+    formData.append("video[thumbnail]", this.state.thumbnail);
     debugger
     this.props.createVideo(formData);
   }
@@ -47,11 +68,25 @@ class UploadPage extends React.Component {
   renderInputs() {
     if (!this.state.videoFile) {
       return (
-        <div className="upload-form-file-input-container">
-          <input type="file"
-            className="upload-form-file-input"
-            onChange={this.handleFile}
-          />
+        <div className="upload-input-files-container">
+          <button onClick={this.handleVideoInputClick} className="upload-input-button">
+            <FontAwesomeIcon icon="upload" className="upload-icon" />
+            <input type="file"
+              id="video-input"
+              className="upload-input"
+              accept="video/*"
+              onChange={this.handleVideo}
+            />
+          </button>
+          <button onClick={this.handleThumbnailInputClick} className="upload-input-button">
+            <FontAwesomeIcon icon="image" className="upload-icon" />
+            <input type="file"
+              id="thumbnail-input"
+              className="upload-input"
+              accept="audio/*"
+              onChange={this.handleThumbnail}
+            />
+          </button>
         </div>
       );
     } else {
@@ -102,11 +137,9 @@ class UploadPage extends React.Component {
 
     return (
       <div className="upload-page">
-        <div className="upload-container">
-          <form className="upload-form" >
-            {this.renderInputs()}
-          </form>
-        </div>
+        <form className="upload-form" >
+          {this.renderInputs()}
+        </form>
       </div>
     );
   }
