@@ -12,10 +12,14 @@ class UploadPage extends React.Component {
       description: ""
     }
 
+    this.handleVideoInputClick = this.handleVideoInputClick.bind(this);
+    this.handleThumbnailInputClick = this.handleThumbnailInputClick.bind(this);
     this.handleVideo = this.handleVideo.bind(this);
     this.handleThumbnail = this.handleThumbnail.bind(this);
+    this.handleVideoInputCancel = this.handleVideoInputCancel.bind(this);
+    this.handleThumbnailInputCancel = this.handleThumbnailInputCancel.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
-    this.handleCancelFile = this.handleCancelFile.bind(this);
+    this.handleUploadCancel = this.handleUploadCancel.bind(this);
   }
 
   update(field) {
@@ -25,13 +29,21 @@ class UploadPage extends React.Component {
   handleVideoInputClick(e) {
     debugger
     e.preventDefault();
-    document.getElementById("video-input").click();
+    const videoInput = document.getElementById("video-input");
+    videoInput.classList.remove("upload-input-hidden");
+    videoInput.focus();
+    videoInput.click();
+    videoInput.classList.add("upload-input-hidden");
   }
 
   handleThumbnailInputClick(e) {
     debugger
     e.preventDefault();
-    document.getElementById("thumbnail-input").click();
+    const thumbnailInput = document.getElementById("thumbnail-input")
+    thumbnailInput.classList.remove("upload-input-hidden");
+    thumbnailInput.focus();
+    thumbnailInput.click();
+    thumbnailInput.classList.add("upload-input-hidden");
   }
 
   handleVideo(e) {
@@ -44,6 +56,18 @@ class UploadPage extends React.Component {
     debugger
     e.preventDefault();
     this.setState({ thumbnail: e.currentTarget.files[0] });
+  }
+
+  handleVideoInputCancel(e) {
+    debugger
+    e.preventDefault();
+    this.setState({ videoFile: null });
+  }
+
+  handleThumbnailInputCancel(e) {
+    debugger
+    e.preventDefault();
+    this.setState({ thumbnail: null });
   }
 
   handleUpload(e) {
@@ -59,42 +83,114 @@ class UploadPage extends React.Component {
     this.props.createVideo(formData);
   }
 
-  handleCancelFile(e) {
+  handleUploadCancel(e) {
     debugger
     e.preventDefault();
-    this.setState({ videoFile: null });
+    this.setState({
+      videoFile: null,
+      thumbnail: null
+    })
+  }
+
+  renderVideoInfo() {
+    debugger
+    if (this.state.videoFile) {
+      debugger
+
+      return (
+        <div className="upload-file-info">
+          <p className="upload-filename">
+            Video filename: {this.state.videoFile.name}
+          </p>
+          <p className="upload-filesize">
+            Video filesize: {this.state.videoFile.size} bytes
+          </p>
+        </div>
+      );
+    } else {
+      debugger
+      return (
+        <div className="upload-file-prompt">
+          <p className="upload-file-prompt-text">
+            Select video to upload
+          </p>
+        </div>
+      );
+    }
+  }
+
+  renderThumbnailInfo() {
+    debugger
+    if (this.state.thumbnail) {
+      debugger
+
+      return (
+        <div className="upload-file-info">
+          <p className="upload-filename">
+            Thumbnail filename: {this.state.thumbnail.name}
+          </p>
+          <p className="upload-filesize">
+            Thumbnail filesize: {this.state.thumbnail.size} bytes
+          </p>
+        </div>
+      );
+    } else {
+      debugger
+      return (
+        <div className="upload-file-prompt">
+          <p className="upload-file-prompt-text">
+            Select thumbnail
+          </p>
+        </div>
+      )
+    }
+
   }
 
   renderInputs() {
-    if (!this.state.videoFile) {
+    debugger
+    if (!this.state.videoFile || !this.state.thumbnail) {
+      debugger
       return (
         <div className="upload-input-files-container">
           <button onClick={this.handleVideoInputClick} className="upload-input-button">
-            <FontAwesomeIcon icon="upload" className="upload-icon" />
             <input type="file"
               id="video-input"
-              className="upload-input"
+              className="upload-input-hidden"
               accept="video/*"
               onChange={this.handleVideo}
+              onClick={e => e.stopPropagation()}
             />
+            <FontAwesomeIcon icon="upload" className="upload-icon" />
+            {this.renderVideoInfo()}
           </button>
           <button onClick={this.handleThumbnailInputClick} className="upload-input-button">
-            <FontAwesomeIcon icon="image" className="upload-icon" />
             <input type="file"
               id="thumbnail-input"
-              className="upload-input"
-              accept="audio/*"
+              className="upload-input-hidden"
+              accept="image/*"
               onChange={this.handleThumbnail}
+              onClick={e => e.stopPropagation()}
             />
+            <FontAwesomeIcon icon="image" className="upload-icon" />
+            {this.renderThumbnailInfo()}
           </button>
         </div>
       );
     } else {
+      debugger
       return (
         <div className="upload-inputs-after-upload">
           <div className="upload-form-inputs-container">
             <p className="upload-file-name">filename: {this.state.videoFile.name}</p>
             <p className="upload-file-size">file size: {this.state.videoFile.size} bytes</p>
+
+            <div className="upload-form-file-info">
+              <p>Video filename: {this.state.videoFile.name}</p>
+              <p>Video filesize: {this.state.videoFile.size} bytes</p>
+              <p>Thumbnail filename: {this.state.thumbnail.name}</p>
+              <p>Thumbnail filesize: {this.state.thumbnail.size} bytes</p>
+            </div>
 
             <div className="upload-form-title-container">
               <input type="text"
@@ -121,7 +217,7 @@ class UploadPage extends React.Component {
             </button>
           </div>
           <div className="cancel-file-button-container">
-            <button onClick={this.handleCancelFile}
+            <button onClick={this.handleUploadCancel}
               className="cancel-file-button"
             >
               Cancel upload
