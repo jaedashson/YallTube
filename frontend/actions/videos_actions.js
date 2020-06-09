@@ -3,6 +3,7 @@ import * as APIUtil from "../util/videos_api_util";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
 export const RECEIVE_VIDEO_ERRORS = "RECEIVE_VIDEO_ERRORS";
 export const CLEAR_VIDEO_ERRORS = "CLEAR_VIDEO_ERRORS";
+export const CREATE_VIDEO = "CREATE_VIDEO";
 
 // POJO action creators
 
@@ -39,5 +40,17 @@ export const fetchVideo = videoId => dispatch => {
   }, error => {
     // debugger
     return dispatch(receiveVideoErrors(error.responseJSON));
-  })
+  });
+};
+
+// Need to establish difference between createVideo and attachVideo
+export const createVideo = video => dispatch => {
+  debugger
+  return APIUtil.createVideo(video).then(response => {
+    debugger
+    console.log(response.message);
+  }, error => {
+    debugger
+    return dispatch(receiveVideoErrors(error.responseJSON));
+  });
 };

@@ -5,3 +5,15 @@ export const fetchVideo = (videoId) => {
     url: `/api/videos/${videoId}`
   })
 };
+
+export const createVideo = (formData) => {
+  debugger
+  return $.ajax({
+    method: "POST",
+    url: "/api/videos",
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+};
+
