@@ -7,7 +7,7 @@ export const fetchVideo = (videoId) => {
 };
 
 export const createVideo = (formData) => {
-  debugger
+  // debugger
   return $.ajax({
     method: "POST",
     url: "/api/videos",

@@ -11,14 +11,14 @@ class VideoPage extends React.Component {
   };
 
   componentDidMount() {
-    debugger
+    // debugger
 
     this.props.fetchVideo(this.props.videoId).then(action => {
-      debugger
+      // debugger
       this.props.fetchUser(action.video.uploader_id);
     })
 
-    debugger
+    // debugger
   };
 
   componentDidUpdate(prevProps) {
@@ -37,14 +37,14 @@ class VideoPage extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger
 
     if (!this.props.video || !this.props.uploader) {
-      debugger
+      // debugger
       return null;
     }
 
-    debugger
+    // debugger
 
     return (
       <div className="video-page">

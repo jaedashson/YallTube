@@ -10,7 +10,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger
 
     if (this.props.location.pathname.startsWith("/login") || (this.props.location.pathname.startsWith("/signup"))) {
       return null;
