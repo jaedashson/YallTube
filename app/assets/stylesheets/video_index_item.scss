@@ -1,0 +1,36 @@
+.video-index-item {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1px solid black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.video-thumbnail-container {
+  width: 194px;
+  height: 130px;
+}
+
+.video-index-item-info-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.video-index-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-index-item-title {
+  color: #030303;
+  font-weight: 600;
+}
+
+.video-index-item-uploader {
+  color: #606060;
+}
+
+.video-index-item-views-date {
+  color: #606060;
+}

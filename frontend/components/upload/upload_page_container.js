@@ -4,14 +4,14 @@ import { createVideo } from "../../actions/videos_actions";
 
 
 const mSTP = ({ session }) => {
-  debugger
+  // debugger
   return {
     uploaderId: session.id
   };
 };
 
 const mDTP = dispatch => {
-  debugger
+  // debugger
   return {
     createVideo: video => dispatch(createVideo(video))
   };

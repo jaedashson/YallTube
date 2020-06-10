@@ -3,6 +3,7 @@ class Api::VideosController < ApplicationController
   def index
     # debugger
     @videos = Video.all
+    # debugger
     render :index
   end
 
@@ -26,7 +27,7 @@ class Api::VideosController < ApplicationController
 
     if @video.save
       # debugger
-      render json: { message: "Video created" }
+      render :show
     else
       # debugger
       render json: @video.errors.full_messages, status: 422

@@ -20,7 +20,8 @@ import {
   faThumbsUp,
   faThumbsDown,
   faUpload,
-  faImage
+  faImage,
+  faCheckSquare
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   fab,
@@ -37,7 +38,8 @@ library.add(
   faThumbsUp,
   faThumbsDown,
   faUpload,
-  faImage
+  faImage,
+  faCheckSquare
 );
 
 

@@ -1,6 +1,7 @@
 import * as APIUtil from "../util/videos_api_util";
 
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
+export const RECEIVE_ALL_VIDEOS = "RECEIVE_ALL_VIDEOS";
 export const RECEIVE_VIDEO_ERRORS = "RECEIVE_VIDEO_ERRORS";
 export const CLEAR_VIDEO_ERRORS = "CLEAR_VIDEO_ERRORS";
 export const CREATE_VIDEO = "CREATE_VIDEO";
@@ -14,6 +15,14 @@ export const receiveVideo = video => {
     video
   };
 };
+
+export const receiveAllVideos = videos => {
+  // debugger
+  return {
+    type: RECEIVE_ALL_VIDEOS,
+    videos
+  }
+}
 
 export const receiveVideoErrors = errors => {
   // debugger
@@ -43,14 +52,25 @@ export const fetchVideo = videoId => dispatch => {
   });
 };
 
+export const fetchAllVideos = () => dispatch => {
+  // debugger
+  return APIUtil.fetchAllVideos().then(videos => {
+    // debugger
+    return dispatch(receiveAllVideos(videos));
+  }, error => {
+    // debugger
+    return dispatch(receiveVideoErrors(error.responseJSON));
+  });
+}
+
 // Need to establish difference between createVideo and attachVideo
 export const createVideo = video => dispatch => {
-  debugger
-  return APIUtil.createVideo(video).then(response => {
-    debugger
-    console.log(response.message);
+  // debugger
+  return APIUtil.createVideo(video).then(video => {
+    // debugger
+    return dispatch(receiveVideo(video));
   }, error => {
-    debugger
+    // debugger
     return dispatch(receiveVideoErrors(error.responseJSON));
   });
 };

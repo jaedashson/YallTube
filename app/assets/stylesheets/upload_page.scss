@@ -55,3 +55,89 @@
   color: #030303;
   font-size: 12px;
 }
+
+// Form step 2
+.upload-inputs-after-upload-container {
+  width: 1000px;
+  background-color: white;
+  border: 1px solid #dadce0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  color: #030303;
+  font-size: 13px;
+}
+
+.upload-options-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cancel-button {
+  width: 105px;
+  height: 36px;
+  color: white;
+  background-color: #cc0000;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 2px;
+}
+
+.publish-button {
+  width: 105px;
+  height: 36px;
+  color: white;
+  background-color: #167AC6;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 2px;
+}
+
+// Form step 3
+.upload-complete-container {
+  background-color: white;
+  border: 1px solid #dadce0;
+  width: 800px;
+  height: 142px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.upload-complete-thumbnail-container {
+  // Not sure if this needs flex
+}
+
+.upload-complete-info-container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  color: #333333;
+}
+
+.upload-complete-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.upload-complete-message-container {
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.upload-complete-icon {
+  font-size: 20px;
+  color: #167AC6;
+}
+
+.upload-complete-link {
+  text-decoration: none;
+  color: #167AC6;
+}

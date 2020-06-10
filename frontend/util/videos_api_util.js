@@ -6,6 +6,14 @@ export const fetchVideo = (videoId) => {
   })
 };
 
+export const fetchAllVideos = () => {
+  // debugger
+  return $.ajax({
+    method: "GET",
+    url: "/api/videos"
+  })
+}
+
 export const createVideo = (formData) => {
   // debugger
   return $.ajax({
@@ -16,4 +24,3 @@ export const createVideo = (formData) => {
     processData: false
   })
 };
-

@@ -9,7 +9,9 @@ class UploadPage extends React.Component {
       videoFile: null,
       thumbnail: null,
       title: "",
-      description: ""
+      description: "",
+      // videoId: null,
+      uploadedVideo: null
     }
 
     this.handleVideoInputClick = this.handleVideoInputClick.bind(this);
@@ -80,7 +82,10 @@ class UploadPage extends React.Component {
     formData.append("video[video]", this.state.videoFile);
     formData.append("video[thumbnail]", this.state.thumbnail);
     // debugger
-    this.props.createVideo(formData);
+    this.props.createVideo(formData).then(action => {
+      // debugger
+      this.setState({ uploadedVideo: action.video })
+    }); // Needs a then callback to update this.state with the data of the video we just got
   }
 
   handleUploadCancel(e) {
@@ -96,7 +101,6 @@ class UploadPage extends React.Component {
     // debugger
     if (this.state.videoFile) {
       // debugger
-
       return (
         <div className="upload-file-info">
           <p className="upload-filename">
@@ -149,6 +153,38 @@ class UploadPage extends React.Component {
 
   renderInputs() {
     // debugger
+
+    // Step 3/3
+    // If video has been uploaded
+    if (this.state.uploadedVideo) {
+      // debugger
+      return (
+        <div className="upload-complete-container">
+          <div className="upload-complete-thumbnail-container">
+            <img
+              className="upload-complete-thumbnail"
+              src={this.state.uploadedVideo.thumbnailUrl}
+            />
+          </div>
+          <div className="upload-complete-info-container">
+            <p className="upload-complete-title">
+              {this.state.uploadedVideo.title}
+            </p>
+            <div className="upload-complete-message-container">
+              <FontAwesomeIcon icon="check-square" className="upload-complete-icon" />
+              <span className="upload-complete-message">Your video is now ready at</span>
+              <Link
+                to={`/videos/${this.state.uploadedVideo.id}`}
+                className="upload-complete-link"
+              >/videos/{this.state.uploadedVideo.id.toString()}</Link>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Step 1/3
+    // If not all files have been uploaded yet
     if (!this.state.videoFile || !this.state.thumbnail) {
       // debugger
       return (
@@ -178,20 +214,18 @@ class UploadPage extends React.Component {
         </div>
       );
     } else {
+      // Step 2/3
+      // If video and thumbnail has been selected
       // debugger
       return (
-        <div className="upload-inputs-after-upload">
+        <div className="upload-inputs-after-upload-container">
+          <div className="upload-form-file-info">
+            <p>Video filename: {this.state.videoFile.name}</p>
+            <p>Video filesize: {this.state.videoFile.size} bytes</p>
+            <p>Thumbnail filename: {this.state.thumbnail.name}</p>
+            <p>Thumbnail filesize: {this.state.thumbnail.size} bytes</p>
+          </div>
           <div className="upload-form-inputs-container">
-            <p className="upload-file-name">filename: {this.state.videoFile.name}</p>
-            <p className="upload-file-size">file size: {this.state.videoFile.size} bytes</p>
-
-            <div className="upload-form-file-info">
-              <p>Video filename: {this.state.videoFile.name}</p>
-              <p>Video filesize: {this.state.videoFile.size} bytes</p>
-              <p>Thumbnail filename: {this.state.thumbnail.name}</p>
-              <p>Thumbnail filesize: {this.state.thumbnail.size} bytes</p>
-            </div>
-
             <div className="upload-form-title-container">
               <input type="text"
                 className="upload-form-title-input"
@@ -209,18 +243,16 @@ class UploadPage extends React.Component {
               />
             </div>
           </div>
-          <div className="publish-button-container">
+          <div className="upload-options-container">
+            <button onClick={this.handleUploadCancel}
+              className="cancel-button"
+            >
+              Cancel
+            </button>
             <button onClick={this.handleUpload}
               className="publish-button"
             >
               Publish
-            </button>
-          </div>
-          <div className="cancel-file-button-container">
-            <button onClick={this.handleUploadCancel}
-              className="cancel-file-button"
-            >
-              Cancel upload
             </button>
           </div>
         </div>

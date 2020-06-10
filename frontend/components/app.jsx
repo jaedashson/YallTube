@@ -12,6 +12,7 @@ import SignupFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
 import VideoPageContainer from "./videos/video_page_container";
 import UploadPageContainer from "./upload/upload_page_container";
+import HomePageContainer from "./videos/home_page_container";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/" component={NavBar} />
 
       <Switch>
+        <Route exact path="/" component={HomePageContainer} />
         <Route path="/videos/:videoId" component={VideoPageContainer} />
         <ProtectedRoute path="/upload" component={UploadPageContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
