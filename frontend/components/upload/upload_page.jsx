@@ -164,6 +164,8 @@ class UploadPage extends React.Component {
             <img
               className="upload-complete-thumbnail"
               src={this.state.uploadedVideo.thumbnailUrl}
+              width="200"
+              height="120"
             />
           </div>
           <div className="upload-complete-info-container">
