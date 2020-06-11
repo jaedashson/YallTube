@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoIndexItem from "./video_index_item";
+import { shuffleVideos } from "../../util/videos_info_util";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class HomePage extends React.Component {
 
   renderItems() {
     // debugger
-    const items = this.props.videos.map(video => {
+    const items = shuffleVideos(this.props.videos).map(video => {
       return (
         <VideoIndexItem
           key={video.id}
@@ -33,7 +34,24 @@ class HomePage extends React.Component {
     // debugger
     return (
       <div className="home-page">
-        {this.renderItems()}
+        <div className="side-bar">
+          <NavLink to="/" className="side-bar-link">
+            <FontAwesomeIcon className="side-bar-icon" icon="home" />
+            <span className="side-bar-link-text">Home</span>
+          </NavLink>
+          <NavLink to="/subscriptions" className="side-bar-link side-bar-bottom-border">
+            <FontAwesomeIcon className="side-bar-icon" icon="newspaper" />
+            <span className="side-bar-link-text">Subscriptions</span>
+          </NavLink>
+          <NavLink to="/history" className="side-bar-link" >
+            <FontAwesomeIcon className="side-bar-icon" icon="history"
+            />
+
+          </NavLink>
+        </div>
+        <div className="video-index">
+          {this.renderItems()}
+        </div>
       </div>
     );
   };

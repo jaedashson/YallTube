@@ -16,7 +16,7 @@ import HomePageContainer from "./videos/home_page_container";
 
 const App = () => {
   return (
-    <div>
+    <div className="content">
       <Route path="/" component={NavBar} />
 
       <Switch>

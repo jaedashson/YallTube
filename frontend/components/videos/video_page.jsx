@@ -54,8 +54,8 @@ class VideoPage extends React.Component {
             <video className="video-player"
               src={this.props.video.videoUrl}
               width="900" height="auto" controls
+              controlsList="nodownload"
             >
-              {/* <source src={this.props.video.videoUrl} type="video/mp4" /> */}
             </video>
           </div>
 

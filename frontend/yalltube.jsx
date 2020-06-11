@@ -21,7 +21,10 @@ import {
   faThumbsDown,
   faUpload,
   faImage,
-  faCheckSquare
+  faCheckSquare,
+  faHome,
+  faNewspaper,
+  faHistory
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   fab,
@@ -39,7 +42,10 @@ library.add(
   faThumbsDown,
   faUpload,
   faImage,
-  faCheckSquare
+  faCheckSquare,
+  faHome,
+  faNewspaper,
+  faHistory
 );
 
 

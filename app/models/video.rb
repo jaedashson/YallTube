@@ -7,6 +7,18 @@ class Video < ApplicationRecord
   belongs_to :uploader,
     foreign_key: :uploader_id,
     class_name: :User
+
+  has_many :votes,
+    foreign_key: :video_id,
+    class_name: :VideoVote
+
+  def like_count
+    self.votes.where(like: true).length
+  end
+
+  def dislike_count
+    self.votes.where(like: false).length
+  end
     
   # # Likes/dislikes MVP
   # has_many :votes,

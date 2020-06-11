@@ -8,11 +8,21 @@ class User < ApplicationRecord
 
   has_many :videos,
     foreign_key: :uploader_id,
-    class_name: :User
+    class_name: :Video
 
+  has_many :votes,
+    foreign_key: :voter_id,
+    class_name: :VideoVote
+
+  has_many :voted_videos,
+    through: :likes,
+    source: :video
+  
+  def liked_videos
+    self.voted_videos.where(like: true)
+  end
 
   # has_many :videos_viewed
-  # has_many :video_votes # `votes` that this user made on videos
   # has_many :subscriptions_out # `subscriptions` where `subscriber_id` points to this user
   # has_many :channels_subscribed # Channels (`users`) through `subscriptions_out`
   # has_many :subscriptions_in # `subscriptions` where `channel_id` points to this user

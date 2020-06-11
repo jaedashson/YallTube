@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { parseDate } from "../../util/videos_info_util";
 
 class VideoDescription extends React.Component {
   constructor(props) {
@@ -10,18 +11,12 @@ class VideoDescription extends React.Component {
     this.handleSubscribe = this.handleSubscribe.bind(this);
   };
 
-  parseDate(dateStr) {
-    // debugger
-    let date = new Date(dateStr);
-    return date.toDateString().slice(4);
-  }
-
   handleSubscribe(e) {
     e.preventDefault();
   }
 
   render() {
-    const uploadDate = this.parseDate(this.props.video.created_at);
+    const uploadDate = parseDate(this.props.video.created_at);
 
     return (
       <div className="video-description-container">

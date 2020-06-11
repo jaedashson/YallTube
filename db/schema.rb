@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_010600) do
+ActiveRecord::Schema.define(version: 2020_06_10_143738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 2020_06_08_010600) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "video_votes", force: :cascade do |t|
+    t.integer "voter_id", null: false
+    t.integer "video_id", null: false
+    t.boolean "like", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_video_votes_on_created_at"
+    t.index ["like"], name: "index_video_votes_on_like"
+    t.index ["video_id"], name: "index_video_votes_on_video_id"
+    t.index ["voter_id", "video_id"], name: "index_video_votes_on_voter_id_and_video_id", unique: true
+    t.index ["voter_id"], name: "index_video_votes_on_voter_id"
   end
 
   create_table "videos", force: :cascade do |t|

@@ -17,7 +17,7 @@ class NavBar extends React.Component {
     }
 
     return (
-      <div className="nav-bar">
+      <div className="header nav-bar">
         <div className="nav-bar-start">
           <div className="guide-button-container">
             <FontAwesomeIcon icon="bars" className="guide-button-icon"/>
