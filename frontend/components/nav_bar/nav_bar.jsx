@@ -41,12 +41,6 @@ class NavBar extends React.Component {
               <FontAwesomeIcon icon="plus" className="upload-icon-plus" />
             </div>
           </Link>
-          <div className="apps-button-container">
-            <FontAwesomeIcon icon="th" className="apps-icon" />
-          </div>
-          <div className="settings-button-container">
-            <FontAwesomeIcon icon="bell" />
-          </div>
           <div className="sign-in-button-container">
             <SignInButtonContainer />
           </div>

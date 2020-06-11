@@ -24,7 +24,8 @@ import {
   faCheckSquare,
   faHome,
   faNewspaper,
-  faHistory
+  faHistory,
+  faFilm
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   fab,
@@ -45,7 +46,8 @@ library.add(
   faCheckSquare,
   faHome,
   faNewspaper,
-  faHistory
+  faHistory,
+  faFilm
 );
 
 

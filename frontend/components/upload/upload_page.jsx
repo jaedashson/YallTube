@@ -104,10 +104,10 @@ class UploadPage extends React.Component {
       return (
         <div className="upload-file-info">
           <p className="upload-filename">
-            Video filename: {this.state.videoFile.name}
+            {this.state.videoFile.name}
           </p>
           <p className="upload-filesize">
-            Video filesize: {this.state.videoFile.size} bytes
+            {this.state.videoFile.size} bytes
           </p>
         </div>
       );
@@ -131,10 +131,10 @@ class UploadPage extends React.Component {
       return (
         <div className="upload-file-info">
           <p className="upload-filename">
-            Thumbnail filename: {this.state.thumbnail.name}
+            {this.state.thumbnail.name}
           </p>
           <p className="upload-filesize">
-            Thumbnail filesize: {this.state.thumbnail.size} bytes
+            {this.state.thumbnail.size} bytes
           </p>
         </div>
       );
@@ -174,7 +174,7 @@ class UploadPage extends React.Component {
             </p>
             <div className="upload-complete-message-container">
               <FontAwesomeIcon icon="check-square" className="upload-complete-icon" />
-              <span className="upload-complete-message">Your video is now ready at</span>
+              <span className="upload-complete-message">Your video is now ready at </span>
               <Link
                 to={`/videos/${this.state.uploadedVideo.id}`}
                 className="upload-complete-link"

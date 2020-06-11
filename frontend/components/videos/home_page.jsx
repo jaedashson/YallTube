@@ -35,19 +35,31 @@ class HomePage extends React.Component {
     return (
       <div className="home-page">
         <div className="side-bar">
-          <NavLink to="/" className="side-bar-link">
+          <NavLink to="/" className="side-bar-link" activeClassName="side-bar-link-active">
             <FontAwesomeIcon className="side-bar-icon" icon="home" />
             <span className="side-bar-link-text">Home</span>
           </NavLink>
-          <NavLink to="/subscriptions" className="side-bar-link side-bar-bottom-border">
+          <NavLink to="/subscriptions" className="side-bar-link" activeClassName="side-bar-link-active">
             <FontAwesomeIcon className="side-bar-icon" icon="newspaper" />
             <span className="side-bar-link-text">Subscriptions</span>
           </NavLink>
-          <NavLink to="/history" className="side-bar-link" >
-            <FontAwesomeIcon className="side-bar-icon" icon="history"
-            />
-
+          <div className="side-bar-spacer"></div>
+          <NavLink to="/history" className="side-bar-link" activeClassName="side-bar-link-active">
+            <FontAwesomeIcon className="side-bar-icon" icon="history" />
+            <span className="side-bar-link-text">History</span>
           </NavLink>
+          <NavLink to="/my_videos" className="side-bar-link" >
+            <FontAwesomeIcon className="side-bar-icon" icon="film" />
+            <span className="side-bar-link-text">Your videos</span>
+          </NavLink>
+          <NavLink to="/liked_videos" className="side-bar-link">
+            <FontAwesomeIcon className="side-bar-icon" icon="thumbs-up" />
+            <span className="side-bar-link-text">Liked videos</span>
+          </NavLink>
+          <div className="side-bar-spacer"></div>
+          <div className="side-bar-subscriptions" >
+            <span className="side-bar-link-text">SUBSCRIPTIONS</span>
+          </div>
         </div>
         <div className="video-index">
           {this.renderItems()}

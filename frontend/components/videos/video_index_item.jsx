@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { parseDate } from "../../util/videos_info_util";
+
 
 class VideoIndexItem extends React.Component {
   constructor(props) {
@@ -40,7 +42,7 @@ class VideoIndexItem extends React.Component {
           <div className="video-index-item-info">
             <p className="video-index-item-title">{this.props.video.title}</p>
             <Link to={`/users/${this.state.uploader.id}`} className="video-index-item-uploader">{this.state.uploader.username}</Link>
-            <p className="video-index-item-views-date">views • date</p>
+            <p className="video-index-item-views-date">views • {parseDate(this.props.video.created_at)}</p>
           </div>
         </div>
       </Link>
