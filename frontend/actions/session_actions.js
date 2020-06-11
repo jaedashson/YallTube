@@ -1,4 +1,5 @@
 import * as APIUtil from "../util/session_api_util";
+import * as UsersAPIUtil from "../util/users_api_util";
 
 export const RECEIVE_EMAIL_ATTEMPT = "RECEIVE_EMAIL_ATTEMPT";
 export const CLEAR_EMAIL_ATTEMPT = "CLEAR_EMAIL_ATTEMPT"
@@ -55,11 +56,19 @@ export const clearSessionErrors = () => {
 
 // thunk action creators
 
+export const refresh = userId => dispatch => {
+  return UsersAPIUtil.fetchUser(userId).then(user => {
+    return dispatch(receiveCurrentUser(user))
+  }, error => {
+    return dispatch(receiveSessionErrors(error.responseJSON));
+  })
+};
+
 export const signup = user => dispatch => {
   return APIUtil.signup(user).then(user => {
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    return dispatch(receiveSessionErrors(error.responseJSON))
+    return dispatch(receiveSessionErrors(error.responseJSON));
   })
 };
 

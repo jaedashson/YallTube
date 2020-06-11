@@ -10,16 +10,20 @@ class User < ApplicationRecord
     foreign_key: :uploader_id,
     class_name: :Video
 
-  has_many :votes,
+  has_many :video_votes,
     foreign_key: :voter_id,
     class_name: :VideoVote
 
   has_many :voted_videos,
-    through: :likes,
+    through: :video_votes,
     source: :video
   
-  def liked_videos
-    self.voted_videos.where(like: true)
+  def liked_video_ids
+    self.video_votes.where(like: true).pluck(:video_id)
+  end
+
+  def disliked_video_ids
+    self.video_votes.where(like: false).pluck(:video_id)
   end
 
   # has_many :videos_viewed

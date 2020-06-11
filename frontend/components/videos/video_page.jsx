@@ -7,7 +7,6 @@ class VideoPage extends React.Component {
   constructor(props) {
     // debugger
     super(props);
-
   };
 
   componentDidMount() {
@@ -62,6 +61,11 @@ class VideoPage extends React.Component {
           <VideoDescription
             video={this.props.video}
             uploader={this.props.uploader}
+            likedVideoIds={this.props.likedVideoIds}
+            dislikedVideoIds={this.props.dislikedVideoIds}
+            createVideoVotes={this.props.createVideoVotes}
+            destroyVideoVotes={this.props.destroyVideVotes}
+            refresh={this.props.refresh}
           />
         </div>
         <div className="video-page-col-2"></div>

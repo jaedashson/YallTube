@@ -13,11 +13,11 @@ class Video < ApplicationRecord
     class_name: :VideoVote
 
   def like_count
-    self.votes.where(like: true).length
+    self.votes.where(like: true).count
   end
 
   def dislike_count
-    self.votes.where(like: false).length
+    self.votes.where(like: false).count
   end
     
   # # Likes/dislikes MVP
