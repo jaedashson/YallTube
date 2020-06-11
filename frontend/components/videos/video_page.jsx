@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import VideoDescription from "./video_description";
+import VideoDescriptionContainer from "./video_description_container";
 
 class VideoPage extends React.Component {
   constructor(props) {
@@ -58,14 +58,9 @@ class VideoPage extends React.Component {
             </video>
           </div>
 
-          <VideoDescription
+          <VideoDescriptionContainer
             video={this.props.video}
             uploader={this.props.uploader}
-            likedVideoIds={this.props.likedVideoIds}
-            dislikedVideoIds={this.props.dislikedVideoIds}
-            createVideoVotes={this.props.createVideoVotes}
-            destroyVideoVotes={this.props.destroyVideVotes}
-            refresh={this.props.refresh}
           />
         </div>
         <div className="video-page-col-2"></div>

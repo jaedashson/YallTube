@@ -26,24 +26,30 @@ class Api::VideoVotesController < ApplicationController
 
   # Creates a "like" (video vote) connecting a user and a video
   def create
+    debugger
     @video_vote = VideoVote.new(video_vote_params)
 
     if @video_vote.save
+      debugger
       login!(@video_vote)
       render json: ["Video vote created"]
     else
+      debugger
       render json: @video_vote.errors.full_messages, status: 422
     end
   end
 
   def destroy
+    debugger
     @video_vote = VideoVote
       .where(voter_id: video_vote_params[:voter_id])
       .where(video_id: video_vote_params[:video_id]).first
 
     if @video_vote.destroy
+      debugger
       render json: ["Video vote destroyed"]
     else
+      debugger
       render json: @video_vote.errors.full_messages, status: 422
     end
   end

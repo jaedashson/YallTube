@@ -2,8 +2,7 @@ import VideoPage from "./video_page";
 import { connect } from "react-redux";
 import { fetchVideo, clearVideoErrors } from "../../actions/videos_actions";
 import { fetchUser, clearUserErrors } from "../../actions/users_actions";
-import { createVideoVote, destroyVideoVote } from "../../util/video_votes_api_util";
-import { refresh } from "../../actions/session_actions";
+
 
 const mSTP = ({ entities, errors, session }, ownProps) => {
   // debugger

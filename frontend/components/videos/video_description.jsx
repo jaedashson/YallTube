@@ -32,16 +32,86 @@ class VideoDescription extends React.Component {
 
     if (!this.state.liked && !this.state.disliked) {
       debugger
+      this.props.createVideoVote({
+        voter_id: this.props.currentUserId,
+        video_id: this.props.video.id,
+        like: true
+      }).then(res => {
+        debugger
+        return this.props.refresh();
+      })
+
     } else if (this.state.liked) {
       debugger
+      this.props.destroyVideoVote({
+        voter_id: this.props.currentUserId,
+        video_id: this.props.video.id
+      }).then(res => {
+        debugger
+        return this.props.refresh();
+      })
+
     } else if (this.state.disliked) {
       debugger
+      this.props.destroyVideoVote({
+        voter_id: this.props.currentUserId,
+        video_id: this.props
+      }).then(res => {
+        debugger
+        return this.props.createVideoVote({
+          voter_id: this.props.currentUserId,
+          video_id: this.props.video.id,
+          like: true
+        });
+      }).then(res => {
+        debugger
+        return this.props.refresh();
+      })
     }
   }
 
   handleDislike(e) {
+    debugger
     e.preventDefault();
 
+    if (!this.state.liked && !this.state.disliked) {
+      debugger
+      this.props.createVideoVote({
+        voter_id: this.props.currentUserId,
+        video_id: this.props.video.id,
+        like: false
+      }).then(res => {
+        debugger
+        return this.props.refresh();
+      })
+
+    } else if (this.state.disliked) {
+      debugger
+      this.props.destroyVideoVote({
+        voter_id: this.props.currentUserId,
+        video_id: this.props.video.id
+      }).then(res => {
+        debugger
+        return this.props.refresh();
+      })
+
+    } else if (this.state.liked) {
+      debugger
+      this.props.destroyVideoVote({
+        voter_id: this.props.currentId,
+        video_id: this.props
+      }).then(res => {
+        debugger
+        return this.props.createVideoVote({
+          voter_id: this.props.currentUserId,
+          video_id: this.props.video.id,
+          like: false
+        });
+      }).then(res => {
+        debugger
+        return this.props.refresh();
+      })
+    }
   }
 
   handleSubscribe(e) {

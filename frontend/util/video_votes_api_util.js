@@ -6,9 +6,10 @@ export const createVideoVote = vote => {
   });
 };
 
-export const destroyVideoVote = voteId => {
+export const destroyVideoVote = vote => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/video_votes/${voteId}`
+    url: "/api/video_votes",
+    data: { vote }
   })
 }

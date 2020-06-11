@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     resources :videos, only: [:index, :show, :create] do
       resources :video_votes, only: [:index]
     end
-    resources :video_votes, only: [:create, :destroy]
+    resources :video_votes, only: [:create]
 
+    # Delete video vote based on voter_id and video_id in video_vote_params
+    delete 'video_votes', to: 'video_votes#destroy'
   end
 
   # resources :videos, only: :show
