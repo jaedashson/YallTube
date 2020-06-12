@@ -14,97 +14,28 @@ class VideoPage extends React.Component {
   componentDidMount() {
     // debugger
 
-    // Don't fetch anything if we have the right video and uploader
-    if (
-      this.props.video &&
-      this.props.video.id === this.props.videoId &&
-      this.props.uploader &&
-      this.props.uploader.id === this.props.video.uploader_id
-    ) {
+    this.props.fetchVideo(this.props.videoId).then(action => {
       // debugger
-      // AUTOPLAY VIDEO - 
-    }
+      return this.props.fetchUser(action.video.uploader_id);
+    }).then(res => {
+      return this.props.refresh(this.props.currentUserId);
+    })
 
-    // Fetch user if we have the right video
-    else if (
-      this.props.video &&
-      this.props.video.id === this.props.videoId
-    ) {
-      // debugger
-      this.props.fetchUser(this.props.video.uploaderId).then(action => {
-        // debugger
-        // AUTOPLAY VIDEO
-      });
-    }
-
-    // Fetch video and user
-    else {
-      // debugger
-      this.props.fetchVideo(this.props.videoId).then(action => {
-        // debugger
-
-        // Do not fetchUser if we already have uploader
-        if (this.props.uploader) {
-          // debugger
-          return;
-        }
-
-        this.props.fetchUser(action.video.uploader_id).then(action => {
-          // debugger
-          // AUTOPLAY VIDEO 
-        });
-      });
-    }
+    // debugger
   };
 
   componentDidUpdate(prevProps) {
-    // // Update thumbs hotfix (Rich)
-    // if (
-    //   this.props.videoId !== prevProps.videoId &&
-    //   !this.props.video
-    // ) {
-      // debugger
-    //   this.props.fetchVideo(this.props.videoId).then(action => {
-    //     debugger
-    //     this.props.fetchUser(action.video.uploader_id);
-    //     return;
-    //   });
-    // }
-
     // debugger
-    // Don't fetch anything if we have the right video and uploader
-    if (
-      this.props.video &&
-      this.props.video.id === this.props.videoId &&
-      this.props.uploader &&
-      this.props.uploader.id === this.props.video.uploader_id
-    ) {
-      // debugger
-      // DON'T AUTOPLAY VIDEO
-    }
 
-    // Fetch user if we have the right video
-    else if (
-      this.props.video &&
-      this.props.video.id === this.props.videoId
-    ) {
-      // debugger
-      this.props.fetchUser(this.props.video.uploader_id).then(action => {
-        // debugger
-        // AUTOPLAY VIDEO
-      });
-    }
-
-    // Fetch video and user
-    else {
-      // debugger
+    // If videoId changed AND
+    // If the video doesn't exist in Redux state
+    if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
       this.props.fetchVideo(this.props.videoId).then(action => {
         // debugger
-        this.props.fetchUser(action.video.uploader_id).then(action => {
-          // debugger
-          // AUTOPLAY VIDEO 
-        });
-      });
+        return this.props.fetchUser(action.video.uploader_id);
+      }).then(res => {
+        return this.props.refresh(this.props.currentUserId);
+      })
     }
 
     // debugger

@@ -64,12 +64,12 @@ export const clearSessionErrors = () => {
 // thunk action creators
 
 export const refresh = userId => dispatch => {
-  debugger
+  // debugger
   return UsersAPIUtil.fetchUser(userId).then(user => {
-    debugger
+    // debugger
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    debugger
+    // debugger
     return dispatch(receiveSessionErrors(error.responseJSON));
   })
 };

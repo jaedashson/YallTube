@@ -2,7 +2,7 @@ import VideoPage from "./video_page";
 import { connect } from "react-redux";
 import { fetchVideo, clearVideoErrors, fetchAllVideos, receiveVideoErrors } from "../../actions/videos_actions"; // TESTING
 import { fetchUser, clearUserErrors, usersActionsTest } from "../../actions/users_actions";
-
+import { refresh } from "../../actions/session_actions";
 
 const mSTP = ({ entities, errors, session }, ownProps) => {
   // debugger
@@ -17,6 +17,7 @@ const mSTP = ({ entities, errors, session }, ownProps) => {
 
   // debugger
   return {
+    currentUserId: session.id,
     videoId,
     video,
     uploader,

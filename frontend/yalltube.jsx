@@ -51,9 +51,9 @@ library.add(
 );
 
 
-// Testing imports
-import { fetchVideo } from "./actions/videos_actions";
-import { fetchUser } from "./actions/users_actions";
+// // Testing imports
+// import { fetchVideo } from "./actions/videos_actions";
+// import { fetchUser } from "./actions/users_actions";
 
 
 
@@ -81,11 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  // window testing
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.fetchVideo = fetchVideo;
-  window.fetchUser = fetchUser;
+  // // window testing
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
+  // window.fetchVideo = fetchVideo;
+  // window.fetchUser = fetchUser;
 
 
   ReactDOM.render(<Root store={store} />, root);

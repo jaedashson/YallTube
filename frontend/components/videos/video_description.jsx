@@ -9,7 +9,9 @@ class VideoDescription extends React.Component {
     super(props);
     this.state = {
       liked: this.props.likedVideoIds.includes(this.props.video.id),
-      disliked: this.props.dislikedVideoIds.includes(this.props.video.id)
+      disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
+      likeCount: this.props.video.likeCount.toString(),
+      dislikeCount: this.props.video.dislikeCount.toString()
     }
 
     this.handleLike = this.handleLike.bind(this);
@@ -24,6 +26,7 @@ class VideoDescription extends React.Component {
       arraysEqual(prevProps.likedVideoIds, this.props.likedVideoIds) && arraysEqual(prevProps.dislikedVideoIds, this.props.dislikedVideoIds)
     ) {
       // debugger
+      return;
     }
     
     // Otherwise update this.state
@@ -34,6 +37,7 @@ class VideoDescription extends React.Component {
         disliked: this.props.dislikedVideoIds.includes(this.props.video.id)
       });
     }
+    // debugger
   }
 
   handleLike(e) {
@@ -72,7 +76,7 @@ class VideoDescription extends React.Component {
       // debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
-        video_id: this.props.video_id
+        video_id: this.props.video.id
       }).then(vote => {
         // debugger
         return this.props.createVideoVote({
@@ -147,8 +151,10 @@ class VideoDescription extends React.Component {
   render() {
     // debugger
     const uploadDate = parseDate(this.props.video.created_at);
-    const likeStatus = this.state.liked ? "voted" : "";
-    const dislikeStatus = this.state.disliked ? "voted" : "";
+    const likeStatus = this.props.likedVideoIds.includes(this.props.video.id) ? "voted" : "";
+    const dislikeStatus = this.props.dislikedVideoIds.includes(this.props.video.id) ? "voted" : "";
+    // const likeCount = this.props.video.likeCount.toString();
+    // const dislikeCount = this.props.video.dislikeCount.toString();
     // debugger
     return (
       <div className="video-description-container">
@@ -166,11 +172,11 @@ class VideoDescription extends React.Component {
               {/* <button onClick={this.handleLike}> */}
               <FontAwesomeIcon icon="thumbs-up" className={`video-likes-item thumb ${likeStatus}`} onClick={this.handleLike} />
               {/* </button> */}
-              <p className="video-likes-item video-vote-count">{this.props.video.likeCount}</p>
+              <p className="video-likes-item video-vote-count">{this.state.likeCount}</p>
               {/* <button onClick={this.handleDislike}> */}
               <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} onClick={this.handleDislike} />
               {/* </button> */}
-              <p className="video-likes-item video-vote-count">{this.props.video.dislikeCount}</p>
+              <p className="video-likes-item video-vote-count">{this.state.dislikeCount}</p>
             </div>
           </div>
         </div>
