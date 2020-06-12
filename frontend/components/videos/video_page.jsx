@@ -40,6 +40,12 @@ class VideoPage extends React.Component {
       debugger
       this.props.fetchVideo(this.props.videoId).then(action => {
         debugger
+
+        // Do not fetchUser if we already have uploader
+        if (this.props.uploader) {
+          return;
+        }
+
         this.props.fetchUser(action.video.uploader_id).then(action => {
           debugger
           // AUTOPLAY VIDEO 
