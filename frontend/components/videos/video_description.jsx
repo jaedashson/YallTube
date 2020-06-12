@@ -5,13 +5,13 @@ import { parseDate, arraysEqual } from "../../util/videos_info_util";
 
 class VideoDescription extends React.Component {
   constructor(props) {
-    // debugger
+    debugger
     super(props);
     this.state = {
       liked: this.props.likedVideoIds.includes(this.props.video.id),
       disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
-      likeCount: this.props.video.likeCount.toString(),
-      dislikeCount: this.props.video.dislikeCount.toString()
+      likeCount: null,
+      dislikeCount: null
     }
 
     this.handleLike = this.handleLike.bind(this);
@@ -19,6 +19,21 @@ class VideoDescription extends React.Component {
     this.handleSubscribe = this.handleSubscribe.bind(this);
   };
 
+  componentDidMount() {
+    if (
+      !this.state.likeCount &&
+      !this.state.dislikeCount &&
+      this.props.video.likeCount &&
+      this.props.video.dislikeCount
+    ) {
+      this.setState({
+        likeCount: this.props.video.likeCount,
+        dislikeCount: this.props.video.dislikeCount
+      })
+    }
+  }
+
+  // Will this fix it?
   componentDidUpdate(prevProps) {
     // debugger
     // Don't update this.state if the likedVideoIds and dislikedVideoIds haven't changed
@@ -34,7 +49,11 @@ class VideoDescription extends React.Component {
       // debugger
       this.setState({
         liked: this.props.likedVideoIds.includes(this.props.video.id),
-        disliked: this.props.dislikedVideoIds.includes(this.props.video.id)
+        disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
+
+        // remove the two lines below if it doesn't work
+        likeCount: this.props.video.likeCount,
+        dislikeCount: this.props.video.dislikeCount
       });
     }
     // debugger
@@ -150,6 +169,14 @@ class VideoDescription extends React.Component {
 
   render() {
     // debugger
+
+    // if (
+    //   this.state.likeCount === (null || undefined) ||
+    //   this.state.dislikeCount === (null || undefined)
+    // ) {
+    //   return null;
+    // }
+
     const uploadDate = parseDate(this.props.video.created_at);
     const likeStatus = this.props.likedVideoIds.includes(this.props.video.id) ? "voted" : "";
     const dislikeStatus = this.props.dislikedVideoIds.includes(this.props.video.id) ? "voted" : "";

@@ -56,6 +56,10 @@ class VideoPage extends React.Component {
       return null;
     }
 
+    // if (!this.props.video.likeCount || !this.props.dislikeCount) {
+    //   return null;
+    // }
+
     // debugger
     return (
       <div className="video-page">
