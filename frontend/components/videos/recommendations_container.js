@@ -1,11 +1,12 @@
-import HomePage from "./home_page";
+import Recommendations from "./recommendations";
 import { connect } from "react-redux";
 import { fetchAllVideos } from "../../actions/videos_actions";
 import { fetchUser } from "../../actions/users_actions";
 
-const mSTP = ({ entities }) => {
+const mSTP = ({ entities }, ownProps) => {
   debugger
   return {
+    videoId: ownProps.videoId,
     videos: Object.values(entities.videos) // this.props.videos will be an array of videos
   };
 };
@@ -18,4 +19,4 @@ const mDTP = dispatch => {
   };
 };
 
-export default connect(mSTP, mDTP)(HomePage);
+export default connect(mSTP, mDTP)(Recommendations);

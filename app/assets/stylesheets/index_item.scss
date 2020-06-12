@@ -1,3 +1,13 @@
+// Recommended videos
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  margin-left: 26px;
+  width: 100%;
+  box-sizing: border-box;
+  // border: 1px solid black;
+}
+
 .video-index-item {
   display: flex;
   flex-direction: column;
@@ -8,9 +18,25 @@
   text-decoration: none;
 }
 
+.rec-index-item {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  // border: 1px solid black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
 .video-thumbnail-container {
   width: 269px;
   height: 151px;
+}
+
+.rec-thumbnail-container {
+  width: 168px;
+  height: 94px;
 }
 
 .video-index-item-info-container {
@@ -22,6 +48,10 @@
 .video-index-item-info {
   display: flex;
   flex-direction: column;
+}
+
+.rec-index-item-info {
+  margin-left: 10px;
 }
 
 .video-index-item-title {

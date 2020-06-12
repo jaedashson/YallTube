@@ -18,6 +18,10 @@ class User < ApplicationRecord
     through: :video_votes,
     source: :video
   
+  def uploaded_video_ids
+    self.videos.pluck(:id)
+  end
+
   def liked_video_ids
     self.video_votes.where(like: true).pluck(:video_id)
   end

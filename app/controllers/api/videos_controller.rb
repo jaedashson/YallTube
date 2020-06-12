@@ -1,16 +1,16 @@
 class Api::VideosController < ApplicationController
   # GET /api/videos
   def index
-    debugger
-    if params[:likedVideoIds]
-      debugger
-      @videos = Video.where('id IN (?)', params[:likedVideoIds])
+    # debugger
+    if params[:videoIds]
+      # debugger
+      @videos = Video.where('id IN (?)', params[:videoIds])
     else
-      debugger
+      # debugger
       @videos = Video.all
     end
 
-    debugger
+    # debugger
     render :index
   end
 

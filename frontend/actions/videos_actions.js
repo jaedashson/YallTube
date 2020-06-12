@@ -74,7 +74,7 @@ export const fetchAllVideos = () => dispatch => {
   });
 };
 
-export const fetchVideos = (videoIds) => {
+export const fetchVideos = (videoIds) => dispatch => {
   debugger
   return APIUtil.fetchVideos(videoIds).then(videos => {
     debugger

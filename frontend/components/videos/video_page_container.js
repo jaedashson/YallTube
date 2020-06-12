@@ -30,6 +30,7 @@ const mDTP = dispatch => {
   debugger
   return {
     fetchVideo: videoId => dispatch(fetchVideo(videoId)),
+    fetchAllVideos: () => dispatch(fetchAllVideos(videoId)),
     clearVideoErrors: () => dispatch(clearVideoErrors()),
     fetchUser: userId => dispatch(fetchUser(userId)),
     clearUserErrors: () => dispatch(clearUserErrors()),

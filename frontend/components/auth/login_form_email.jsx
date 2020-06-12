@@ -12,9 +12,20 @@ class LoginFormEmail extends React.Component {
     }
     
     this.validateEmail = this.validateEmail.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
 
     this.emailBlankError = "Enter an email";
     this.emailNotFoundError = "Couldn't find your YallTube Account";
+  }
+
+  handleDemoLogin(e) {
+    e.preventDefault();
+
+    const user = {
+      username: "demo_user",
+      password: "hunter12"
+    };
+    this.props.login(user);
   }
 
   validateEmail(e) {
@@ -95,8 +106,8 @@ class LoginFormEmail extends React.Component {
           {this.renderEmailError()}
         </div>
 
-        <div className="guest-login-container">
-          <p className="auth-link-text">Log in as a guest user</p>
+        <div className="guest-login-container" onClick={this.handleDemoLogin} >
+          <p className="auth-link-text">Log in as demo user</p>
         </div>
 
         <div className="auth-options">

@@ -13,6 +13,9 @@
   padding: 48px 40px 36px;
   width: 448px;
   min-height: 500px;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
 }
 
 .auth-form-header-1 {
@@ -165,6 +168,7 @@
 
 .guest-login-container {
   margin-top: 78px;
+  cursor: pointer;
 }
 
 .password-requirements {

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoDescriptionContainer from "./video_description_container";
+import RecommendationsContainer from "./recommendations_container";
 
 class VideoPage extends React.Component {
   constructor(props) {
@@ -128,10 +129,10 @@ class VideoPage extends React.Component {
       <div className="video-page">
         <div className="video-page-col-1">
           <div className="video-player-container">
-            <p>{this.props.video.videoUrl}</p>
+            {/* <p>{this.props.video.videoUrl}</p> */}
             <video className="video-player"
               src={this.props.video.videoUrl}
-              width="900" height="auto" controls
+              width="900" height="auto" controls autoplay
               controlsList="nodownload"
             >
             </video>
@@ -142,7 +143,12 @@ class VideoPage extends React.Component {
             uploader={this.props.uploader}
           />
         </div>
-        <div className="video-page-col-2"></div>
+        <RecommendationsContainer
+          videoId={this.props.videoId}
+          fetchAllVideos={this.props.fetchVideo}
+          fetchUser={this.props.fetchUser}
+          className="video-page-col-2"
+        />
       </div>
     );
   };

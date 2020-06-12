@@ -13,6 +13,8 @@ import LoginFormContainer from "./auth/login_form_container";
 import VideoPageContainer from "./videos/video_page_container";
 import UploadPageContainer from "./upload/upload_page_container";
 import HomePageContainer from "./videos/home_page_container";
+import LikedVideosPageContainer from "./videos/liked_videos_page_container";
+import YourVideosPageContainer from "./videos/your_videos_page_container";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
 
       <Switch>
         <Route exact path="/" component={HomePageContainer} />
+        <ProtectedRoute path="/your_videos" component={YourVideosPageContainer} />
+        <ProtectedRoute path="/liked_videos" component={LikedVideosPageContainer} />
         <Route path="/videos/:videoId" component={VideoPageContainer} />
         <ProtectedRoute path="/upload" component={UploadPageContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />

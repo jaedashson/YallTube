@@ -1,7 +1,8 @@
 .nav-bar {
   box-sizing: border-box;
   background-color: white;
-  margin: 0 26px;
+  // margin: 0 26px;
+  padding: 0 26px;
   height: 56px;
   display: flex;
   flex-direction: row;
@@ -9,6 +10,7 @@
   align-items: center;
   position: fixed;
   // opacity: 50%;
+  z-index: 3;
 }
 
 .nav-bar-start {

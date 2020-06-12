@@ -8,8 +8,9 @@ import {
 const defaultState = {
   id: null,
   attemptedUser: null,
-  likedVideoIds: null,
-  dislikedVideoIds: null
+  likedVideoIds: [],
+  dislikedVideoIds: [],
+  uploadedVideoIds: []
 };
 
 const sessionReducer = (state = defaultState, action) => {
@@ -27,6 +28,7 @@ const sessionReducer = (state = defaultState, action) => {
       newState["id"] = action.currentUser.id;
       newState["likedVideoIds"] = action.currentUser.likedVideoIds;
       newState["dislikedVideoIds"] = action.currentUser.dislikedVideoIds;
+      newState["uploadedVideoIds"] = action.currentUser.uploadedVideoIds;
       return newState;
     case LOGOUT_CURRENT_USER:
       newState["id"] = null;

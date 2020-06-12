@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
       session: {
         id: window.currentUser.id,
         likedVideoIds: window.currentUser.likedVideoIds,
-        dislikedVideoIds: window.currentUser.dislikedVideoIds
+        dislikedVideoIds: window.currentUser.dislikedVideoIds,
+        uploadedVideoIds: window.currentUser.uploadedVideoIds
       },
       entities: {
         users: { [window.currentUser.id]: window.currentUser }

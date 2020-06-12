@@ -21,7 +21,7 @@ const videosReducer = (state = {}, action) => {
       let newState1 = Object.assign({}, state);
       action.videos.forEach(video => newState1[video.id] = video);
       debugger
-      return newState;
+      return newState1;
     default:
       return state;
   }

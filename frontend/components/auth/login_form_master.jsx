@@ -2,6 +2,7 @@ import React from "react";
 import LoginFormEmail from "./login_form_email";
 import LoginFormPassword from "./login_form_password";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 
 class LoginFormMaster extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class LoginFormMaster extends React.Component {
             errors={this.props.errors}
             receiveSessionError={this.props.receiveSessionError}
             clearSessionErrors={this.props.clearSessionErrors}
+            login={this.props.login}
           />
         );
       case 2:
@@ -68,9 +70,11 @@ class LoginFormMaster extends React.Component {
     return (
       <div className="auth-page">
         <div className="auth-form-container">
-          <div className="yalltube-logo yalltube-logo-auth">
-            <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-icon" />
-            <span>YallTube</span>
+          <div className="yalltube-logo yalltube-logo-auth yalltube-logo-link">
+            <Link to="/" className="yalltube-logo-link">
+              <FontAwesomeIcon icon={["fab", "youtube"]} className="yalltube-logo-icon" />
+              <span>YallTube</span>
+            </Link>
           </div>
           <form className="auth-form">
             {this.renderForm()}
