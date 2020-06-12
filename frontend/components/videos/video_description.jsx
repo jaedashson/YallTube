@@ -48,9 +48,9 @@ class VideoDescription extends React.Component {
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id,
         like: true
-      }).then(res => {
+      }).then(vote => {
         debugger // Inspect res
-        return this.props.refresh();
+        return this.props.refresh(vote.voter_id);
       })
 
     // If current user has already liked this video
@@ -60,9 +60,9 @@ class VideoDescription extends React.Component {
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id
-      }).then(res => {
+      }).then(vote => {
         debugger // Inspect res
-        return this.props.refresh();
+        return this.props.refresh(vote.voter_id);
       })
 
     // If current user has disliked this video
@@ -72,17 +72,17 @@ class VideoDescription extends React.Component {
       debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
-        video_id: this.props
-      }).then(res => {
+        video_id: this.props.video_id
+      }).then(vote => {
         debugger
         return this.props.createVideoVote({
-          voter_id: this.props.currentUserId,
-          video_id: this.props.video.id,
+          voter_id: vote.voter_id,
+          video_id: vote.video_id,
           like: true
         });
-      }).then(res => {
+      }).then(vote => {
         debugger
-        return this.props.refresh();
+        return this.props.refresh(vote.voter_id);
       })
     }
   }
@@ -99,9 +99,9 @@ class VideoDescription extends React.Component {
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id,
         like: false
-      }).then(res => {
+      }).then(vote => {
         debugger
-        return this.props.refresh();
+        return this.props.refresh(vote.voter_id);
       })
     }
 
@@ -112,9 +112,9 @@ class VideoDescription extends React.Component {
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id
-      }).then(res => {
+      }).then(vote => {
         debugger
-        return this.props.refresh();
+        return this.props.refresh(vote.voter_id);
       })
     }
 
@@ -124,18 +124,18 @@ class VideoDescription extends React.Component {
     else if (this.state.liked) {
       debugger
       this.props.destroyVideoVote({
-        voter_id: this.props.currentId,
-        video_id: this.props
-      }).then(res => {
+        voter_id: this.props.currentUserId,
+        video_id: this.props.video.id
+      }).then(vote => {
         debugger
         return this.props.createVideoVote({
-          voter_id: this.props.currentUserId,
-          video_id: this.props.video.id,
+          voter_id: vote.voter_id,
+          video_id: vote.video_id,
           like: false
         });
-      }).then(res => {
+      }).then(vote => {
         debugger
-        return this.props.refresh();
+        return this.props.refresh(vote.voter_id);
       })
     }
   }
@@ -163,9 +163,13 @@ class VideoDescription extends React.Component {
               <p className="video-date">{uploadDate}</p>
             </div>
             <div className="video-likes-container">
-              <FontAwesomeIcon icon="thumbs-up" className={`video-likes-item thumb ${likeStatus}`} />
+              {/* <button onClick={this.handleLike}> */}
+              <FontAwesomeIcon icon="thumbs-up" className={`video-likes-item thumb ${likeStatus}`} onClick={this.handleLike} />
+              {/* </button> */}
               <p className="video-likes-item video-vote-count">100K</p>
-              <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} />
+              {/* <button onClick={this.handleDislike}> */}
+              <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} onClick={this.handleDislike} />
+              {/* </button> */}
               <p className="video-likes-item video-vote-count">5K</p>
             </div>
           </div>

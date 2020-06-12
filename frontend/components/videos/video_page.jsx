@@ -43,6 +43,7 @@ class VideoPage extends React.Component {
 
         // Do not fetchUser if we already have uploader
         if (this.props.uploader) {
+          debugger
           return;
         }
 
@@ -55,6 +56,19 @@ class VideoPage extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
+    // // Update thumbs hotfix (Rich)
+    // if (
+    //   this.props.videoId !== prevProps.videoId &&
+    //   !this.props.video
+    // ) {
+    //   debugger
+    //   this.props.fetchVideo(this.props.videoId).then(action => {
+    //     debugger
+    //     this.props.fetchUser(action.video.uploader_id);
+    //     return;
+    //   });
+    // }
+
     debugger
     // Don't fetch anything if we have the right video and uploader
     if (
@@ -90,15 +104,25 @@ class VideoPage extends React.Component {
         });
       });
     }
+
+    debugger
   }
 
   render() {
     debugger
 
+    // Don't render if we don't have either video or uploader
     if (!this.props.video || !this.props.uploader) {
       debugger
       return null;
     }
+
+    // Don't render if video doesn't match videoId
+    if (this.props.videoId !== this.props.video.id) {
+      debugger
+      return null;
+    }
+
     debugger
     return (
       <div className="video-page">

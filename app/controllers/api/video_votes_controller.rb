@@ -31,8 +31,7 @@ class Api::VideoVotesController < ApplicationController
 
     if @video_vote.save
       debugger
-      login!(@video_vote)
-      render json: ["Video vote created"]
+      render :show
     else
       debugger
       render json: @video_vote.errors.full_messages, status: 422
@@ -44,10 +43,10 @@ class Api::VideoVotesController < ApplicationController
     @video_vote = VideoVote
       .where(voter_id: video_vote_params[:voter_id])
       .where(video_id: video_vote_params[:video_id]).first
-
+    debugger
     if @video_vote.destroy
       debugger
-      render json: ["Video vote destroyed"]
+      render :show
     else
       debugger
       render json: @video_vote.errors.full_messages, status: 422

@@ -3,7 +3,7 @@ export const fetchVideo = (videoId) => {
   return $.ajax({
     method: "GET",
     url: `/api/videos/${videoId}`
-  })
+  });
 };
 
 export const fetchAllVideos = () => {
@@ -11,8 +11,17 @@ export const fetchAllVideos = () => {
   return $.ajax({
     method: "GET",
     url: "/api/videos"
-  })
-}
+  });
+};
+
+export const fetchVideos = (videoIds) => {
+  debugger
+  return $.ajax({
+    method: "GET",
+    url: "/api/videos",
+    data: { videoIds }
+  });
+};
 
 export const createVideo = (formData) => {
   debugger
@@ -22,5 +31,5 @@ export const createVideo = (formData) => {
     data: formData,
     contentType: false,
     processData: false
-  })
+  });
 };

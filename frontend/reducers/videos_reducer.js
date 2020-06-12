@@ -1,6 +1,7 @@
 import {
   RECEIVE_VIDEO,
-  RECEIVE_ALL_VIDEOS
+  RECEIVE_ALL_VIDEOS,
+  RECEIVE_VIDEOS
 } from "../actions/videos_actions";
 
 const videosReducer = (state = {}, action) => {
@@ -13,6 +14,12 @@ const videosReducer = (state = {}, action) => {
       debugger
       let newState = {};
       action.videos.forEach(video => newState[video.id] = video);
+      debugger
+      return newState;
+    case RECEIVE_VIDEOS:
+      debugger
+      let newState1 = Object.assign({}, state);
+      action.videos.forEach(video => newState1[video.id] = video);
       debugger
       return newState;
     default:

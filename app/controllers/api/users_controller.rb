@@ -16,14 +16,14 @@ class Api::UsersController < ApplicationController
   
   # GET /api/users/:userId
   def show
-    debugger
+    # debugger
     @user = User.find_by(id: params[:id])
 
     if @user
-      debugger
+      # debugger
       render :show
     else
-      debugger
+      # debugger
       render json: ["User not found"], status: 404
     end
   end

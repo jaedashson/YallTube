@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     # Delete video vote based on voter_id and video_id in video_vote_params
     delete 'video_votes', to: 'video_votes#destroy'
+
+    # Get liked videos by sending an array of likedVideoIds to VideosController
   end
 
   # resources :videos, only: :show
