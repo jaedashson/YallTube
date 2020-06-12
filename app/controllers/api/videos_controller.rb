@@ -1,20 +1,22 @@
 class Api::VideosController < ApplicationController
   # GET /api/videos
   def index
-    # debugger
+    debugger
     @videos = Video.all
-    # debugger
+    debugger
     render :index
   end
 
   # GET /api/videos/:videoId
   def show
-    # debugger
+    debugger
     @video = Video.find_by(id: params[:id])
 
     if @video
+      debugger
       render :show
     else
+      debugger
       render json: ["Video not found"], status: 404
     end
   end
@@ -22,14 +24,14 @@ class Api::VideosController < ApplicationController
   # createVideo
   # POST /api/videos
   def create
-    # debugger
+    debugger
     @video = Video.new(video_params)
 
     if @video.save
-      # debugger
+      debugger
       render :show
     else
-      # debugger
+      debugger
       render json: @video.errors.full_messages, status: 422
     end
   end

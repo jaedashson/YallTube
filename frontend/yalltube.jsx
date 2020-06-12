@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   let store;
   if (window.currentUser) {
+    debugger
     const preloadedState = {
       session: {
         id: window.currentUser.id,
@@ -75,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {
+    debugger
     store = configureStore();
   }
 

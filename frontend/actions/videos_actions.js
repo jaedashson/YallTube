@@ -6,10 +6,12 @@ export const RECEIVE_VIDEO_ERRORS = "RECEIVE_VIDEO_ERRORS";
 export const CLEAR_VIDEO_ERRORS = "CLEAR_VIDEO_ERRORS";
 export const CREATE_VIDEO = "CREATE_VIDEO";
 
+export const videosActionsTest = "yo"; // TESTING
+
 // POJO action creators
 
 export const receiveVideo = video => {
-  // debugger
+  debugger
   return {
     type: RECEIVE_VIDEO,
     video
@@ -17,7 +19,7 @@ export const receiveVideo = video => {
 };
 
 export const receiveAllVideos = videos => {
-  // debugger
+  debugger
   return {
     type: RECEIVE_ALL_VIDEOS,
     videos
@@ -25,7 +27,7 @@ export const receiveAllVideos = videos => {
 }
 
 export const receiveVideoErrors = errors => {
-  // debugger
+  debugger
   return {
     type: RECEIVE_VIDEO_ERRORS,
     errors
@@ -33,7 +35,7 @@ export const receiveVideoErrors = errors => {
 };
 
 export const clearVideoErrors = () => {
-  // debugger
+  debugger
   return {
     type: CLEAR_VIDEO_ERRORS
   };
@@ -42,35 +44,35 @@ export const clearVideoErrors = () => {
 // thunk action creators
 
 export const fetchVideo = videoId => dispatch => {
-  // debugger
+  debugger
   return APIUtil.fetchVideo(videoId).then(video => {
-    // debugger
+    debugger
     return dispatch(receiveVideo(video));
   }, error => {
-    // debugger
+    debugger
     return dispatch(receiveVideoErrors(error.responseJSON));
   });
 };
 
 export const fetchAllVideos = () => dispatch => {
-  // debugger
+  debugger
   return APIUtil.fetchAllVideos().then(videos => {
-    // debugger
+    debugger
     return dispatch(receiveAllVideos(videos));
   }, error => {
-    // debugger
+    debugger
     return dispatch(receiveVideoErrors(error.responseJSON));
   });
 }
 
 // Need to establish difference between createVideo and attachVideo
 export const createVideo = video => dispatch => {
-  // debugger
+  debugger
   return APIUtil.createVideo(video).then(video => {
-    // debugger
+    debugger
     return dispatch(receiveVideo(video));
   }, error => {
-    // debugger
+    debugger
     return dispatch(receiveVideoErrors(error.responseJSON));
   });
 };

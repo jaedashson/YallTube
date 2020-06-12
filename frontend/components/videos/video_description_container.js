@@ -7,7 +7,7 @@ import { refresh } from "../../actions/session_actions";
 const mSTP = ({ session }, ownProps) => {
   debugger
   return {
-    currentUserId: session.id,
+    currentUserId: session.id, // Is this string or integer?
     video: ownProps.video,
     uploader: ownProps.uploader,
     likedVideoIds: session.likedVideoIds,
