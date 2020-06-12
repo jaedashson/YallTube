@@ -11,21 +11,31 @@ class Recommendations extends React.Component {
     this.state = { recommendations: null }
   };
 
-  componentDidMount() {
-    // debugger
+  generateRecs() {
     this.props.fetchAllVideos().then(action => {
-      let recommendations = shuffleVideos(action.videos).slice(0,10);
+      let recommendations = shuffleVideos(action.videos).slice(0, 10);
 
       let filtered = [];
-      
+
       for (let i = 0; i < recommendations.length; i++) {
         if (recommendations[i].id !== this.props.videoId) {
           filtered.push(recommendations[i]);
         }
       }
 
-      this.setState({ recommendations: filtered});
+      this.setState({ recommendations: filtered });
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.videoId !== this.props.videoId) {
+      this.generateRecs();
+    }
+  }
+
+  componentDidMount() {
+    // debugger
+    this.generateRecs();
   };
 
   renderItems() {
