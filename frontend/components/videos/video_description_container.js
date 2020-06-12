@@ -5,7 +5,7 @@ import { refresh } from "../../actions/session_actions";
 
 
 const mSTP = ({ session }, ownProps) => {
-  debugger
+  // debugger
   return {
     currentUserId: session.id, // Is this string or integer?
     video: ownProps.video,
@@ -16,11 +16,11 @@ const mSTP = ({ session }, ownProps) => {
 }
 
 const mDTP = dispatch => {
-  debugger
+  // debugger
   return {
     createVideoVote: vote => createVideoVote(vote),
     destroyVideoVote: vote => destroyVideoVote(vote),
-    refresh: () => dispatch(refresh())
+    refresh: (userId) => dispatch(refresh(userId))
   };
 }
 

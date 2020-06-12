@@ -2,14 +2,14 @@ class Api::UsersController < ApplicationController
   # CHANGE THIS ACTION TO A CUSTOM ROUTE
   # GET /api/users?email=user1@gmail.com
   def index
-    debugger
+    # debugger
     @user = User.find_by(email: params[:email])
 
     if @user
-      debugger
+      # debugger
       render :show
     else
-      debugger
+      # debugger
       render json: ["Couldn't find your YallTube Account"], status: 404
     end
   end

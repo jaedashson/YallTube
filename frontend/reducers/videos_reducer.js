@@ -8,19 +8,19 @@ const videosReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_VIDEO:
-      debugger
+      // debugger
       return Object.assign({}, state, { [action.video.id]: action.video });
     case RECEIVE_ALL_VIDEOS:
-      debugger
+      // debugger
       let newState = {};
       action.videos.forEach(video => newState[video.id] = video);
-      debugger
+      // debugger
       return newState;
     case RECEIVE_VIDEOS:
-      debugger
+      // debugger
       let newState1 = Object.assign({}, state);
       action.videos.forEach(video => newState1[video.id] = video);
-      debugger
+      // debugger
       return newState1;
     default:
       return state;

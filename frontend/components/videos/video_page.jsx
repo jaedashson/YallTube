@@ -7,12 +7,12 @@ import ReactPlayer from "react-player";
 
 class VideoPage extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
     super(props);
   };
 
   componentDidMount() {
-    debugger
+    // debugger
 
     // Don't fetch anything if we have the right video and uploader
     if (
@@ -21,7 +21,7 @@ class VideoPage extends React.Component {
       this.props.uploader &&
       this.props.uploader.id === this.props.video.uploader_id
     ) {
-      debugger
+      // debugger
       // AUTOPLAY VIDEO - 
     }
 
@@ -30,27 +30,27 @@ class VideoPage extends React.Component {
       this.props.video &&
       this.props.video.id === this.props.videoId
     ) {
-      debugger
+      // debugger
       this.props.fetchUser(this.props.video.uploaderId).then(action => {
-        debugger
+        // debugger
         // AUTOPLAY VIDEO
       });
     }
 
     // Fetch video and user
     else {
-      debugger
+      // debugger
       this.props.fetchVideo(this.props.videoId).then(action => {
-        debugger
+        // debugger
 
         // Do not fetchUser if we already have uploader
         if (this.props.uploader) {
-          debugger
+          // debugger
           return;
         }
 
         this.props.fetchUser(action.video.uploader_id).then(action => {
-          debugger
+          // debugger
           // AUTOPLAY VIDEO 
         });
       });
@@ -63,7 +63,7 @@ class VideoPage extends React.Component {
     //   this.props.videoId !== prevProps.videoId &&
     //   !this.props.video
     // ) {
-    //   debugger
+      // debugger
     //   this.props.fetchVideo(this.props.videoId).then(action => {
     //     debugger
     //     this.props.fetchUser(action.video.uploader_id);
@@ -71,7 +71,7 @@ class VideoPage extends React.Component {
     //   });
     // }
 
-    debugger
+    // debugger
     // Don't fetch anything if we have the right video and uploader
     if (
       this.props.video &&
@@ -79,7 +79,7 @@ class VideoPage extends React.Component {
       this.props.uploader &&
       this.props.uploader.id === this.props.video.uploader_id
     ) {
-      debugger
+      // debugger
       // DON'T AUTOPLAY VIDEO
     }
 
@@ -88,44 +88,44 @@ class VideoPage extends React.Component {
       this.props.video &&
       this.props.video.id === this.props.videoId
     ) {
-      debugger
+      // debugger
       this.props.fetchUser(this.props.video.uploader_id).then(action => {
-        debugger
+        // debugger
         // AUTOPLAY VIDEO
       });
     }
 
     // Fetch video and user
     else {
-      debugger
+      // debugger
       this.props.fetchVideo(this.props.videoId).then(action => {
-        debugger
+        // debugger
         this.props.fetchUser(action.video.uploader_id).then(action => {
-          debugger
+          // debugger
           // AUTOPLAY VIDEO 
         });
       });
     }
 
-    debugger
+    // debugger
   }
 
   render() {
-    debugger
+    // debugger
 
     // Don't render if we don't have either video or uploader
     if (!this.props.video || !this.props.uploader) {
-      debugger
+      // debugger
       return null;
     }
 
     // Don't render if video doesn't match videoId
     if (this.props.videoId !== this.props.video.id) {
-      debugger
+      // debugger
       return null;
     }
 
-    debugger
+    // debugger
     return (
       <div className="video-page">
         <div className="video-page-col-1">

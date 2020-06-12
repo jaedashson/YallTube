@@ -4,7 +4,7 @@ import { fetchVideos } from "../../actions/videos_actions";
 import { fetchUser } from "../../actions/users_actions";
 
 const mSTP = ({ entities, session }) => {
-  debugger
+  // debugger
 
   const likedVideoIds = session.likedVideoIds;
   const likedVideos = [];
@@ -22,7 +22,7 @@ const mSTP = ({ entities, session }) => {
 };
 
 const mDTP = dispatch => {
-  debugger
+  // debugger
   return {
     fetchVideos: videoIds => dispatch(fetchVideos(videoIds)),
     fetchUser: userId => dispatch(fetchUser(userId))

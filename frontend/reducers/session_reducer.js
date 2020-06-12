@@ -24,7 +24,7 @@ const sessionReducer = (state = defaultState, action) => {
       newState["attemptedUser"] = null;
       return newState;
     case RECEIVE_CURRENT_USER:
-      debugger
+      // debugger
       newState["id"] = action.currentUser.id;
       newState["likedVideoIds"] = action.currentUser.likedVideoIds;
       newState["dislikedVideoIds"] = action.currentUser.dislikedVideoIds;

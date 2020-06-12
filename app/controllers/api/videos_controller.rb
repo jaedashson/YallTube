@@ -31,14 +31,14 @@ class Api::VideosController < ApplicationController
   # createVideo
   # POST /api/videos
   def create
-    debugger
+    # debugger
     @video = Video.new(video_params)
 
     if @video.save
-      debugger
+      # debugger
       render :show
     else
-      debugger
+      # debugger
       render json: @video.errors.full_messages, status: 422
     end
   end

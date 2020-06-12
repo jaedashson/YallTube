@@ -8,22 +8,22 @@ import SideBar from "./side_bar"
 
 class HomePage extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
     super(props);
   };
 
   componentDidMount() {
-    debugger
+    // debugger
     this.props.fetchAllVideos();
   };
 
   renderItems() {
-    debugger
+    // debugger
     if (!this.props.videos) {
-      debugger
+      // debugger
       return null;
     }
-    debugger
+    // debugger
     const items = shuffleVideos(this.props.videos).map(video => {
       return (
         <VideoIndexItem
@@ -38,7 +38,7 @@ class HomePage extends React.Component {
   };
 
   render() {
-    debugger
+    // debugger
     return (
       <div className="home-page">
         <SideBar />

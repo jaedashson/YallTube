@@ -1,11 +1,11 @@
 export const parseDate = (time) => {
-  debugger
+  // debugger
   let date = new Date(time);
   return date.toDateString().slice(4)
 }
 
 export const shuffleVideos = (videos) => {
-  debugger
+  // debugger
   const shuffled = videos.slice();
 
   let currentIdx = shuffled.length;
@@ -21,17 +21,17 @@ export const shuffleVideos = (videos) => {
     shuffled[randomIdx] = swap;
   }
 
-  debugger
+  // debugger
   return shuffled;
 }
 
 export const arraysEqual = (arr1, arr2) => {
-  debugger
+  // debugger
   if (arr1.sort().join(",") === arr2.sort().join(",")) {
-    debugger
+    // debugger
     return true;
   } else {
-    debugger
+    // debugger
     return false;
   }
 }

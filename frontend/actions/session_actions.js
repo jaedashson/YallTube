@@ -12,34 +12,34 @@ export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 // POJO action creators
 
 export const receiveEmailAttempt = attemptedUser => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_EMAIL_ATTEMPT,
     attemptedUser
 }};
 
 export const clearEmailAttempt = () => {
-  debugger
+  // debugger
   return {
     type: CLEAR_EMAIL_ATTEMPT,
 }};
 
 export const receiveCurrentUser = currentUser => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser
 }};
 
 export const logoutCurrentUser = () => {
-  debugger
+  // debugger
   return {
     type: LOGOUT_CURRENT_USER
   }
 };
 
 export const receiveSessionError = error => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_SESSION_ERROR,
     error
@@ -47,7 +47,7 @@ export const receiveSessionError = error => {
 };
 
 export const receiveSessionErrors = errors => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
@@ -55,7 +55,7 @@ export const receiveSessionErrors = errors => {
 };
 
 export const clearSessionErrors = () => {
-  debugger
+  // debugger
   return {
     type: CLEAR_SESSION_ERRORS
   }
@@ -75,42 +75,42 @@ export const refresh = userId => dispatch => {
 };
 
 export const signup = user => dispatch => {
-  debugger
+  // debugger
   return APIUtil.signup(user).then(user => {
-    debugger
+    // debugger
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    debugger
+    // debugger
     return dispatch(receiveSessionErrors(error.responseJSON));
   })
 };
 
 export const getUserByEmail = email => dispatch => {
-  debugger
+  // debugger
   return APIUtil.getUserByEmail(email).then(user => {
-    debugger
+    // debugger
     return dispatch(receiveEmailAttempt(user))
   }, error => {
-    debugger
+    // debugger
     return dispatch(receiveSessionErrors(error.responseJSON))
   })
 };
 
 export const login = user => dispatch => {
-  debugger
+  // debugger
   return APIUtil.login(user).then(user => {
-    debugger
+    // debugger
     return dispatch(receiveCurrentUser(user))
   }, error => {
-    debugger
+    // debugger
     return dispatch(receiveSessionErrors(error.responseJSON))
   })
 };
 
 export const logout = () => dispatch => {
-  debugger
+  // debugger
   return APIUtil.logout().then(user => {
-    debugger
+    // debugger
     return dispatch(logoutCurrentUser())
   })
 };

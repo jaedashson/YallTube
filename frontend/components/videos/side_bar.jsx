@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SideBar = (props) => {
-  debugger
+  // debugger
   return (
     <div className="side-bar">
       <NavLink exact to="/" className="side-bar-link" activeClassName="side-bar-link-active">

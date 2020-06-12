@@ -6,13 +6,13 @@ import { shuffleVideos } from "../../util/videos_info_util";
 
 class Recommendations extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
     super(props);
     this.state = { recommendations: null }
   };
 
   componentDidMount() {
-    debugger
+    // debugger
     this.props.fetchAllVideos().then(action => {
       let recommendations = shuffleVideos(action.videos).slice(0,10);
 
@@ -29,12 +29,12 @@ class Recommendations extends React.Component {
   };
 
   renderItems() {
-    debugger
+    // debugger
     if (!this.state.recommendations) {
-      debugger
+      // debugger
       return null;
     }
-    debugger
+    // debugger
     const items = this.state.recommendations.map(video => {
       return (
         <RecIndexItem
@@ -49,7 +49,7 @@ class Recommendations extends React.Component {
   };
 
   render() {
-    debugger
+    // debugger
     return (
       <div className="recommendations">
         {this.renderItems()}

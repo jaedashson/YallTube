@@ -5,17 +5,17 @@ import { fetchUser, clearUserErrors, usersActionsTest } from "../../actions/user
 
 
 const mSTP = ({ entities, errors, session }, ownProps) => {
-  debugger
+  // debugger
   const videoId = parseInt(ownProps.match.params.videoId); // 
   const video = entities.videos[videoId];
   let uploader;
 
   if (video && entities.users[video.uploader_id]) {
-    debugger
+    // debugger
     uploader = entities.users[video.uploader_id];
   }
 
-  debugger
+  // debugger
   return {
     videoId,
     video,
@@ -27,7 +27,7 @@ const mSTP = ({ entities, errors, session }, ownProps) => {
 };
 
 const mDTP = dispatch => {
-  debugger
+  // debugger
   return {
     fetchVideo: videoId => dispatch(fetchVideo(videoId)),
     fetchAllVideos: () => dispatch(fetchAllVideos(videoId)),

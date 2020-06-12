@@ -2,15 +2,15 @@ class Api::SessionsController < ApplicationController
   # Login
   # POST /api/session
   def create
-    debugger
+    # debugger
     @user = User.find_by_credentials(user_params[:username], user_params[:password])
 
     if @user
-      debugger
+      # debugger
       login!(@user)
       render "api/users/show"
     else
-      debugger
+      # debugger
       render json: ["Wrong password"], status: 401
     end
   end
