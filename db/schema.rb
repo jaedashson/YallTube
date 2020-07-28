@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_143738) do
     t.integer "uploader_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_videos_on_created_at"
     t.index ["title"], name: "index_videos_on_title"
     t.index ["uploader_id"], name: "index_videos_on_uploader_id"
   end
