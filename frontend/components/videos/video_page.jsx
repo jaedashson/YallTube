@@ -73,10 +73,7 @@ class VideoPage extends React.Component {
                 playing={true}
                 width="100%"
                 height={660}
-                // width={auto}
-                // height={460}
                 controls={true}
-                // height={auto}
               />
             </div>
 
