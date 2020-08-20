@@ -72,7 +72,7 @@ class VideoPage extends React.Component {
                 url={this.props.video.videoUrl}
                 playing={true}
                 width="100%"
-                height={660}
+                height="67vh"
                 controls={true}
               />
             </div>
