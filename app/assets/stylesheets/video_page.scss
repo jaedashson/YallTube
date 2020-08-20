@@ -1,6 +1,12 @@
-.video-page {
+.video-page-container {
   background-color: #f9f9f9;
-  padding: 24px 64px;
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.video-page {
+  // padding: 24px 64px;
   display: flex;
   flex-direction: row;
   font-family: 'Roboto', sans-serif;
@@ -9,6 +15,7 @@
 .video-page-col-1 {
   display: flex;
   flex-direction: column;
+  width: 67vw;
 }
 
 .video-description-container {

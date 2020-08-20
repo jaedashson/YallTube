@@ -62,40 +62,34 @@ class VideoPage extends React.Component {
 
     // debugger
     return (
-      <div className="video-page">
-        <div className="video-page-col-1">
-          <div className="video-player-container">
-            {/* <video className="video-player"
-              src={this.props.video.videoUrl}
-              width="900" height="auto" controls autoplay
-              controlsList="nodownload"
-            > 
-            </video> */}
+      <div className="video-page-container">
+        <div className="video-page">
+          <div className="video-page-col-1">
+            <div className="video-player-container">
+              <ReactPlayer
+                className="video-player"
+                id="video-player"
+                url={this.props.video.videoUrl}
+                playing={true}
+                // width={auto}
+                // height={460}
+                controls={true}
+                // height={auto}
+              />
+            </div>
 
-            <ReactPlayer
-              className="video-player"
-              id="video-player"
-              url={this.props.video.videoUrl}
-              playing={true}
-              width={900}
-              height={460}
-              controls={true}
-              // height={auto}
+            <VideoDescriptionContainer
+              video={this.props.video}
+              uploader={this.props.uploader}
             />
-
           </div>
 
-          <VideoDescriptionContainer
-            video={this.props.video}
-            uploader={this.props.uploader}
+          <RecommendationsContainer
+            videoId={this.props.videoId}
+            fetchAllVideos={this.props.fetchVideo}
+            fetchUser={this.props.fetchUser}
           />
         </div>
-        <RecommendationsContainer
-          videoId={this.props.videoId}
-          fetchAllVideos={this.props.fetchVideo}
-          fetchUser={this.props.fetchUser}
-          className="video-page-col-2"
-        />
       </div>
     );
   };

@@ -61,8 +61,10 @@ class Recommendations extends React.Component {
   render() {
     // debugger
     return (
-      <div className="recommendations">
-        {this.renderItems()}
+      <div className="video-page-col-2">
+        <div className="recommendations">
+          {this.renderItems()}
+        </div>
       </div>
     );
   }
