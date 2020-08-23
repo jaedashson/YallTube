@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import RecIndexItem from "./rec_index_item";
+import RecIndexItem from "./rec_index_item"; // TODO - Phase this out
+import RecommendationsItem from "./recommendations_item"; // TODO - Phase this in
+
 import { shuffleVideos } from "../../util/videos_info_util";
 
 class Recommendations extends React.Component {
@@ -27,6 +29,7 @@ class Recommendations extends React.Component {
     })
   }
 
+  // TODO - Figure out the role of this method
   componentDidUpdate(prevProps) {
     if (prevProps.videoId !== this.props.videoId) {
       this.generateRecs();
@@ -61,10 +64,8 @@ class Recommendations extends React.Component {
   render() {
     // debugger
     return (
-      <div className="video-page-col-2">
-        <div className="recommendations">
-          {this.renderItems()}
-        </div>
+      <div className="recommendations">
+        {this.renderItems()}
       </div>
     );
   }
