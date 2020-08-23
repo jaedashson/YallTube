@@ -51,7 +51,7 @@ class Recommendations extends React.Component {
     const items = this.state.recommendations.map(video => {
       return (
         // TODO***** change RecIndexItem to RecommendationItem
-        <RecIndexItem
+        <RecommendationItem
           key={video.id}
           video={video}
           fetchUser={this.props.fetchUser}

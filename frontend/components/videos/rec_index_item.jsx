@@ -13,7 +13,7 @@ class RecIndexItem extends React.Component {
   componentDidMount() {
     // debugger
     this.props.fetchUser(this.props.video.uploader_id).then(action => {
-      // debugger
+      debugger
       this.setState({ uploader: action.user });
     });
   }
@@ -23,7 +23,7 @@ class RecIndexItem extends React.Component {
     if (!this.state.uploader) {
       return null;
     }
-    // debugger
+    debugger
     return (
       <Link to={`/videos/${this.props.video.id}`} className="rec-index-item">
         <div className="rec-thumbnail-container">
@@ -36,7 +36,7 @@ class RecIndexItem extends React.Component {
         </div>
         <div className="video-index-item-info rec-index-item-info">
           <p className="video-index-item-title">{this.props.video.title}</p>
-          <Link to={`/users/${this.state.uploader.id}`} className="video-index-item-uploader">{this.state.uploader.username}</Link>
+          <p className="video-index-item-uploader">{this.state.uploader.username}</p>
           <p className="video-index-item-views-date">views • {parseDate(this.props.video.created_at)}</p>
         </div>
       </Link>

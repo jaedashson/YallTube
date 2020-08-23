@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+}
 
 .recommendation-thumbnail {
   width: 168px;
@@ -26,13 +27,6 @@
 }
 
 .recommendation-stats {
-  
-}
-
-.recommendation-views {
-
-}
-
-.recommendation-date {
-
+  margin-top: 4px;
+  color: #606060;
 }
