@@ -50,6 +50,7 @@ class Recommendations extends React.Component {
     // debugger
     const items = this.state.recommendations.map(video => {
       return (
+        // TODO***** change RecIndexItem to RecommendationItem
         <RecIndexItem
           key={video.id}
           video={video}

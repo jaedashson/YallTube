@@ -1,25 +1,32 @@
 .recommendation-item {
-  flex-direction: row;
-}
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 
 .recommendation-thumbnail {
-
+  width: 168px;
+  height: 94px;
 }
 
 .recommendation-info {
-
+  display: flex;
+  flex-direction: column;
 }
 
 .recommendation-title {
-
+  color: #030303;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .recommendation-uploader {
-
+  margin-top: 10px;
+  color: #606060;
+  text-decoration: none;
 }
 
 .recommendation-stats {
-
+  
 }
 
 .recommendation-views {
