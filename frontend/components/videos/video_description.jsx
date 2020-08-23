@@ -196,13 +196,9 @@ class VideoDescription extends React.Component {
               <p className="video-date">{uploadDate}</p>
             </div>
             <div className="video-likes-container">
-              {/* <button onClick={this.handleLike}> */}
               <FontAwesomeIcon icon="thumbs-up" className={`video-likes-item thumb ${likeStatus}`} onClick={this.handleLike} />
-              {/* </button> */}
               <p className="video-likes-item video-vote-count">{this.state.likeCount}</p>
-              {/* <button onClick={this.handleDislike}> */}
               <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} onClick={this.handleDislike} />
-              {/* </button> */}
               <p className="video-likes-item video-vote-count">{this.state.dislikeCount}</p>
             </div>
           </div>
