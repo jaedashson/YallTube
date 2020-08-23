@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate } from "../../util/videos_info_util";
 
-class RecommendationsItem extends React.Component {
+class RecommendationItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { uploader : null };
@@ -33,8 +33,8 @@ class RecommendationsItem extends React.Component {
           <p className="recommendation-title">{this.props.video.title}</p>
           <p className="recommendation-uploader">{this.props.video.uploader.username}</p>
           <div className="recommendation-stats">
-            <span className="recommendation-views">{this.props.video.}</span>
-            <span className="recommendation-date"></span>
+            <span className="recommendation-views">9.99m views</span>
+            <span className="recommendation-date">{parseDate(this.props.video.created_at)}</span>
           </div>
 
         </div>

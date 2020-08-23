@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RecIndexItem from "./rec_index_item"; // TODO - Phase this out
-import RecommendationsItem from "./recommendations_item"; // TODO - Phase this in
+import RecommendationItem from "./recommendation_item"; // TODO - Phase this in
 
 import { shuffleVideos } from "../../util/videos_info_util";
 
