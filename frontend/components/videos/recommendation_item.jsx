@@ -41,6 +41,7 @@ class RecommendationItem extends React.Component {
           <p className="recommendation-uploader">{this.state.uploader.username}</p>
           <div className="recommendation-stats">
             <span className="recommendation-views">9.9m views</span>
+            <span>•</span>
             <span className="recommendation-date">{parseDate(this.props.video.created_at)}</span>
           </div>
         </div>

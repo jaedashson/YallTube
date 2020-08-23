@@ -1,7 +1,8 @@
 .recommendation-item {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
+  display: flex;
 }
 
 .recommendation-thumbnail {
@@ -10,12 +11,14 @@
 }
 
 .recommendation-info {
+  margin-left: 8px;
   display: flex;
   flex-direction: column;
 }
 
 .recommendation-title {
   color: #030303;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
 }
