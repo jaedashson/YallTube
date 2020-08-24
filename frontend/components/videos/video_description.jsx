@@ -33,7 +33,6 @@ class VideoDescription extends React.Component {
     }
   }
 
-  // Will this fix it?
   componentDidUpdate(prevProps) {
     // debugger
     // Don't update this.state if the likedVideoIds and dislikedVideoIds haven't changed
