@@ -5,7 +5,7 @@ import { parseDate, arraysEqual } from "../../util/videos_info_util";
 
 class VideoDescription extends React.Component {
   constructor(props) {
-    // debugger
+    debugger
     super(props);
     this.state = {
       liked: this.props.likedVideoIds.includes(this.props.video.id),
