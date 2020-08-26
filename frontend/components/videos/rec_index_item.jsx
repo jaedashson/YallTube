@@ -13,7 +13,7 @@ class RecIndexItem extends React.Component {
   componentDidMount() {
     // debugger
     this.props.fetchUser(this.props.video.uploader_id).then(action => {
-      debugger
+      // debugger
       this.setState({ uploader: action.user });
     });
   }
@@ -23,7 +23,7 @@ class RecIndexItem extends React.Component {
     if (!this.state.uploader) {
       return null;
     }
-    debugger
+    // debugger
     return (
       <Link to={`/videos/${this.props.video.id}`} className="rec-index-item">
         <div className="rec-thumbnail-container">

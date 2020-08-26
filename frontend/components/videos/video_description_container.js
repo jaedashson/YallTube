@@ -10,6 +10,8 @@ const mSTP = ({ session }, ownProps) => {
     currentUserId: session.id, // Is this string or integer?
     video: ownProps.video,
     uploader: ownProps.uploader,
+
+    // The below is added so that it can be determined whether the current user has voted on this video
     likedVideoIds: session.likedVideoIds,
     dislikedVideoIds: session.dislikedVideoIds
   };

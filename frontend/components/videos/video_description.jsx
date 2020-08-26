@@ -6,12 +6,13 @@ import { parseDate, arraysEqual } from "../../util/videos_info_util";
 class VideoDescription extends React.Component {
   constructor(props) {
     debugger
+
     super(props);
     this.state = {
       liked: this.props.likedVideoIds.includes(this.props.video.id),
       disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
-      likeCount: null,
-      dislikeCount: null
+      likeCount: this.props.video.likeCount,
+      dislikeCount: this.props.video.dislikeCount
     }
 
     this.handleClickLike = this.handleClickLike.bind(this);
@@ -20,6 +21,8 @@ class VideoDescription extends React.Component {
   };
 
   componentDidMount() {
+    debugger
+
     if (
       !this.state.likeCount &&
       !this.state.dislikeCount &&
@@ -34,7 +37,8 @@ class VideoDescription extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // debugger
+    debugger
+
     // Don't update this.state if the likedVideoIds and dislikedVideoIds haven't changed
     if (
       arraysEqual(prevProps.likedVideoIds, this.props.likedVideoIds) && arraysEqual(prevProps.dislikedVideoIds, this.props.dislikedVideoIds)
@@ -167,7 +171,7 @@ class VideoDescription extends React.Component {
   }
 
   render() {
-    // debugger
+    debugger
 
     // if (
     //   this.state.likeCount === (null || undefined) ||
@@ -181,7 +185,9 @@ class VideoDescription extends React.Component {
     const dislikeStatus = this.props.dislikedVideoIds.includes(this.props.video.id) ? "voted" : "";
     // const likeCount = this.props.video.likeCount.toString();
     // const dislikeCount = this.props.video.dislikeCount.toString();
+
     debugger
+
     return (
       <div className="video-description-container">
         <div className="video-description-header">
@@ -196,9 +202,9 @@ class VideoDescription extends React.Component {
             </div>
             <div className="video-likes-container">
               <FontAwesomeIcon icon="thumbs-up" className={`video-likes-item thumb ${likeStatus}`} onClick={this.handleClickLike} />
-              <p className="video-likes-item video-vote-count">like count: {this.state.likeCount}</p>
+              <p className="video-likes-item video-vote-count">LIKE {this.state.likeCount}</p>
               <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} onClick={this.handleDislike} />
-              <p className="video-likes-item video-vote-count">dislike count: {this.state.dislikeCount}</p>
+              <p className="video-likes-item video-vote-count">DISLIKE {this.state.dislikeCount}</p>
             </div>
           </div>
         </div>
