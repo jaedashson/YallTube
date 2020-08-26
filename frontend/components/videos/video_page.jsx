@@ -17,8 +17,6 @@ class VideoPage extends React.Component {
     this.props.fetchVideo(this.props.videoId).then(action => {
       // debugger
       return this.props.fetchUser(action.video.uploader_id);
-    }).then(res => {
-      return this.props.refresh(this.props.currentUserId);
     })
 
     // debugger
