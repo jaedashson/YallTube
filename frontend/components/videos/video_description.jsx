@@ -16,7 +16,7 @@ class VideoDescription extends React.Component {
     }
 
     this.handleClickLike = this.handleClickLike.bind(this);
-    this.handleDislike = this.handleDislike.bind(this);
+    this.handleClickDislike = this.handleClickDislike.bind(this);
     this.handleSubscribe = this.handleSubscribe.bind(this);
   };
 
@@ -113,7 +113,7 @@ class VideoDescription extends React.Component {
     }
   }
 
-  handleDislike(e) {
+  handleClickDislike(e) {
     // debugger
     e.preventDefault();
 
@@ -203,7 +203,7 @@ class VideoDescription extends React.Component {
             <div className="video-likes-container">
               <FontAwesomeIcon icon="thumbs-up" className={`video-likes-item thumb ${likeStatus}`} onClick={this.handleClickLike} />
               <p className="video-likes-item video-vote-count">LIKE {this.state.likeCount}</p>
-              <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} onClick={this.handleDislike} />
+              <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} onClick={this.handleClickDislike} />
               <p className="video-likes-item video-vote-count">DISLIKE {this.state.dislikeCount}</p>
             </div>
           </div>
