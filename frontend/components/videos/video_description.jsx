@@ -178,7 +178,7 @@ class VideoDescription extends React.Component {
     debugger
 
     return (
-      <div className="video-description-container">
+      <div className="video-description">
         <div className="video-description-header">
           <div className="video-title">
             <p className="video-title-text">{this.props.video.title}</p>
@@ -187,12 +187,12 @@ class VideoDescription extends React.Component {
             <div className="video-views-date-container">
               <p className="video-views">9,999,999 views</p>
               <p className="video-views-date-divider">•</p>
-              <p className="video-date">{uploadDate}</p>
+              <p className="video-date">{this.state.uploadDate}</p>
             </div>
             <div className="video-likes-container">
-              <FontAwesomeIcon icon="thumbs-up" className={`video-likes-item thumb ${likeStatus}`} onClick={this.handleClickLike} />
+              <FontAwesomeIcon icon="thumbs-up" className={"video-likes-item thumb " + (this.state.liked ? "voted" : "")} onClick={this.handleClickLike} />
               <p className="video-likes-item video-vote-count">LIKE {this.state.likeCount}</p>
-              <FontAwesomeIcon icon="thumbs-down" className={`video-likes-item thumb ${dislikeStatus}`} onClick={this.handleClickDislike} />
+              <FontAwesomeIcon icon="thumbs-down" className={"video-likes-item thumb " + (this.state.disliked ? "voted" : "")} onClick={this.handleClickDislike} />
               <p className="video-likes-item video-vote-count">DISLIKE {this.state.dislikeCount}</p>
             </div>
           </div>
