@@ -1,5 +1,6 @@
 .video-description {
   margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -7,126 +8,39 @@
 .video-description-header {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
 }
 
 .video-title {
-  display: flex;
-}
-
-.video-title-text {
-  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 400;
   color: #030303;
 }
 
-.video-info {
+.video-stats-container {
+  margin-top: 20px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 
-.video-views-date-container {
-  margin-top: 16px;
+.video-views-date {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: #606060;
-}
-
-.video-views-date-divider {
-  margin-left: 4px;
-}
-
-.video-date {
-  margin-left: 4px;
 }
 
 .video-likes-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: #909090;
-  font-size: 13px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.thumb {
   color: #909090;
   font-size: 16px;
+}
+
+.video-thumb {
   cursor: pointer;
 }
 
-.voted {
-  color: #065FD4;
-}
-
 .video-vote-count {
-  color: #606060;
-  font-size: 13px;
-  font-weight: 500;
-  font-family: 'Roboto', sans-serif;
+
 }
 
-.video-likes-item {
-  margin: 0px 4px;
-}
-
-.video-description-body-container {
-  border-top: 1px solid #ccc;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: top;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 20px;
-}
-
-.video-description-body-left {
-  display: flex;
-  flex-direction: row;
-}
-
-.video-description-body {
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.uploader-username {
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  color: #303030;
-}
-
-.uploader-subscriber-count {
-  margin-top: 4px;
-  font-size: 13px;
-  font-family: 'Roboto', sans-serif;
-  color: #606060;
-}
-
-.video-description-text {
-  margin-top: 34px;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  color: #303030;
-}
-
-.uploader-subscribe-button {
-  width: 105px;
-  height: 36px;
-  background-color: #cc0000;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  font-size: 14px;
-  border-radius: 2px;
-  border: none;
-  font-weight: 500;
-  outline: none;
+.video-voted {
+  color: #065FD4;
 }

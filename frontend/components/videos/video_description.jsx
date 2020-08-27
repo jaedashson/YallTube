@@ -67,8 +67,10 @@ class VideoDescription extends React.Component {
   }
 
   handleClickLike(e) {
-    debugger
+    // debugger
     e.preventDefault();
+
+    // return // DEBUGGER
 
     // If current user has not voted on this video
     // Create a like
@@ -118,8 +120,10 @@ class VideoDescription extends React.Component {
   }
 
   handleClickDislike(e) {
-    debugger
+    // debugger
     e.preventDefault();
+
+    // return // DEBUG
 
     // If current user has not voted on this video
     // Create a dislike
@@ -180,38 +184,31 @@ class VideoDescription extends React.Component {
     return (
       <div className="video-description">
         <div className="video-description-header">
-          <div className="video-title">
-            <p className="video-title-text">{this.props.video.title}</p>
-          </div>
-          <div className="video-info">
-            <div className="video-views-date-container">
-              <p className="video-views">9,999,999 views</p>
-              <p className="video-views-date-divider">•</p>
-              <p className="video-date">{this.state.uploadDate}</p>
-            </div>
+          <p className="video-title">{this.props.video.title}</p>
+          <div className="video-stats-container">
+            <span className="video-views-date">10m views • {this.state.uploadDate}</span>
             <div className="video-likes-container">
-              <FontAwesomeIcon icon="thumbs-up" className={"video-likes-item thumb " + (this.state.liked ? "voted" : "")} onClick={this.handleClickLike} />
-              <p className="video-likes-item video-vote-count">LIKE {this.state.likeCount}</p>
-              <FontAwesomeIcon icon="thumbs-down" className={"video-likes-item thumb " + (this.state.disliked ? "voted" : "")} onClick={this.handleClickDislike} />
-              <p className="video-likes-item video-vote-count">DISLIKE {this.state.dislikeCount}</p>
+              <FontAwesomeIcon icon="thumbs-up" className={"video-thumb " + (this.state.liked ? "video-voted" : "")} onClick={this.handleClickLike} />
+              <span className={"video-vote-count " + (this.state.liked ? "video-voted" : "")}>{this.state.likeCount} likes</span>
+              <FontAwesomeIcon icon="thumbs-down" className={"video-thumb " + (this.state.disliked ? "video-voted" : "")} onClick={this.handleClickDislike} />
+              <span className={"video-vote-count" + (this.state.disliked ? "video-voted" : "")}>{this.state.dislikeCount} dislikes</span>
             </div>
           </div>
         </div>
 
-        <div className="video-description-body-container">
-          <div className="video-description-body-left">
-            <div className="current-user-dropdown-icon">{this.props.uploader.username[0]}</div>
-            <div className="video-description-body">
-              <p className="uploader-username">{this.props.uploader.username}</p>
-              <p className="uploader-subscriber-count">30.4 M subscribers</p>
-              <p className="video-description-text">{this.props.video.description}</p>
-            </div>
+        <div className="video-description-divider"></div>
+
+        <div className="video-description-body">
+          <div className="video-uploader-icon">ICON</div>
+          <div className="video-description-main">
+            <p className="video-uploader"></p>
+            <p className="video-uploader-subscribers"></p>
+            <p className="video-description-text"></p>
           </div>
-          <div className="uploader-subscribe-button-container">
-            <button onClick={this.handleSubscribe} className="uploader-subscribe-button">SUBSCRIBE</button>
-          </div>
+          <button className="video-uploader-subscribe">Subscribe</button>
         </div>
       </div>
+
     )
   };
 }
