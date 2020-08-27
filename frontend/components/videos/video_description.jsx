@@ -9,6 +9,7 @@ class VideoDescription extends React.Component {
 
     super(props);
     this.state = {
+      uploadDate: parseDate(this.props.video.created_at),
       liked: this.props.likedVideoIds.includes(this.props.video.id),
       disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
       likeCount: this.props.video.likeCount,
@@ -174,14 +175,6 @@ class VideoDescription extends React.Component {
   }
 
   render() {
-    debugger
-
-    const uploadDate = parseDate(this.props.video.created_at);
-    const likeStatus = this.props.likedVideoIds.includes(this.props.video.id) ? "voted" : "";
-    const dislikeStatus = this.props.dislikedVideoIds.includes(this.props.video.id) ? "voted" : "";
-    // const likeCount = this.props.video.likeCount.toString();
-    // const dislikeCount = this.props.video.dislikeCount.toString();
-
     debugger
 
     return (
