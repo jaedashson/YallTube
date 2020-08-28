@@ -194,18 +194,19 @@ class VideoDescription extends React.Component {
               <span className={"video-vote-count" + (this.state.disliked ? "video-voted" : "")}>{this.state.dislikeCount} dislikes</span>
             </div>
           </div>
+          <div className="video-votes-bar-container"></div>
         </div>
 
-        <div className="video-description-divider"></div>
-
         <div className="video-description-body">
-          <div className="video-uploader-icon">ICON</div>
-          <div className="video-description-main">
-            <p className="video-uploader"></p>
-            <p className="video-uploader-subscribers"></p>
-            <p className="video-description-text"></p>
+          <div className="video-description-col">
+            <div className="video-uploader-icon">{this.props.uploader.username[0]}</div>
+            <div className="video-description-main">
+              <p className="video-uploader">{this.props.uploader.username}</p>
+              <p className="video-uploader-subscribers">29.4k subscribers</p>
+              <p className="video-description-text">{this.props.video.description}</p>
+            </div>
           </div>
-          <button className="video-uploader-subscribe">Subscribe</button>
+          <button className="video-uploader-subscribe">SUBSCRIBE</button>
         </div>
       </div>
 
