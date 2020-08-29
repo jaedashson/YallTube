@@ -26,45 +26,46 @@ class VideoDescription extends React.Component {
   componentDidMount() {
     debugger
 
-    // TODO - What does this mean?
-    if (
-      !this.state.likeCount &&
-      !this.state.dislikeCount &&
-      this.props.video.likeCount &&
-      this.props.video.dislikeCount
-    ) {
-      debugger
+    // TODO - What does this conditional even do?
+    // if (
+    //   !this.state.likeCount &&
+    //   !this.state.dislikeCount &&
+    //   this.props.video.likeCount &&
+    //   this.props.video.dislikeCount
+    // ) {
+    //   debugger
 
-      this.setState({
-        likeCount: this.props.video.likeCount,
-        dislikeCount: this.props.video.dislikeCount
-      })
-    }
+    //   this.setState({
+    //     likeCount: this.props.video.likeCount,
+    //     dislikeCount: this.props.video.dislikeCount
+    //   })
+    // }
   }
 
   componentDidUpdate(prevProps) {
     debugger
 
     // Don't update this.state if the likedVideoIds and dislikedVideoIds haven't changed
-    if (
-      arraysEqual(prevProps.likedVideoIds, this.props.likedVideoIds) && arraysEqual(prevProps.dislikedVideoIds, this.props.dislikedVideoIds)
-    ) {
-      debugger
-      return;
-    }
+    // if (
+    //   arraysEqual(prevProps.likedVideoIds, this.props.likedVideoIds) && arraysEqual(prevProps.dislikedVideoIds, this.props.dislikedVideoIds)
+    // ) {
+    //   debugger
+    //   return;
+    // }
     
     // Otherwise update this.state
-    else {
-      debugger
-      this.setState({
-        liked: this.props.likedVideoIds.includes(this.props.video.id),
-        disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
+    // else {
+    //   debugger
+    //   this.setState({
+    //     liked: this.props.likedVideoIds.includes(this.props.video.id),
+    //     disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
 
-        // remove the two lines below if it doesn't work
-        likeCount: this.props.video.likeCount,
-        dislikeCount: this.props.video.dislikeCount
-      });
-    }
+    //     // remove the two lines below if it doesn't work
+    //     likeCount: this.props.video.likeCount,
+    //     dislikeCount: this.props.video.dislikeCount
+    //   });
+    // }
+
     debugger
   }
 

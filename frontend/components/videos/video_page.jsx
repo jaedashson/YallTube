@@ -14,6 +14,7 @@ class VideoPage extends React.Component {
   componentDidMount() {
     debugger
 
+    // Fetch video then uploader
     this.props.fetchVideo(this.props.videoId).then(action => {
       debugger
       return this.props.fetchUser(action.video.uploader_id);
@@ -27,6 +28,7 @@ class VideoPage extends React.Component {
 
     // If videoId changed AND
     // If the video doesn't exist in Redux state
+    // i.e. When the user clicks on a different video
     if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
       this.props.fetchVideo(this.props.videoId).then(action => {
         debugger
