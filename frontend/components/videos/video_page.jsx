@@ -82,11 +82,11 @@ class VideoPage extends React.Component {
           </div>
 
           <div className="video-page-col-2">
-            <RecommendationsContainer
+            {/* <RecommendationsContainer
               videoId={this.props.videoId}
               fetchAllVideos={this.props.fetchVideo}
               fetchUser={this.props.fetchUser}
-            />
+            /> */}
           </div>
         </div>
       </div>
