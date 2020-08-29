@@ -33,6 +33,8 @@ class VideoDescription extends React.Component {
       this.props.video.likeCount &&
       this.props.video.dislikeCount
     ) {
+      debugger
+
       this.setState({
         likeCount: this.props.video.likeCount,
         dislikeCount: this.props.video.dislikeCount
