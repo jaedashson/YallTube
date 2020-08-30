@@ -10,8 +10,8 @@ class VideoDescription extends React.Component {
     super(props);
     this.state = {
       uploadDate: parseDate(this.props.video.created_at),
-      liked: this.props.likedVideoIds.includes(this.props.video.id),
-      disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
+      liked: this.props.liked,
+      disliked: this.props.disliked,
       likeCount: this.props.video.likeCount,
       dislikeCount: this.props.video.dislikeCount
     }
@@ -69,6 +69,10 @@ class VideoDescription extends React.Component {
     debugger
   }
 
+  // TODO - Make this update the state
+  // Increment this.state.likeCount
+  // Update this.state.like
+  // Behavior is consistent with styling
   handleClickLike(e) {
     // debugger
     e.preventDefault();
@@ -86,6 +90,12 @@ class VideoDescription extends React.Component {
       }).then(vote => {
         debugger // Inspect res
         return this.props.refresh(vote.voter_id);
+      }).then(user => {
+        debugger
+        this.setState({
+          liked: !this.state.liked,
+          likeCount: this.state.likeCount + 1
+        })
       })
 
     // If current user has already liked this video
@@ -98,6 +108,12 @@ class VideoDescription extends React.Component {
       }).then(vote => {
         debugger // Inspect res
         return this.props.refresh(vote.voter_id);
+      }).then(user => {
+        debugger
+        this.setState({
+          liked: !this.state.liked,
+          likeCount: this.state.likeCount - 1
+        })
       })
 
     // If current user has disliked this video
@@ -118,6 +134,14 @@ class VideoDescription extends React.Component {
       }).then(vote => {
         debugger
         return this.props.refresh(vote.voter_id);
+      }).then(user => {
+        debugger
+        this.setState({
+          liked: !this.state.liked,
+          disliked: !this.state.disliked,
+          likeCount: this.state.likeCount + 1,
+          dislikeCount: this.state.dislikeCount - 1
+        })
       })
     }
   }
@@ -139,6 +163,12 @@ class VideoDescription extends React.Component {
       }).then(vote => {
         debugger
         return this.props.refresh(vote.voter_id);
+      }).then(user => {
+        debugger
+        this.setState({
+          disliked: !this.state.disliked,
+          dislikeCount: this.state.dislikeCount + 1
+        })
       })
     }
 
@@ -152,6 +182,12 @@ class VideoDescription extends React.Component {
       }).then(vote => {
         debugger
         return this.props.refresh(vote.voter_id);
+      }).then(user => {
+        debugger
+        this.setState({
+          disliked: !this.state.disliked,
+          dislikeCount: this.state.dislikeCount - 1
+        })
       })
     }
 
@@ -173,6 +209,14 @@ class VideoDescription extends React.Component {
       }).then(vote => {
         debugger
         return this.props.refresh(vote.voter_id);
+      }).then(user => {
+        debugger
+        this.setState({
+          liked: !this.state.liked,
+          disliked: !this.state.disliked,
+          likeCount: this.state.likeCount - 1,
+          dislikeCount: this.state.dislikeCount + 1
+        })
       })
     }
   }
@@ -194,7 +238,7 @@ class VideoDescription extends React.Component {
               <FontAwesomeIcon icon="thumbs-up" className={"video-thumb " + (this.state.liked ? "video-voted" : "")} onClick={this.handleClickLike} />
               <span className={"video-vote-count " + (this.state.liked ? "video-voted" : "")}>{this.state.likeCount} likes</span>
               <FontAwesomeIcon icon="thumbs-down" className={"video-thumb " + (this.state.disliked ? "video-voted" : "")} onClick={this.handleClickDislike} />
-              <span className={"video-vote-count" + (this.state.disliked ? "video-voted" : "")}>{this.state.dislikeCount} dislikes</span>
+              <span className={"video-vote-count " + (this.state.disliked ? "video-voted" : "")}>{this.state.dislikeCount} dislikes</span>
             </div>
           </div>
           <div className="video-votes-bar-container"></div>

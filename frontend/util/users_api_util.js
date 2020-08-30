@@ -6,3 +6,7 @@ export const fetchUser = userId => {
   });
 };
 
+export const fetchVotedVideoIds = userId => {
+  // debugger
+  
+}
