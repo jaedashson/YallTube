@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-  validates :title, presence: true;
+  validates :title, presence: true
   
   has_one_attached :video
   has_one_attached :thumbnail
@@ -11,6 +11,10 @@ class Video < ApplicationRecord
   has_many :votes,
     foreign_key: :video_id,
     class_name: :VideoVote
+
+  has_many :comments,
+    foreign_key: :video_id,
+    class_name: :Comment
 
   def like_count
     self.votes.where(like: true).count
