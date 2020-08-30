@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_143738) do
+ActiveRecord::Schema.define(version: 2020_08_30_035144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 2020_06_10_143738) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "video_id", null: false
+    t.integer "parent_id"
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["created_at"], name: "index_comments_on_created_at"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_143738) do
     t.integer "uploader_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_videos_on_created_at"
     t.index ["title"], name: "index_videos_on_title"
     t.index ["uploader_id"], name: "index_videos_on_uploader_id"
   end
