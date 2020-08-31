@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate, arraysEqual } from "../../util/videos_info_util";
+import Comment from "./comment";
 
 class CommentsSection extends React.Component {
   constructor(props) {
@@ -14,19 +15,32 @@ class CommentsSection extends React.Component {
 
   componentDidMount() {
     this.props.fetchComments(this.props.videoId).then(action => {
+      debugger
       this.setState({ comments: action.comments });
     });
   }
 
-  renderCommentsList() {
+  renderComments() {
+    if (!this.state.comments) {
+      return null;
+    }
 
+    const comments = Object.values(this.state.comments).map(comment => {
+      return (
+        <Comment
+          comment={comment}
+        />
+      );
+    });
+
+    return comments;
   }
 
   render() {
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
-          <span className="comment-count">662 comments</span>
+          <span className="comment-count">663 comments</span>
           <button className="comment-sort-by">SORT BY</button>
         </div>
 
@@ -36,7 +50,9 @@ class CommentsSection extends React.Component {
           </form>
         </div>
 
-        
+        <div className="comments-list">
+          {this.renderComments()}
+        </div>
       </div>
     )
   }
