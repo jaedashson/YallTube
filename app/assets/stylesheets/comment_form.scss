@@ -1,4 +1,5 @@
 .comment-form {
+  margin-top: 28px;
   display: flex;
   flex-direction: row;
 }
@@ -19,12 +20,20 @@
 }
 
 .comment-form-main {
+  margin-left: 16px;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+.comment-form-input {
+  // width: 100%;
 }
 
 .comment-form-buttons {
+  margin-top: 8px;
   display: flex;
   flex-direction: row;
-  justify-content: right;
+  justify-content: flex-end
 }
