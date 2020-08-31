@@ -50,7 +50,7 @@ export const clearVideoErrors = () => {
   };
 };
 
-// thunk action creators
+// Thunk action creators
 
 export const fetchVideo = videoId => dispatch => {
   // debugger

@@ -53,9 +53,8 @@ library.add(
 
 // // Testing imports
 // import { fetchVideo } from "./actions/videos_actions";
-// import { fetchUser } from "./actions/users_actions";
-
-
+import { fetchUser } from "./actions/users_actions";
+import { fetchComments } from "./actions/comments_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -82,10 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // // window testing
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   // window.fetchVideo = fetchVideo;
-  // window.fetchUser = fetchUser;
+  window.fetchUser = fetchUser;
+  window.fetchComments = fetchComments;
 
 
   ReactDOM.render(<Root store={store} />, root);
