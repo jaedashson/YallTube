@@ -10,52 +10,52 @@ import ReactPlayer from "react-player";
 
 class VideoPage extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
     super(props);
   };
 
   componentDidMount() {
-    debugger
+    // debugger
 
     // Fetch video then uploader
     this.props.fetchVideo(this.props.videoId).then(action => {
-      debugger
+      // debugger
       return this.props.fetchUser(action.video.uploader_id);
     })
 
-    debugger
+    // debugger
   };
 
   componentDidUpdate(prevProps) {
-    debugger
+    // debugger
 
     // If videoId changed AND
     // If the video doesn't exist in Redux state
     // i.e. When the user clicks on a different video
     if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
       this.props.fetchVideo(this.props.videoId).then(action => {
-        debugger
+        // debugger
         return this.props.fetchUser(action.video.uploader_id);
       }).then(res => {
         return this.props.refresh(this.props.currentUserId);
       })
     }
 
-    debugger
+    // debugger
   }
 
   render() {
-    debugger
+    // debugger
 
     // Don't render if we don't have either video or uploader
     if (!this.props.video || !this.props.uploader) {
-      debugger
+      // debugger
       return null;
     }
 
     // Don't render if video doesn't match videoId
     if (this.props.videoId !== this.props.video.id) {
-      debugger
+      // debugger
       return null;
     }
 
@@ -63,7 +63,7 @@ class VideoPage extends React.Component {
     //   return null;
     // }
 
-    debugger
+    // debugger
     return (
       <div className="video-page-container">
         <div className="video-page">

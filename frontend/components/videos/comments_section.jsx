@@ -13,7 +13,13 @@ class CommentsSection extends React.Component {
   }
 
   componentDidMount() {
-    
+    this.props.fetchComments(this.props.videoId).then(action => {
+      this.setState({ comments: action.comments });
+    });
+  }
+
+  renderCommentsList() {
+
   }
 
   render() {
@@ -27,10 +33,10 @@ class CommentsSection extends React.Component {
         <div className="comment-submit">
           <div className="comment-submit-icon">{this.props.currentUser.username[0]}</div>
           <form className="comment-submit-form">
-
-
           </form>
         </div>
+
+        
       </div>
     )
   }

@@ -5,7 +5,7 @@ import { parseDate, arraysEqual } from "../../util/videos_info_util";
 
 class VideoDescription extends React.Component {
   constructor(props) {
-    debugger
+    // debugger
 
     super(props);
     this.state = {
@@ -20,11 +20,11 @@ class VideoDescription extends React.Component {
     this.handleClickDislike = this.handleClickDislike.bind(this);
     this.handleSubscribe = this.handleSubscribe.bind(this);
 
-    debugger
+    // debugger
   }
 
   componentDidMount() {
-    debugger
+    // debugger
 
     // TODO - What does this conditional even do?
     // if (
@@ -43,7 +43,7 @@ class VideoDescription extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger
+    // debugger
 
     // Don't update this.state if the likedVideoIds and dislikedVideoIds haven't changed
     // if (
@@ -66,7 +66,7 @@ class VideoDescription extends React.Component {
     //   });
     // }
 
-    debugger
+    // debugger
   }
 
   // TODO - Make this update the state
@@ -82,16 +82,16 @@ class VideoDescription extends React.Component {
     // If current user has not voted on this video
     // Create a like
     if (!this.state.liked && !this.state.disliked) {
-      debugger
+      // debugger
       this.props.createVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id,
         like: true
       }).then(vote => {
-        debugger // Inspect res
+        // debugger // Inspect res
         return this.props.refresh(vote.voter_id);
       }).then(user => {
-        debugger
+        // debugger
         this.setState({
           liked: !this.state.liked,
           likeCount: this.state.likeCount + 1
@@ -101,15 +101,15 @@ class VideoDescription extends React.Component {
     // If current user has already liked this video
     // Destroy the like
     } else if (this.state.liked) {
-      debugger
+      // debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id
       }).then(vote => {
-        debugger // Inspect res
+        // debugger // Inspect res
         return this.props.refresh(vote.voter_id);
       }).then(user => {
-        debugger
+        // debugger
         this.setState({
           liked: !this.state.liked,
           likeCount: this.state.likeCount - 1
@@ -120,22 +120,22 @@ class VideoDescription extends React.Component {
     // Destroy the dislike
     // Create a like
     } else if (this.state.disliked) {
-      debugger
+      // debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id
       }).then(vote => {
-        debugger
+        // debugger
         return this.props.createVideoVote({
           voter_id: vote.voter_id,
           video_id: vote.video_id,
           like: true
         });
       }).then(vote => {
-        debugger
+        // debugger
         return this.props.refresh(vote.voter_id);
       }).then(user => {
-        debugger
+        // debugger
         this.setState({
           liked: !this.state.liked,
           disliked: !this.state.disliked,
@@ -155,16 +155,16 @@ class VideoDescription extends React.Component {
     // If current user has not voted on this video
     // Create a dislike
     if (!this.state.liked && !this.state.disliked) {
-      debugger
+      // debugger
       this.props.createVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id,
         like: false
       }).then(vote => {
-        debugger
+        // debugger
         return this.props.refresh(vote.voter_id);
       }).then(user => {
-        debugger
+        // debugger
         this.setState({
           disliked: !this.state.disliked,
           dislikeCount: this.state.dislikeCount + 1
@@ -175,15 +175,15 @@ class VideoDescription extends React.Component {
     // If current user has already disliked this video
     // Destroy the dislike
     else if (this.state.disliked) {
-      debugger
+      // debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id
       }).then(vote => {
-        debugger
+        // debugger
         return this.props.refresh(vote.voter_id);
       }).then(user => {
-        debugger
+        // debugger
         this.setState({
           disliked: !this.state.disliked,
           dislikeCount: this.state.dislikeCount - 1
@@ -195,22 +195,22 @@ class VideoDescription extends React.Component {
     // Destroy the like
     // Create a dislike
     else if (this.state.liked) {
-      debugger
+      // debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.video.id
       }).then(vote => {
-        debugger
+        // debugger
         return this.props.createVideoVote({
           voter_id: vote.voter_id,
           video_id: vote.video_id,
           like: false
         });
       }).then(vote => {
-        debugger
+        // debugger
         return this.props.refresh(vote.voter_id);
       }).then(user => {
-        debugger
+        // debugger
         this.setState({
           liked: !this.state.liked,
           disliked: !this.state.disliked,
@@ -226,7 +226,7 @@ class VideoDescription extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger
 
     return (
       <div className="video-description">

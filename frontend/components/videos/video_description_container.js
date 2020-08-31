@@ -5,7 +5,7 @@ import { refresh } from "../../actions/session_actions";
 
 // This needs to listen to the video's like and dislike count
 const mSTP = ({ session }, ownProps) => {
-  debugger
+  // debugger
   return {
     currentUserId: session.id, // Is this string or integer?
     video: ownProps.video,
