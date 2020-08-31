@@ -19,7 +19,7 @@ class CommentForm extends React.Component {
   }
 
   handleCancel() {
-
+    
   }
 
   handleSubmit() {
@@ -32,7 +32,7 @@ class CommentForm extends React.Component {
       <div className="comment-form-icon">{this.props.currentUser.username[0]}</div>
       <div className="comment-form-main">
         <textarea
-          className="comment-form-body"
+          className="comment-form-input"
           placeholder="Add a public comment..."
           value={this.state.body}
           onChange={this.updateBody()}
