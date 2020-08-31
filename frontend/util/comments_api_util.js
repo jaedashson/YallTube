@@ -1,8 +1,10 @@
-export const createComment = comment => {
+export const createComment = formData => {
   return $.ajax({
     method: "POST",
     url: "/api/comments",
-    data: { comment: comment }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 

@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoDescriptionContainer from "./video_description_container";
 import RecommendationsContainer from "./recommendations_container";
+import CommentsSectionContainer from "./comments_section_container";
+
+
 import ReactPlayer from "react-player";
 
 class VideoPage extends React.Component {
@@ -81,6 +84,11 @@ class VideoPage extends React.Component {
               video={this.props.video}
               uploader={this.props.uploader}
             />
+
+            <CommentsSectionContainer
+              videoId={this.props.videoId}
+            />
+
           </div>
 
           <div className="video-page-col-2">

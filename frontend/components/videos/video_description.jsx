@@ -21,7 +21,7 @@ class VideoDescription extends React.Component {
     this.handleSubscribe = this.handleSubscribe.bind(this);
 
     debugger
-  };
+  }
 
   componentDidMount() {
     debugger
