@@ -15,7 +15,7 @@ class CommentsSection extends React.Component {
 
   componentDidMount() {
     this.props.fetchComments(this.props.videoId).then(action => {
-      debugger
+      // debugger
       this.setState({ comments: action.comments });
     });
   }
@@ -28,6 +28,7 @@ class CommentsSection extends React.Component {
     const comments = Object.values(this.state.comments).map(comment => {
       return (
         <Comment
+          key={comment.id}
           comment={comment}
         />
       );

@@ -16,10 +16,10 @@ class Comment extends React.Component {
   render() {
     return (
       <div className="comment">
-        <div className="comment-author-icon">{this.props.comment.author_id}</div>
+        <div className="comment-author-icon">{this.props.comment.authorUsername[0]}</div>
         <div className="comment-main">
           <div className="comment-author-date">
-            <span className="comment-author">Author</span>
+            <span className="comment-author">{this.props.comment.authorUsername}</span>
             <span className="comment-date">{this.state.uploadDate}</span>
           </div>
           <p className="comment-body">{this.props.comment.body}</p>

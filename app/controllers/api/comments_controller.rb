@@ -4,7 +4,9 @@ class Api::CommentsController < ApplicationController
   # Get all the comments for this video
   # GET /api/videos/:video_id/comments
   def index
-    @comments = Comment.where(video_id: params[:video_id]) 
+    @comments = Comment.where(video_id: params[:video_id]).includes(:author)
+
+    debugger
 
     render :index
   end
@@ -12,7 +14,7 @@ class Api::CommentsController < ApplicationController
   # Create a comment for this video
   # POST /api/comments
   def create
-    debugger
+    # debugger
 
     @comment = Comment.new(comment_params)
 
