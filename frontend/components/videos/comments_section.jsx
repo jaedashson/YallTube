@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate, arraysEqual } from "../../util/videos_info_util";
 import Comment from "./comment";
+import CommentForm from "./comment_form";
 
 class CommentsSection extends React.Component {
   constructor(props) {
@@ -45,11 +46,7 @@ class CommentsSection extends React.Component {
           <button className="comment-sort-by">SORT BY</button>
         </div>
 
-        <div className="comment-submit">
-          <div className="comment-submit-icon">{this.props.currentUser.username[0]}</div>
-          <form className="comment-submit-form">
-          </form>
-        </div>
+        <CommentForm currentUser={this.props.currentUser} videoId={this.props.videoId} />
 
         <div className="comments-list">
           {this.renderComments()}
