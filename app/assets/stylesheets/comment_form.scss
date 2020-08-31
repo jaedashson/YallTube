@@ -20,5 +20,11 @@
 
 .comment-form-main {
   display: flex;
+  flex-direction: column;
+}
+
+.comment-form-buttons {
+  display: flex;
   flex-direction: row;
+  justify-content: right;
 }
