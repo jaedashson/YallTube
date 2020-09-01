@@ -11,17 +11,11 @@ class ReplyForm extends React.Component {
       body: "",
     };
 
-    this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   updateBody() {
     return e => this.setState({ body: e.currentTarget.value });
-  }
-
-  handleCancel(e) {
-    e.preventDefault();
-    this.setState({ body: "" });
   }
 
   handleSubmit(e) {
@@ -50,10 +44,12 @@ class ReplyForm extends React.Component {
           <div className="reply-form-buttons">
             <button
               className="reply-form-cancel"
-              onClick={this.handleCancel}
+              onClick={this.props.handleHideReplyForm}
             >CANCEL</button>
-            
-
+            <button
+              className="reply-form-submit"
+              onClick={this.handleSubmit}
+            >REPLY</button>
           </div>
         </div>
       </form>
