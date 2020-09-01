@@ -8,7 +8,7 @@ class CommentForm extends React.Component {
       author_id: this.props.currentUser.id,
       video_id: this.props.videoId,
       body: "",
-    }
+    };
 
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
