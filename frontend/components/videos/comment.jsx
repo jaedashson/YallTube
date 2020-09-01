@@ -35,7 +35,7 @@ class Comment extends React.Component {
           parentId={this.props.comment.id}
           currentUser={this.props.currentUser}
           videoId={this.props.videoId}
-          handleHideReplyForm={this.props.handleHideReplyForm}
+          handleHideReplyForm={this.handleHideReplyForm}
         />
       )
     }

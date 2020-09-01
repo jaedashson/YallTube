@@ -7,7 +7,6 @@ const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
     parentId: ownProps.parentId,
     currentUser: ownProps.currentUser,
     videoId: ownProps.videoId,
-    handleHideReplyForm: ownProps.handleHideReplyForm
   };
 };
 
