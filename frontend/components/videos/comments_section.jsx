@@ -10,8 +10,6 @@ class CommentsSection extends React.Component {
     this.state = {
       comments: null,
       commentCount: 0,
-      submitBody: "",
-      displayForm: true
     }
   }
 

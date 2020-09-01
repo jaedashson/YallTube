@@ -6,7 +6,7 @@ const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
   // debugger
   return {
     currentUser: users[session.id],
-    videoId: ownProps.videoId,
+    // videoId: ownProps.videoId,
     comments: comments
   };
 };
