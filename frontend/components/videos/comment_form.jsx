@@ -13,7 +13,7 @@ class CommentForm extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  
   updateBody() {
     return e => this.setState({ body: e.currentTarget.value });
   }

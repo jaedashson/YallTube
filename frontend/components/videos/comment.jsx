@@ -14,6 +14,10 @@ class Comment extends React.Component {
   }
 
   render() {
+    if (!this.props.comment) {
+      return null;
+    }
+
     return (
       <div className="comment">
         <div className="comment-author-icon">{this.props.comment.authorUsername[0]}</div>

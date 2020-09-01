@@ -9,6 +9,7 @@ class CommentsSection extends React.Component {
     super(props);
     this.state = {
       comments: null,
+      commentCount: 0,
       submitBody: "",
       displayForm: true
     }
@@ -17,12 +18,31 @@ class CommentsSection extends React.Component {
   componentDidMount() {
     this.props.fetchComments(this.props.videoId).then(action => {
       // debugger
-      this.setState({ comments: action.comments });
+      this.setState({
+        comments: action.comments,
+        commentCount: Object.keys(action.comments).length
+      });
     });
   }
 
+  componentDidUpdate(prevProps) {
+    // debugger
+
+    // If there are new comments
+    if (prevProps.comments !== this.props.comments) {
+      debugger
+
+      this.setState({
+        comments: this.props.comments,
+        commentCount: Object.keys(this.props.comments).length
+      });
+    }
+
+    // debugger
+  }
+
   renderComments() {
-    if (!this.state.comments) {
+    if (!this.props.comments) {
       return null;
     }
 
@@ -35,14 +55,20 @@ class CommentsSection extends React.Component {
       );
     });
 
+    debugger
+
     return comments;
   }
 
   render() {
+    if (!this.state.comments) {
+      return null;
+    }
+
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
-          <span className="comment-count">663 comments</span>
+          <span className="comment-count">{this.state.commentCount} Comments</span>
           <button className="comment-sort-by">SORT BY</button>
         </div>
 
