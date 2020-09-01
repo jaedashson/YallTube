@@ -10,7 +10,8 @@ class CommentsSection extends React.Component {
     this.state = {
       comments: null,
       commentCount: 0,
-    }
+      sortBy: "newest-first"
+    };
   }
 
   componentDidMount() {
@@ -39,12 +40,40 @@ class CommentsSection extends React.Component {
     // debugger
   }
 
-  renderComments() {
+  // Sort comments
+  renderParentComments() {
     if (!this.props.comments) {
       return null;
     }
 
-    const comments = Object.values(this.state.comments).map(comment => {
+    // THIS WORKS!
+    // const comments = Object.values(this.state.comments).map(comment => {
+    //   return (
+    //     <Comment
+    //       key={comment.id}
+    //       comment={comment}
+    //       currentUser={this.props.currentUser}
+    //       videoId={this.props.videoId}
+    //     />
+    //   );
+    // });
+    // return comments
+
+    let parentComments = null;
+
+    // Sort parent comments by number of votes
+    if (this.state.sortBy === "top-first") {
+      
+    } 
+    
+    // Sort parent comments by newest first
+    else if (this.state.sortBy === "newest-first") {
+      parentComments = Object.values(this.state.comments)
+        .filter(comment => !comment.parent_id)
+        .sort((a, b) => b.created_at > a.created_at);
+    }
+
+    return parentComments.map(comment => {
       return (
         <Comment
           key={comment.id}
@@ -52,12 +81,8 @@ class CommentsSection extends React.Component {
           currentUser={this.props.currentUser}
           videoId={this.props.videoId}
         />
-      );
-    });
-
-    // debugger
-
-    return comments;
+      )
+    })
   }
 
   render() {
@@ -75,7 +100,7 @@ class CommentsSection extends React.Component {
         <CommentFormContainer currentUser={this.props.currentUser} videoId={this.props.videoId} />
 
         <div className="comments-list">
-          {this.renderComments()}
+          {this.renderParentComments()}
         </div>
       </div>
     )
@@ -83,3 +108,18 @@ class CommentsSection extends React.Component {
 }
 
 export default CommentsSection;
+
+
+/*
+
+comments: {
+  1: {
+    id: 1,
+    children: [{...},{...}]
+  }
+  2:
+  3:
+}
+
+
+*/

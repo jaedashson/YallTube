@@ -12,7 +12,6 @@ class ReplyForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    debugger
   }
 
   updateBody() {
@@ -20,7 +19,6 @@ class ReplyForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append("comment[author_id]", this.state.author_id);

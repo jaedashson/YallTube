@@ -6,16 +6,12 @@ class Api::CommentsController < ApplicationController
   def index
     @comments = Comment.where(video_id: params[:video_id]).includes(:author)
 
-    # debugger
-
     render :index
   end
 
   # Create a comment for this video
   # POST /api/comments
   def create
-    # debugger
-
     @comment = Comment.new(comment_params)
 
     if @comment.save
