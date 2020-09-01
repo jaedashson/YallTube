@@ -30,7 +30,7 @@ class CommentsSection extends React.Component {
 
     // If there are new comments
     if (prevProps.comments !== this.props.comments) {
-      debugger
+      // debugger
 
       this.setState({
         comments: this.props.comments,
@@ -57,7 +57,7 @@ class CommentsSection extends React.Component {
       );
     });
 
-    debugger
+    // debugger
 
     return comments;
   }

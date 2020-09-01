@@ -5,13 +5,14 @@ class ReplyForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      parent_id: this.props.parentId,
       author_id: this.props.currentUser.id,
       video_id: this.props.videoId,
-      parent_id: this.props.commentId,
       body: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    debugger
   }
 
   updateBody() {
@@ -19,6 +20,7 @@ class ReplyForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append("comment[author_id]", this.state.author_id);

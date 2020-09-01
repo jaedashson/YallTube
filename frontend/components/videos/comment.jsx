@@ -32,6 +32,7 @@ class Comment extends React.Component {
     if (this.state.showReplyForm) {
       return (
         <ReplyFormContainer
+          parentId={this.props.comment.id}
           currentUser={this.props.currentUser}
           videoId={this.props.videoId}
           handleHideReplyForm={this.props.handleHideReplyForm}
