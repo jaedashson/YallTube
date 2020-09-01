@@ -1,5 +1,6 @@
 import {
-  RECEIVE_COMMENTS
+  RECEIVE_COMMENTS,
+  RECEIVE_COMMENT
 } from "../actions/comments_actions";
 
 const commentsReducer = (state = {}, action) => {
@@ -9,6 +10,8 @@ const commentsReducer = (state = {}, action) => {
       let newState = {};
       action.comments.forEach(comment => newState[comment.id] = comment);
       return newState;
+    case RECEIVE_COMMENT:
+      return Object.assign({}, state, { [action.comment.id]: action.comment });
     default:
       return state;
   }

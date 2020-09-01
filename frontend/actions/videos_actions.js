@@ -7,8 +7,6 @@ export const RECEIVE_VIDEO_ERRORS = "RECEIVE_VIDEO_ERRORS";
 export const CLEAR_VIDEO_ERRORS = "CLEAR_VIDEO_ERRORS";
 export const CREATE_VIDEO = "CREATE_VIDEO";
 
-export const videosActionsTest = "yo"; // TESTING
-
 // POJO action creators
 
 export const receiveVideo = video => {

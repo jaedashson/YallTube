@@ -84,7 +84,7 @@ class UploadPage extends React.Component {
     // debugger
     this.props.createVideo(formData).then(action => {
       // debugger
-      this.setState({ uploadedVideo: action.video })
+      this.setState({ uploadedVideo: action.video });
     }); // Needs a then callback to update this.state with the data of the video we just got
   }
 
@@ -248,14 +248,10 @@ class UploadPage extends React.Component {
           <div className="upload-options-container">
             <button onClick={this.handleUploadCancel}
               className="cancel-button"
-            >
-              Cancel
-            </button>
+            >Cancel</button>
             <button onClick={this.handleUpload}
               className="publish-button"
-            >
-              Publish
-            </button>
+            >Publish</button>
           </div>
         </div>
       );

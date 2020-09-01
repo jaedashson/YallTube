@@ -18,12 +18,20 @@ class CommentForm extends React.Component {
     return e => this.setState({ body: e.currentTarget.value });
   }
 
-  handleCancel() {
-    
+  handleCancel(e) {
+    e.preventDefault();
+    this.setState({ body: "" });
   }
 
-  handleSubmit() {
-
+  handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("comment[author_id]", this.state.author_id);
+    formData.append("comment[video_id]", this.state.video_id);
+    formData.append("comment[body]", this.state.body);
+    this.props.createComment(formData).then(action => {
+      this.setState({ body: "" });
+    });
   }
 
   render() {
@@ -38,9 +46,14 @@ class CommentForm extends React.Component {
           onChange={this.updateBody()}
         />
         <div className="comment-form-buttons">
-          <button className="comment-form-cancel">CANCEL</button>
-          <button className="comment-form-submit">COMMENT</button>
-
+          <button
+            className="comment-form-cancel"
+            onClick={this.handleCancel}
+          >CANCEL</button>
+          <button
+            className="comment-form-submit"
+            onClick={this.handleSubmit}
+          >COMMENT</button>
         </div>
       </div>
     </form>
