@@ -15,6 +15,10 @@ class ReplyForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  updateBody() {
+    return e => this.setState({ body: e.currentTarget.value });
+  }
+
   handleCancel(e) {
     e.preventDefault();
     this.setState({ body: "" });
@@ -35,10 +39,23 @@ class ReplyForm extends React.Component {
   render() {
     return (
       <form className="reply-form">
+        <div className="reply-form-icon">{this.props.currentUser.username[0]}</div>
+        <div className="reply-form-main">
+          <textarea
+            className="reply-form-input"
+            placeholder="Add a public reply..."
+            value={this.state.body}
+            onChange={this.updateBody()}
+          />
+          <div className="reply-form-buttons">
+            <button
+              className="reply-form-cancel"
+              onClick={this.handleCancel}
+            >CANCEL</button>
+            
 
-
-
-
+          </div>
+        </div>
       </form>
     )
   }

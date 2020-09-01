@@ -51,6 +51,8 @@ class CommentsSection extends React.Component {
         <Comment
           key={comment.id}
           comment={comment}
+          currentUser={this.props.currentUser}
+          videoId={this.props.videoId}
         />
       );
     });

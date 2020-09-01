@@ -5,7 +5,8 @@ import { createComment } from "../../actions/comments_actions";
 const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
   return {
     currentUser: ownProps.currentUser,
-    videoId: ownProps.videoId
+    videoId: ownProps.videoId,
+    handleHideReplyForm: ownProps.handleHideReplyForm
   };
 };
 

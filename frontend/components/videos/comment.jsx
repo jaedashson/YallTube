@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate } from "../../util/videos_info_util";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReplyFormContainer from "./reply_form_container";
 
 class Comment extends React.Component {
   constructor(props) {
@@ -9,7 +10,33 @@ class Comment extends React.Component {
     this.state = {
       uploadDate: parseDate(this.props.comment.created_at),
       liked: false,
-      disliked: false
+      disliked: false,
+      showReplyForm: false
+    };
+
+    this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
+    this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
+  }
+
+  handleShowReplyForm(e) {
+    e.preventDefault();
+    this.setState({ showReplyForm: true });
+  }
+
+  handleHideReplyForm(e) {
+    e.preventDefault();
+    this.setState({ showReplyForm: false });
+  }
+
+  renderReplyForm() {
+    if (this.state.showReplyForm) {
+      return (
+        <ReplyFormContainer
+          currentUser={this.props.currentUser}
+          videoId={this.props.videoId}
+          handleHideReplyForm={this.props.handleHideReplyForm}
+        />
+      )
     }
   }
 
@@ -31,8 +58,12 @@ class Comment extends React.Component {
             <FontAwesomeIcon icon="thumbs-up" className={"comment-thumb " + (this.state.liked ? "comment-voted" : "")}/>
             <span className="comment-score">68</span>
             <FontAwesomeIcon icon="thumbs-down" className={"comment-thumb comment-thumb-down " + (this.state.disliked ? "comment-voted" : "")} />
-            <span className="comment-reply-button">REPLY</span>
+            <button
+              className="comment-reply-button"
+              onClick={this.handleShowReplyForm}
+            >REPLY</button>
           </div>
+          {this.renderReplyForm()}
         </div>
       </div>
     )
