@@ -8,7 +8,7 @@ export const createComment = formData => {
   });
 };
 
-export const fetchComments = videoId => {
+export const fetchParentComments = videoId => {
   return $.ajax({
     method: "GET",
     url: `/api/videos/${videoId}/comments`

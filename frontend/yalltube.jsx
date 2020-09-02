@@ -54,7 +54,7 @@ library.add(
 // // Testing imports
 // import { fetchVideo } from "./actions/videos_actions";
 import { fetchUser } from "./actions/users_actions";
-import { fetchComments } from "./actions/comments_actions";
+import { fetchParentComments } from "./actions/comments_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
   // window.fetchVideo = fetchVideo;
   window.fetchUser = fetchUser;
-  window.fetchComments = fetchComments;
+  window.fetchParentComments = fetchParentComments;
 
 
   ReactDOM.render(<Root store={store} />, root);

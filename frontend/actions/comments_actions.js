@@ -23,8 +23,8 @@ export const receiveComment = comment => {
 // Thunk action creators
 
 // TODO - Write error action creators
-export const fetchComments = videoId => dispatch => {
-  return APIUtil.fetchComments(videoId).then(comments => {
+export const fetchParentComments = videoId => dispatch => {
+  return APIUtil.fetchParentComments(videoId).then(comments => {
     return dispatch(receiveComments(comments));
   });
 };

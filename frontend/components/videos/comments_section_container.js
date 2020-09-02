@@ -1,6 +1,6 @@
 import CommentsSection from "./comments_section";
 import { connect } from "react-redux";
-import { fetchComments } from "../../actions/comments_actions";
+import { fetchParentComments } from "../../actions/comments_actions";
 
 const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
   // debugger
@@ -13,7 +13,7 @@ const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    fetchComments: videoId => dispatch(fetchComments(videoId)),
+    fetchParentComments: videoId => dispatch(fetchParentComments(videoId)),
   };
 };
 

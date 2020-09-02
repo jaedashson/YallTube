@@ -15,7 +15,7 @@ class CommentsSection extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchComments(this.props.videoId).then(action => {
+    this.props.fetchParentComments(this.props.videoId).then(action => {
       // debugger
       this.setState({
         comments: action.comments,
