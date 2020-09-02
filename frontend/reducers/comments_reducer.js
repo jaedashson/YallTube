@@ -7,19 +7,25 @@ import {
 
 const commentsReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState = null;
+  let parentCommentId = null;
   switch (action.type) {
     case RECEIVE_PARENT_COMMENTS:
-      // debugger
-      let newState = {};
-      // Object.keys(action.comments).forEach(commentId => newState[commentId] = action.comments[commentId]);
+      newState = {};
       action.comments.forEach(comment => newState[comment.id] = comment);
+      return newState;
+    case RECEIVE_REPLIES:
+      newState = Object.assign({}, state);
+      parentCommentId = action.comments[0].parent_id;
+      newState[parentCommentId]["replies"] = {};
+      action.comments.forEach(comment => newState[parentCommentId]["replies"][comment.id] = comment);
       return newState;
     case RECEIVE_PARENT_COMMENT:
       return Object.assign({}, state, { [action.comment.id]: action.comment });
-    case RECEIVE_REPLIES:
-      // Nest within parent comment
     case RECEIVE_REPLY:
-      // Nest within parent comment
+      newState = Object.assign({}, state);
+      newState[action.comment.parent_id]["replies"][action.comment.id] = action.comment;
+      return newState;
     default:
       return state;
   }
