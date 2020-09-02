@@ -4,6 +4,7 @@ export const RECEIVE_PARENT_COMMENTS = "RECEIVE_PARENT_COMMENTS";
 export const RECEIVE_PARENT_COMMENT = "RECEIVE_PARENT_COMMENT";
 export const RECEIVE_REPLIES = "RECEIVE_REPLIES";
 export const RECEIVE_REPLY = "RECEIVE_REPLY";
+export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 
 // POJO action creators
 
@@ -31,6 +32,13 @@ export const receiveReplies = comments => {
 export const receiveReply = comment => {
   return {
     type: RECEIVE_REPLY,
+    comment
+  };
+};
+
+export const receiveComment = comment => {
+  return {
+    type: RECEIVE_COMMENT,
     comment
   };
 };
