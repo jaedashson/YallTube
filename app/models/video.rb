@@ -23,6 +23,10 @@ class Video < ApplicationRecord
   def dislike_count
     self.votes.where(like: false).count
   end
+
+  def comment_count
+    self.comments.count
+  end
     
   # # Likes/dislikes MVP
   # has_many :votes,
