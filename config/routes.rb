@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :videos, only: [:index, :show, :create] do
       resources :video_votes, only: [:index]
-      resources :comments, only: [:index]
+      resources :comments, only: [:index] # Get parent comments of a video
     end
     resources :video_votes, only: [:create]
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      resources :comments, only: [:index] # Get children comments of a parent comment
+    end
 
     # Delete video vote based on voter_id and video_id in video_vote_params
     delete 'video_votes', to: 'video_votes#destroy'

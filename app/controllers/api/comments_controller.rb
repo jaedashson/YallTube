@@ -3,8 +3,13 @@ class Api::CommentsController < ApplicationController
 
   # Get all the comments for this video
   # GET /api/videos/:video_id/comments
+  # GET /api/comments/:comment_id/comments
   def index
-    @comments = Comment.where(video_id: params[:video_id]).includes(:author)
+    if params[:video_id]
+      @comments = Comment.where(video_id: params[:video_id]).includes(:author)
+    elsif params[:comment_id]
+      @comments = Comment.where(parent_id: params[:comment_id]).includes(:author)     
+    end
 
     render :index
   end
