@@ -14,3 +14,10 @@ export const fetchParentComments = videoId => {
     url: `/api/videos/${videoId}/comments`
   });
 };
+
+export const fetchReplies = commentId => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/comments/${commentId}/comments`
+  });
+};

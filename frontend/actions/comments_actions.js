@@ -1,21 +1,21 @@
 import * as APIUtil from "../util/comments_api_util";
 
-export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
-export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
+export const RECEIVE_PARENT_COMMENTS = "RECEIVE_PARENT_COMMENTS";
+export const RECEIVE_PARENT_COMMENT = "RECEIVE_PARENT_COMMENT";
 
 
 // POJO action creators
 
-export const receiveComments = comments => {
+export const receiveParentComments = comments => {
   return {
-    type: RECEIVE_COMMENTS,
+    type: RECEIVE_PARENT_COMMENTS,
     comments
   };
 };
 
-export const receiveComment = comment => {
+export const receiveParentComment = comment => {
   return {
-    type: RECEIVE_COMMENT,
+    type: RECEIVE_PARENT_COMMENT,
     comment
   };
 };
@@ -25,13 +25,13 @@ export const receiveComment = comment => {
 // TODO - Write error action creators
 export const fetchParentComments = videoId => dispatch => {
   return APIUtil.fetchParentComments(videoId).then(comments => {
-    return dispatch(receiveComments(comments));
+    return dispatch(receiveParentComments(comments));
   });
 };
 
 // TODO - Write error action creators
 export const createComment = comment => dispatch => {
   return APIUtil.createComment(comment).then(comment => {
-    return dispatch(receiveComment(comment));
+    return dispatch(receiveParentComment(comment));
   });
 };
