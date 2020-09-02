@@ -1,6 +1,6 @@
 import ReplyForm from "./reply_form";
 import { connect } from "react-redux";
-import { createComment } from "../../actions/comments_actions";
+import { createReply } from "../../actions/comments_actions";
 
 const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
   return {
@@ -12,7 +12,7 @@ const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    createComment: comment => dispatch(createComment(comment))
+    createReply: comment => dispatch(createReply(comment))
   };
 };
 
