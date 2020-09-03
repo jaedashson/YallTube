@@ -89,7 +89,7 @@ class CommentsSection extends React.Component {
           <button className="comment-sort-by">SORT BY</button>
         </div>
 
-        <CommentFormContainer currentUser={this.props.currentUser} videoId={this.props.videoId} />
+        {/* <CommentFormContainer currentUser={this.props.currentUser} videoId={this.props.videoId} /> */}
 
         <div className="comments-list">
           {this.renderParentComments()}
