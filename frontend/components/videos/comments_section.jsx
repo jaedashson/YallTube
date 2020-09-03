@@ -82,6 +82,8 @@ class CommentsSection extends React.Component {
       return null;
     }
 
+
+    debugger
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
@@ -89,7 +91,7 @@ class CommentsSection extends React.Component {
           <button className="comment-sort-by">SORT BY</button>
         </div>
 
-        {/* <CommentFormContainer currentUser={this.props.currentUser} videoId={this.props.videoId} /> */}
+        <CommentFormContainer currentUser={this.props.currentUser} videoId={this.props.videoId} />
 
         <div className="comments-list">
           {this.renderParentComments()}
