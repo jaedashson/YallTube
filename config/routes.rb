@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
     resources :video_votes, only: [:create]
     resources :comments, only: [:create] do
-      resources :comments, only: [:index] # Get children comments of a parent comment
+      resources :comments, only: [:index] # Get replies of a parent comment
     end
 
     # Delete video vote based on voter_id and video_id in video_vote_params

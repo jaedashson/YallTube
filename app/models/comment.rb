@@ -14,7 +14,15 @@ class Comment < ApplicationRecord
     class_name: :Comment,
     optional: true
 
-  has_many :children,
+  has_many :replies,
     foreign_key: :parent_id,
     class_name: :Comment
+
+  def reply_count
+    if self.parent_id == nil
+      self.replies.count
+    else
+      nil
+    end
+  end
 end
