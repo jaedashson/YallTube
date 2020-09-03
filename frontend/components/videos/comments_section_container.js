@@ -3,17 +3,15 @@ import { connect } from "react-redux";
 import { fetchParentComments } from "../../actions/comments_actions";
 
 const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
-  // debugger
   return {
     currentUser: users[session.id],
-    // videoId: ownProps.videoId,
     comments: comments
   };
 };
 
 const mDTP = dispatch => {
   return {
-    fetchParentComments: videoId => dispatch(fetchParentComments(videoId)),
+    fetchParentComments: videoId => dispatch(fetchParentComments(videoId))
   };
 };
 

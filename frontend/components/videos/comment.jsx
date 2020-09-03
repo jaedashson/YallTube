@@ -11,7 +11,9 @@ class Comment extends React.Component {
       uploadDate: parseDate(this.props.comment.created_at),
       liked: false,
       disliked: false,
-      showReplyForm: false
+      showReplyForm: false,
+      replies: null,
+      showReplyForm: false,
     };
 
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
@@ -26,6 +28,10 @@ class Comment extends React.Component {
   handleHideReplyForm(e) {
     e.preventDefault();
     this.setState({ showReplyForm: false });
+  }
+
+  handleShowReplies() {
+
   }
 
   renderReplyForm() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate, arraysEqual } from "../../util/videos_info_util";
-import Comment from "./comment";
+import CommentContainer from "./comment_container";
 import CommentFormContainer from "./comment_form_container";
 
 class CommentsSection extends React.Component {
@@ -16,7 +16,6 @@ class CommentsSection extends React.Component {
 
   componentDidMount() {
     this.props.fetchParentComments(this.props.videoId).then(action => {
-      // debugger
       this.setState({
         comments: action.comments,
         commentCount: Object.keys(action.comments).length
@@ -25,19 +24,13 @@ class CommentsSection extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // debugger
-
     // If there are new comments
     if (prevProps.comments !== this.props.comments) {
-      // debugger
-
       this.setState({
         comments: this.props.comments,
         commentCount: Object.keys(this.props.comments).length
       });
     }
-
-    // debugger
   }
 
   // Sort comments
@@ -75,10 +68,9 @@ class CommentsSection extends React.Component {
 
     return parentComments.map(comment => {
       return (
-        <Comment
+        <CommentContainer
           key={comment.id}
           comment={comment}
-          currentUser={this.props.currentUser}
           videoId={this.props.videoId}
         />
       )

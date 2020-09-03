@@ -29,7 +29,7 @@ class CommentForm extends React.Component {
     formData.append("comment[author_id]", this.state.author_id);
     formData.append("comment[video_id]", this.state.video_id);
     formData.append("comment[body]", this.state.body);
-    this.props.createComment(formData).then(action => {
+    this.props.createParentComment(formData).then(action => {
       this.setState({ body: "" });
     });
   }
