@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoDescriptionContainer from "./video_description_container";
 import RecommendationsContainer from "./recommendations_container";
-import CommentsSectionContainer from "./comments_section_container";
+import CommentsSectionContainer from "../comments/comments_section_container";
 
 import ReactPlayer from "react-player";
 
