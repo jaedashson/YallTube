@@ -5,7 +5,6 @@ import VideoDescriptionContainer from "./video_description_container";
 import RecommendationsContainer from "./recommendations_container";
 import CommentsSectionContainer from "./comments_section_container";
 
-
 import ReactPlayer from "react-player";
 
 class VideoPage extends React.Component {
@@ -59,18 +58,14 @@ class VideoPage extends React.Component {
                 controls={true}
               />
             </div>
-
             <VideoDescriptionContainer
               video={this.props.video}
               uploader={this.props.uploader}
             />
-
             <CommentsSectionContainer
               videoId={this.props.videoId}
             />
-
           </div>
-
           <div className="video-page-col-2">
             <RecommendationsContainer
               videoId={this.props.videoId}

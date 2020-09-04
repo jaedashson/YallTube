@@ -33,24 +33,10 @@ class CommentsSection extends React.Component {
     }
   }
 
-  // Sort comments
   renderParentComments() {
     if (!this.props.comments) {
       return null;
     }
-
-    // THIS WORKS!
-    // const comments = Object.values(this.state.comments).map(comment => {
-    //   return (
-    //     <Comment
-    //       key={comment.id}
-    //       comment={comment}
-    //       currentUser={this.props.currentUser}
-    //       videoId={this.props.videoId}
-    //     />
-    //   );
-    // });
-    // return comments
 
     let parentComments = null;
 
@@ -82,17 +68,13 @@ class CommentsSection extends React.Component {
       return null;
     }
 
-
-    debugger
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
           <span className="comment-count">{this.state.commentCount} Comments</span>
           <button className="comment-sort-by">SORT BY</button>
         </div>
-
         <CommentFormContainer currentUser={this.props.currentUser} videoId={this.props.videoId} />
-
         <div className="comments-list">
           {this.renderParentComments()}
         </div>
@@ -102,18 +84,3 @@ class CommentsSection extends React.Component {
 }
 
 export default CommentsSection;
-
-
-/*
-
-comments: {
-  1: {
-    id: 1,
-    children: [{...},{...}]
-  }
-  2:
-  3:
-}
-
-
-*/
