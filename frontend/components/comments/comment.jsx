@@ -126,9 +126,9 @@ class Comment extends React.Component {
           {this.renderReplies()}
         </div>
       </div>
-    )
+    );
   }
 
 }
 
-export default Comment
+export default Comment;
