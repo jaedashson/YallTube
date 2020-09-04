@@ -12,8 +12,9 @@ class Comment extends React.Component {
       liked: false,
       disliked: false,
       showReplyForm: false,
+      replyCount: this.props.comment.replyCount,
+      showReplies: false,
       replies: null,
-      showReplyForm: false,
     };
 
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
@@ -30,8 +31,14 @@ class Comment extends React.Component {
     this.setState({ showReplyForm: false });
   }
 
-  handleShowReplies() {
+  handleShowReplies(e) {
+    e.preventDefault();
+    this.setState({ showReplies: true });
+  }
 
+  handleHideReplies(e) {
+    e.preventDefault();
+    this.setState({ showReplies: false });
   }
 
   renderReplyForm() {
@@ -43,6 +50,26 @@ class Comment extends React.Component {
           videoId={this.props.videoId}
           handleHideReplyForm={this.handleHideReplyForm}
         />
+      )
+    }
+  }
+
+  renderReplies() {
+    if (!this.state.replyCount) {
+      return null;
+    }
+
+    if (this.state.showReplies) {
+      return (
+        <div className="replies">
+
+        </div>
+      )
+    } else {
+      return (
+        <div className="replies">
+          <span>View {this.state.replyCount} replies</span>
+        </div>
       )
     }
   }
@@ -71,6 +98,7 @@ class Comment extends React.Component {
             >REPLY</button>
           </div>
           {this.renderReplyForm()}
+          {this.renderReplies()}
         </div>
       </div>
     )
