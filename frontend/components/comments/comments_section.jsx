@@ -74,21 +74,24 @@ class CommentsSection extends React.Component {
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
-          <span className="comment-count">{this.state.commentCount} Comments</span>
-          <button className="comment-sort-by">
-            <FontAwesomeIcon icon="sort-amount-down" className="comment-sort-by-icon" />
-            <span>SORT BY</span>
+          <span className="comment-count">
+            {this.state.commentCount} Comments
+          </span>
+          <button className="comment-sort-button">
+            <FontAwesomeIcon
+              icon="sort-amount-down"
+              className="comment-sort-button-icon"
+            />
+            <span className="comment-sort-button-text">SORT BY</span>
           </button>
         </div>
         <CommentFormContainer
           currentUser={this.props.currentUser}
           videoId={this.props.video.id}
         />
-        <div className="comments-list">
-          {this.renderParentComments()}
-        </div>
+        <div className="comments-list">{this.renderParentComments()}</div>
       </div>
-    )
+    );
   }
 }
 
