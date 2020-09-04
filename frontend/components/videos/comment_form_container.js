@@ -2,8 +2,7 @@ import CommentForm from "./comment_form";
 import { connect } from "react-redux";
 import { createParentComment } from "../../actions/comments_actions";
 
-const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
-  debugger
+const mSTP = ({ session, entities: { users, comments, videos } }, ownProps) => {
   return {
     // currentUser: ownProps.currentUser,
     // videoId: ownProps.videoId,

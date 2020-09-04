@@ -6,19 +6,21 @@ import CommentFormContainer from "./comment_form_container";
 
 class CommentsSection extends React.Component {
   constructor(props) {
+    debugger
     super(props);
     this.state = {
       comments: null,
-      commentCount: 0,
-      sortBy: "newest-first"
+      sortBy: "newest-first",
+      commentCount: this.props.video.commentCount
     };
+    console.log(this.props.video.commentCount)
+    console.log(this.state.commentCount)
   }
 
   componentDidMount() {
-    this.props.fetchParentComments(this.props.videoId).then(action => {
+    this.props.fetchParentComments(this.props.video.id).then(action => {
       this.setState({
         comments: action.comments,
-        commentCount: Object.keys(action.comments).length
       });
     });
   }
@@ -28,7 +30,6 @@ class CommentsSection extends React.Component {
     if (prevProps.comments !== this.props.comments) {
       this.setState({
         comments: this.props.comments,
-        commentCount: Object.keys(this.props.comments).length
       });
     }
   }
@@ -57,7 +58,7 @@ class CommentsSection extends React.Component {
         <CommentContainer
           key={comment.id}
           comment={comment}
-          videoId={this.props.videoId}
+          videoId={this.props.video.id}
         />
       )
     })
@@ -68,13 +69,17 @@ class CommentsSection extends React.Component {
       return null;
     }
 
+    debugger
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
           <span className="comment-count">{this.state.commentCount} Comments</span>
           <button className="comment-sort-by">SORT BY</button>
         </div>
-        <CommentFormContainer currentUser={this.props.currentUser} videoId={this.props.videoId} />
+        <CommentFormContainer
+          currentUser={this.props.currentUser}
+          videoId={this.props.video.id}
+        />
         <div className="comments-list">
           {this.renderParentComments()}
         </div>
