@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { parseDate, arraysEqual } from "../../util/videos_info_util";
 import CommentContainer from "./comment_container";
 import CommentFormContainer from "./comment_form_container";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class CommentsSection extends React.Component {
   constructor(props) {
@@ -74,7 +75,10 @@ class CommentsSection extends React.Component {
       <div className="comments-section">
         <div className="comments-count-sort">
           <span className="comment-count">{this.state.commentCount} Comments</span>
-          <button className="comment-sort-by">SORT BY</button>
+          <button className="comment-sort-by">
+            <FontAwesomeIcon icon="sort-amount-down" className="comment-sort-by-icon" />
+            <span>SORT BY</span>
+          </button>
         </div>
         <CommentFormContainer
           currentUser={this.props.currentUser}
