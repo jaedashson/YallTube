@@ -5,38 +5,30 @@ import { fetchUser, clearUserErrors, usersActionsTest } from "../../actions/user
 import { refresh } from "../../actions/session_actions";
 
 const mSTP = ({ entities, errors, session }, ownProps) => {
-  // debugger
   const videoId = parseInt(ownProps.match.params.videoId); // 
   const video = entities.videos[videoId];
   let uploader;
 
   if (video && entities.users[video.uploader_id]) {
-    // debugger
     uploader = entities.users[video.uploader_id];
   }
 
-  // debugger
   return {
     currentUserId: session.id,
     videoId,
     video,
     uploader,
     errors: errors.video,
-    // likedVideoIds: session.likedVideoIds,
-    // dislikedVideoIds: session.dislikedVideoIds
   };
 };
 
 const mDTP = dispatch => {
-  // debugger
   return {
     fetchVideo: videoId => dispatch(fetchVideo(videoId)),
     fetchAllVideos: () => dispatch(fetchAllVideos(videoId)),
     clearVideoErrors: () => dispatch(clearVideoErrors()),
     fetchUser: userId => dispatch(fetchUser(userId)),
     clearUserErrors: () => dispatch(clearUserErrors()),
-    // createVideoVote: vote => dispatch(createVideoVote(vote)),
-    // destroyVideoVote: voteId => dispatch(destroyVideoVote(voteId)),
     refresh: userId => dispatch(refresh(userId))
   };
 };
