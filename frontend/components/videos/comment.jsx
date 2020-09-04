@@ -19,6 +19,14 @@ class Comment extends React.Component {
 
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
+    this.handleShowReplies = this.handleShowReplies.bind(this);
+    this.handleHideReplies = this.handleHideReplies.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if ((this.props.replies !== prevProps.replies)) {
+      this.setState({ replies: this.props.replies });
+    }
   }
 
   handleShowReplyForm(e) {
@@ -33,7 +41,9 @@ class Comment extends React.Component {
 
   handleShowReplies(e) {
     e.preventDefault();
-    this.setState({ showReplies: true });
+    this.props.fetchReplies(this.props.comment.id).then(action => {
+      this.setState({ showReplies: true });
+    })
   }
 
   handleHideReplies(e) {
@@ -59,16 +69,22 @@ class Comment extends React.Component {
       return null;
     }
 
-    if (this.state.showReplies) {
+    if (this.state.showReplies && this.state.replies) {
+      // Put comments into array sorted from oldest to newest
+
+
       return (
         <div className="replies">
+          <button onClick={this.handleHideReplies}>Hide {this.state.replyCount} replies</button>
+          <div className="replies-list">
 
+          </div>
         </div>
       )
     } else {
       return (
         <div className="replies">
-          <span>View {this.state.replyCount} replies</span>
+          <button onClick={this.handleShowReplies}>View {this.state.replyCount} replies</button>
         </div>
       )
     }
