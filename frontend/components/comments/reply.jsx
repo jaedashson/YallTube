@@ -12,6 +12,9 @@ class Reply extends React.Component {
       disliked: false,
       showReplyForm: false,
     };
+
+    this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
+    this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
   }
 
   handleShowReplyForm(e) {
@@ -28,7 +31,7 @@ class Reply extends React.Component {
     if (this.state.showReplyForm) {
       return (
         <ReplyFormContainer
-          parentId={this.props.comment.parent_id}
+          parentId={this.props.reply.parent_id}
           currentUser={this.props.currentUser}
           videoId={this.props.videoId}
           handleHideReplyForm={this.handleHideReplyForm}
@@ -62,7 +65,6 @@ class Reply extends React.Component {
             >REPLY</button>
           </div>
           {this.renderReplyForm()}
-          {this.renderReplies()}
         </div>
       </div>
     );
