@@ -71,7 +71,16 @@ class Comment extends React.Component {
 
     if (this.state.showReplies && this.state.replies) {
       // Put comments into array sorted from oldest to newest
-
+      let repliesArray = Object.values(this.state.replies)
+        .sort((a, b) => b.created_at > a.created_at)
+        .map(reply => {
+          return (
+            // ReplyContainer
+            <div>
+              
+            </div>
+          )
+        })
 
       return (
         <div className="replies">
