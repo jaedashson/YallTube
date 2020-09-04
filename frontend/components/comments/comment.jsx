@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { parseDate } from "../../util/videos_info_util";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReplyFormContainer from "./reply_form_container";
+import ReplyContainer from "./reply_container";
 
 class Comment extends React.Component {
   constructor(props) {
@@ -75,18 +76,19 @@ class Comment extends React.Component {
         .sort((a, b) => b.created_at > a.created_at)
         .map(reply => {
           return (
-            // ReplyContainer
-            <div>
-              
-            </div>
-          )
+            <ReplyContainer
+              key={reply.id}
+              reply={reply}
+              videoId={this.props.videoId}
+            />
+          );
         })
 
       return (
         <div className="replies">
           <button onClick={this.handleHideReplies}>Hide {this.state.replyCount} replies</button>
           <div className="replies-list">
-
+            {repliesArray}
           </div>
         </div>
       )
