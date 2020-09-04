@@ -9,6 +9,7 @@
 .comments-count-sort {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .comment-count {
@@ -17,17 +18,21 @@
 }
 
 .comment-sort-button {
-  font-size: 14px;
+  padding: 4px;
   color: #606060;
   margin-left: 32px;
+  background: none;
+  border: none;
 }
 
 .comment-sort-button-icon {
-
+  font-size: 16px;
 }
 
 .comment-sort-button-text {
-  
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .comment-submit {
