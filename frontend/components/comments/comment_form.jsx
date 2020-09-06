@@ -37,27 +37,28 @@ class CommentForm extends React.Component {
   render() {
     return (
       <form className="comment-form">
-        <div className="comment-form-icon">{this.props.currentUser.username[0]}</div>
+        <div className="comment-form-icon">
+          {this.props.currentUser.username[0]}
+        </div>
         <div className="comment-form-main">
-          <textarea
+          <span
             className="comment-form-input"
-            placeholder="Add a public comment..."
+            role="textbox"
+            contentEditable="true"
             value={this.state.body}
             onChange={this.updateBody()}
-          />
+          ></span>
           <div className="comment-form-buttons">
-            <button
-              className="comment-form-cancel"
-              onClick={this.handleCancel}
-            >CANCEL</button>
-            <button
-              className="comment-form-submit"
-              onClick={this.handleSubmit}
-            >COMMENT</button>
+            <button className="comment-form-cancel" onClick={this.handleCancel}>
+              CANCEL
+            </button>
+            <button className="comment-form-submit" onClick={this.handleSubmit}>
+              COMMENT
+            </button>
           </div>
         </div>
       </form>
-    )
+    );
   }
 }
 

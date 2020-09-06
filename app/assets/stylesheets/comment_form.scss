@@ -26,12 +26,23 @@
 }
 
 .comment-form-input {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 22px;
   border: none;
   background: none;
-  width: 100%;
-  resize: none;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+  // padding: 10px;
+  line-height: 14px;
+  padding: 10px;
+}
+
+.comment-form-input[contenteditable]:empty::before {
+  content: "Add a public comment...";
+  color: #606060;
 }
 
 .comment-form-input::placeholder {
