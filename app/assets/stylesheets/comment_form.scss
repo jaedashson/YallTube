@@ -30,6 +30,13 @@
   background: none;
   width: 100%;
   resize: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.comment-form-input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 }
 
 .comment-form-buttons {
