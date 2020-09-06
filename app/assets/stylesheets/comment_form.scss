@@ -36,6 +36,10 @@
   font-size: 14px;
   line-height: 22px;
   padding: 4px;
+  border-bottom: 1px solid gray;
+}
+
+.comment-form-input:focus {
   border-bottom: 4px solid gray;
 }
 

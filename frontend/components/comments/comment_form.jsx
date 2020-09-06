@@ -8,19 +8,29 @@ class CommentForm extends React.Component {
       author_id: this.props.currentUser.id,
       video_id: this.props.videoId,
       body: "",
+      showButtons: false
     };
 
-    this.handleCancel = this.handleCancel.bind(this);
+    this.handleShowButtons = this.handleShowButtons.bind(this);
+    this.handleHideButtons = this.handleHideButtons.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  updateBody() {
-    return e => this.setState({ body: e.currentTarget.value });
+  handleShowButtons(e) {
+    e.preventDefault();
+    this.setState({ showButtons: true });
   }
 
-  handleCancel(e) {
+  handleHideButtons(e) {
     e.preventDefault();
-    this.setState({ body: "" });
+    this.setState({
+      showButtons: false,
+      body: ""
+    });
+  }
+
+  updateBody() {
+    return e => this.setState({ body: e.currentTarget.value });
   }
 
   handleSubmit(e) {
@@ -47,9 +57,10 @@ class CommentForm extends React.Component {
             contentEditable="true"
             value={this.state.body}
             onChange={this.updateBody()}
+            onClick={this.handleShowButtons}
           ></span>
           <div className="comment-form-buttons">
-            <button className="comment-form-cancel" onClick={this.handleCancel}>
+            <button className="comment-form-cancel" onClick={this.handleHideButtons}>
               CANCEL
             </button>
             <button className="comment-form-submit" onClick={this.handleSubmit}>
