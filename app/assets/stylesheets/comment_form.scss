@@ -30,14 +30,13 @@
   width: 100%;
   overflow: hidden;
   resize: both;
-  min-height: 22px;
   border: none;
   background: none;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  // padding: 10px;
-  line-height: 14px;
-  padding: 10px;
+  line-height: 22px;
+  padding: 4px;
+  border-bottom: 4px solid gray;
 }
 
 .comment-form-input[contenteditable]:empty::before {

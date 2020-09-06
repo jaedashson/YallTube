@@ -43,7 +43,7 @@ class CommentForm extends React.Component {
         <div className="comment-form-main">
           <span
             className="comment-form-input"
-            role="textbox"
+            // role="textbox"
             contentEditable="true"
             value={this.state.body}
             onChange={this.updateBody()}
