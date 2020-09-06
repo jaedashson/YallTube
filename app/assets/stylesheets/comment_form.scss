@@ -5,7 +5,6 @@
 }
 
 .comment-form-icon {
-  margin-top: 16px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -21,19 +20,21 @@
 
 .comment-form-main {
   margin-left: 16px;
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
 .comment-form-input {
-  // width: 100%;
+  border: none;
+  background: none;
+  width: 100%;
+  resize: none;
 }
 
 .comment-form-buttons {
   margin-top: 8px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end
+  justify-content: flex-end;
 }
