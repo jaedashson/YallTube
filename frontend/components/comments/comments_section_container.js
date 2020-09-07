@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetchParentComments } from "../../actions/comments_actions";
 
 const mSTP = ({ session, entities: { users, comments, videos } }, ownProps) => {
-  debugger
   return {
     currentUser: users[session.id],
     comments: comments

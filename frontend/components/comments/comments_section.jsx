@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class CommentsSection extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.state = {
       comments: null,
@@ -45,15 +44,18 @@ class CommentsSection extends React.Component {
     // Sort parent comments by number of votes
     if (this.state.sortBy === "top-first") {
       
-    } 
+    }
     
     // Sort parent comments by newest first
     else if (this.state.sortBy === "newest-first") {
       parentComments = Object.values(this.state.comments)
-        .filter(comment => !comment.parent_id)
-        .sort((a, b) => b.created_at > a.created_at);
+        .sort((a, b) => {
+          let dateA = new Date(a.created_at);
+          let dateB = new Date(b.created_at);
+          debugger
+          return (dateA < dateB) ? 1 : -1;
+        });
     }
-
     return parentComments.map(comment => {
       return (
         <CommentContainer
@@ -70,7 +72,6 @@ class CommentsSection extends React.Component {
       return null;
     }
 
-    debugger
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
