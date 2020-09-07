@@ -108,21 +108,42 @@ class Comment extends React.Component {
 
     return (
       <div className="comment">
-        <div className="comment-author-icon">{this.props.comment.authorUsername[0]}</div>
+        <div className="comment-author-icon">
+          {this.props.comment.authorUsername[0]}
+        </div>
         <div className="comment-main">
           <div className="comment-author-date">
-            <span className="comment-author">{this.props.comment.authorUsername}</span>
+            <span className="comment-author">
+              {this.props.comment.authorUsername}
+            </span>
             <span className="comment-date">{this.state.uploadDate}</span>
           </div>
           <p className="comment-body">{this.props.comment.body}</p>
           <div className="comment-response">
-            <FontAwesomeIcon icon="thumbs-up" className={"comment-thumb " + (this.state.liked ? "comment-voted" : "")}/>
-            <span className="comment-score">68</span>
-            <FontAwesomeIcon icon="thumbs-down" className={"comment-thumb comment-thumb-down " + (this.state.disliked ? "comment-voted" : "")} />
+            <button className="thumb-button">
+              <FontAwesomeIcon
+                icon="thumbs-up"
+                className={
+                  "comment-thumb " + (this.state.liked ? "comment-voted" : "")
+                }
+              />
+            </button>
+            <span className="comment-score"></span>
+            <button className="thumb-button thumbs-down-button">
+              <FontAwesomeIcon
+                icon="thumbs-down"
+                className={
+                  "comment-thumb " +
+                  (this.state.disliked ? "comment-voted" : "")
+                }
+              />
+            </button>
             <button
               className="comment-reply-button"
               onClick={this.handleShowReplyForm}
-            >REPLY</button>
+            >
+              REPLY
+            </button>
           </div>
           {this.renderReplyForm()}
           {this.renderReplies()}

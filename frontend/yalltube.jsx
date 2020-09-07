@@ -26,7 +26,8 @@ import {
   faNewspaper,
   faHistory,
   faFilm,
-  faSortAmountDown
+  faSortAmountDown,
+  faHeart
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   fab,
@@ -49,7 +50,8 @@ library.add(
   faNewspaper,
   faHistory,
   faFilm,
-  faSortAmountDown
+  faSortAmountDown,
+  faHeart
 );
 
 

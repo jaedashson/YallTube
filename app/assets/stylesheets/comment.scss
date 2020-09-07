@@ -21,7 +21,6 @@
 
 .comment-main {
   margin-left: 16px;
-  // margin-top: 16px;
   display: flex;
   flex-direction: column;
 }
@@ -48,10 +47,22 @@
   margin-top: 12px;
 }
 
-.comment-thumb {
+.thumb-button {
+  height: 32px;
+  width: 32px;
+  background: none;
+  border: none;
+  outline: none;
   cursor: pointer;
+}
+
+.comment-thumb {
   font-size: 14px;
   color: #909090;
+}
+
+.thumb-button:hover .comment-thumb {
+  color: #606060;
 }
 
 .comment-voted {
@@ -63,11 +74,19 @@
   color: #606060;
 }
 
-.comment-thumb-down {
+.thumbs-down-button {
   margin-left: 18px;
 }
 
 .comment-reply-button {
   margin-left: 16px;
+  height: 32px;
+  width: 69px;
   color: #606060;
+  font-size: 14px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
