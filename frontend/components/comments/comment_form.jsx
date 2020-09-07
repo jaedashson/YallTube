@@ -47,9 +47,7 @@ class CommentForm extends React.Component {
   render() {
     return (
       <form className="comment-form">
-        <div className="comment-form-icon">
-          {this.props.currentUser.username[0]}
-        </div>
+        <div className="comment-form-icon">{this.props.currentUser.username[0]}</div>
         <div className="comment-form-main">
           <span
             className="comment-form-input"
