@@ -59,7 +59,7 @@ class CommentForm extends React.Component {
             onChange={this.updateBody()}
             onClick={this.handleShowButtons}
           ></span>
-          <div className="comment-form-buttons">
+          <div className={"comment-form-buttons " + (this.state.showButtons ? "comment-form-buttons-show" : "")}>
             <button className="comment-form-cancel" onClick={this.handleHideButtons}>
               CANCEL
             </button>

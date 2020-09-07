@@ -54,8 +54,46 @@
 }
 
 .comment-form-buttons {
+  display: none;
+}
+
+.comment-form-buttons-show {
   margin-top: 8px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+.comment-form-cancel {
+  height: 36px;
+  width: 85px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #606060;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.comment-form-cancel:hover {
+  cursor: pointer;
+}
+
+.comment-form-submit {
+  margin-left: 10px;
+  height: 36px;
+  width: 102px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #065FD4;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+}
+
+.comment-form-submit:hover {
+  cursor: pointer;
 }
