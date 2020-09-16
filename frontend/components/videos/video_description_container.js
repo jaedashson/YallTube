@@ -17,7 +17,6 @@ const mSTP = ({ session }, ownProps) => {
 }
 
 const mDTP = dispatch => {
-  // debugger
   return {
     createVideoVote: vote => createVideoVote(vote),
     destroyVideoVote: vote => destroyVideoVote(vote),

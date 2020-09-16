@@ -5,25 +5,20 @@ import { parseDate } from "../../util/videos_info_util";
 
 class RecIndexItem extends React.Component {
   constructor(props) {
-    // debugger
     super(props);
     this.state = { uploader : null };
   }
 
   componentDidMount() {
-    // debugger
     this.props.fetchUser(this.props.video.uploader_id).then(action => {
-      // debugger
       this.setState({ uploader: action.user });
     });
   }
 
   render() {
-    // debugger
     if (!this.state.uploader) {
       return null;
     }
-    // debugger
     return (
       <Link to={`/videos/${this.props.video.id}`} className="rec-index-item">
         <div className="rec-thumbnail-container">

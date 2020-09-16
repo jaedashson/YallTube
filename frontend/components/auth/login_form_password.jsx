@@ -22,7 +22,6 @@ class LoginFormPassword extends React.Component {
   componentDidUpdate() {
     // If input caused an error
     if (this.props.errors.length > 0) {
-      // debugger
       if (this.state.isError === false) {
         this.setState({ isError: true });
       }

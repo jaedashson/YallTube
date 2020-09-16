@@ -6,22 +6,17 @@ import SideBar from "./side_bar";
 
 class YourVideosPage extends React.Component {
   constructor(props) {
-    // debugger
     super(props);
   };
 
   componentDidMount() {
-    // debugger
     this.props.fetchVideos(this.props.uploadedVideoIds);
   };
 
   renderItems() {
-    // debugger
     if (!this.props.videos) {
-      // debugger
       return null;
     }
-    // debugger
     const items = this.props.videos.map(video => {
       return (
         <VideoIndexItem
@@ -36,7 +31,6 @@ class YourVideosPage extends React.Component {
   };
 
   render() {
-    // debugger
     return (
       <div className="home-page">
         <SideBar />

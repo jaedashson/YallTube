@@ -29,7 +29,6 @@ class UploadPage extends React.Component {
   }
 
   handleVideoInputClick(e) {
-    // debugger
     e.preventDefault();
     const videoInput = document.getElementById("video-input");
     videoInput.classList.remove("upload-input-hidden");
@@ -39,7 +38,6 @@ class UploadPage extends React.Component {
   }
 
   handleThumbnailInputClick(e) {
-    // debugger
     e.preventDefault();
     const thumbnailInput = document.getElementById("thumbnail-input")
     thumbnailInput.classList.remove("upload-input-hidden");
@@ -49,31 +47,26 @@ class UploadPage extends React.Component {
   }
 
   handleVideo(e) {
-    // debugger
     e.preventDefault();
     this.setState({ videoFile: e.currentTarget.files[0] });
   }
 
   handleThumbnail(e) {
-    // debugger
     e.preventDefault();
     this.setState({ thumbnail: e.currentTarget.files[0] });
   }
 
   handleVideoInputCancel(e) {
-    // debugger
     e.preventDefault();
     this.setState({ videoFile: null });
   }
 
   handleThumbnailInputCancel(e) {
-    // debugger
     e.preventDefault();
     this.setState({ thumbnail: null });
   }
 
   handleUpload(e) {
-    // debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append("video[title]", this.state.title);
@@ -81,15 +74,12 @@ class UploadPage extends React.Component {
     formData.append("video[uploader_id]", this.props.uploaderId)
     formData.append("video[video]", this.state.videoFile);
     formData.append("video[thumbnail]", this.state.thumbnail);
-    // debugger
     this.props.createVideo(formData).then(action => {
-      // debugger
       this.setState({ uploadedVideo: action.video });
     }); // Needs a then callback to update this.state with the data of the video we just got
   }
 
   handleUploadCancel(e) {
-    // debugger
     e.preventDefault();
     this.setState({
       videoFile: null,
@@ -98,9 +88,7 @@ class UploadPage extends React.Component {
   }
 
   renderVideoInfo() {
-    // debugger
     if (this.state.videoFile) {
-      // debugger
       return (
         <div className="upload-file-info">
           <p className="upload-filename">
@@ -112,7 +100,6 @@ class UploadPage extends React.Component {
         </div>
       );
     } else {
-      // debugger
       return (
         <div className="upload-file-prompt">
           <p className="upload-file-prompt-text">
@@ -124,9 +111,7 @@ class UploadPage extends React.Component {
   }
 
   renderThumbnailInfo() {
-    // debugger
     if (this.state.thumbnail) {
-      // debugger
 
       return (
         <div className="upload-file-info">
@@ -139,7 +124,6 @@ class UploadPage extends React.Component {
         </div>
       );
     } else {
-      // debugger
       return (
         <div className="upload-file-prompt">
           <p className="upload-file-prompt-text">
@@ -152,12 +136,9 @@ class UploadPage extends React.Component {
   }
 
   renderInputs() {
-    // debugger
-
     // Step 3/3
     // If video has been uploaded
     if (this.state.uploadedVideo) {
-      // debugger
       return (
         <div className="upload-complete-container">
           <div className="upload-complete-thumbnail-container">
@@ -188,7 +169,6 @@ class UploadPage extends React.Component {
     // Step 1/3
     // If not all files have been uploaded yet
     if (!this.state.videoFile || !this.state.thumbnail) {
-      // debugger
       return (
         <div className="upload-input-files-container">
           <button onClick={this.handleVideoInputClick} className="upload-input-button">
@@ -218,7 +198,6 @@ class UploadPage extends React.Component {
     } else {
       // Step 2/3
       // If video and thumbnail has been selected
-      // debugger
       return (
         <div className="upload-inputs-after-upload-container">
           <div className="upload-form-file-info">
@@ -259,8 +238,6 @@ class UploadPage extends React.Component {
   }
 
   render() {
-    // debugger // check state
-
     return (
       <div className="upload-page">
         <form className="upload-form" >

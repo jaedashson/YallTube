@@ -4,30 +4,23 @@ import { parseDate } from "../../util/videos_info_util";
 
 class RecommendationItem extends React.Component {
   constructor(props) {
-    // debugger
     super(props);
     this.state = { uploader : null };
     // TODO - What about video?
   }
 
   componentDidMount() {
-    // debugger
 
     this.props.fetchUser(this.props.video.uploader_id).then(action => {
-      // debugger
       this.setState({ uploader: action.user });
     });
   }
 
   render() {
-    // debugger
-
     // If the uploader has not been fetched yet
     if (!this.state.uploader) {
       return null;
     }
-
-    // debugger
 
     return (
       <Link to={`/videos/${this.props.video.id}`} className="recommendation-item">

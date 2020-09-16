@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class CommentsSection extends React.Component {
   constructor(props) {
+    debugger
     super(props);
     this.state = {
       comments: null,
@@ -52,7 +53,6 @@ class CommentsSection extends React.Component {
         .sort((a, b) => {
           let dateA = new Date(a.created_at);
           let dateB = new Date(b.created_at);
-          debugger
           return (dateA < dateB) ? 1 : -1;
         });
     }
@@ -65,6 +65,17 @@ class CommentsSection extends React.Component {
         />
       )
     })
+  }
+
+  renderCommentForm() {
+    if (this.props.currentUser) {
+      return (
+        <CommentFormContainer
+          currentUser={this.props.currentUser}
+          videoId={this.props.video.id}
+        />
+      );
+    }
   }
 
   render() {
@@ -86,10 +97,7 @@ class CommentsSection extends React.Component {
             <span className="comment-sort-button-text">SORT BY</span>
           </button>
         </div>
-        <CommentFormContainer
-          currentUser={this.props.currentUser}
-          videoId={this.props.video.id}
-        />
+        {this.renderCommentForm()}
         <div className="comments-list">{this.renderParentComments()}</div>
       </div>
     );

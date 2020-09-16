@@ -9,7 +9,6 @@ export const usersActionsTest = "hello"; // TESTING
 // POJO action creators
 
 export const receiveUser = user => {
-  // debugger
   return {
     type: RECEIVE_USER,
     user
@@ -17,7 +16,6 @@ export const receiveUser = user => {
 };
 
 export const receiveUserErrors = errors => {
-  // debugger
   return {
     type: RECEIVE_USER_ERRORS,
     errors
@@ -25,7 +23,6 @@ export const receiveUserErrors = errors => {
 };
 
 export const clearUserErrors = () => {
-  // debugger
   return {
     type: CLEAR_USER_ERRORS
   };
@@ -34,12 +31,9 @@ export const clearUserErrors = () => {
 // thunk action creators
 
 export const fetchUser = userId => dispatch => {
-  // debugger
   return APIUtil.fetchUser(userId).then(user => {
-    // debugger
     return dispatch(receiveUser(user));
   }, error => {
-    // debugger
     return dispatch(receiveUserErrors(error.responseJSON));
   })
 };

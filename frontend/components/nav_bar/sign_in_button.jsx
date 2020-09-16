@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SignInButton extends React.Component {
   constructor(props) {
-    // debugger;
     super(props);
 
     this.toggleDropdown = this.toggleDropdown.bind(this);

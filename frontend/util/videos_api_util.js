@@ -1,5 +1,4 @@
 export const fetchVideo = (videoId) => {
-  // debugger
   return $.ajax({
     method: "GET",
     url: `/api/videos/${videoId}`
@@ -7,7 +6,6 @@ export const fetchVideo = (videoId) => {
 };
 
 export const fetchAllVideos = () => {
-  // debugger
   return $.ajax({
     method: "GET",
     url: "/api/videos"
@@ -15,7 +13,6 @@ export const fetchAllVideos = () => {
 };
 
 export const fetchVideos = (videoIds) => {
-  // debugger
   return $.ajax({
     method: "GET",
     url: "/api/videos",
@@ -24,7 +21,6 @@ export const fetchVideos = (videoIds) => {
 };
 
 export const createVideo = (formData) => {
-  // debugger
   return $.ajax({
     method: "POST",
     url: "/api/videos",

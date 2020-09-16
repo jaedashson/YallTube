@@ -8,7 +8,6 @@ import { shuffleVideos } from "../../util/videos_info_util";
 
 class Recommendations extends React.Component {
   constructor(props) {
-    // debugger
     super(props);
     this.state = { recommendations: null }
   };
@@ -37,17 +36,13 @@ class Recommendations extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     this.generateRecs();
   };
 
   renderItems() {
-    // debugger
     if (!this.state.recommendations) {
-      // debugger
       return null;
     }
-    // debugger
     const items = this.state.recommendations.map(video => {
       return (
         // TODO***** change RecIndexItem to RecommendationItem
@@ -63,7 +58,6 @@ class Recommendations extends React.Component {
   };
 
   render() {
-    // debugger
     return (
       <div className="recommendations">
         {this.renderItems()}
