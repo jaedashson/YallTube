@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class CommentsSection extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.state = {
       comments: null,

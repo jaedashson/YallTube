@@ -32,6 +32,8 @@ class Comment extends React.Component {
 
   handleShowReplyForm(e) {
     e.preventDefault();
+
+
     this.setState({ showReplyForm: true });
   }
 
@@ -53,7 +55,7 @@ class Comment extends React.Component {
   }
 
   renderReplyForm() {
-    if (this.state.showReplyForm) {
+    if (this.state.showReplyForm && this.props.currentUser) {
       return (
         <ReplyFormContainer
           parentId={this.props.comment.id}
