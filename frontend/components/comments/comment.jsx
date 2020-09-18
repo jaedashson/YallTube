@@ -32,8 +32,6 @@ class Comment extends React.Component {
 
   handleShowReplyForm(e) {
     e.preventDefault();
-
-
     this.setState({ showReplyForm: true });
   }
 
@@ -68,10 +66,12 @@ class Comment extends React.Component {
   }
 
   renderReplies() {
+    // If this comment has no replies
     if (!this.state.replyCount) {
       return null;
     }
 
+    // If showReplies is true and this comment has replies
     if (this.state.showReplies && this.state.replies) {
       // Put comments into array sorted from oldest to newest
       let repliesArray = Object.values(this.state.replies)
