@@ -2,6 +2,7 @@
   margin-top: 28px;
   display: flex;
   flex-direction: row;
+  font-family: 'Roboto', sans-serif;
 }
 
 .comment-main {
@@ -75,4 +76,19 @@
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.view-replies-button {
+  margin-top: 8px;
+  color: #065FD4;
+  font-size: 14px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.view-replies-button-text {
+  margin-left: 12px;
 }

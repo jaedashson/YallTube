@@ -27,7 +27,8 @@ import {
   faHistory,
   faFilm,
   faSortAmountDown,
-  faHeart
+  faHeart,
+  faCaretDown
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   fab,
@@ -51,7 +52,8 @@ library.add(
   faHistory,
   faFilm,
   faSortAmountDown,
-  faHeart
+  faHeart,
+  faCaretDown
 );
 
 

@@ -97,9 +97,18 @@ class Comment extends React.Component {
     } else {
       return (
         <div className="replies">
-          <button onClick={this.handleShowReplies}>View {this.state.replyCount} replies</button>
+          <button
+            className="view-replies-button"
+            onClick={this.handleShowReplies}
+          >
+            <FontAwesomeIcon
+              icon="caret-down"
+              className="caret-down"
+            />
+            <span className="view-replies-button-text">View {this.state.replyCount} replies</span>
+          </button>
         </div>
-      )
+      );
     }
   }
 
