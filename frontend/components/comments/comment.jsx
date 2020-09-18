@@ -88,12 +88,19 @@ class Comment extends React.Component {
 
       return (
         <div className="replies">
-          <button onClick={this.handleHideReplies}>Hide {this.state.replyCount} replies</button>
-          <div className="replies-list">
-            {repliesArray}
-          </div>
+          <button
+            className="view-replies-button"
+            onClick={this.handleHideReplies}
+          >
+            <FontAwesomeIcon
+              icon="caret-up"
+              className="caret"
+            />
+            <span className="view-replies-button-text">Hide {this.state.replyCount} replies</span>
+          </button>
+          <div className="replies-list">{repliesArray}</div>
         </div>
-      )
+      );
     } else {
       return (
         <div className="replies">
@@ -103,7 +110,7 @@ class Comment extends React.Component {
           >
             <FontAwesomeIcon
               icon="caret-down"
-              className="caret-down"
+              className="caret"
             />
             <span className="view-replies-button-text">View {this.state.replyCount} replies</span>
           </button>
