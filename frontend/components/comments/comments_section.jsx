@@ -25,6 +25,7 @@ class CommentsSection extends React.Component {
     });
   }
 
+  // TODO - What is the purpose of this method?
   componentDidUpdate(prevProps) {
     // If there are new comments
     if (prevProps.comments !== this.props.comments) {
