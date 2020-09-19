@@ -24,6 +24,7 @@ class Comment extends React.Component {
     this.handleHideReplies = this.handleHideReplies.bind(this);
   }
 
+  // After replies have been fetched, update the state.replies with props.replies
   componentDidUpdate(prevProps) {
     if ((this.props.replies !== prevProps.replies)) {
       this.setState({ replies: this.props.replies });
@@ -42,7 +43,16 @@ class Comment extends React.Component {
 
   handleShowReplies(e) {
     e.preventDefault();
+    debugger
+    // If we already have the replies, no need to fetch them again
+    if (this.state.replies) {
+      debugger
+      this.setState({ showReplies: true });
+      return;
+    }
+
     this.props.fetchReplies(this.props.comment.id).then(action => {
+      debugger
       this.setState({ showReplies: true });
     })
   }

@@ -5,7 +5,7 @@ import { fetchReplies } from "../../actions/comments_actions";
 const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
   return {
     currentUser: users[session.id],
-    replies: comments[ownProps.comment.id]["replies"]
+    replies: comments[ownProps.comment.id]["replies"] // Watch the Redux state for this comment's replies
   };
 };
 
