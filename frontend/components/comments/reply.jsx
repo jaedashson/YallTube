@@ -6,7 +6,6 @@ import UserIconReply from "../user_icons/user_icon_reply";
 
 class Reply extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.state = {
       uploadDate: parseDate(this.props.reply.created_at),
@@ -57,13 +56,30 @@ class Reply extends React.Component {
           </div>
           <p className="comment-body">{this.props.reply.body}</p>
           <div className="comment-response">
-            <FontAwesomeIcon icon="thumbs-up" className={"comment-thumb " + (this.state.liked ? "comment-voted" : "")} />
-            <span className="comment-score">68</span>
-            <FontAwesomeIcon icon="thumbs-down" className={"comment-thumb comment-thumb-down " + (this.state.disliked ? "comment-voted" : "")} />
+            <button className="thumb-button">
+              <FontAwesomeIcon
+                icon="thumbs-up"
+                className={
+                  "comment-thumb " + (this.state.liked ? "comment-voted" : "")
+                  }
+              />
+            </button>
+            <span className="comment-score"></span>
+            <button className="thumb-button thumbs-down-button">
+              <FontAwesomeIcon
+                icon="thumbs-down"
+                className={
+                  "comment-thumb " + 
+                  (this.state.disliked ? "comment-voted" : "")
+                }
+              />
+            </button>
             <button
               className="comment-reply-button"
               onClick={this.handleShowReplyForm}
-            >REPLY</button>
+            >
+              REPLY
+            </button>
           </div>
           {this.renderReplyForm()}
         </div>

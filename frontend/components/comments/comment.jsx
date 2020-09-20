@@ -4,6 +4,7 @@ import { parseDate } from "../../util/videos_info_util";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReplyFormContainer from "./reply_form_container";
 import ReplyContainer from "./reply_container";
+import UserIconComment from "../user_icons/user_icon_comment";
 
 class Comment extends React.Component {
   constructor(props) {
@@ -134,14 +135,10 @@ class Comment extends React.Component {
 
     return (
       <div className="comment">
-        <div className="comment-author-icon">
-          {this.props.comment.authorUsername[0]}
-        </div>
+        <UserIconComment authorUsername={this.props.comment.authorUsername} />
         <div className="comment-main">
           <div className="comment-author-date">
-            <span className="comment-author">
-              {this.props.comment.authorUsername}
-            </span>
+            <span className="comment-author">{this.props.comment.authorUsername}</span>
             <span className="comment-date">{this.state.uploadDate}</span>
           </div>
           <p className="comment-body">{this.props.comment.body}</p>

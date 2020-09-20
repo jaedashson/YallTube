@@ -50,7 +50,6 @@
 }
 
 // Reply
-
 .user-icon-reply {
   width: 24px;
   height: 24px;
@@ -62,5 +61,20 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  font-weight: 500;
+}
+
+// Comment
+.user-icon-comment {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  background: purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
   font-weight: 500;
 }
