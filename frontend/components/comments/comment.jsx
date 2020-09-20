@@ -43,16 +43,14 @@ class Comment extends React.Component {
 
   handleShowReplies(e) {
     e.preventDefault();
-    debugger
+
     // If we already have the replies, no need to fetch them again
     if (this.state.replies) {
-      debugger
       this.setState({ showReplies: true });
       return;
     }
 
     this.props.fetchReplies(this.props.comment.id).then(action => {
-      debugger
       this.setState({ showReplies: true });
     })
   }

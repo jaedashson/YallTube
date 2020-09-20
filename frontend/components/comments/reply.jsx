@@ -2,9 +2,11 @@ import React from "react";
 import { parseDate } from "../../util/videos_info_util";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReplyFormContainer from "./reply_form_container";
+import UserIconReply from "../user_icons/user_icon_reply";
 
 class Reply extends React.Component {
   constructor(props) {
+    debugger
     super(props);
     this.state = {
       uploadDate: parseDate(this.props.reply.created_at),
@@ -45,10 +47,9 @@ class Reply extends React.Component {
       return null;
     }
 
-    // Change from comment to reply
     return (
       <div className="reply">
-        <div className="reply-author-icon">{this.props.reply.authorUsername[0]}</div>
+        <UserIconReply authorUsername={this.props.reply.authorUsername} />
         <div className="comment-main">
           <div className="comment-author-date">
             <span className="comment-author">{this.props.reply.authorUsername}</span>
