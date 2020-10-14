@@ -5,7 +5,77 @@
 }
 
 .reply-form-main {
-  margin-left: 12 px;
+  margin-left: 12px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+.reply-form-input {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  border: none;
+  background: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 4px;
+  border-bottom: 1px solid gray;
+}
+
+.reply-form-input:focus {
+  border-bottom: 4px solid gray;
+}
+
+.reply-form-input[contenteditable]:empty::before {
+  content: "Add a public reply...";
+  color: #606060;
+}
+
+.reply-form-input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.reply-form-buttons {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;  
+}
+
+.reply-form-cancel {
+  height: 36px;
+  width: 85px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #606060;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.reply-form-cancel:hover {
+  cursor: pointer;
+}
+
+.reply-form-submit {
+  margin-left: 10px;
+  height: 36px;
+  width: 102px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #065FD4;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+}
+
+.reply-form-submit:hover {
+  cursor: pointer;
 }

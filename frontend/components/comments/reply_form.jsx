@@ -35,12 +35,12 @@ class ReplyForm extends React.Component {
       <form className="reply-form">
         <div className="reply-form-icon">{this.props.currentUser.username[0]}</div>
         <div className="reply-form-main">
-          <textarea
+          <span
             className="reply-form-input"
-            placeholder="Add a public reply..."
+            contentEditable="true"
             value={this.state.body}
             onChange={this.updateBody()}
-          />
+          ></span>
           <div className="reply-form-buttons">
             <button
               className="reply-form-cancel"
