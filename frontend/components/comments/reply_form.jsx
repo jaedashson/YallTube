@@ -11,11 +11,12 @@ class ReplyForm extends React.Component {
       body: "",
     };
 
+    this.updateBody = this.updateBody.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  updateBody() {
-    return e => this.setState({ body: e.currentTarget.value });
+  updateBody(e) {
+    this.setState({ body: e.currentTarget.value });
   }
 
   handleSubmit(e) {
@@ -35,12 +36,17 @@ class ReplyForm extends React.Component {
       <form className="reply-form">
         <div className="reply-form-icon">{this.props.currentUser.username[0]}</div>
         <div className="reply-form-main">
-          <span
+          {/* <span
             className="reply-form-input"
             contentEditable="true"
             value={this.state.body}
             onChange={this.updateBody()}
-          ></span>
+          ></span> */}
+          <textarea
+            className="reply-form-input"
+            value={this.state.body}
+            onChange={this.updateBody}
+          />
           <div className="reply-form-buttons">
             <button
               className="reply-form-cancel"
