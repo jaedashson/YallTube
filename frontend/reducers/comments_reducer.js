@@ -17,12 +17,9 @@ const commentsReducer = (state = {}, action) => {
       action.comments.forEach(comment => newState[comment.id] = comment);
       return newState;
     case RECEIVE_REPLIES:
-      // debugger
       newState = cloneDeep(state);
       parentCommentId = action.comments[0].parent_id;
-      // newState[parentCommentId]["replies"] = {};
       action.comments.forEach(comment => newState[parentCommentId]["replies"][comment.id] = comment);
-      // debugger
       return newState;
     case RECEIVE_PARENT_COMMENT:
       return Object.assign({}, state, { [action.comment.id]: action.comment });
