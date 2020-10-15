@@ -8,7 +8,6 @@ import {
   RECEIVE_REPLY
 } from "../actions/comments_actions"
 
-
 const videosReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = null;
