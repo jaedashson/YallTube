@@ -4,27 +4,33 @@ import {
   RECEIVE_VIDEOS
 } from "../actions/videos_actions";
 import {
-  RECEIVE_PARENT_COMMENT
+  RECEIVE_PARENT_COMMENT,
+  RECEIVE_REPLY
 } from "../actions/comments_actions"
 
 
 const videosReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState = null;
   switch (action.type) {
     case RECEIVE_VIDEO:
       return Object.assign({}, state, { [action.video.id]: action.video });
     case RECEIVE_ALL_VIDEOS:
-      let newState = {};
+      newState = {};
       action.videos.forEach(video => newState[video.id] = video);
       return newState;
     case RECEIVE_VIDEOS:
-      let newState1 = Object.assign({}, state);
-      action.videos.forEach(video => newState1[video.id] = video);
-      return newState1;
+      newState = Object.assign({}, state);
+      action.videos.forEach(video => newState[video.id] = video);
+      return newState;
     case RECEIVE_PARENT_COMMENT:
-      let newState2 = Object.assign({}, state);
-      newState2[action.comment.video_id].commentCount++;
-      return newState2;
+      newState = Object.assign({}, state);
+      newState[action.comment.video_id].commentCount++;
+      return newState;
+    case RECEIVE_REPLY:
+      newState = Object.assign({}, state);
+      newState[action.comment.video_id].commentCount++;
+      return newState;
     default:
       return state;
   }

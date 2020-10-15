@@ -50,13 +50,6 @@ class CommentForm extends React.Component {
       <form className="comment-form">
         <div className="comment-form-icon">{this.props.currentUser.username[0]}</div>
         <div className="comment-form-main">
-          {/* <span
-            className="comment-form-input"
-            contentEditable="true"
-            value={this.state.body}
-            onChange={this.updateBody}
-            onClick={this.handleShowButtons}
-          ></span> */}
           <textarea 
             className="comment-form-input"
             value={this.state.body}

@@ -36,12 +36,6 @@ class ReplyForm extends React.Component {
       <form className="reply-form">
         <div className="reply-form-icon">{this.props.currentUser.username[0]}</div>
         <div className="reply-form-main">
-          {/* <span
-            className="reply-form-input"
-            contentEditable="true"
-            value={this.state.body}
-            onChange={this.updateBody()}
-          ></span> */}
           <textarea
             className="reply-form-input"
             value={this.state.body}
