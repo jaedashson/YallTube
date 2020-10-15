@@ -61,6 +61,7 @@ class Comment extends React.Component {
     this.setState({ showReplies: false });
   }
 
+  // Only render if there is a currentUser
   renderReplyForm() {
     if (this.state.showReplyForm && this.props.currentUser) {
       return (
@@ -146,19 +147,14 @@ class Comment extends React.Component {
             <button className="thumb-button">
               <FontAwesomeIcon
                 icon="thumbs-up"
-                className={
-                  "comment-thumb " + (this.state.liked ? "comment-voted" : "")
-                }
+                className={"comment-thumb " + (this.state.liked ? "comment-voted" : "")}
               />
             </button>
             <span className="comment-score"></span>
             <button className="thumb-button thumbs-down-button">
               <FontAwesomeIcon
                 icon="thumbs-down"
-                className={
-                  "comment-thumb " +
-                  (this.state.disliked ? "comment-voted" : "")
-                }
+                className={"comment-thumb " + (this.state.disliked ? "comment-voted" : "")}
               />
             </button>
             <button
