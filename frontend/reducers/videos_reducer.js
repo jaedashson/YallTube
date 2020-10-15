@@ -1,3 +1,5 @@
+import { cloneDeep } from "lodash";
+
 import {
   RECEIVE_VIDEO,
   RECEIVE_ALL_VIDEOS,
@@ -23,11 +25,11 @@ const videosReducer = (state = {}, action) => {
       action.videos.forEach(video => newState[video.id] = video);
       return newState;
     case RECEIVE_PARENT_COMMENT:
-      newState = Object.assign({}, state);
+      newState = cloneDeep(state);
       newState[action.comment.video_id].commentCount++;
       return newState;
     case RECEIVE_REPLY:
-      newState = Object.assign({}, state);
+      newState = cloneDeep(state);
       newState[action.comment.video_id].commentCount++;
       return newState;
     default:
