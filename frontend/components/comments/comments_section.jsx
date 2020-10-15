@@ -80,8 +80,6 @@ class CommentsSection extends React.Component {
       return null;
     }
 
-    debugger
-
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
