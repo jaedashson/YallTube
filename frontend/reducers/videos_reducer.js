@@ -23,9 +23,7 @@ const videosReducer = (state = {}, action) => {
       return newState1;
     case RECEIVE_PARENT_COMMENT:
       let newState2 = Object.assign({}, state);
-      // debugger
       newState2[action.comment.video_id].commentCount++;
-      // debugger
       return newState2;
     default:
       return state;
