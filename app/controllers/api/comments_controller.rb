@@ -15,7 +15,6 @@ class Api::CommentsController < ApplicationController
 
   # Create a comment for this video
   # POST /api/comments
-
   def create
     @comment = Comment.new(comment_params)
 

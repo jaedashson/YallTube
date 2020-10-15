@@ -20,6 +20,8 @@ class VideoPage extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
+    debugger // Inspect prevProps.video.commentCount and this.props.video.commentCount
+
     // If videoId changed AND
     // If the video doesn't exist in Redux state
     // i.e. When the user clicks on a different video
@@ -30,6 +32,12 @@ class VideoPage extends React.Component {
         return this.props.refresh(this.props.currentUserId);
       })
     }
+
+    // If video.commentCount got updated
+    // if (this.props.video.commentCount !== prevProps.video.commentCount) {
+    //   console.log("commentCount increased!");
+    //   debugger
+    // }
   }
 
   render() {
@@ -42,6 +50,9 @@ class VideoPage extends React.Component {
     if (this.props.videoId !== this.props.video.id) {
       return null;
     }
+
+    // console.log("Rendering VideoPage!"); // DEBUG
+    debugger
 
     return (
       <div className="video-page-container">

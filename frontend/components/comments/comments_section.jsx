@@ -11,10 +11,7 @@ class CommentsSection extends React.Component {
     this.state = {
       comments: null,
       sortBy: "newest-first",
-      commentCount: this.props.video.commentCount
     };
-    console.log(this.props.video.commentCount)
-    console.log(this.state.commentCount)
   }
 
   componentDidMount() {
@@ -83,11 +80,13 @@ class CommentsSection extends React.Component {
       return null;
     }
 
+    debugger
+
     return (
       <div className="comments-section">
         <div className="comments-count-sort">
           <span className="comment-count">
-            {this.state.commentCount} Comments
+            {this.props.video.commentCount} Comments
           </span>
           <button className="comment-sort-button">
             <FontAwesomeIcon

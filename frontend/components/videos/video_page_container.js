@@ -7,6 +7,7 @@ import { refresh } from "../../actions/session_actions";
 const mSTP = ({ entities, errors, session }, ownProps) => {
   const videoId = parseInt(ownProps.match.params.videoId);
   const video = entities.videos[videoId];
+  debugger
   let uploader;
 
   if (video && entities.users[video.uploader_id]) {

@@ -19,45 +19,6 @@ class VideoDescription extends React.Component {
     this.handleSubscribe = this.handleSubscribe.bind(this);
   }
 
-  componentDidMount() {
-
-    // TODO - What does this conditional even do?
-    // if (
-    //   !this.state.likeCount &&
-    //   !this.state.dislikeCount &&
-    //   this.props.video.likeCount &&
-    //   this.props.video.dislikeCount
-    // ) {
-
-    //   this.setState({
-    //     likeCount: this.props.video.likeCount,
-    //     dislikeCount: this.props.video.dislikeCount
-    //   })
-    // }
-  }
-
-  componentDidUpdate(prevProps) {
-
-    // Don't update this.state if the likedVideoIds and dislikedVideoIds haven't changed
-    // if (
-    //   arraysEqual(prevProps.likedVideoIds, this.props.likedVideoIds) && arraysEqual(prevProps.dislikedVideoIds, this.props.dislikedVideoIds)
-    // ) {
-    //   return;
-    // }
-    
-    // Otherwise update this.state
-    // else {
-    //   this.setState({
-    //     liked: this.props.likedVideoIds.includes(this.props.video.id),
-    //     disliked: this.props.dislikedVideoIds.includes(this.props.video.id),
-
-    //     // remove the two lines below if it doesn't work
-    //     likeCount: this.props.video.likeCount,
-    //     dislikeCount: this.props.video.dislikeCount
-    //   });
-    // }
-  }
-
   // TODO - Make this update the state
   // Increment this.state.likeCount
   // Update this.state.like

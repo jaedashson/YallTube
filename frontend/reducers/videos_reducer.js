@@ -3,6 +3,10 @@ import {
   RECEIVE_ALL_VIDEOS,
   RECEIVE_VIDEOS
 } from "../actions/videos_actions";
+import {
+  RECEIVE_PARENT_COMMENT
+} from "../actions/comments_actions"
+
 
 const videosReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -17,6 +21,12 @@ const videosReducer = (state = {}, action) => {
       let newState1 = Object.assign({}, state);
       action.videos.forEach(video => newState1[video.id] = video);
       return newState1;
+    case RECEIVE_PARENT_COMMENT:
+      let newState2 = Object.assign({}, state);
+      // debugger
+      newState2[action.comment.video_id].commentCount++;
+      // debugger
+      return newState2;
     default:
       return state;
   }

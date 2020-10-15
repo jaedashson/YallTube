@@ -13,6 +13,7 @@ class CommentForm extends React.Component {
 
     this.handleShowButtons = this.handleShowButtons.bind(this);
     this.handleHideButtons = this.handleHideButtons.bind(this);
+    this.updateBody = this.updateBody.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -29,8 +30,8 @@ class CommentForm extends React.Component {
     });
   }
 
-  updateBody() {
-    return e => this.setState({ body: e.currentTarget.value });
+  updateBody(e) {
+    this.setState({ body: e.currentTarget.value });
   }
 
   handleSubmit(e) {
@@ -49,13 +50,19 @@ class CommentForm extends React.Component {
       <form className="comment-form">
         <div className="comment-form-icon">{this.props.currentUser.username[0]}</div>
         <div className="comment-form-main">
-          <span
+          {/* <span
             className="comment-form-input"
             contentEditable="true"
             value={this.state.body}
-            onChange={this.updateBody()}
+            onChange={this.updateBody}
             onClick={this.handleShowButtons}
-          ></span>
+          ></span> */}
+          <textarea 
+            className="comment-form-input"
+            value={this.state.body}
+            onChange={this.updateBody}
+            onClick={this.handleShowButtons}
+          />
           <div className={"comment-form-buttons " + (this.state.showButtons ? "comment-form-buttons-show" : "")}>
             <button
               className="comment-form-cancel"
