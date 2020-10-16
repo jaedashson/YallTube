@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { createVideoVote, destroyVideoVote } from "../../util/video_votes_api_util";
 import { refresh } from "../../actions/session_actions";
 
-// This needs to listen to the video's like and dislike count
 const mSTP = ({ session }, ownProps) => {
   return {
     currentUserId: session.id,
@@ -18,9 +17,9 @@ const mSTP = ({ session }, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    createVideoVote: vote => createVideoVote(vote),
-    destroyVideoVote: vote => destroyVideoVote(vote),
-    refresh: (userId) => dispatch(refresh(userId))
+    createVideoVote: vote => createVideoVote(vote), // util function, not dispatch
+    destroyVideoVote: vote => destroyVideoVote(vote), // util function, not dispatch
+    refresh: userId => dispatch(refresh(userId))
   };
 }
 
