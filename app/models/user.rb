@@ -42,7 +42,6 @@ class User < ApplicationRecord
     self.views.pluck(:video_id).uniq
   end
 
-  # has_many :videos_viewed
   # has_many :subscriptions_out # `subscriptions` where `subscriber_id` points to this user
   # has_many :channels_subscribed # Channels (`users`) through `subscriptions_out`
   # has_many :subscriptions_in # `subscriptions` where `channel_id` points to this user
@@ -52,7 +51,6 @@ class User < ApplicationRecord
   # has_many :channel_views # sum of view count of `videos`
 
   def self.find_by_credentials(username, password)
-    
     user = User.find_by(username: username)
 
     if user && user.is_password?(password)
