@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate } from "../../util/videos_info_util";
+import { cloneDeep } from "lodash";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReplyFormContainer from "./reply_form_container";
 import ReplyContainer from "./reply_container";
@@ -17,12 +18,22 @@ class Comment extends React.Component {
       replyCount: this.props.comment.replyCount,
       showReplies: false,
       replies: null,
+      newReplies: {},
     };
 
+    this.appendNewReply = this.appendNewReply.bind(this);
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
     this.handleShowReplies = this.handleShowReplies.bind(this);
     this.handleHideReplies = this.handleHideReplies.bind(this);
+  }
+
+  appendNewReply(reply) {
+    debugger
+    const newReplies = cloneDeep(this.state.newReplies);
+    newReplies[reply.id] = reply;
+    this.setState({ newReplies });
+    debugger
   }
 
   // After replies have been fetched, update the state.replies with props.replies
@@ -69,6 +80,7 @@ class Comment extends React.Component {
           parentId={this.props.comment.id}
           currentUser={this.props.currentUser}
           videoId={this.props.videoId}
+          appendNewReply={this.appendNewReply}
           handleHideReplyForm={this.handleHideReplyForm}
         />
       )
@@ -94,7 +106,7 @@ class Comment extends React.Component {
               videoId={this.props.videoId}
             />
           );
-        })
+        });
 
       return (
         <div className="replies">
@@ -127,6 +139,29 @@ class Comment extends React.Component {
         </div>
       );
     }
+  }
+
+  renderNewReplies() {
+    // If newReplies is empty
+    if (Object.keys(this.state.newReplies).length === 0) {
+      return null;
+    }
+
+    let repliesArray = Object.values(this.state.newReplies).map(reply => {
+      return (
+        <ReplyContainer
+          key={reply.id}
+          reply={reply}
+          videoId={this.props.videoId}
+        />
+      );
+    });
+
+    return (
+      <div className="replies">
+        <div className="replies-list">{repliesArray}</div>
+      </div>
+    );
   }
 
   render() {
@@ -166,6 +201,7 @@ class Comment extends React.Component {
           </div>
           {this.renderReplyForm()}
           {this.renderReplies()}
+          {this.renderNewReplies()}
         </div>
       </div>
     );

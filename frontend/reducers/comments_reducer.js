@@ -24,7 +24,7 @@ const commentsReducer = (state = {}, action) => {
     case RECEIVE_PARENT_COMMENT:
       return Object.assign({}, state, { [action.comment.id]: action.comment });
     case RECEIVE_REPLY:
-      newState = Object.assign({}, state);
+      newState = cloneDeep(state);
       newState[action.comment.parent_id]["replies"][action.comment.id] = action.comment;
       return newState;
     default:
