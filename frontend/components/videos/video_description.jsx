@@ -157,7 +157,7 @@ class VideoDescription extends React.Component {
         <div className="video-description-header">
           <p className="video-title">{this.props.video.title}</p>
           <div className="video-stats-container">
-            <span className="video-views-date">10m views • {this.state.uploadDate}</span>
+            <span className="video-views-date">{this.props.video.viewCount} views • {this.state.uploadDate}</span>
             <div className="video-likes-container">
               <FontAwesomeIcon icon="thumbs-up" className={"video-thumb " + (this.state.liked ? "video-voted" : "")} onClick={this.handleClickLike} />
               <span className={"video-vote-count " + (this.state.liked ? "video-voted" : "")}>{this.state.likeCount} likes</span>
