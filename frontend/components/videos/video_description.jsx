@@ -19,10 +19,6 @@ class VideoDescription extends React.Component {
     this.handleSubscribe = this.handleSubscribe.bind(this);
   }
 
-  // TODO - Make this update the state
-  // Increment this.state.likeCount
-  // Update this.state.like
-  // Behavior is consistent with styling
   handleClickLike(e) {
     e.preventDefault();
 

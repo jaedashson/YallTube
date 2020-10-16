@@ -6,7 +6,6 @@ class RecommendationItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { uploader : null };
-    // TODO - What about video?
   }
 
   componentDidMount() {

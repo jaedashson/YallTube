@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import RecommendationItem from "./recommendation_item"; // TODO - Phase this in
+import RecommendationItem from "./recommendation_item";
 
 import { shuffleVideos } from "../../util/videos_info_util";
 
