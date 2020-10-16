@@ -29,11 +29,9 @@ class Comment extends React.Component {
   }
 
   appendNewReply(reply) {
-    debugger
     const newReplies = cloneDeep(this.state.newReplies);
     newReplies[reply.id] = reply;
     this.setState({ newReplies });
-    debugger
   }
 
   // After replies have been fetched, update the state.replies with props.replies
