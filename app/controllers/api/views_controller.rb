@@ -1,4 +1,6 @@
 class Api::ViewsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   # POST /api/views
   def create
     @view = View.new(view_params)
