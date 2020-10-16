@@ -22,26 +22,26 @@ class VideoIndexItem extends React.Component {
     }
     
     return (
-      <Link to={`/videos/${this.props.video.id}`} className="video-index-item">
-        <div className="thumbnail-container">
+      <div className="video-index-item">
+        <Link to={`/videos/${this.props.video.id}`} className="thumbnail-container">
           <img 
             className="thumbnail"
             src={this.props.video.thumbnailUrl}
             width="269"
             height="151"
           />
-        </div>
+        </Link>
         <div className="video-index-item-info-container">
-          <div className="current-user-icon">
+          <Link to={`/users/${this.state.uploader.id}`} className="current-user-icon">
             {this.state.uploader.username[0]}
-          </div>
+          </Link>
           <div className="video-index-item-info">
-            <p className="video-index-item-title">{this.props.video.title}</p>
+            <Link to={`/videos/${this.props.video.id}`} className="video-index-item-title">{this.props.video.title}</Link>
             <Link to={`/users/${this.state.uploader.id}`} className="video-index-item-uploader">{this.state.uploader.username}</Link>
             <p className="video-index-item-views-date">{this.props.video.viewCount} views • {parseDate(this.props.video.created_at)}</p>
           </div>
         </div>
-      </Link>
+      </div>
     );
   }
 };
