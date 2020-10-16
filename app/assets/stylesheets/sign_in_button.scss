@@ -31,22 +31,6 @@
   position: relative;
 }
 
-.current-user-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  color: #fff;
-  line-height: 1.4286;
-  text-align: center;
-  background: purple;
-  margin-right: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 500;
-  cursor: pointer;
-}
-
 .current-user-dropdown-menu {
   display: none;
   position: absolute;

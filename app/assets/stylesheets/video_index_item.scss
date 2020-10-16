@@ -1,5 +1,7 @@
 // Recommended videos
 .video-index-item {
+  margin: 10px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -37,6 +39,8 @@
 .video-index-item-title {
   color: #030303;
   font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
 }
 
 .video-index-item-uploader {

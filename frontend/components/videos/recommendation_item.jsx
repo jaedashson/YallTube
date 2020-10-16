@@ -23,7 +23,7 @@ class RecommendationItem extends React.Component {
     }
 
     return (
-      <div to={`/videos/${this.props.video.id}`} className="recommendation-item">
+      <div className="recommendation-item">
         <Link to={`/videos/${this.props.video.id}`}>
           <img
             className="recommendation-thumbnail"
