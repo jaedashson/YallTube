@@ -19,30 +19,24 @@ class VideoPage extends React.Component {
       .then(() => this.props.createView({
         viewer_id: this.props.currentUserId,
         video_id: this.props.videoId
-      }))
+      }));
   };
 
   componentDidUpdate(prevProps) {
     // If videoId changed AND
     // If the video doesn't exist in Redux state
     // i.e. When the user clicks on a different video
+    debugger
     if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
-
-
-      this.props.fetchVideo(this.props.videoId).then(action => {
-        return this.props.fetchUser(action.video.uploader_id);
-      }).then(res => {
-        return this.props.refresh(this.props.currentUserId);
-      })
-
-      
+      debugger
+      this.props.fetchVideo(this.props.videoId)
+        .then(action => this.props.fetchUser(action.video.uploader_id))
+        .then(() => this.props.createView({
+          viewer_id: this.props.currentUserId,
+          video_id: this.props.videoId
+        }))
+        .then(res => this.props.refresh(this.props.currentUserId));
     }
-
-    // If video.commentCount got updated
-    // if (this.props.video.commentCount !== prevProps.video.commentCount) {
-    //   console.log("commentCount increased!");
-    //   debugger
-    // }
   }
 
   render() {
