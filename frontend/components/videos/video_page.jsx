@@ -27,11 +27,15 @@ class VideoPage extends React.Component {
     // If the video doesn't exist in Redux state
     // i.e. When the user clicks on a different video
     if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
+
+
       this.props.fetchVideo(this.props.videoId).then(action => {
         return this.props.fetchUser(action.video.uploader_id);
       }).then(res => {
         return this.props.refresh(this.props.currentUserId);
       })
+
+      
     }
 
     // If video.commentCount got updated
