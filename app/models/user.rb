@@ -38,10 +38,9 @@ class User < ApplicationRecord
     self.video_votes.where(like: false).pluck(:video_id)
   end
 
-  # def viewed_videos_ids
-    # self.views.pluck(:video_id).uniq
-    # self.views.select(:video_id).distinct
-  # end
+  def viewed_video_ids
+    self.views.pluck(:video_id).uniq
+  end
 
   # has_many :videos_viewed
   # has_many :subscriptions_out # `subscriptions` where `subscriber_id` points to this user
