@@ -16,6 +16,10 @@ class Video < ApplicationRecord
     foreign_key: :video_id,
     class_name: :Comment
 
+  has_many :views,
+    foreign_key: :video_id,
+    class_name: :View
+
   def like_count
     self.votes.where(like: true).count
   end
@@ -27,16 +31,8 @@ class Video < ApplicationRecord
   def comment_count
     self.comments.count
   end
-    
-  # # Likes/dislikes MVP
-  # has_many :votes,
-  #   polymorphic: true,
-  #   foreign_key: :votable_id,
-  #   class_name: :Vote
 
-  # # Comments MVP
-  # has_many :comments
-
-  # # Views MVP
-  # has_many :views
+  def view_count
+    self.views.count
+  end
 end
