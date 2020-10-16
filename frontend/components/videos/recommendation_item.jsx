@@ -23,22 +23,23 @@ class RecommendationItem extends React.Component {
     }
 
     return (
-      <Link to={`/videos/${this.props.video.id}`} className="recommendation-item">
-        <img
-          className="recommendation-thumbnail"
-          src={this.props.video.thumbnailUrl}
-        />
-
+      <div to={`/videos/${this.props.video.id}`} className="recommendation-item">
+        <Link to={`/videos/${this.props.video.id}`}>
+          <img
+            className="recommendation-thumbnail"
+            src={this.props.video.thumbnailUrl}
+          />
+        </Link>
         <div className="recommendation-info">
-          <p className="recommendation-title">{this.props.video.title}</p>
-          <p className="recommendation-uploader">{this.state.uploader.username}</p>
+          <Link to={`/videos/${this.props.video.id}`} className="recommendation-title">{this.props.video.title}</Link>
+          <Link to={`/users/${this.state.uploader.id}`} className="recommendation-uploader">{this.state.uploader.username}</Link>
           <div className="recommendation-stats">
             <span className="recommendation-views">{this.props.video.viewCount} views</span>
             <span className="recommendation-dot">•</span>
             <span className="recommendation-date">{parseDate(this.props.video.created_at)}</span>
           </div>
         </div>
-      </ Link>
+      </div>
     )
   }
 }
