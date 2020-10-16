@@ -26,9 +26,7 @@ class VideoPage extends React.Component {
     // If videoId changed AND
     // If the video doesn't exist in Redux state
     // i.e. When the user clicks on a different video
-    debugger
     if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
-      debugger
       this.props.fetchVideo(this.props.videoId)
         .then(action => this.props.fetchUser(action.video.uploader_id))
         .then(() => this.props.createView({
