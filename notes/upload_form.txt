@@ -1,6 +1,0 @@
-<div className="upload-form-file-input-container">
-  <input type="file"
-    className="upload-form-file-input"
-    onChange={this.handleFile}
-  />
-</div>
