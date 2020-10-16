@@ -17,6 +17,14 @@ class User < ApplicationRecord
   has_many :voted_videos,
     through: :video_votes,
     source: :video
+
+  has_many :views,
+    foreign_key: :viewer_id,
+    class_name: :View
+
+  has_many :viewed_videos,
+    through: :views,
+    source: :video
   
   def uploaded_video_ids
     self.videos.pluck(:id)
@@ -28,6 +36,10 @@ class User < ApplicationRecord
 
   def disliked_video_ids
     self.video_votes.where(like: false).pluck(:video_id)
+  end
+
+  def viewed_videos_ids
+    self.views.distinct.pluck(:video_id)
   end
 
   # has_many :videos_viewed
