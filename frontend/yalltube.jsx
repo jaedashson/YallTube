@@ -74,12 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
         id: window.currentUser.id,
         likedVideoIds: window.currentUser.likedVideoIds,
         dislikedVideoIds: window.currentUser.dislikedVideoIds,
-        uploadedVideoIds: window.currentUser.uploadedVideoIds
+        uploadedVideoIds: window.currentUser.uploadedVideoIds,
+        viewedVideoIds: window.currentUser.viewedVideoIds
       },
       entities: {
         users: { [window.currentUser.id]: window.currentUser }
       }
     };
+    
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {
