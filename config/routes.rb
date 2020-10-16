@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create] do
       resources :comments, only: [:index] # Get replies of a parent comment
     end
+    resources :views, only: [:create]
 
     # Delete video vote based on voter_id and video_id in video_vote_params
     delete 'video_votes', to: 'video_votes#destroy'

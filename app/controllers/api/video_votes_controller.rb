@@ -1,5 +1,4 @@
 class Api::VideoVotesController < ApplicationController
-
   # Make this fetch all the like ids of a given video or user
   # GET /api/users/:user_id/likes
   # GET /api/videos/:video_id/likes
