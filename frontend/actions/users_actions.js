@@ -3,6 +3,7 @@ import * as APIUtil from "../util/users_api_util";
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 
 export const usersActionsTest = "hello"; // TESTING
 
@@ -28,12 +29,27 @@ export const clearUserErrors = () => {
   };
 };
 
-// thunk action creators
+export const receiveUsers = users => {
+  return {
+    type: RECEIVE_USERS,
+    users
+  };
+};
+
+// Thunk action creators
 
 export const fetchUser = userId => dispatch => {
   return APIUtil.fetchUser(userId).then(user => {
     return dispatch(receiveUser(user));
   }, error => {
     return dispatch(receiveUserErrors(error.responseJSON));
-  })
+  });
+};
+
+export const fetchUsers = userIds => dispatch => {
+  return APIUtil.fetchUsers(userIds).then(users => {
+    return dispatch(receiveUsers(users));
+  }, error => {
+    return dispatch(receiveUserErrors(error.responseJSON));
+  });
 };

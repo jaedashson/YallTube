@@ -12,9 +12,7 @@ class Api::UsersController < ApplicationController
   end
 
   def index_by_id
-    # debugger
     @users = User.where('id IN (?)', params[:userIds]) # TODO - is this working?
-    # debugger
     render :index
   end
   

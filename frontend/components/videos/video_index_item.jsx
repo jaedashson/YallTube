@@ -7,20 +7,10 @@ import { parseDate } from "../../util/videos_info_util";
 class VideoIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { uploader: null };
-  }
-
-  componentDidMount() {
-    this.props.fetchUser(this.props.video.uploader_id).then(action => {
-      this.setState({ uploader: action.user });
-    });
   }
   
   render() {
-    if (!this.state.uploader) {
-      return null;
-    }
-    
+    // debugger // Do we have the uploader every time?
     return (
       <div className="video-index-item">
         <Link to={`/videos/${this.props.video.id}`} className="thumbnail-container">
@@ -32,12 +22,12 @@ class VideoIndexItem extends React.Component {
           />
         </Link>
         <div className="video-index-item-info-container">
-          <Link to={`/users/${this.state.uploader.id}`} className="current-user-icon">
-            {this.state.uploader.username[0]}
+          <Link to={`/users/${this.props.uploader.id}`} className="current-user-icon">
+            {this.props.uploader.username[0]}
           </Link>
           <div className="video-index-item-info">
             <Link to={`/videos/${this.props.video.id}`} className="video-index-item-title">{this.props.video.title}</Link>
-            <Link to={`/users/${this.state.uploader.id}`} className="video-index-item-uploader">{this.state.uploader.username}</Link>
+            <Link to={`/users/${this.props.uploader.id}`} className="video-index-item-uploader">{this.props.uploader.username}</Link>
             <p className="video-index-item-views-date">{this.props.video.viewCount} views • {parseDate(this.props.video.created_at)}</p>
           </div>
         </div>

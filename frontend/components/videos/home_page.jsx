@@ -15,6 +15,7 @@ class HomePage extends React.Component {
     this.props.fetchAllVideos()
       .then(action => {
         const uploaderIds = action.videos.map(video => video.uploader_id);
+        return this.props.fetchUsers(uploaderIds);
       });
   };
 
@@ -27,7 +28,8 @@ class HomePage extends React.Component {
         <VideoIndexItem
           key={video.id}
           video={video}
-          fetchUser={this.props.fetchUser}
+          uploader={this.props.uploaders[video.uploader_id]}
+          // fetchUser={this.props.fetchUser}
         />
       );
     });
