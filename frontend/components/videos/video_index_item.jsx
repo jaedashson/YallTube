@@ -10,7 +10,6 @@ class VideoIndexItem extends React.Component {
   }
   
   render() {
-    // debugger // Do we have the uploader every time?
     return (
       <div className="video-index-item">
         <Link to={`/videos/${this.props.video.id}`} className="thumbnail-container">

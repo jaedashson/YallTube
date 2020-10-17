@@ -9,6 +9,9 @@ import SideBar from "./side_bar"
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loaded: false
+    }
   };
 
   componentDidMount() {
@@ -16,7 +19,8 @@ class HomePage extends React.Component {
       .then(action => {
         const uploaderIds = action.videos.map(video => video.uploader_id);
         return this.props.fetchUsers(uploaderIds);
-      });
+      })
+      .then(action => this.setState({ loaded: true }));
   };
 
   renderItems() {
@@ -29,7 +33,6 @@ class HomePage extends React.Component {
           key={video.id}
           video={video}
           uploader={this.props.uploaders[video.uploader_id]}
-          // fetchUser={this.props.fetchUser}
         />
       );
     });
@@ -38,6 +41,8 @@ class HomePage extends React.Component {
   };
 
   render() {
+    if (!this.state.loaded) return null;
+    
     return (
       <div className="home-page">
         <SideBar />
