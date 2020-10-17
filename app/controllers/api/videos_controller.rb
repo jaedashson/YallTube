@@ -3,11 +3,11 @@ class Api::VideosController < ApplicationController
   def index
     if params[:videoIds]
       @videos = Video.where('id IN (?)', params[:videoIds]) # TODO - Is this ever working?
-      # debugger
+      debugger
     else
       @videos = Video.all
     end
-    # debugger
+    debugger
     render :index
   end
 
