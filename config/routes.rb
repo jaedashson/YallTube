@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create] do
       resources :video_votes, only: [:index]
     end
+
+    get 'users_by_id', to: 'users#index_by_id'
+    
     resource :session, only: [:create, :destroy]
     resources :videos, only: [:index, :show, :create] do
       resources :video_votes, only: [:index]

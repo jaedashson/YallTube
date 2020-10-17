@@ -10,6 +10,13 @@ class Api::UsersController < ApplicationController
       render json: ["Couldn't find your YallTube Account"], status: 404
     end
   end
+
+  def index_by_id
+    debugger
+    @users = User.where('id IN (?)', params[:userIds]) # TODO - is this working?
+    debugger
+    render :index
+  end
   
   # GET /api/users/:userId
   def show

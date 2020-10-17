@@ -12,7 +12,10 @@ class HomePage extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchAllVideos();
+    this.props.fetchAllVideos()
+      .then(action => {
+        const uploaderIds = action.videos.map(video => video.uploader_id);
+      });
   };
 
   renderItems() {

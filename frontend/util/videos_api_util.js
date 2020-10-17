@@ -1,4 +1,4 @@
-export const fetchVideo = (videoId) => {
+export const fetchVideo = videoId => {
   return $.ajax({
     method: "GET",
     url: `/api/videos/${videoId}`
@@ -12,7 +12,7 @@ export const fetchAllVideos = () => {
   });
 };
 
-export const fetchVideos = (videoIds) => {
+export const fetchVideos = videoIds => {
   return $.ajax({
     method: "GET",
     url: "/api/videos",
@@ -20,7 +20,7 @@ export const fetchVideos = (videoIds) => {
   });
 };
 
-export const createVideo = (formData) => {
+export const createVideo = formData => {
   return $.ajax({
     method: "POST",
     url: "/api/videos",

@@ -2,11 +2,11 @@ class Api::VideosController < ApplicationController
   # GET /api/videos
   def index
     if params[:videoIds]
-      @videos = Video.where('id IN (?)', params[:videoIds])
+      @videos = Video.where('id IN (?)', params[:videoIds]) # TODO - Is this ever working?
     else
       @videos = Video.all
     end
-
+    
     render :index
   end
 
@@ -21,7 +21,6 @@ class Api::VideosController < ApplicationController
     end
   end
 
-  # createVideo
   # POST /api/videos
   def create
     @video = Video.new(video_params)
