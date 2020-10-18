@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import VideoPlayerContainer from "./video_player_container";
 import VideoDescriptionContainer from "./video_description_container";
 import RecommendationsContainer from "./recommendations_container";
 import CommentsSectionContainer from "../comments/comments_section_container";
@@ -10,7 +11,10 @@ import ReactPlayer from "react-player";
 class VideoPage extends React.Component {
   constructor(props) {
     super(props);
-  };
+    this.state = {
+      loaded: false
+    }
+  }
 
   componentDidMount() {
     // Fetch video then uploader then add view
@@ -20,7 +24,7 @@ class VideoPage extends React.Component {
         viewer_id: this.props.currentUserId,
         video_id: this.props.videoId
       }));
-  };
+  }
 
   componentDidUpdate(prevProps) {
     // If videoId changed AND
@@ -52,7 +56,10 @@ class VideoPage extends React.Component {
       <div className="video-page-container">
         <div className="video-page">
           <div className="video-page-col-1">
-            <div className="video-player-container">
+            <VideoPlayerContainer
+              video={this.props.video}
+            />
+            {/* <div className="video-player-container">
               <ReactPlayer
                 className="video-player"
                 id="video-player"
@@ -62,7 +69,7 @@ class VideoPage extends React.Component {
                 height="67vh"
                 controls={true}
               />
-            </div>
+            </div> */}
             <VideoDescriptionContainer
               video={this.props.video}
               uploader={this.props.uploader}
