@@ -20,10 +20,6 @@ class VideoPage extends React.Component {
     // Fetch video then uploader then add view
     this.props.fetchVideo(this.props.videoId)
       .then(action => this.props.fetchUser(action.video.uploader_id))
-      .then(() => this.props.createView({
-        viewer_id: this.props.currentUserId,
-        video_id: this.props.videoId
-      }));
   }
 
   componentDidUpdate(prevProps) {
@@ -33,10 +29,6 @@ class VideoPage extends React.Component {
     if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
       this.props.fetchVideo(this.props.videoId)
         .then(action => this.props.fetchUser(action.video.uploader_id))
-        .then(() => this.props.createView({
-          viewer_id: this.props.currentUserId,
-          video_id: this.props.videoId
-        }))
         .then(res => this.props.refresh(this.props.currentUserId));
     }
   }
