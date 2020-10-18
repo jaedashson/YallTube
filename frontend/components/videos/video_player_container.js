@@ -1,6 +1,6 @@
 import VideoPlayer from "./video_player";
 import { connect } from "react-redux";
-import { createView } from "../../util/views_api_util"; // Replace with actions
+import { createView } from "../../actions/views_actions"; // Replace with actions
 
 const mSTP = ({ session }, ownProps) => {
   return {
@@ -10,7 +10,7 @@ const mSTP = ({ session }, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    createView: view => createView(view)
+    createView: view => dispatch(createView(view))
   };
 };
 

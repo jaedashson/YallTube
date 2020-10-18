@@ -8,7 +8,10 @@ import {
 import {
   RECEIVE_PARENT_COMMENT,
   RECEIVE_REPLY
-} from "../actions/comments_actions"
+} from "../actions/comments_actions";
+import {
+  RECEIVE_VIEW
+} from "../actions/views_actions";
 
 const videosReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -31,6 +34,12 @@ const videosReducer = (state = {}, action) => {
     case RECEIVE_REPLY:
       newState = cloneDeep(state);
       newState[action.comment.video_id].commentCount++;
+      return newState;
+    case RECEIVE_VIEW:
+      newState = cloneDeep(state);
+      // debugger
+      newState[action.view.video_id].viewCount++;
+      // debugger
       return newState;
     default:
       return state;
