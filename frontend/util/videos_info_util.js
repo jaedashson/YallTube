@@ -29,3 +29,14 @@ export const arraysEqual = (arr1, arr2) => {
     return false;
   }
 }
+
+export const removeElementFromArray = (arr, ele) => {
+  const newArr = arr.slice();
+
+  const index = newArr.indexOf(ele);
+  if (index > -1) {
+    newArr.splice(index, 1);
+  }
+
+  return newArr;
+}

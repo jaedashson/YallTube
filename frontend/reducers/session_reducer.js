@@ -69,6 +69,14 @@ const sessionReducer = (state = defaultState, action) => {
     case REMOVE_VIDEO_VOTE:
       newState = cloneDeep(state);
 
+      if (action.videoVote.like === true) {
+        if (newState["likedVideoIds"].includes(action.videoVote.video_id)) {
+          
+        }
+      } else if (action.videoVote.like === false) {
+
+      }
+
       return newState;
     default:
       return state;
