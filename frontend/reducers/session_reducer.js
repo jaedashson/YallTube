@@ -48,11 +48,9 @@ const sessionReducer = (state = defaultState, action) => {
       return newState;
     case RECEIVE_VIEW:
       newState = cloneDeep(state);
-      debugger
       if (!newState["viewedVideoIds"].includes(action.view.video_id)) {
         newState["viewedVideoIds"].push(action.view.video_id);
       }
-      debugger
       return newState;
     default:
       return state;
