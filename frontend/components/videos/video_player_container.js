@@ -1,6 +1,6 @@
 import VideoPlayer from "./video_player";
 import { connect } from "react-redux";
-import { createView } from "../../util/views_api_util";
+import { createView } from "../../util/views_api_util"; // Replace with actions
 
 const mSTP = ({ session }, ownProps) => {
   return {
