@@ -12,6 +12,10 @@ import {
 import {
   RECEIVE_VIEW
 } from "../actions/views_actions";
+import {
+  RECEIVE_VIDEO_VOTE,
+  REMOVE_VIDEO_VOTE
+} from "../actions/video_votes_actions";
 
 const videosReducer = (state = {}, action) => {
   Object.freeze(state);
