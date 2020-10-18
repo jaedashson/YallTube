@@ -1,5 +1,5 @@
 export const createView = view => {
-  debugger
+  // debugger
   return $.ajax({
     method: "POST",
     url: "/api/views",
