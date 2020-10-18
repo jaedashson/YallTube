@@ -8,7 +8,6 @@ import {
   RECEIVE_USERS
 } from "../actions/users_actions";
 
-
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = null;

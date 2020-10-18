@@ -45,15 +45,23 @@ const videosReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_VIDEO_VOTE:
       newState = cloneDeep(state);
-      debugger
+      // debugger
+      if (action.videoVote.like === true) {
+        newState[action.videoVote.video_id].likeCount++;
+      } else if (action.videoVote.like === false) {
+        newState[action.videoVote.video_id].dislikeCount++;
+      }
+      // debugger
       return newState;
     case REMOVE_VIDEO_VOTE:
       newState = cloneDeep(state);
+      // debugger
       if (action.videoVote.like === true) {
         newState[action.videoVote.video_id].likeCount--;
       } else if (action.videoVote.like === false) {
         newState[action.videoVote.video_id].dislikeCount--;
       }
+      // debugger
       return newState;
     default:
       return state;
