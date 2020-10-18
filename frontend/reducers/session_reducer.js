@@ -52,6 +52,13 @@ const sessionReducer = (state = defaultState, action) => {
         newState["viewedVideoIds"].push(action.view.video_id);
       }
       return newState;
+    case RECEIVE_VIDEO_VOTE:
+      newState = cloneDeep(state);
+      
+      return newState;
+    case REMOVE_VIDEO_VOTE:
+      newState = cloneDeep(state);
+      return newState;
     default:
       return state;
   }
