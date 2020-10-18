@@ -41,17 +41,15 @@ const videosReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_VIEW:
       newState = cloneDeep(state);
-      // debugger
       newState[action.view.video_id].viewCount++;
-      // debugger
       return newState;
     case RECEIVE_VIDEO_VOTE:
       newState = cloneDeep(state);
-      
+      debugger
       return newState;
     case REMOVE_VIDEO_VOTE:
       newState = cloneDeep(state);
-
+      debugger
       return newState;
     default:
       return state;

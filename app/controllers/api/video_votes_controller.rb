@@ -3,24 +3,13 @@ class Api::VideoVotesController < ApplicationController
   # GET /api/users/:user_id/likes
   # GET /api/videos/:video_id/likes
   def index
-    if params[:user_id] # Get the video_votes.ids where :voter_id === :user_id
+    if params[:user_id] # Get a user's video votes
       @video_votes = VideoVote.where(voter_id: params[:user_id])
-
-      if @video_votes
-
-      else
-      end
-
-    elsif params[:video_id] # Get the likes where video_id === :video_id
+    elsif params[:video_id] # Get a video's video votes
       @video_votes = VideoVote.where(video_id: params[:video_id])
     end
 
-    if @video_votes
-      render :index
-    else
-
-    end
-
+    render :index
   end
 
   # Creates a "like" (video vote) connecting a user and a video

@@ -1,6 +1,6 @@
 import VideoDescription from "./video_description";
 import { connect } from "react-redux";
-import { createVideoVote, destroyVideoVote } from "../../util/video_votes_api_util"; // Replace with actions
+import { createVideoVote, destroyVideoVote } from "../../actions/video_votes_actions"; // Replace with actions
 import { refresh } from "../../actions/session_actions";
 
 const mSTP = ({ session }, ownProps) => {
@@ -17,8 +17,8 @@ const mSTP = ({ session }, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    createVideoVote: vote => createVideoVote(vote), // util function, not dispatch
-    destroyVideoVote: vote => destroyVideoVote(vote), // util function, not dispatch
+    createVideoVote: vote => dispatch(createVideoVote(vote)), // util function, not dispatch
+    destroyVideoVote: vote => dispatch(destroyVideoVote(vote)), // util function, not dispatch
     refresh: userId => dispatch(refresh(userId))
   };
 }
