@@ -11,9 +11,6 @@ import ReactPlayer from "react-player";
 class VideoPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loaded: false
-    }
   }
 
   componentDidMount() {
@@ -51,17 +48,6 @@ class VideoPage extends React.Component {
             <VideoPlayerContainer
               video={this.props.video}
             />
-            {/* <div className="video-player-container">
-              <ReactPlayer
-                className="video-player"
-                id="video-player"
-                url={this.props.video.videoUrl}
-                playing={true}
-                width="100%"
-                height="67vh"
-                controls={true}
-              />
-            </div> */}
             <VideoDescriptionContainer
               video={this.props.video}
               uploader={this.props.uploader}
