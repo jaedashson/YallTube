@@ -1,6 +1,6 @@
 import VideoDescription from "./video_description";
 import { connect } from "react-redux";
-import { createVideoVote, destroyVideoVote } from "../../util/video_votes_api_util";
+import { createVideoVote, destroyVideoVote } from "../../util/video_votes_api_util"; // Straight from util!
 import { refresh } from "../../actions/session_actions";
 
 const mSTP = ({ session }, ownProps) => {
