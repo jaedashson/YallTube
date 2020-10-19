@@ -14,7 +14,9 @@ class VideoPage extends React.Component {
   componentDidMount() {
     // Fetch video then uploader
     this.props.fetchVideo(this.props.videoId)
-      .then(action => this.props.fetchUser(action.video.uploader_id))
+      .then(action => {
+        this.props.fetchUser(action.video.uploader_id)
+      });
   }
 
   componentDidUpdate(prevProps) {

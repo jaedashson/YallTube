@@ -22,17 +22,13 @@ export const removeVideoVote = videoVote => {
 // Thunk action creators
 
 export const createVideoVote = videoVote => dispatch => {
-  debugger
   return APIUtil.createVideoVote(videoVote).then(videoVote => {
-    debugger
     return dispatch(receiveVideoVote(videoVote));
   });
 };
 
 export const destroyVideoVote = videoVote => dispatch => {
-  debugger
   return APIUtil.destroyVideoVote(videoVote).then(videoVote => {
-    debugger
     return dispatch(removeVideoVote(videoVote));
   });
 };

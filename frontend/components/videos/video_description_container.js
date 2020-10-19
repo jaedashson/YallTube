@@ -6,7 +6,7 @@ import { parseDate } from "../../util/videos_info_util";
 
 const mSTP = ({ entities, session }, ownProps) => {
   const video = entities.videos[ownProps.videoId];
-  debugger
+  
   return {
     currentUserId: session.id,
     video,

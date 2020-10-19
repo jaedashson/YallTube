@@ -61,7 +61,7 @@ export const fetchAllVideos = () => dispatch => {
   });
 };
 
-export const fetchVideos = (videoIds) => dispatch => {
+export const fetchVideos = videoIds => dispatch => {
   return APIUtil.fetchVideos(videoIds).then(videos => {
     return dispatch(receiveVideos(videos));
   }, error => {
