@@ -29,7 +29,7 @@ const videosReducer = (state = {}, action) => {
       action.videos.forEach(video => newState[video.id] = video);
       return newState;
     case RECEIVE_VIDEOS:
-      newState = Object.assign({}, state);
+      newState = {};
       action.videos.forEach(video => newState[video.id] = video);
       return newState;
     case RECEIVE_PARENT_COMMENT:

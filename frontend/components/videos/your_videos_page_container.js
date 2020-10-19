@@ -14,7 +14,7 @@ const mSTP = ({ entities, session }) => {
 const mDTP = dispatch => {
   return {
     fetchVideos: videoIds => dispatch(fetchVideos(videoIds)),
-    fetchUsers: userIds => dispatch(fetchUser(userIds))
+    fetchUsers: userIds => dispatch(fetchUsers(userIds))
   };
 };
 
