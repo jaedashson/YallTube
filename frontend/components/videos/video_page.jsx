@@ -6,27 +6,23 @@ import VideoDescriptionContainer from "./video_description_container";
 import RecommendationsContainer from "./recommendations_container";
 import CommentsSectionContainer from "../comments/comments_section_container";
 
-import ReactPlayer from "react-player";
-
 class VideoPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    // Fetch video then uploader then add view
+    // Fetch video then uploader
     this.props.fetchVideo(this.props.videoId)
       .then(action => this.props.fetchUser(action.video.uploader_id))
   }
 
   componentDidUpdate(prevProps) {
-    // If videoId changed AND
-    // If the video doesn't exist in Redux state
-    // i.e. When the user clicks on a different video
-    if ((this.props.videoId !== prevProps.videoId) && (!this.props.video)) {
+    // If videoId changed
+    if (this.props.videoId !== prevProps.videoId) {
       this.props.fetchVideo(this.props.videoId)
-        .then(action => this.props.fetchUser(action.video.uploader_id))
-        .then(res => this.props.refresh(this.props.currentUserId));
+        .then(action => this.props.fetchUser(action.video.uploader_id));
+        // .then(res => this.props.refresh(this.props.currentUserId));
     }
   }
 

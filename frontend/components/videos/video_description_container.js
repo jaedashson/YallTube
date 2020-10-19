@@ -2,14 +2,18 @@ import VideoDescription from "./video_description";
 import { connect } from "react-redux";
 import { createVideoVote, destroyVideoVote } from "../../actions/video_votes_actions"; // Replace with actions
 import { refresh } from "../../actions/session_actions";
+import { parseDate } from "../../util/videos_info_util";
 
 const mSTP = ({ entities, session }, ownProps) => {
+  const video = entities.videos[ownProps.videoId];
+
   return {
     currentUserId: session.id,
-    video: entities.videos[ownProps.videoId],
+    video,
     uploader: entities.users[ownProps.uploaderId],
     liked: session.likedVideoIds.includes(ownProps.videoId),
     disliked: session.dislikedVideoIds.includes(ownProps.videoId),
+    uploadDate: parseDate(video.created_at)
 
     // The below is added so that it can be determined whether the current user has voted on this video
     // likedVideoIds: session.likedVideoIds,

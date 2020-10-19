@@ -158,12 +158,12 @@ class VideoDescription extends React.Component {
         <div className="video-description-header">
           <p className="video-title">{this.props.video.title}</p>
           <div className="video-stats-container">
-            <span className="video-views-date">{this.props.video.viewCount} views • {this.state.uploadDate}</span>
+            <span className="video-views-date">{this.props.video.viewCount} views • {this.props.uploadDate}</span>
             <div className="video-likes-container">
-              <FontAwesomeIcon icon="thumbs-up" className={"video-thumb " + (this.state.liked ? "video-voted" : "")} onClick={this.handleClickLike} />
-              <span className={"video-vote-count " + (this.state.liked ? "video-voted" : "")}>{this.state.likeCount} likes</span>
-              <FontAwesomeIcon icon="thumbs-down" className={"video-thumb " + (this.state.disliked ? "video-voted" : "")} onClick={this.handleClickDislike} />
-              <span className={"video-vote-count " + (this.state.disliked ? "video-voted" : "")}>{this.state.dislikeCount} dislikes</span>
+              <FontAwesomeIcon icon="thumbs-up" className={"video-thumb " + (this.props.liked ? "video-voted" : "")} onClick={this.handleClickLike} />
+              <span className={"video-vote-count " + (this.props.liked ? "video-voted" : "")}>{this.state.likeCount} likes</span>
+              <FontAwesomeIcon icon="thumbs-down" className={"video-thumb " + (this.props.disliked ? "video-voted" : "")} onClick={this.handleClickDislike} />
+              <span className={"video-vote-count " + (this.props.disliked ? "video-voted" : "")}>{this.state.dislikeCount} dislikes</span>
             </div>
           </div>
           <div className="video-votes-bar-container"></div>
