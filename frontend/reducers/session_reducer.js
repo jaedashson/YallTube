@@ -75,7 +75,6 @@ const sessionReducer = (state = defaultState, action) => {
 
       if (videoVote.like === true) {
         newState["likedVideoIds"] = removeElementFromArray(newState["likedVideoIds"], videoVote.video_id);
-
       } else if (videoVote.like === false) {
         newState["dislikedVideoIds"] = removeElementFromArray(newState["dislikedVideoIds"], videoVote.video_id);
       }
