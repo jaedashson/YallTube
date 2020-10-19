@@ -14,6 +14,10 @@ import {
   RECEIVE_VIDEO_VOTE,
   REMOVE_VIDEO_VOTE
 } from "../actions/video_votes_actions";
+import {
+  RECEIVE_COMMENT_VOTE,
+  REMOVE_COMMENT_VOTE
+} from "../actions/comment_votes_actions";
 
 const defaultState = {
   id: null,
@@ -80,6 +84,33 @@ const sessionReducer = (state = defaultState, action) => {
       }
       
       return newState;
+    case RECEIVE_COMMENT_VOTE:
+      newState = cloneDeep(state);
+      commentVote = action.commentVote;
+
+      if (commentVote.like === true) {
+        if (!newState["likedCommentIds"].includes(commentVote.comment_id)) {
+          newState["likedCommentIds"].push(commentVote.comment_id);
+        }
+      } else if (commentVote.like === false) {
+        if (!newState["dislikedCommentIds"].includes(commentVote.comment_id)) {
+          newState["dislikedCommentIds"].push(commentVote.comment_id);
+        }
+      }
+
+      return newState;
+    case REMOVE_COMMENT_VOTE:
+      newState = cloneDeep(state);
+      commentVote = action.commentVote;
+
+      if (commentVote.like === true) {
+        newState["likedCommentIds"] = removeElementFromArray(newState["likedCommentIds"], commentVote.comment_id);
+      } else if (commentVote.like === false) {
+        newState["dislikedCommentIds"] = removeElementFromArray(newState["dislikedVideoIds"], commentVote.comment_id);
+      }
+
+      return newState;
+    case REMOVE_COMMENT_VOTE:
     default:
       return state;
   }

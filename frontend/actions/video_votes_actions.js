@@ -16,8 +16,8 @@ export const removeVideoVote = videoVote => {
   return {
     type: REMOVE_VIDEO_VOTE,
     videoVote
-  }
-}
+  };
+};
 
 // Thunk action creators
 

@@ -6,6 +6,10 @@ import {
   RECEIVE_REPLIES,
   RECEIVE_REPLY
 } from "../actions/comments_actions";
+import {
+  RECEIVE_COMMENT_VOTE,
+  REMOVE_COMMENT_VOTE
+} from "../actions/comment_votes_actions";
 
 const commentsReducer = (state = {}, action) => {
   Object.freeze(state);
