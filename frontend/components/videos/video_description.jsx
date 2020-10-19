@@ -94,8 +94,8 @@ class VideoDescription extends React.Component {
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.videoId
-      }).then(vote => {
-        debugger
+      }).then(vote => { // Is vote correct?
+        debugger // Do we have vote?
         return this.props.createVideoVote({
           voter_id: vote.voter_id,
           video_id: vote.video_id,
