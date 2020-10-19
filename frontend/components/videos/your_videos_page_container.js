@@ -5,7 +5,7 @@ import { fetchUsers } from "../../actions/users_actions";
 
 const mSTP = ({ entities, session }) => {
   return {
-    uploadedVideoIds = session.uploadedVideoIds,
+    uploadedVideoIds: session.uploadedVideoIds,
     videos: Object.values(entities.videos),
     uploaders: entities.users
   };
