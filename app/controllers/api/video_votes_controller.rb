@@ -15,8 +15,9 @@ class Api::VideoVotesController < ApplicationController
   # Creates a "like" (video vote) connecting a user and a video
   def create
     @video_vote = VideoVote.new(video_vote_params)
-
+    debugger
     if @video_vote.save
+      debugger
       render :show
     else
       render json: @video_vote.errors.full_messages, status: 422

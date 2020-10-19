@@ -19,7 +19,8 @@ import {
 
 const videosReducer = (state = {}, action) => {
   Object.freeze(state);
-  let newState = null;
+  let newState;
+  let videoVote;
   switch (action.type) {
     case RECEIVE_VIDEO:
       return Object.assign({}, state, { [action.video.id]: action.video });
@@ -45,18 +46,23 @@ const videosReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_VIDEO_VOTE:
       newState = cloneDeep(state);
-      if (action.videoVote.like === true) {
-        newState[action.videoVote.video_id].likeCount++;
-      } else if (action.videoVote.like === false) {
-        newState[action.videoVote.video_id].dislikeCount++;
+      videoVote = action.videoVote;
+      debugger
+      if (videoVote.like === true) {
+        debugger
+        newState[videoVote.video_id].likeCount++;
+      } else if (videoVote.like === false) {
+        newState[videoVote.video_id].dislikeCount++;
       }
+      debugger
       return newState;
     case REMOVE_VIDEO_VOTE:
       newState = cloneDeep(state);
-      if (action.videoVote.like === true) {
-        newState[action.videoVote.video_id].likeCount--;
-      } else if (action.videoVote.like === false) {
-        newState[action.videoVote.video_id].dislikeCount--;
+      videoVote = action.videoVote;
+      if (videoVote.like === true) {
+        newState[videoVote.video_id].likeCount--;
+      } else if (videoVote.like === false) {
+        newState[videoVote.video_id].dislikeCount--;
       }
       return newState;
     default:

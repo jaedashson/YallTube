@@ -1,4 +1,5 @@
 export const createVideoVote = vote => {
+  debugger
   return $.ajax({
     method: "POST",
     url: "/api/video_votes",

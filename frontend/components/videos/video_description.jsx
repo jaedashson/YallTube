@@ -25,6 +25,7 @@ class VideoDescription extends React.Component {
     // If current user has not voted on this video
     // Create a like
     if (!this.props.liked && !this.props.disliked) {
+      debugger
       this.props.createVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.videoId,
@@ -102,6 +103,7 @@ class VideoDescription extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="video-description">
         <div className="video-description-header">
