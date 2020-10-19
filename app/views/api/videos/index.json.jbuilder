@@ -6,4 +6,5 @@ json.array! @videos do |video|
   json.dislikeCount video.dislike_count
   json.commentCount video.comment_count
   json.viewCount video.view_count
+  json.parentCommentIds video.parent_comment_ids
 end

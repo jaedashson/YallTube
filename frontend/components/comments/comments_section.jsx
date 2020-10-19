@@ -9,17 +9,22 @@ class CommentsSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: null,
+      loaded: false,
       sortBy: "newest-first",
     };
   }
 
   componentDidMount() {
-    this.props.fetchParentComments(this.props.video.id).then(action => {
-      this.setState({
-        comments: action.comments,
-      });
-    });
+    this.props.fetchParentComments(this.props.videoId)
+      .then(action => {
+        const authorIds = action.comments.map(comment => comment.author_id);
+        return this.props.fetchUsers(authorIds);
+      })
+    // this.props.fetchParentComments(this.props.video.id).then(action => {
+    //   this.setState({
+    //     comments: action.comments,
+    //   });
+    // });
   }
 
   // TODO - What is the purpose of this method?

@@ -35,4 +35,8 @@ class Video < ApplicationRecord
   def view_count
     self.views.count
   end
+
+  def parent_comment_ids
+    self.comments.where(parent_id: nil).pluck(:id)
+  end
 end

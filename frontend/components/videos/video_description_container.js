@@ -15,13 +15,13 @@ const mSTP = ({ entities, session }, ownProps) => {
     disliked: session.dislikedVideoIds.includes(ownProps.videoId),
     uploadDate: parseDate(video.created_at)
   };
-}
+};
 
 const mDTP = dispatch => {
   return {
     createVideoVote: vote => dispatch(createVideoVote(vote)),
     destroyVideoVote: vote => dispatch(destroyVideoVote(vote)),
   };
-}
+};
 
 export default connect(mSTP, mDTP)(VideoDescription);

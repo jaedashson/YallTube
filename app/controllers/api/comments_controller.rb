@@ -1,8 +1,8 @@
 class Api::CommentsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  # GET /api/videos/:video_id/comments - Fetch all the parent comments of this video
-  # GET /api/comments/:comment_id/comments - Fetch all the replies of this comment
+  # GET /api/videos/:video_id/comments - Fetch all parent comments of video
+  # GET /api/comments/:comment_id/comments - Fetch all the replies of comment
   def index
     if params[:video_id]
       @comments = Comment.where(video_id: params[:video_id]).where(parent_id: nil).includes(:author)

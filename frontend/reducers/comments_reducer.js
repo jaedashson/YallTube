@@ -4,7 +4,8 @@ import {
   RECEIVE_PARENT_COMMENTS,
   RECEIVE_PARENT_COMMENT,
   RECEIVE_REPLIES,
-  RECEIVE_REPLY
+  RECEIVE_REPLY,
+  RECEIVE_COMMENTS
 } from "../actions/comments_actions";
 import {
   RECEIVE_COMMENT_VOTE,
@@ -30,6 +31,10 @@ const commentsReducer = (state = {}, action) => {
     case RECEIVE_REPLY:
       newState = cloneDeep(state);
       newState[action.comment.parent_id]["replies"][action.comment.id] = action.comment;
+      return newState;
+    case RECEIVE_COMMENTS:
+      newState = cloneDeep(state);
+      action.comments.forEach(comment => newState[comment.id] = comment);
       return newState;
     default:
       return state;
