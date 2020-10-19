@@ -25,6 +25,14 @@ class User < ApplicationRecord
   has_many :viewed_videos,
     through: :views,
     source: :video
+
+  has_many :comment_votes,
+    foreign_key: :voter_id,
+    class_name: :CommentVote
+
+  has_many :voted_comments,
+    through: :comment_votes,
+    source: :comment
   
   def uploaded_video_ids
     self.videos.pluck(:id)
@@ -40,6 +48,14 @@ class User < ApplicationRecord
 
   def viewed_video_ids
     self.views.pluck(:video_id).uniq
+  end
+
+  def liked_comment_ids
+    self.comment_votes.where(like: true).pluck(:comment_id)
+  end
+
+  def disliked_comment_ids
+    self.comment_votes.where(like: false).pluck(:comment_id)
   end
 
   # has_many :subscriptions_out # `subscriptions` where `subscriber_id` points to this user
