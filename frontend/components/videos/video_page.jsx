@@ -46,11 +46,11 @@ class VideoPage extends React.Component {
         <div className="video-page">
           <div className="video-page-col-1">
             <VideoPlayerContainer
-              video={this.props.video}
+              videoId={this.props.videoId}
             />
             <VideoDescriptionContainer
-              video={this.props.video}
-              uploader={this.props.uploader}
+              videoId={this.props.videoId}
+              uploaderId={this.props.uploader.id}
             />
             <CommentsSectionContainer
               video={this.props.video}

@@ -9,21 +9,20 @@ class VideoPlayer extends React.Component {
   componentDidMount() {
     this.props.createView({
       viewer_id: this.props.currentUserId,
-      video_id: this.props.video.id
+      video_id: this.props.videoId
     });
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.video.id !== prevProps.video.id) {
+    if (this.props.videoId !== prevProps.videoId) {
       this.props.createView({
         viewer_id: this.props.currentUserId,
-        video_id: this.props.video.id
+        video_id: this.props.videoId
       });
     }
   }
 
   render() {
-
     return (
       <div className="video-player-container">
         <ReactPlayer

@@ -1,4 +1,5 @@
 import { cloneDeep } from "lodash";
+import { removeElementFromArray } from "../util/videos_info_util";
 
 import {
   RECEIVE_EMAIL_ATTEMPT,
@@ -19,7 +20,8 @@ const defaultState = {
   attemptedUser: null,
   likedVideoIds: [],
   dislikedVideoIds: [],
-  uploadedVideoIds: []
+  uploadedVideoIds: [],
+  viewedVideoIds: []
 };
 
 const sessionReducer = (state = defaultState, action) => {
@@ -54,27 +56,28 @@ const sessionReducer = (state = defaultState, action) => {
       return newState;
     case RECEIVE_VIDEO_VOTE:
       newState = cloneDeep(state);
+      const videoVote = action.videoVote;
       
-      if (action.videoVote.like === true) {
-        if (!newState["likedVideoIds"].includes(action.videoVote.video_id)) {
-          newState["likedVideoIds"].push(action.videoVote.video_id);
+      if (videoVote.like === true) {
+        if (!newState["likedVideoIds"].includes(videoVote.video_id)) {
+          newState["likedVideoIds"].push(videoVote.video_id);
         }
-      } else if (action.videoVote.like === false) {
-        if (!newState["dislikedVideoIds"].includes(action.videoVote.video_id)) {
-          newState["dislikedVideoIds"].push(action.videoVote.video_id);
+      } else if (videoVote.like === false) {
+        if (!newState["dislikedVideoIds"].includes(videoVote.video_id)) {
+          newState["dislikedVideoIds"].push(videoVote.video_id);
         }
       }
       
       return newState;
     case REMOVE_VIDEO_VOTE:
       newState = cloneDeep(state);
+      const videoVote = action.videoVote;
 
-      if (action.videoVote.like === true) {
-        if (newState["likedVideoIds"].includes(action.videoVote.video_id)) {
-          
-        }
-      } else if (action.videoVote.like === false) {
+      if (videoVote.like === true) {
+        newState["likedVideoIds"] = removeElementFromArray(newState["likedVideoIds"], videoVote.video_id);
 
+      } else if (videoVote.like === false) {
+        newState["dislikedVideoIds"] = removeElementFromArray(newState["dislikedVideoIds"], videoVote.video_id);
       }
 
       return newState;

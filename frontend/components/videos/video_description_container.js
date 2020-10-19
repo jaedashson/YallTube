@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import { createVideoVote, destroyVideoVote } from "../../actions/video_votes_actions"; // Replace with actions
 import { refresh } from "../../actions/session_actions";
 
-const mSTP = ({ session }, ownProps) => {
+const mSTP = ({ entities, session }, ownProps) => {
   return {
     currentUserId: session.id,
+    video: entities.videos[ownProps.videoId],
+    uploader: entities.users[ownProps.uploaderId],
+    liked: 
 
     // The below is added so that it can be determined whether the current user has voted on this video
     likedVideoIds: session.likedVideoIds,
@@ -17,8 +20,8 @@ const mSTP = ({ session }, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    createVideoVote: vote => dispatch(createVideoVote(vote)), // util function, not dispatch
-    destroyVideoVote: vote => dispatch(destroyVideoVote(vote)), // util function, not dispatch
+    createVideoVote: vote => dispatch(createVideoVote(vote)),
+    destroyVideoVote: vote => dispatch(destroyVideoVote(vote)),
     refresh: userId => dispatch(refresh(userId))
   };
 }

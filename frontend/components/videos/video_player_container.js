@@ -2,9 +2,10 @@ import VideoPlayer from "./video_player";
 import { connect } from "react-redux";
 import { createView } from "../../actions/views_actions"; // Replace with actions
 
-const mSTP = ({ session }, ownProps) => {
+const mSTP = ({ entities, session }, ownProps) => {
   return {
     currentUserId: session.id,
+    video: entities.videos[ownProps.videoId]
   };
 };
 
