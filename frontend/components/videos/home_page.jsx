@@ -11,8 +11,8 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       loaded: false
-    }
-  };
+    };
+  }
 
   componentDidMount() {
     this.props.fetchAllVideos()
@@ -21,12 +21,9 @@ class HomePage extends React.Component {
         return this.props.fetchUsers(uploaderIds);
       })
       .then(action => this.setState({ loaded: true }));
-  };
+  }
 
   renderItems() {
-    if (!this.props.videos) {
-      return null;
-    }
     const items = shuffleVideos(this.props.videos).map(video => {
       return (
         <VideoIndexItem
@@ -38,7 +35,7 @@ class HomePage extends React.Component {
     });
 
     return items;
-  };
+  }
 
   render() {
     if (!this.state.loaded) return null;
@@ -51,7 +48,7 @@ class HomePage extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default HomePage;

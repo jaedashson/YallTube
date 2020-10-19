@@ -1,28 +1,20 @@
 import YourVideosPage from "./your_videos_page";
 import { connect } from "react-redux";
 import { fetchVideos } from "../../actions/videos_actions";
-import { fetchUser } from "../../actions/users_actions";
+import { fetchUsers } from "../../actions/users_actions";
 
 const mSTP = ({ entities, session }) => {
-  const uploadedVideoIds = session.uploadedVideoIds;
-  const uploadedVideos = [];
-
-  Object.values(entities.videos).forEach(video => {
-    if (uploadedVideoIds.includes(video.id)) {
-      uploadedVideos.push(video);
-    }
-  })
-
   return {
-    videos: uploadedVideos,
-    uploadedVideoIds
+    uploadedVideoIds = session.uploadedVideoIds,
+    videos: Object.values(entities.videos),
+    uploaders: entities.users
   };
 };
 
 const mDTP = dispatch => {
   return {
     fetchVideos: videoIds => dispatch(fetchVideos(videoIds)),
-    fetchUser: userId => dispatch(fetchUser(userId))
+    fetchUsers: userIds => dispatch(fetchUser(userIds))
   };
 };
 

@@ -11,8 +11,9 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  # GET /api/users_by_id
   def index_by_id
-    @users = User.where('id IN (?)', params[:userIds]) # TODO - is this working?
+    @users = User.where('id IN (?)', params[:userIds])
     render :index
   end
   

@@ -15,7 +15,7 @@ export const fetchAllVideos = () => {
 export const fetchVideos = videoIds => {
   return $.ajax({
     method: "GET",
-    url: "/api/videos",
+    url: "/api/videos_by_id",
     data: { videoIds }
   });
 };

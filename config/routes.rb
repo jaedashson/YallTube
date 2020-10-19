@@ -3,17 +3,19 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
+    resource :session, only: [:create, :destroy]
+
     resources :users, only: [:index, :show, :create] do
       resources :video_votes, only: [:index]
     end
-
     get 'users_by_id', to: 'users#index_by_id'
-    
-    resource :session, only: [:create, :destroy]
+
     resources :videos, only: [:index, :show, :create] do
       resources :video_votes, only: [:index]
       resources :comments, only: [:index] # Get parent comments of a video
     end
+    get 'videos_by_id', to 'videos#index_by_id'
+
     resources :video_votes, only: [:create]
     resources :comments, only: [:create] do
       resources :comments, only: [:index] # Get replies of a parent comment

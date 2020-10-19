@@ -9,6 +9,12 @@ class Api::VideosController < ApplicationController
     render :index
   end
 
+  # GET /api/videos_by_id
+  def index_by_id
+    @videos = Video.where('id IN (?)', params[:videoIds])
+    render :index
+  end
+
   # GET /api/videos/:videoId
   def show
     @video = Video.find_by(id: params[:id])
