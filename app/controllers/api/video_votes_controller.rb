@@ -39,5 +39,4 @@ class Api::VideoVotesController < ApplicationController
   def video_vote_params
     params.require(:video_vote).permit(:voter_id, :video_id, :like)
   end
-  
 end

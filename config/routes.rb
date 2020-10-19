@@ -15,15 +15,22 @@ Rails.application.routes.draw do
       resources :comments, only: [:index] # Get parent comments of a video
     end
     get 'videos_by_id', to: 'videos#index_by_id'
+    
+    resources :views, only: [:create]
 
     resources :video_votes, only: [:create]
+    delete 'video_votes', to: 'video_votes#destroy'
+
     resources :comments, only: [:create] do
       resources :comments, only: [:index] # Get replies of a parent comment
     end
-    resources :views, only: [:create]
+
+    resources :comment_votes, only: [:create]
+    delete 'comment_votes', to: 'comment_votes#destroy'
+
+
 
     # Delete video vote based on voter_id and video_id in video_vote_params
-    delete 'video_votes', to: 'video_votes#destroy'
 
     # Get liked videos by sending an array of likedVideoIds to VideosController
   end
