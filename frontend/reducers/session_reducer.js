@@ -26,8 +26,8 @@ const defaultState = {
 
 const sessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  let newState = null;
-  // const newState = Object.assign({}, state);
+  let newState;
+  let videoVote;
   switch(action.type) {
     case RECEIVE_EMAIL_ATTEMPT:
       newState = cloneDeep(state);
@@ -56,7 +56,7 @@ const sessionReducer = (state = defaultState, action) => {
       return newState;
     case RECEIVE_VIDEO_VOTE:
       newState = cloneDeep(state);
-      const videoVote = action.videoVote;
+      videoVote = action.videoVote;
       
       if (videoVote.like === true) {
         if (!newState["likedVideoIds"].includes(videoVote.video_id)) {
@@ -71,7 +71,7 @@ const sessionReducer = (state = defaultState, action) => {
       return newState;
     case REMOVE_VIDEO_VOTE:
       newState = cloneDeep(state);
-      const videoVote = action.videoVote;
+      videoVote = action.videoVote;
 
       if (videoVote.like === true) {
         newState["likedVideoIds"] = removeElementFromArray(newState["likedVideoIds"], videoVote.video_id);
