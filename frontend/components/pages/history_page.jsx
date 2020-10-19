@@ -1,10 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoIndexItem from "../videos/video_index_item";
 import SideBar from "./side_bar";
 
-class LikedVideosPage extends React.Component {
+class HistoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +11,7 @@ class LikedVideosPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchVideos(this.props.likedVideoIds)
+    this.props.fetchVideos(this.props.viewedVideoIds)
       .then(action => {
         const uploaderIds = action.videos.map(video => video.uploader_id);
         return this.props.fetchUsers(uploaderIds);
@@ -49,4 +47,4 @@ class LikedVideosPage extends React.Component {
   }
 }
 
-export default LikedVideosPage;
+export default HistoryPage;
