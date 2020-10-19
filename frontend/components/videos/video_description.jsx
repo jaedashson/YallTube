@@ -36,6 +36,7 @@ class VideoDescription extends React.Component {
     // If current user has already liked this video
     // Destroy the like
     else if (this.props.liked) {
+      debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.videoId
@@ -46,10 +47,12 @@ class VideoDescription extends React.Component {
     // Destroy the dislike
     // Create a like
     else if (this.props.disliked) {
+      debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.videoId
       }).then(vote => {
+        debugger
         return this.props.createVideoVote({
           voter_id: vote.voter_id,
           video_id: vote.video_id,
@@ -65,6 +68,7 @@ class VideoDescription extends React.Component {
     // If current user has not voted on this video
     // Create a dislike
     if (!this.props.liked && !this.props.disliked) {
+      debugger
       this.props.createVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.videoId,
@@ -75,6 +79,7 @@ class VideoDescription extends React.Component {
     // If current user has already disliked this video
     // Destroy the dislike
     else if (this.props.disliked) {
+      debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.videoId
@@ -85,10 +90,12 @@ class VideoDescription extends React.Component {
     // Destroy the like
     // Create a dislike
     else if (this.props.liked) {
+      debugger
       this.props.destroyVideoVote({
         voter_id: this.props.currentUserId,
         video_id: this.props.videoId
       }).then(vote => {
+        debugger
         return this.props.createVideoVote({
           voter_id: vote.voter_id,
           video_id: vote.video_id,

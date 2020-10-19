@@ -30,7 +30,9 @@ export const createVideoVote = videoVote => dispatch => {
 };
 
 export const destroyVideoVote = videoVote => dispatch => {
+  debugger
   return APIUtil.destroyVideoVote(videoVote).then(videoVote => {
+    debugger
     return dispatch(removeVideoVote(videoVote));
   });
 };

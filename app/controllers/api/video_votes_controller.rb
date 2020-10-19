@@ -20,6 +20,7 @@ class Api::VideoVotesController < ApplicationController
       debugger
       render :show
     else
+      debugger
       render json: @video_vote.errors.full_messages, status: 422
     end
   end
@@ -28,9 +29,12 @@ class Api::VideoVotesController < ApplicationController
     @video_vote = VideoVote
       .where(voter_id: video_vote_params[:voter_id])
       .where(video_id: video_vote_params[:video_id]).first
+    debugger
     if @video_vote.destroy
+      debugger
       render :show
     else
+      debugger
       render json: @video_vote.errors.full_messages, status: 422
     end
   end
