@@ -1,28 +1,34 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import VideoIndexItem from "./video_index_item";
+import VideoIndexItem from "../videos/video_index_item";
 import SideBar from "./side_bar";
 
 class LikedVideosPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loaded: false
+    }
   };
 
   componentDidMount() {
-    this.props.fetchVideos(this.props.likedVideoIds);
+    // this.props.fetchVideos(this.props.likedVideoIds);
+    this.props.fetchVideos(this.props.likedVideoIds)
+      .then(action => {
+        const uploaderIds = action.videos.map(video => video.uploader_id);
+        return this.props.fetchUsers(uploaderIds);
+      })
+      .then(action => this.setState({ loaded: true }));
   };
 
   renderItems() {
-    if (!this.props.videos) {
-      return null;
-    }
     const items = this.props.videos.map(video => {
       return (
         <VideoIndexItem
           key={video.id}
           video={video}
-          fetchUser={this.props.fetchUser}
+          uploader={this.props.uploaders[video.uploader_id]}
         />
       );
     });
@@ -31,6 +37,8 @@ class LikedVideosPage extends React.Component {
   };
 
   render() {
+    if (!this.state.loaded) return null;
+
     return (
       <div className="home-page">
         <SideBar />

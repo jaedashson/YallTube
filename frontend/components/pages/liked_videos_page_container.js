@@ -9,20 +9,6 @@ const mSTP = ({ entities, session }) => {
     videos: Object.values(entities.videos),
     uploaders: entities.users
   };
-
-  // const likedVideoIds = session.likedVideoIds;
-  // const likedVideos = [];
-
-  // Object.values(entities.videos).forEach(video => {
-  //   if (likedVideoIds.includes(video.id)) {
-  //     likedVideos.push(video);
-  //   }
-  // })
-
-  // return {
-  //   videos: likedVideos,
-  //   likedVideoIds
-  // };
 };
 
 const mDTP = dispatch => {

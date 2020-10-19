@@ -1,10 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import VideoIndexItem from "./video_index_item";
-import SideBar from "./side_bar";
+import VideoIndexItem from "../videos/video_index_item";
+import { shuffleVideos } from "../../util/videos_info_util";
+import SideBar from "./side_bar"
 
-class YourVideosPage extends React.Component {
+
+class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,8 +15,7 @@ class YourVideosPage extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchVideos(this.props.uploadedVideoIds);
-    this.props.fetchVideos(this.props.uploadedVideoIds)
+    this.props.fetchAllVideos()
       .then(action => {
         const uploaderIds = action.videos.map(video => video.uploader_id);
         return this.props.fetchUsers(uploaderIds);
@@ -23,7 +24,7 @@ class YourVideosPage extends React.Component {
   }
 
   renderItems() {
-    const items = this.props.videos.map(video => {
+    const items = shuffleVideos(this.props.videos).map(video => {
       return (
         <VideoIndexItem
           key={video.id}
@@ -38,7 +39,7 @@ class YourVideosPage extends React.Component {
 
   render() {
     if (!this.state.loaded) return null;
-
+    
     return (
       <div className="home-page">
         <SideBar />
@@ -50,4 +51,4 @@ class YourVideosPage extends React.Component {
   }
 }
 
-export default YourVideosPage;
+export default HomePage;

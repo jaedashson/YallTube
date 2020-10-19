@@ -12,9 +12,9 @@ import SignupFormContainer from "./auth/signup_form_container";
 import LoginFormContainer from "./auth/login_form_container";
 import VideoPageContainer from "./videos/video_page_container";
 import UploadPageContainer from "./upload/upload_page_container";
-import HomePageContainer from "./videos/home_page_container";
-import LikedVideosPageContainer from "./videos/liked_videos_page_container";
-import YourVideosPageContainer from "./videos/your_videos_page_container";
+import HomePageContainer from "./pages/home_page_container";
+import LikedVideosPageContainer from "./pages/liked_videos_page_container";
+import YourVideosPageContainer from "./pages/your_videos_page_container";
 
 const App = () => {
   return (
