@@ -21,3 +21,11 @@ export const fetchReplies = commentId => {
     url: `/api/comments/${commentId}/comments`
   });
 };
+
+export const fetchComments = commentIds => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/comments_by_id",
+    data: { commentIds }
+  });
+};

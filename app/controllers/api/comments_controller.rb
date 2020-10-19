@@ -13,6 +13,12 @@ class Api::CommentsController < ApplicationController
     render :index # Returns an array
   end
 
+  # GET /api/comments_by_id
+  def index_by_id
+    @comments = Comment.where('id IN (?)', params[:commentIds])
+    render :index
+  end
+
   # Create a comment for this video
   # POST /api/comments
   def create

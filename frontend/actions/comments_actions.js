@@ -4,6 +4,7 @@ export const RECEIVE_PARENT_COMMENTS = "RECEIVE_PARENT_COMMENTS";
 export const RECEIVE_PARENT_COMMENT = "RECEIVE_PARENT_COMMENT";
 export const RECEIVE_REPLIES = "RECEIVE_REPLIES";
 export const RECEIVE_REPLY = "RECEIVE_REPLY";
+export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 
 // POJO action creators
 
@@ -35,9 +36,15 @@ export const receiveReply = comment => {
   };
 };
 
+export const receiveComments = comments => {
+  return {
+    type: RECEIVE_COMMENTS,
+    comments
+  };
+};
+
 // Thunk action creators
 
-// TODO - Write error action creators
 export const fetchParentComments = videoId => dispatch => {
   return APIUtil.fetchParentComments(videoId).then(comments => {
     return dispatch(receiveParentComments(comments));
@@ -59,5 +66,11 @@ export const fetchReplies = commentId => dispatch => {
 export const createReply = comment => dispatch => {
   return APIUtil.createComment(comment).then(comment => {
     return dispatch(receiveReply(comment));
+  });
+};
+
+export const fetchComments = commentIds => dispatch => {
+  return APIUtil.fetchComments(commentIds).then(comments => {
+    return dispatch(receiveComments(comments));
   });
 };

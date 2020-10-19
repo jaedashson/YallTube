@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create] do
       resources :comments, only: [:index] # Get replies of a parent comment
     end
+    get 'comments_by_id', to: 'comments#index_by_id'
 
     resources :comment_votes, only: [:create]
     delete 'comment_votes', to: 'comment_votes#destroy'
