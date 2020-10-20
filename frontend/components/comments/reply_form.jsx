@@ -39,6 +39,7 @@ class ReplyForm extends React.Component {
         <div className="reply-form-main">
           <textarea
             className="reply-form-input"
+            placeholder="Add a public reply..."
             value={this.state.body}
             onChange={this.updateBody}
           />

@@ -50,6 +50,7 @@ class CommentForm extends React.Component {
         <div className="comment-form-main">
           <textarea 
             className="comment-form-input"
+            placeholder="Add a public comment..."
             value={this.state.body}
             onChange={this.updateBody}
             onClick={this.handleShowButtons}
