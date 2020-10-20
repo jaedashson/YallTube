@@ -5,8 +5,6 @@ class CommentForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      author_id: this.props.currentUser.id,
-      video_id: this.props.videoId,
       body: "",
       showButtons: false
     };
@@ -37,8 +35,8 @@ class CommentForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("comment[author_id]", this.state.author_id);
-    formData.append("comment[video_id]", this.state.video_id);
+    formData.append("comment[author_id]", this.props.currentUserId);
+    formData.append("comment[video_id]", this.props.videoId);
     formData.append("comment[body]", this.state.body);
     this.props.createParentComment(formData).then(action => {
       this.setState({ body: "" });

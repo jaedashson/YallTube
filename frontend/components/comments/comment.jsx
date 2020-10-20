@@ -21,7 +21,7 @@ class Comment extends React.Component {
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
     this.appendNewReply = this.appendNewReply.bind(this);
-    this.handleFetchReplies = this.handleFetchReplies(this);
+    this.handleFetchReplies = this.handleFetchReplies.bind(this);
     this.handleShowReplies = this.handleShowReplies.bind(this);
     this.handleHideReplies = this.handleHideReplies.bind(this);
   }
@@ -44,7 +44,7 @@ class Comment extends React.Component {
 
   handleFetchReplies() {
     this.props.fetchComments(this.props.replyIds)
-      .then(action => setState({ fetchedReplies: true }));
+      .then(action => this.setState({ fetchedReplies: true }));
   }
 
   handleShowReplies(e) {
