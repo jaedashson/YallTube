@@ -11,6 +11,7 @@ class CommentsSection extends React.Component {
     this.state = {
       loaded: false,
       sortBy: "newest-first",
+      parentComments: []
     };
   }
 
@@ -20,70 +21,66 @@ class CommentsSection extends React.Component {
         const authorIds = action.comments.map(comment => comment.author_id);
         return this.props.fetchUsers(authorIds);
       })
-    // this.props.fetchParentComments(this.props.video.id).then(action => {
-    //   this.setState({
-    //     comments: action.comments,
-    //   });
-    // });
+      .then(action => {
+        const parentComments = Object.values(this.props.comments).filter(comment => {
+          return this.props.parentCommentIds.includes(comment.id);
+        })
+        this.setState({ parentComments });
+        this.sortByNewestFirst();
+        this.setState({ loaded: true });
+      });
   }
 
-  // TODO - What is the purpose of this method?
-  componentDidUpdate(prevProps) {
-    // If there are new comments
-    if (prevProps.comments !== this.props.comments) {
-      this.setState({
-        comments: this.props.comments,
-      });
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.sortBy === "newest-first" && prevState.sortBy !== "newest-first") {
+      this.sortByNewestFirst();
+    } else if (this.state.sortBy === "top-first" && prevState.sortBy !== "top-first") {
+      this.sortByTopFirst();
     }
+  }
+
+  sortByNewestFirst() {
+    let parentComments = this.state.parentComments;
+
+    parentComments = parentComments.sort((a, b) => {
+      let dateA = new Date(a.created_at);
+      let dateB = new Date(b.created_at);
+      return (dateA < dateB) ? 1 : -1;
+    });
+
+    this.setState({ parentComments });
+  }
+
+  sortByTopFirst() {
+
   }
 
   renderParentComments() {
-    if (!this.props.comments) {
-      return null;
-    }
-
-    let parentComments = null;
-
-    // Sort parent comments by number of votes
-    if (this.state.sortBy === "top-first") {
-      
-    }
-    
-    // Sort parent comments by newest first
-    else if (this.state.sortBy === "newest-first") {
-      parentComments = Object.values(this.state.comments)
-        .sort((a, b) => {
-          let dateA = new Date(a.created_at);
-          let dateB = new Date(b.created_at);
-          return (dateA < dateB) ? 1 : -1;
-        });
-    }
-    return parentComments.map(comment => {
+    return this.state.parentComments.map(comment => {
       return (
         <CommentContainer
           key={comment.id}
           comment={comment}
-          videoId={this.props.video.id}
+          videoId={this.props.videoId}
         />
-      )
-    })
+      );
+    });
   }
 
   renderCommentForm() {
     if (this.props.currentUser) {
       return (
         <CommentFormContainer
-          currentUser={this.props.currentUser}
-          videoId={this.props.video.id}
+          videoId={this.props.videoId}
         />
       );
+    } else {
+      return null;
     }
   }
 
   render() {
-    if (!this.state.comments) {
-      return null;
-    }
+    if (!this.state.loaded) return null;
 
     return (
       <div className="comments-section">

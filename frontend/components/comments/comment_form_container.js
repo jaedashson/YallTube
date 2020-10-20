@@ -4,8 +4,8 @@ import { createParentComment } from "../../actions/comments_actions";
 
 const mSTP = ({ session, entities: { users, comments, videos } }, ownProps) => {
   return {
-    // currentUser: ownProps.currentUser,
-    // videoId: ownProps.videoId,
+    currentUserId: session.id,
+    currentUser: users[session.id]
   };
 };
 
