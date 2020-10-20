@@ -3,17 +3,17 @@ import { connect } from "react-redux";
 import { fetchAllVideos } from "../../actions/videos_actions";
 import { fetchUser } from "../../actions/users_actions";
 
-const mSTP = ({ entities }, ownProps) => {
+const mSTP = ({ entities: { videos, users, comments } }, ownProps) => {
   return {
-    videoId: ownProps.videoId,
-    videos: Object.values(entities.videos) // this.props.videos will be an array of videos
+    videos: Object.values(videos),
+    uploaders: entities.users
   };
 };
 
 const mDTP = dispatch => {
   return {
     fetchAllVideos: () => dispatch(fetchAllVideos()),
-    fetchUser: userId => dispatch(fetchUser(userId))
+    fetchUsers: userId => dispatch(fetchUsers(userIds))
   };
 };
 

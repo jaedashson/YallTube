@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { fetchAllVideos } from "../../actions/videos_actions";
 import { fetchUsers } from "../../actions/users_actions";
 
-const mSTP = ({ entities }) => {
+const mSTP = ({ entities: { videos } }) => {
   return {
-    videos: Object.values(entities.videos),
+    videos: Object.values(videos),
     uploaders: entities.users
   };
 };
