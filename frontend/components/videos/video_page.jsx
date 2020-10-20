@@ -24,7 +24,6 @@ class VideoPage extends React.Component {
     if (this.props.videoId !== prevProps.videoId) {
       this.props.fetchVideo(this.props.videoId)
         .then(action => this.props.fetchUser(action.video.uploader_id));
-        // .then(res => this.props.refresh(this.props.currentUserId));
     }
   }
 

@@ -1,6 +1,6 @@
 import Comment from "./comment";
 import { connect } from "react-redux";
-import { fetchReplies, fetchComments } from "../../actions/comments_actions";
+import { fetchComments } from "../../actions/comments_actions";
 import { parseDate } from "../../util/videos_info_util";
 
 const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
@@ -19,7 +19,6 @@ const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    fetchReplies: commentId => dispatch(fetchReplies(commentId)),
     fetchComments: commentIds => dispatch(fetchComments(commentIds))
   };
 };

@@ -13,14 +13,12 @@ class Comment extends React.Component {
     this.state = {
       showReplyForm: false,
       showReplies: false,
-      // replies: null,
       newReplies: {},
       fetchedReplies: false,
     };
 
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
-    // this.appendNewReply = this.appendNewReply.bind(this);
     this.handleFetchReplies = this.handleFetchReplies.bind(this);
     this.handleShowReplies = this.handleShowReplies.bind(this);
     this.handleHideReplies = this.handleHideReplies.bind(this);
@@ -35,12 +33,6 @@ class Comment extends React.Component {
     e.preventDefault();
     this.setState({ showReplyForm: false });
   }
-  
-  // appendNewReply(reply) {
-  //   const newReplies = cloneDeep(this.state.newReplies);
-  //   newReplies[reply.id] = reply;
-  //   this.setState({ newReplies });
-  // }
 
   handleFetchReplies() {
     this.props.fetchComments(this.props.replyIds)
@@ -64,9 +56,8 @@ class Comment extends React.Component {
         <ReplyFormContainer
           videoId={this.props.videoId}
           parentId={this.props.comment.id}
-          // appendNewReply={this.appendNewReply}
           handleHideReplyForm={this.handleHideReplyForm}
-          handleFetchReplies={this.handleFetchReplies}
+          handleShowReplies={this.handleShowReplies}
         />
       );
     } else {

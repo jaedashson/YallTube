@@ -28,7 +28,7 @@ class ReplyForm extends React.Component {
     formData.append("comment[body]", this.state.body);
     this.props.createReply(formData).then(action => {
       this.setState({ body: ""});
-      this.props.appendNewReply(action.comment);
+      this.props.handleShowReplies;
     });
   }
 
