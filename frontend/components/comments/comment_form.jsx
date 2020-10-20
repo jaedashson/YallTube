@@ -15,6 +15,10 @@ class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
+  updateBody(e) {
+    this.setState({ body: e.currentTarget.value });
+  }
+
   handleShowButtons(e) {
     e.preventDefault();
     this.setState({ showButtons: true });
@@ -26,10 +30,6 @@ class CommentForm extends React.Component {
       showButtons: false,
       body: ""
     });
-  }
-
-  updateBody(e) {
-    this.setState({ body: e.currentTarget.value });
   }
 
   handleSubmit(e) {

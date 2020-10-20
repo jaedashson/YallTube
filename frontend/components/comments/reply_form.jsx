@@ -22,9 +22,9 @@ class ReplyForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("comment[author_id]", this.state.author_id);
-    formData.append("comment[video_id]", this.state.video_id);
-    formData.append("comment[parent_id]", this.state.parent_id);
+    formData.append("comment[author_id]", this.props.currentUserId);
+    formData.append("comment[video_id]", this.props.videoId);
+    formData.append("comment[parent_id]", this.props.parentId);
     formData.append("comment[body]", this.state.body);
     this.props.createReply(formData).then(action => {
       this.setState({ body: ""});
