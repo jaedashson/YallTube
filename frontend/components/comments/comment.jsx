@@ -11,13 +11,9 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uploadDate: parseDate(this.props.comment.created_at),
-      liked: false,
-      disliked: false,
       showReplyForm: false,
-      replyCount: this.props.comment.replyCount,
       showReplies: false,
-      replies: null,
+      // replies: null,
       newReplies: {},
     };
 

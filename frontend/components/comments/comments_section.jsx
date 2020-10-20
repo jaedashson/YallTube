@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { parseDate, arraysEqual } from "../../util/videos_info_util";
+// import { parseDate, arraysEqual } from "../../util/videos_info_util";
 import CommentContainer from "./comment_container";
 import CommentFormContainer from "./comment_form_container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,15 +11,14 @@ class CommentsSection extends React.Component {
     this.state = {
       loaded: false,
       sortBy: "newest-first",
-      parentComments: []
+      sortedParentComments: []
     };
   }
 
   componentDidMount() {
     this.props.fetchParentComments(this.props.videoId)
       .then(action => {
-        this.setState({ parentComments: action.comments });
-        this.sortByNewestFirst();
+        this.sortByNewestFirst(); // Will we have parent comments in props by then?
         this.setState({ loaded: true });
       });
   }
@@ -33,15 +32,13 @@ class CommentsSection extends React.Component {
   }
 
   sortByNewestFirst() {
-    let parentComments = this.state.parentComments;
-
-    parentComments = parentComments.sort((a, b) => {
+    const sortedParentComments = this.props.parentComments.slice().sort((a, b) => {
       let dateA = new Date(a.created_at);
       let dateB = new Date(b.created_at);
       return (dateA < dateB) ? 1 : -1;
     });
 
-    this.setState({ parentComments });
+    this.setState({ sortedParentComments });
   }
 
   sortByTopFirst() {
@@ -49,7 +46,7 @@ class CommentsSection extends React.Component {
   }
 
   renderParentComments() {
-    return this.state.parentComments.map(comment => {
+    return this.state.sortedParentComments.map(comment => {
       return (
         <CommentContainer
           key={comment.id}
@@ -79,7 +76,7 @@ class CommentsSection extends React.Component {
       <div className="comments-section">
         <div className="comments-count-sort">
           <span className="comment-count">
-            {this.props.video.commentCount} Comments
+            {this.props.commentCount} Comments
           </span>
           <button className="comment-sort-button">
             <FontAwesomeIcon
