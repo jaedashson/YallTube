@@ -19,9 +19,9 @@ class Comment extends React.Component {
 
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
-    this.handleFetchReplies = this.handleFetchReplies.bind(this);
     this.handleShowReplies = this.handleShowReplies.bind(this);
     this.handleHideReplies = this.handleHideReplies.bind(this);
+    this.showReplies = this.showReplies.bind(this);
   }
 
   handleShowReplyForm(e) {
@@ -37,6 +37,11 @@ class Comment extends React.Component {
   handleFetchReplies() {
     this.props.fetchComments(this.props.replyIds)
       .then(action => this.setState({ fetchedReplies: true }));
+  }
+
+  showReplies() {
+    if (!this.state.fetchedReplies) this.handleFetchReplies();
+    this.setState({ showReplies: true });
   }
 
   handleShowReplies(e) {
@@ -57,7 +62,7 @@ class Comment extends React.Component {
           videoId={this.props.videoId}
           parentId={this.props.comment.id}
           handleHideReplyForm={this.handleHideReplyForm}
-          handleShowReplies={this.handleShowReplies}
+          showReplies={this.showReplies}
         />
       );
     } else {
@@ -119,29 +124,6 @@ class Comment extends React.Component {
     }
   }
 
-  renderNewReplies() {
-    // If newReplies is empty
-    if (Object.keys(this.state.newReplies).length === 0) {
-      return null;
-    }
-
-    let repliesArray = Object.values(this.state.newReplies).map(reply => {
-      return (
-        <ReplyContainer
-          key={reply.id}
-          reply={reply}
-          videoId={this.props.videoId}
-        />
-      );
-    });
-
-    return (
-      <div className="replies">
-        <div className="replies-list">{repliesArray}</div>
-      </div>
-    );
-  }
-
   render() {
     if (!this.props.comment) {
       return null;
@@ -179,7 +161,6 @@ class Comment extends React.Component {
           </div>
           {this.renderReplyForm()}
           {this.renderReplies()}
-          {this.renderNewReplies()}
         </div>
       </div>
     );
