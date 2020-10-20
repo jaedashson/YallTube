@@ -15,6 +15,7 @@ class Comment extends React.Component {
       showReplies: false,
       // replies: null,
       newReplies: {},
+      fetchedReplies: false,
     };
 
     this.appendNewReply = this.appendNewReply.bind(this);
@@ -22,19 +23,18 @@ class Comment extends React.Component {
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
     this.handleShowReplies = this.handleShowReplies.bind(this);
     this.handleHideReplies = this.handleHideReplies.bind(this);
+    this.handleFetchReplies = this.handleFetchReplies(this);
+  }
+
+  handleFetchReplies() {
+    this.props.fetchComments(this.props.replyIds)
+      .then(action => setState({ fetchedReplies: true }));
   }
 
   appendNewReply(reply) {
     const newReplies = cloneDeep(this.state.newReplies);
     newReplies[reply.id] = reply;
     this.setState({ newReplies });
-  }
-
-  // After replies have been fetched, update the state.replies with props.replies
-  componentDidUpdate(prevProps) {
-    if ((this.props.replies !== prevProps.replies)) {
-      this.setState({ replies: this.props.replies });
-    }
   }
 
   handleShowReplyForm(e) {
@@ -49,16 +49,8 @@ class Comment extends React.Component {
 
   handleShowReplies(e) {
     e.preventDefault();
-
-    // If we already have the replies, no need to fetch them again
-    if (this.state.replies) {
-      this.setState({ showReplies: true });
-      return;
-    }
-
-    this.props.fetchReplies(this.props.comment.id).then(action => {
-      this.setState({ showReplies: true });
-    })
+    if (!this.state.fetchedReplies) this.handleFetchReplies();
+    this.setState({ showReplies: true });
   }
 
   handleHideReplies(e) {
@@ -77,7 +69,9 @@ class Comment extends React.Component {
           appendNewReply={this.appendNewReply}
           handleHideReplyForm={this.handleHideReplyForm}
         />
-      )
+      );
+    } else {
+      return null;
     }
   }
 

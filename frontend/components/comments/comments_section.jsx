@@ -11,7 +11,7 @@ class CommentsSection extends React.Component {
     this.state = {
       loaded: false,
       sortBy: "newest-first",
-      sortedParentComments: []
+      sortedParentComments: [],
     };
   }
 
