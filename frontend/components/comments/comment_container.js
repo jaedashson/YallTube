@@ -13,7 +13,7 @@ const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
     replies,
     liked: false,
     disliked: false,
-    uploadDate: parseDate(ownProps.comment.created_at),
+    uploadDate: parseDate(ownProps.comment.created_at)
   };
 };
 

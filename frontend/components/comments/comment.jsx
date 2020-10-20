@@ -18,23 +18,12 @@ class Comment extends React.Component {
       fetchedReplies: false,
     };
 
-    this.appendNewReply = this.appendNewReply.bind(this);
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
+    this.appendNewReply = this.appendNewReply.bind(this);
+    this.handleFetchReplies = this.handleFetchReplies(this);
     this.handleShowReplies = this.handleShowReplies.bind(this);
     this.handleHideReplies = this.handleHideReplies.bind(this);
-    this.handleFetchReplies = this.handleFetchReplies(this);
-  }
-
-  handleFetchReplies() {
-    this.props.fetchComments(this.props.replyIds)
-      .then(action => setState({ fetchedReplies: true }));
-  }
-
-  appendNewReply(reply) {
-    const newReplies = cloneDeep(this.state.newReplies);
-    newReplies[reply.id] = reply;
-    this.setState({ newReplies });
   }
 
   handleShowReplyForm(e) {
@@ -45,6 +34,17 @@ class Comment extends React.Component {
   handleHideReplyForm(e) {
     e.preventDefault();
     this.setState({ showReplyForm: false });
+  }
+  
+  appendNewReply(reply) {
+    const newReplies = cloneDeep(this.state.newReplies);
+    newReplies[reply.id] = reply;
+    this.setState({ newReplies });
+  }
+
+  handleFetchReplies() {
+    this.props.fetchComments(this.props.replyIds)
+      .then(action => setState({ fetchedReplies: true }));
   }
 
   handleShowReplies(e) {
@@ -58,7 +58,6 @@ class Comment extends React.Component {
     this.setState({ showReplies: false });
   }
 
-  // Only render if there is a currentUser
   renderReplyForm() {
     if (this.state.showReplyForm && this.props.currentUser) {
       return (
@@ -163,21 +162,21 @@ class Comment extends React.Component {
         <div className="comment-main">
           <div className="comment-author-date">
             <span className="comment-author">{this.props.comment.authorUsername}</span>
-            <span className="comment-date">{this.state.uploadDate}</span>
+            <span className="comment-date">{this.props.uploadDate}</span>
           </div>
           <p className="comment-body">{this.props.comment.body}</p>
           <div className="comment-response">
             <button className="thumb-button">
               <FontAwesomeIcon
                 icon="thumbs-up"
-                className={"comment-thumb " + (this.state.liked ? "comment-voted" : "")}
+                className={"comment-thumb " + (this.props.liked ? "comment-voted" : "")}
               />
             </button>
             <span className="comment-score"></span>
             <button className="thumb-button thumbs-down-button">
               <FontAwesomeIcon
                 icon="thumbs-down"
-                className={"comment-thumb " + (this.state.disliked ? "comment-voted" : "")}
+                className={"comment-thumb " + (this.props.disliked ? "comment-voted" : "")}
               />
             </button>
             <button

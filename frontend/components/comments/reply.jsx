@@ -8,9 +8,6 @@ class Reply extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uploadDate: parseDate(this.props.reply.created_at),
-      liked: false,
-      disliked: false,
       showReplyForm: false,
     };
 
@@ -29,7 +26,7 @@ class Reply extends React.Component {
   }
 
   renderReplyForm() {
-    if (this.state.showReplyForm) {
+    if (this.state.showReplyForm && this.props.currentUser) {
       return (
         <ReplyFormContainer
           parentId={this.props.reply.parent_id}
@@ -42,17 +39,13 @@ class Reply extends React.Component {
   }
 
   render() {
-    if (!this.props.reply) {
-      return null;
-    }
-
     return (
       <div className="reply">
         <UserIconReply authorUsername={this.props.reply.authorUsername} />
         <div className="comment-main">
           <div className="comment-author-date">
             <span className="comment-author">{this.props.reply.authorUsername}</span>
-            <span className="comment-date">{this.state.uploadDate}</span>
+            <span className="comment-date">{this.props.uploadDate}</span>
           </div>
           <p className="comment-body">{this.props.reply.body}</p>
           <div className="comment-response">
@@ -60,7 +53,7 @@ class Reply extends React.Component {
               <FontAwesomeIcon
                 icon="thumbs-up"
                 className={
-                  "comment-thumb " + (this.state.liked ? "comment-voted" : "")
+                  "comment-thumb " + (this.props.liked ? "comment-voted" : "")
                   }
               />
             </button>
@@ -70,7 +63,7 @@ class Reply extends React.Component {
                 icon="thumbs-down"
                 className={
                   "comment-thumb " + 
-                  (this.state.disliked ? "comment-voted" : "")
+                  (this.props.disliked ? "comment-voted" : "")
                 }
               />
             </button>
