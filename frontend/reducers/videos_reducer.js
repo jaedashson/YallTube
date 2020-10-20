@@ -35,6 +35,7 @@ const videosReducer = (state = {}, action) => {
     case RECEIVE_PARENT_COMMENT:
       newState = cloneDeep(state);
       newState[action.comment.video_id].commentCount++;
+      newState[action.comment.video_id].parentCommentIds.push(action.comment.id);
       return newState;
     case RECEIVE_REPLY:
       newState = cloneDeep(state);
