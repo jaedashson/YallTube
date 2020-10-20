@@ -18,31 +18,36 @@ class CommentsSection extends React.Component {
   componentDidMount() {
     this.props.fetchParentComments(this.props.videoId)
       .then(action => {
-        this.sortByNewestFirst(); // Will we have parent comments in props by then?
+        this.sortParentComments(); // Will we have parent comments in props by then?
         this.setState({ loaded: true });
       });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.sortBy === "newest-first" && prevState.sortBy !== "newest-first") {
-      this.sortByNewestFirst();
-    } else if (this.state.sortBy === "top-first" && prevState.sortBy !== "top-first") {
-      this.sortByTopFirst();
+    if (
+      (this.state.sortBy !== prevState.sortBy) ||
+      (this.props.parentComments !== prevProps.parentComments)
+    ) {
+      this.sortParentComments();
     }
   }
 
-  sortByNewestFirst() {
-    const sortedParentComments = this.props.parentComments.slice().sort((a, b) => {
-      let dateA = new Date(a.created_at);
-      let dateB = new Date(b.created_at);
-      return (dateA < dateB) ? 1 : -1;
-    });
+  sortParentComments() {
+    const sortedParentComments = this.props.parentComments.slice();
+
+    if (this.state.sortBy === "newest-first") {
+      sortedParentComments.sort((a, b) => {
+        let dateA = new Date(a.created_at);
+        let dateB = new Date(b.created_at);
+        return (dateA < dateB) ? 1 : -1;
+      });
+    }
+
+    if (this.state.sortBy === "top-first") {
+
+    }
 
     this.setState({ sortedParentComments });
-  }
-
-  sortByTopFirst() {
-
   }
 
   renderParentComments() {
