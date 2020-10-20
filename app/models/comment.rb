@@ -25,4 +25,9 @@ class Comment < ApplicationRecord
       nil
     end
   end
+
+  def reply_ids
+    self.replies.pluck(:id)
+  end
+
 end
