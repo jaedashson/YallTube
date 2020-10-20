@@ -77,14 +77,14 @@ class Comment extends React.Component {
 
   renderReplies() {
     // If this comment has no replies
-    if (!this.state.replyCount) {
+    if (this.props.replyIds.length === 0) {
       return null;
     }
 
     // If showReplies is true and this comment has replies
-    if (this.state.showReplies && this.state.replies) {
+    if (this.state.showReplies && this.props.replyIds.length > 0) {
       // Put comments into array sorted from oldest to newest
-      let repliesArray = Object.values(this.state.replies)
+      let repliesArray = this.props.replies.slice()
         .sort((a, b) => b.created_at > a.created_at)
         .map(reply => {
           return (
@@ -106,7 +106,7 @@ class Comment extends React.Component {
               icon="caret-up"
               className="caret"
             />
-            <span className="view-replies-button-text">Hide {this.state.replyCount} replies</span>
+            <span className="view-replies-button-text">Hide {this.props.replyIds.length} replies</span>
           </button>
           <div className="replies-list">{repliesArray}</div>
         </div>
@@ -122,7 +122,7 @@ class Comment extends React.Component {
               icon="caret-down"
               className="caret"
             />
-            <span className="view-replies-button-text">View {this.state.replyCount} replies</span>
+            <span className="view-replies-button-text">View {this.props.replyIds.length} replies</span>
           </button>
         </div>
       );
