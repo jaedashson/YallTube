@@ -5,9 +5,9 @@ import { fetchUsers } from "../../actions/users_actions";
 
 const mSTP = ({ session, entities: { users, comments, videos } }, ownProps) => {
   return {
+    video: videos[ownProps.videoId],
     currentUser: users[session.id],
     comments: comments,
-    authors: users,
     parentCommentIds: videos[ownProps.videoId].parentCommentIds
   };
 };
@@ -15,7 +15,6 @@ const mSTP = ({ session, entities: { users, comments, videos } }, ownProps) => {
 const mDTP = dispatch => {
   return {
     fetchParentComments: videoId => dispatch(fetchParentComments(videoId)),
-    fetchUsers: userIds => dispatch(fetchUsers(userIds))
   };
 };
 

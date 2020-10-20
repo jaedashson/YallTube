@@ -18,14 +18,7 @@ class CommentsSection extends React.Component {
   componentDidMount() {
     this.props.fetchParentComments(this.props.videoId)
       .then(action => {
-        const authorIds = action.comments.map(comment => comment.author_id);
-        return this.props.fetchUsers(authorIds);
-      })
-      .then(action => {
-        const parentComments = Object.values(this.props.comments).filter(comment => {
-          return this.props.parentCommentIds.includes(comment.id);
-        })
-        this.setState({ parentComments });
+        this.setState({ parentComments: action.comments });
         this.sortByNewestFirst();
         this.setState({ loaded: true });
       });
