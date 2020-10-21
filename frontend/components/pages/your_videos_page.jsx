@@ -27,7 +27,7 @@ class YourVideosPage extends React.Component {
         <VideoIndexItem
           key={video.id}
           video={video}
-          uploader={this.props.uploaders[video.uploader_id]}
+          uploader={this.props.uploaders[video.uploader_id]} // TODO
         />
       );
     });

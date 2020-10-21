@@ -1,19 +1,19 @@
 import Recommendations from "./recommendations";
 import { connect } from "react-redux";
 import { fetchAllVideos } from "../../actions/videos_actions";
-import { fetchUser } from "../../actions/users_actions";
+import { fetchUsers } from "../../actions/users_actions";
 
 const mSTP = ({ entities: { videos, users, comments } }, ownProps) => {
   return {
     videos: Object.values(videos),
-    uploaders: entities.users
+    uploaders: users
   };
 };
 
 const mDTP = dispatch => {
   return {
     fetchAllVideos: () => dispatch(fetchAllVideos()),
-    fetchUsers: userId => dispatch(fetchUsers(userIds))
+    fetchUsers: userIds => dispatch(fetchUsers(userIds))
   };
 };
 

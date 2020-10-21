@@ -8,46 +8,43 @@ import { shuffleVideos } from "../../util/videos_info_util";
 class Recommendations extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { recommendations: null }
-  };
-
-  generateRecs() {
-    this.props.fetchAllVideos().then(action => {
-      let recommendations = shuffleVideos(action.videos).slice(0, 10);
-
-      let filtered = [];
-
-      for (let i = 0; i < recommendations.length; i++) {
-        if (recommendations[i].id !== this.props.videoId) {
-          filtered.push(recommendations[i]);
-        }
-      }
-
-      this.setState({ recommendations: filtered });
-    })
-  }
-
-  // TODO - Figure out the role of this method
-  componentDidUpdate(prevProps) {
-    if (prevProps.videoId !== this.props.videoId) {
-      this.generateRecs();
+    this.state = {
+      recommendations: null,
+      loaded: false
     }
-  }
+  };
 
   componentDidMount() {
-    this.generateRecs();
-  };
+    this.props.fetchAllVideos()
+      .then(action => {
+        const uploaderIds = action.videos.map(video => video.uploader_id);
+        return this.props.fetchUsers(uploaderIds);
+      })
+      .then(action => {
+        this.generateRecommendations();
+        this.setState({ loaded: true });
+      });
+  }
+
+  generateRecommendations() {
+    const videos = this.props.videos.filter(video => video.id !== this.props.videoId);
+    const recommendations = shuffleVideos(videos).slice(0, 10);
+    this.setState({ recommendations });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.videoId !== this.props.videoId) {
+      this.generateRecommendations();
+    }
+  }
 
   renderItems() {
-    if (!this.state.recommendations) {
-      return null;
-    }
     const items = this.state.recommendations.map(video => {
       return (
         <RecommendationItem
           key={video.id}
           video={video}
-          fetchUser={this.props.fetchUser}
+          uploader={this.props.uploaders[video.uploader_id]}
         />
       );
     });
@@ -56,6 +53,8 @@ class Recommendations extends React.Component {
   };
 
   render() {
+    if (!this.state.loaded) return null;
+
     return (
       <div className="recommendations">
         {this.renderItems()}

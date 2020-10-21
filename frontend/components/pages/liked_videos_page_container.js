@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { fetchVideos } from "../../actions/videos_actions";
 import { fetchUsers } from "../../actions/users_actions";
 
-const mSTP = ({ entities, session }) => {
+const mSTP = ({ entities: { videos, users }, session }) => {
   return {
     likedVideoIds: session.likedVideoIds,
-    videos: Object.values(entities.videos),
-    uploaders: entities.users
+    videos: Object.values(videos),
+    uploaders: users
   };
 };
 

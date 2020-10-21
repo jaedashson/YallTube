@@ -5,22 +5,10 @@ import { parseDate } from "../../util/videos_info_util";
 class RecommendationItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { uploader : null };
-  }
-
-  componentDidMount() {
-
-    this.props.fetchUser(this.props.video.uploader_id).then(action => {
-      this.setState({ uploader: action.user });
-    });
   }
 
   render() {
     // If the uploader has not been fetched yet
-    if (!this.state.uploader) {
-      return null;
-    }
-
     return (
       <div className="recommendation-item">
         <Link to={`/videos/${this.props.video.id}`}>
@@ -31,7 +19,7 @@ class RecommendationItem extends React.Component {
         </Link>
         <div className="recommendation-info">
           <Link to={`/videos/${this.props.video.id}`} className="recommendation-title">{this.props.video.title}</Link>
-          <Link to={`/users/${this.state.uploader.id}`} className="recommendation-uploader">{this.state.uploader.username}</Link>
+          <Link to={`/users/${this.props.uploader.id}`} className="recommendation-uploader">{this.props.uploader.username}</Link>
           <div className="recommendation-stats">
             <span className="recommendation-views">{this.props.video.viewCount} views</span>
             <span className="recommendation-dot">•</span>
