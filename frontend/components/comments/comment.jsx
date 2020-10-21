@@ -208,6 +208,8 @@ class Comment extends React.Component {
       return null;
     }
 
+    debugger
+
     return (
       <div className="comment">
         <UserIconComment authorUsername={this.props.comment.authorUsername} />
