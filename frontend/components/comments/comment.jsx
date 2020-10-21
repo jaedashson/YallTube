@@ -96,7 +96,42 @@ class Comment extends React.Component {
   }
 
   handleClickDislike(e) {
+    e.preventDefault();
 
+    // If current user has not voted on this comment
+    // Create a dislike
+    if (!this.props.liked && !this.props.disliked) {
+      this.props.createCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.comment.id,
+        like: false
+      });
+    }
+
+    // If current user has already disliked this comment
+    // Destroy the dislike
+    else if (this.props.disliked) {
+      this.props.destroyCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.comment.id,
+      });
+    }
+
+    // If current user has liked this comment
+    // Destroy the like
+    // Create a dislike
+    else if (this.props.liked) {
+      this.props.destroyCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.comment.id
+      }).then(action => {
+        return this.props.createCommentVote({
+          voter_id: action.commentVote.voter_id,
+          comment_id: action.commentVote.comment_id,
+          like: false
+        });
+      });
+    }
   }
 
   renderReplyForm() {
@@ -183,19 +218,17 @@ class Comment extends React.Component {
           </div>
           <p className="comment-body">{this.props.comment.body}</p>
           <div className="comment-response">
-            <button className="thumb-button">
-              <FontAwesomeIcon
-                icon="thumbs-up"
-                className={"comment-thumb " + (this.props.liked ? "comment-voted" : "")}
-              />
-            </button>
-            <span className="comment-score"></span>
-            <button className="thumb-button thumbs-down-button">
-              <FontAwesomeIcon
-                icon="thumbs-down"
-                className={"comment-thumb " + (this.props.disliked ? "comment-voted" : "")}
-              />
-            </button>
+            <FontAwesomeIcon
+              icon="thumbs-up"
+              className={"comment-thumb " + (this.props.liked ? "comment-voted" : "")}
+              onClick={this.handleClickLike}
+            />
+            <span className={"comment-score " + (this.props.liked ? "comment-voted" : "")}>{this.props.comment.likeCount - this.props.comment.dislikeCount}</span>
+            <FontAwesomeIcon
+              icon="thumbs-down"
+              className={"comment-thumb " + (this.props.disliked ? "comment-voted" : "")}
+              onClick={this.handleClickDislike}
+            />
             <button
               className="comment-reply-button"
               onClick={this.handleShowReplyForm}

@@ -102,9 +102,17 @@ class VideoDescription extends React.Component {
           <div className="video-stats-container">
             <span className="video-views-date">{this.props.video.viewCount} views • {this.props.uploadDate}</span>
             <div className="video-likes-container">
-              <FontAwesomeIcon icon="thumbs-up" className={"video-thumb " + (this.props.liked ? "video-voted" : "")} onClick={this.handleClickLike} />
+              <FontAwesomeIcon
+                icon="thumbs-up"
+                className={"video-thumb " + (this.props.liked ? "video-voted" : "")}
+                onClick={this.handleClickLike}
+              />
               <span className={"video-vote-count " + (this.props.liked ? "video-voted" : "")}>{this.props.video.likeCount} likes</span>
-              <FontAwesomeIcon icon="thumbs-down" className={"video-thumb " + (this.props.disliked ? "video-voted" : "")} onClick={this.handleClickDislike} />
+              <FontAwesomeIcon
+                icon="thumbs-down"
+                className={"video-thumb " + (this.props.disliked ? "video-voted" : "")}
+                onClick={this.handleClickDislike}
+              />
               <span className={"video-vote-count " + (this.props.disliked ? "video-voted" : "")}>{this.props.video.dislikeCount} dislikes</span>
             </div>
           </div>
