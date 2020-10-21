@@ -7,7 +7,7 @@ import { parseDate } from "../../util/videos_info_util";
 const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
   const replyIds = ownProps.comment.replyIds;
   const replies = Object.values(comments).filter(comment => replyIds.includes(comment.id));
-
+  
   return {
     currentUser: users[session.id], // TODO - phase out?
     currentUserId: session.id,

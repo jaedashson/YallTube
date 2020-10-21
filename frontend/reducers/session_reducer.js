@@ -48,6 +48,9 @@ const sessionReducer = (state = defaultState, action) => {
       newState["likedVideoIds"] = action.currentUser.likedVideoIds;
       newState["dislikedVideoIds"] = action.currentUser.dislikedVideoIds;
       newState["uploadedVideoIds"] = action.currentUser.uploadedVideoIds;
+      newState["viewedVideoIds"] = action.currentUser.viewedVideoIds;
+      newState["likedCommentIds"] = action.currentUser.likedCommentIds;
+      newState["dislikedCommentIds"] = action.currentUser.dislikedCommentIds;
       return newState;
     case LOGOUT_CURRENT_USER:
       newState = cloneDeep(state);
