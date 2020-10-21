@@ -18,6 +18,18 @@ class Comment < ApplicationRecord
     foreign_key: :parent_id,
     class_name: :Comment
 
+  has_many :votes,
+    foreign_key: :comment_id,
+    class_name: :CommentVote
+
+  def like_count
+    self.votes.where(like: true).count
+  end
+
+  def dislike_count
+    self.votes.where(like: false).count
+  end
+
   def reply_count
     if self.parent_id == nil
       self.replies.count

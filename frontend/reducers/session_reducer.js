@@ -32,6 +32,7 @@ const sessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
   let newState;
   let videoVote;
+  let commentVote;
   switch(action.type) {
     case RECEIVE_EMAIL_ATTEMPT:
       newState = cloneDeep(state);
@@ -110,7 +111,6 @@ const sessionReducer = (state = defaultState, action) => {
       }
 
       return newState;
-    case REMOVE_COMMENT_VOTE:
     default:
       return state;
   }

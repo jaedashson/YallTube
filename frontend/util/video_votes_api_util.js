@@ -11,5 +11,5 @@ export const destroyVideoVote = vote => {
     method: "DELETE",
     url: "/api/video_votes",
     data: { video_vote: vote }
-  })
-}
+  });
+};

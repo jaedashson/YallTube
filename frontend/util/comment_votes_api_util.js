@@ -1,5 +1,3 @@
-import { $CombinedState } from "redux"
-
 export const createCommentVote = commentVote => {
   return $.ajax({
     method: "POST",
@@ -13,5 +11,5 @@ export const destroyCommentVote = commentVote => {
     method: "DELETE",
     url: "/api/comment_votes",
     data: { comment_vote: commentVote }
-  })
-}
+  });
+};

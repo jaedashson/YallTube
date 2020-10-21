@@ -7,7 +7,7 @@ class VideoDescription extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uploadDate: parseDate(this.props.video.created_at),
+      // uploadDate: parseDate(this.props.video.created_at),
       liked: this.props.liked,
       disliked: this.props.disliked,
       likeCount: this.props.video.likeCount,

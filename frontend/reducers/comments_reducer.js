@@ -30,6 +30,28 @@ const commentsReducer = (state = {}, action) => {
       newState = cloneDeep(state);
       action.comments.forEach(comment => newState[comment.id] = comment);
       return newState;
+    case RECEIVE_COMMENT_VOTE:
+      newState = cloneDeep(state);
+      commentVote = action.commentVote;
+
+      if (commentVote.like === true) {
+        newState[commentVote.comment_id].likeCount++;
+      } else if (commentVote.like === false) {
+        newState[commentVote.comment_id].dislikeCount++;
+      }
+
+      return newState;
+    case REMOVE_COMMENT_VOTE:
+      newState = cloneDeep(state);
+      commentVote = action.commentVote;
+
+      if (commentVote.like === true) {
+        newState[commentVote.comment_id].likeCount--;
+      } else if (commentVote.like === false) {
+        newState[commentVote.comment_id].dislikeCount--;
+      }
+
+      return newState;
     default:
       return state;
   }
