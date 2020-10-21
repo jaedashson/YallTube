@@ -6,13 +6,6 @@ import { parseDate, arraysEqual } from "../../util/videos_info_util";
 class VideoDescription extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // uploadDate: parseDate(this.props.video.created_at),
-      liked: this.props.liked,
-      disliked: this.props.disliked,
-      likeCount: this.props.video.likeCount,
-      dislikeCount: this.props.video.dislikeCount
-    }
 
     this.handleClickLike = this.handleClickLike.bind(this);
     this.handleClickDislike = this.handleClickDislike.bind(this);
