@@ -45,6 +45,22 @@ class User < ApplicationRecord
   has_many :voted_comments,
     through: :comment_votes,
     source: :comment
+
+  has_many :subscriptions_to,
+    foreign_key: :subscriber_id,
+    class_name: :Subscription
+
+  has_many :subscribed_channels,
+    through: :subscriptions_to,
+    source: :channel
+
+  has_many :subscriptions_from,
+    foreign_key: :channel_id,
+    class_name: :Subscription
+
+  has_many :subscribers,
+    through: :subscriptions_from,
+    source: :subscriber
   
   def uploaded_video_ids
     self.videos.pluck(:id)
@@ -69,14 +85,6 @@ class User < ApplicationRecord
   def disliked_comment_ids
     self.comment_votes.where(like: false).pluck(:comment_id)
   end
-
-  # has_many :subscriptions_out # `subscriptions` where `subscriber_id` points to this user
-  # has_many :channels_subscribed # Channels (`users`) through `subscriptions_out`
-  # has_many :subscriptions_in # `subscriptions` where `channel_id` points to this user
-  # has_many :subscribers # Subscribers (`users`) through `subscriptions_in`
-  # has_many :comments
-  # has_many :comment_votes # `votes` that this user made on comments
-  # has_many :channel_views # sum of view count of `videos`
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
