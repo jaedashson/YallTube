@@ -14,6 +14,7 @@ import {
 const commentsReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = null;
+  let commentVote;
   switch (action.type) {
     case RECEIVE_PARENT_COMMENTS:
       newState = {};
@@ -33,24 +34,28 @@ const commentsReducer = (state = {}, action) => {
     case RECEIVE_COMMENT_VOTE:
       newState = cloneDeep(state);
       commentVote = action.commentVote;
-
+      // debugger
       if (commentVote.like === true) {
+        // debugger
         newState[commentVote.comment_id].likeCount++;
       } else if (commentVote.like === false) {
+        // debugger
         newState[commentVote.comment_id].dislikeCount++;
       }
-
+      // debugger
       return newState;
     case REMOVE_COMMENT_VOTE:
       newState = cloneDeep(state);
       commentVote = action.commentVote;
-
+      // debugger
       if (commentVote.like === true) {
+        // debugger
         newState[commentVote.comment_id].likeCount--;
       } else if (commentVote.like === false) {
+        // debugger
         newState[commentVote.comment_id].dislikeCount--;
       }
-
+      // debugger
       return newState;
     default:
       return state;

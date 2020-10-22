@@ -23,7 +23,7 @@ const mDTP = dispatch => {
   return {
     fetchComments: commentIds => dispatch(fetchComments(commentIds)),
     createCommentVote: commentVote => dispatch(createCommentVote(commentVote)),
-    destroyComment: commentVote => dispatch(destroyCommentVote(commentVote))
+    destroyCommentVote: commentVote => dispatch(destroyCommentVote(commentVote))
   };
 };
 
