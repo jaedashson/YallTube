@@ -86,6 +86,10 @@ class User < ApplicationRecord
     self.comment_votes.where(like: false).pluck(:comment_id)
   end
 
+  def subscriber_count
+    self.subscribers.count
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 
