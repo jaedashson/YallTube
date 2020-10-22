@@ -12,7 +12,12 @@ class CommentsSection extends React.Component {
       loaded: false,
       sortBy: "newest-first",
       sortedParentComments: [],
+      showDropdown: false
     };
+
+    this.handleDropdownClick = this.handleDropdownClick.bind(this);
+    this.handleSortByNewestFirst = this.handleSortByNewestFirst.bind(this);
+    this.handleSortByTopFirst = this.handleSortByTopFirst.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +35,27 @@ class CommentsSection extends React.Component {
     ) {
       this.sortParentComments();
     }
+  }
+
+  handleDropdownClick(e) {
+    e.preventDefault();
+    this.setState({ showDropdown: !this.state.showDropdown });
+  }
+
+  handleSortByNewestFirst(e) {
+    e.preventDefault();
+    this.setState({
+      sortBy: "newest-first",
+      showDropdown: false
+    });
+  }
+
+  handleSortByTopFirst(e) {
+    e.preventDefault();
+    this.setState({
+      sortBy: "top-first",
+      showDropdown: false
+    });
   }
 
   sortParentComments() {
@@ -88,7 +114,15 @@ class CommentsSection extends React.Component {
               icon="sort-amount-down"
               className="comment-sort-button-icon"
             />
-            <span className="comment-sort-button-text">SORT BY</span>
+
+            <div className="comment-sort-dropdown">
+              <button className="comment-sort-button" onClick={this.handleDropdownClick}>SORT BY</button>
+              <div id="comment-sort-dropdown-content" className="comment-sort-dropdown-content">
+                <button onClick={this.handleSortByTopFirst}>Top comments</button>
+                <button onClick={this.handleSortByNewestFirst}>Newest first</button>
+              </div>
+            </div>
+
           </button>
         </div>
         {this.renderCommentForm()}
