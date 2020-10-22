@@ -56,13 +56,11 @@ class Comment extends React.Component {
   }
 
   handleClickLike(e) {
-    // debugger
     e.preventDefault();
 
     // If current user has not voted on this comment
     // Create a like
     if (!this.props.liked && !this.props.disliked) {
-      // debugger
       this.props.createCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.comment.id,
@@ -73,7 +71,6 @@ class Comment extends React.Component {
     // If current user has already liked this comment
     // Destroy the like
     else if (this.props.liked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.comment.id
@@ -84,12 +81,10 @@ class Comment extends React.Component {
     // Destroy the dislike
     // Create a like
     else if (this.props.disliked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.comment.id
       }).then(action => {
-        // debugger
         return this.props.createCommentVote({
           voter_id: action.commentVote.voter_id,
           comment_id: action.commentVote.comment_id,
@@ -101,11 +96,10 @@ class Comment extends React.Component {
 
   handleClickDislike(e) {
     e.preventDefault();
-    // debugger
+
     // If current user has not voted on this comment
     // Create a dislike
     if (!this.props.liked && !this.props.disliked) {
-      // debugger
       this.props.createCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.comment.id,
@@ -116,7 +110,6 @@ class Comment extends React.Component {
     // If current user has already disliked this comment
     // Destroy the dislike
     else if (this.props.disliked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.comment.id,
@@ -127,12 +120,10 @@ class Comment extends React.Component {
     // Destroy the like
     // Create a dislike
     else if (this.props.liked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.comment.id
       }).then(action => {
-        // debugger
         return this.props.createCommentVote({
           voter_id: action.commentVote.voter_id,
           comment_id: action.commentVote.comment_id,

@@ -27,13 +27,11 @@ class Reply extends React.Component {
   }
 
   handleClickLike(e) {
-    // debugger
     e.preventDefault();
 
     // If current user has not voted on this reply
     // Create a like
     if (!this.props.liked && !this.props.disliked) {
-      // debugger
       this.props.createCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id,
@@ -44,7 +42,6 @@ class Reply extends React.Component {
     // If current user has already liked this reply
     // Destroy the like
     else if (this.props.liked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
@@ -55,12 +52,10 @@ class Reply extends React.Component {
     // Destroy the dislike
     // Create a like
     else if (this.props.disliked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
       }).then(action => {
-        // debugger
         return this.props.createCommentVote({
           voter_id: action.commentVote.voter_id,
           comment_id: action.commentVote.comment_id,
@@ -72,11 +67,10 @@ class Reply extends React.Component {
 
   handleClickDislike(e) {
     e.preventDefault();
-    // debugger
+
     // If current user has not voted on this reply
     // Create a dislike
     if (!this.props.liked && !this.props.disliked) {
-      // debugger
       this.props.createCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id,
@@ -87,7 +81,6 @@ class Reply extends React.Component {
     // If current user has already disliked this reply
     // Destroy the dislike
     else if (this.props.disliked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
@@ -98,12 +91,10 @@ class Reply extends React.Component {
     // Destroy the like
     // Create a like
     else if (this.props.liked) {
-      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
       }).then(action => {
-        // debugger
         return this.props.createCommentVote({
           voter_id: action.commentVote.voter_id,
           comment_id: action.commentVote.comment_id,

@@ -22,17 +22,13 @@ export const removeCommentVote = commentVote => {
 // Thunk action creator
 
 export const createCommentVote = commentVote => dispatch => {
-  // debugger
   return APIUtil.createCommentVote(commentVote).then(commentVote => {
-    // debugger
     return dispatch(receiveCommentVote(commentVote));
   });
 };
 
 export const destroyCommentVote = commentVote => dispatch => {
-  // debugger
   return APIUtil.destroyCommentVote(commentVote).then(commentVote => {
-    // debugger
     return dispatch(removeCommentVote(commentVote));
   });
 };

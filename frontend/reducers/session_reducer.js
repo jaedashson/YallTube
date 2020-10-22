@@ -91,14 +91,12 @@ const sessionReducer = (state = defaultState, action) => {
     case RECEIVE_COMMENT_VOTE:
       newState = cloneDeep(state);
       commentVote = action.commentVote;
-      // debugger
+      
       if (commentVote.like === true) {
-        // debugger
         if (!newState["likedCommentIds"].includes(commentVote.comment_id)) {
           newState["likedCommentIds"].push(commentVote.comment_id);
         }
       } else if (commentVote.like === false) {
-        // debugger
         if (!newState["dislikedCommentIds"].includes(commentVote.comment_id)) {
           newState["dislikedCommentIds"].push(commentVote.comment_id);
         }
@@ -108,15 +106,13 @@ const sessionReducer = (state = defaultState, action) => {
     case REMOVE_COMMENT_VOTE:
       newState = cloneDeep(state);
       commentVote = action.commentVote;
-      // debugger
+      
       if (commentVote.like === true) {
-        // debugger
         newState["likedCommentIds"] = removeElementFromArray(newState["likedCommentIds"], commentVote.comment_id);
       } else if (commentVote.like === false) {
-        // debugger
         newState["dislikedCommentIds"] = removeElementFromArray(newState["dislikedVideoIds"], commentVote.comment_id);
       }
-      // debugger
+      
       return newState;
     default:
       return state;
