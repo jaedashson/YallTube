@@ -106,7 +106,7 @@ class Reply extends React.Component {
         // debugger
         return this.props.createCommentVote({
           voter_id: action.commentVote.voter_id,
-          comment_id: action.commentVote.commet_id,
+          comment_id: action.commentVote.comment_id,
           like: false
         });
       });
