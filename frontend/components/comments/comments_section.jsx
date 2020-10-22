@@ -119,7 +119,10 @@ class CommentsSection extends React.Component {
               />
               <span >SORT BY</span>
             </button>
-            <div id="comment-sort-dropdown-content" className="comment-sort-dropdown-content">
+            <div
+              id="comment-sort-dropdown-content"
+              className={"comment-sort-dropdown-content " + (this.state.showDropdown ? "comment-sort-dropdown-show" : "")}
+            >
               <button onClick={this.handleSortByTopFirst}>Top comments</button>
               <button onClick={this.handleSortByNewestFirst}>Newest first</button>
             </div>

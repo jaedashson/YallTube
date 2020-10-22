@@ -28,6 +28,20 @@
   margin-left: 32px;
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.comment-sort-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: orange;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.comment-sort-dropdown-show {
+  display: flex;
+  flex-direction: column;
 }
 
 .comment-sort-button-icon {
