@@ -23,7 +23,7 @@ class CommentsSection extends React.Component {
   componentDidMount() {
     this.props.fetchParentComments(this.props.videoId)
       .then(action => {
-        this.sortParentComments(); // Will we have parent comments in props by then?
+        this.sortParentComments();
         this.setState({ loaded: true });
       });
   }
@@ -70,7 +70,18 @@ class CommentsSection extends React.Component {
     }
 
     if (this.state.sortBy === "top-first") {
+      sortedParentComments.sort((a, b) => {
+        let scoreA = a.likeCount - a.dislikeCount;
+        let scoreB = b.likeCount - b.dislikeCount;
 
+        if (scoreA > scoreB) return -1;
+        if (scoreA < scoreB) return 1;
+        if (scoreA === scoreB) {
+          let dateA = new Date(a.created_at);
+          let dateB = new Date(b.created_at);
+          return (dateA < dateB) ? 1 : -1;
+        }
+      });
     }
 
     this.setState({ sortedParentComments });
