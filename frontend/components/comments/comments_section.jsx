@@ -109,6 +109,8 @@ class CommentsSection extends React.Component {
           <span className="comment-count">
             {this.props.commentCount} Comments
           </span>
+          
+          {/* ↓↓↓ DROPDOWN ↓↓↓ */}
           <button className="comment-sort-button">
             <FontAwesomeIcon
               icon="sort-amount-down"
@@ -122,8 +124,8 @@ class CommentsSection extends React.Component {
                 <button onClick={this.handleSortByNewestFirst}>Newest first</button>
               </div>
             </div>
-
           </button>
+          {/* ↑↑↑ DROPDOWN ↑↑↑ */}
         </div>
         {this.renderCommentForm()}
         <div className="comments-list">{this.renderParentComments()}</div>
