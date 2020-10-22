@@ -109,7 +109,6 @@ class CommentsSection extends React.Component {
           <span className="comment-count">
             {this.props.commentCount} Comments
           </span>
-          
           {/* ↓↓↓ DROPDOWN ↓↓↓ */}
           <div className="comment-sort-dropdown">
             <button className="comment-sort-button" onClick={this.handleDropdownClick}>
