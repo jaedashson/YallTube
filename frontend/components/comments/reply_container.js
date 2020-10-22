@@ -16,7 +16,7 @@ const mSTP = ({ session, entities: { users, comments } }, ownProps) => {
 const mDTP = dispatch => {
   return {
     createCommentVote: commentVote => dispatch(createCommentVote(commentVote)),
-    destroyComment: commentVote => dispatch(destroyCommentVote(commentVote))
+    destroyCommentVote: commentVote => dispatch(destroyCommentVote(commentVote))
   };
 };
 

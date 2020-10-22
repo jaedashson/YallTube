@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { parseDate } from "../../util/videos_info_util";
 import { cloneDeep } from "lodash";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReplyFormContainer from "./reply_form_container";

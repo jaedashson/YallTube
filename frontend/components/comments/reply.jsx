@@ -1,5 +1,4 @@
 import React from "react";
-import { parseDate } from "../../util/videos_info_util";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReplyFormContainer from "./reply_form_container";
 import UserIconReply from "../user_icons/user_icon_reply";
