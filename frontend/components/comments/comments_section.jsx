@@ -111,20 +111,19 @@ class CommentsSection extends React.Component {
           </span>
           
           {/* ↓↓↓ DROPDOWN ↓↓↓ */}
-          <button className="comment-sort-button">
-            <FontAwesomeIcon
-              icon="sort-amount-down"
-              className="comment-sort-button-icon"
-            />
-
-            <div className="comment-sort-dropdown">
-              <button className="comment-sort-button" onClick={this.handleDropdownClick}>SORT BY</button>
-              <div id="comment-sort-dropdown-content" className="comment-sort-dropdown-content">
-                <button onClick={this.handleSortByTopFirst}>Top comments</button>
-                <button onClick={this.handleSortByNewestFirst}>Newest first</button>
-              </div>
+          <div className="comment-sort-dropdown">
+            <button className="comment-sort-button" onClick={this.handleDropdownClick}>
+              <FontAwesomeIcon
+                icon="sort-amount-down"
+                className="comment-sort-button-icon"
+              />
+              <span >SORT BY</span>
+            </button>
+            <div id="comment-sort-dropdown-content" className="comment-sort-dropdown-content">
+              <button onClick={this.handleSortByTopFirst}>Top comments</button>
+              <button onClick={this.handleSortByNewestFirst}>Newest first</button>
             </div>
-          </button>
+          </div>
           {/* ↑↑↑ DROPDOWN ↑↑↑ */}
         </div>
         {this.renderCommentForm()}
