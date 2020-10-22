@@ -27,13 +27,13 @@ class Reply extends React.Component {
   }
 
   handleClickLike(e) {
-    debugger
+    // debugger
     e.preventDefault();
 
     // If current user has not voted on this reply
     // Create a like
     if (!this.props.liked && !this.props.disliked) {
-      debugger
+      // debugger
       this.props.createCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id,
@@ -44,7 +44,7 @@ class Reply extends React.Component {
     // If current user has already liked this reply
     // Destroy the like
     else if (this.props.liked) {
-      debugger
+      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
@@ -55,12 +55,12 @@ class Reply extends React.Component {
     // Destroy the dislike
     // Create a like
     else if (this.props.disliked) {
-      debugger
+      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
       }).then(action => {
-        debugger
+        // debugger
         return this.props.createCommentVote({
           voter_id: action.commentVote.voter_id,
           comment_id: action.commentVote.comment_id,
@@ -72,11 +72,11 @@ class Reply extends React.Component {
 
   handleClickDislike(e) {
     e.preventDefault();
-    debugger
+    // debugger
     // If current user has not voted on this reply
     // Create a dislike
     if (!this.props.liked && !this.props.disliked) {
-      debugger
+      // debugger
       this.props.createCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id,
@@ -87,7 +87,7 @@ class Reply extends React.Component {
     // If current user has already disliked this reply
     // Destroy the dislike
     else if (this.props.disliked) {
-      debugger
+      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
@@ -98,12 +98,12 @@ class Reply extends React.Component {
     // Destroy the like
     // Create a like
     else if (this.props.liked) {
-      debugger
+      // debugger
       this.props.destroyCommentVote({
         voter_id: this.props.currentUserId,
         comment_id: this.props.reply.id
       }).then(action => {
-        debugger
+        // debugger
         return this.props.createCommentVote({
           voter_id: action.commentVote.voter_id,
           comment_id: action.commentVote.commet_id,
@@ -139,24 +139,17 @@ class Reply extends React.Component {
           </div>
           <p className="comment-body">{this.props.reply.body}</p>
           <div className="comment-response">
-            <button className="thumb-button">
-              <FontAwesomeIcon
-                icon="thumbs-up"
-                className={
-                  "comment-thumb " + (this.props.liked ? "comment-voted" : "")
-                  }
-              />
-            </button>
-            <span className="comment-score"></span>
-            <button className="thumb-button thumbs-down-button">
-              <FontAwesomeIcon
-                icon="thumbs-down"
-                className={
-                  "comment-thumb " + 
-                  (this.props.disliked ? "comment-voted" : "")
-                }
-              />
-            </button>
+            <FontAwesomeIcon
+              icon="thumbs-up"
+              className={"comment-thumb " + (this.props.liked ? "comment-voted" : "")}
+              onClick={this.handleClickLike}
+            />
+            <span className={"comment-score " + (this.props.liked ? "comment-voted" : "")}>{this.props.reply.likeCount - this.props.reply.dislikeCount}</span>
+            <FontAwesomeIcon
+              icon="thumbs-down"
+              className={"comment-thumb " + (this.props.disliked ? "comment-voted" : "")}
+              onClick={this.handleClickDislike}
+            />
             <button
               className="comment-reply-button"
               onClick={this.handleShowReplyForm}
