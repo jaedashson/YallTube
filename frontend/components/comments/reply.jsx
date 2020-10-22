@@ -12,6 +12,8 @@ class Reply extends React.Component {
 
     this.handleShowReplyForm = this.handleShowReplyForm.bind(this);
     this.handleHideReplyForm = this.handleHideReplyForm.bind(this);
+    this.handleClickLike = this.handleClickLike.bind(this);
+    this.handleClickDislike = this.handleClickDislike.bind(this);
   }
 
   handleShowReplyForm(e) {
@@ -24,16 +26,105 @@ class Reply extends React.Component {
     this.setState({ showReplyForm: false });
   }
 
+  handleClickLike(e) {
+    debugger
+    e.preventDefault();
+
+    // If current user has not voted on this reply
+    // Create a like
+    if (!this.props.liked && !this.props.disliked) {
+      debugger
+      this.props.createCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.reply.id,
+        like: true
+      });
+    }
+
+    // If current user has already liked this reply
+    // Destroy the like
+    else if (this.props.liked) {
+      debugger
+      this.props.destroyCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.reply.id
+      });
+    }
+
+    // If current user has disliked this reply
+    // Destroy the dislike
+    // Create a like
+    else if (this.props.disliked) {
+      debugger
+      this.props.destroyCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.reply.id
+      }).then(action => {
+        debugger
+        return this.props.createCommentVote({
+          voter_id: action.commentVote.voter_id,
+          comment_id: action.commentVote.comment_id,
+          like: true
+        });
+      });
+    }
+  }
+
+  handleClickDislike(e) {
+    e.preventDefault();
+    debugger
+    // If current user has not voted on this reply
+    // Create a dislike
+    if (!this.props.liked && !this.props.disliked) {
+      debugger
+      this.props.createCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.reply.id,
+        like: false
+      });
+    }
+
+    // If current user has already disliked this reply
+    // Destroy the dislike
+    else if (this.props.disliked) {
+      debugger
+      this.props.destroyCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.reply.id
+      });
+    }
+
+    // If current user has liked this reply
+    // Destroy the like
+    // Create a like
+    else if (this.props.liked) {
+      debugger
+      this.props.destroyCommentVote({
+        voter_id: this.props.currentUserId,
+        comment_id: this.props.reply.id
+      }).then(action => {
+        debugger
+        return this.props.createCommentVote({
+          voter_id: action.commentVote.voter_id,
+          comment_id: action.commentVote.commet_id,
+          like: false
+        });
+      });
+    }
+  }
+
   renderReplyForm() {
     if (this.state.showReplyForm && this.props.currentUser) {
       return (
         <ReplyFormContainer
+          videoId={this.props.videoId}
           parentId={this.props.reply.parent_id}
           currentUser={this.props.currentUser}
-          videoId={this.props.videoId}
           handleHideReplyForm={this.handleHideReplyForm}
         />
-      )
+      );
+    } else {
+      return null;
     }
   }
 
