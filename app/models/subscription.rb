@@ -9,6 +9,14 @@
 #  updated_at    :datetime         not null
 #
 class Subscription < ApplicationRecord
+  validate(:check_different_user)
+
+  def check_different_user
+    if self.subscriber_id == self.channel_id
+      errors[:channel_id] << "Can't subscribe to self"
+    end
+  end
+
   belongs_to :subscriber,
     foreign_key: :subscriber_id,
     class_name: :User

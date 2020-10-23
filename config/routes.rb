@@ -29,7 +29,8 @@ Rails.application.routes.draw do
     resources :comment_votes, only: [:create]
     delete 'comment_votes', to: 'comment_votes#destroy'
 
-
+    resources :subscriptions, only: [:create]
+    delete 'subscriptions', to: 'subscriptions#destroy'
 
     # Delete video vote based on voter_id and video_id in video_vote_params
 
