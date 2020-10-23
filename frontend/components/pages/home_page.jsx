@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoIndexItem from "../videos/video_index_item";
 import { shuffleVideos } from "../../util/videos_info_util";
-import SideBar from "./side_bar"
+import SideBarContainer from "./side_bar_container";
 
 
 class HomePage extends React.Component {
@@ -42,7 +42,7 @@ class HomePage extends React.Component {
     
     return (
       <div className="home-page">
-        <SideBar />
+        <SideBarContainer />
         <div className="video-index">
           {this.renderItems()}
         </div>

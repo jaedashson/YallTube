@@ -1,6 +1,6 @@
 import React from "react";
 import VideoIndexItem from "../videos/video_index_item";
-import SideBar from "./side_bar";
+import SideBarContainer from "./side_bar_container";
 
 class HistoryPage extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class HistoryPage extends React.Component {
 
     return (
       <div className="home-page">
-        <SideBar />
+        <SideBarContainer />
         <div className="video-index">
           {this.renderItems()}
         </div>
