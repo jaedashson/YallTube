@@ -1,0 +1,58 @@
+.side-bar {
+  padding-top: 18px; // adjust
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 298px;
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  // color: #030303;
+}
+
+.side-bar-link {
+  padding: 0 30px;
+  text-decoration: none;
+  color: #030303;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.side-bar-link:hover {
+  background-color: #f2f2f2;
+}
+
+.side-bar-link-active {
+  background-color: #e5e5e5;
+  font-weight: 500;
+}
+
+.side-bar-link-active:hover {
+  background-color: #d9d9d9;
+}
+
+.side-bar-icon {
+  font-size: 16px;
+  color: #606060;
+}
+
+.side-bar-link-active .side-bar-icon {
+  color: #ff0000;
+}
+
+.side-bar-link-text {
+  margin-left: 24px;
+}
+
+.side-bar-spacer {
+  margin-top: 12px;
+  border-top: 1px solid #dadce0;
+  padding-bottom: 12px;
+}
+
+.side-bar-subscriptions {
+  font-weight: 500
+}
