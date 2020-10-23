@@ -90,6 +90,10 @@ class User < ApplicationRecord
     self.subscribers.count
   end
 
+  def subscribed_channel_ids
+    self.subscribed_channels.pluck(:id)
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 

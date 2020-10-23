@@ -5,4 +5,5 @@ json.array! @users do |user|
   json.uploadedVideoIds user.uploaded_video_ids
   json.viewedVideoIds user.viewed_video_ids
   json.subscriberCount user.subscriber_count
+  json.subscribedChannelIds user.subscribed_channel_ids
 end

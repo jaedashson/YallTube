@@ -77,7 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
         uploadedVideoIds: window.currentUser.uploadedVideoIds,
         viewedVideoIds: window.currentUser.viewedVideoIds,
         likedCommentIds: window.currentUser.likedCommentIds,
-        dislikedCommentIds: window.currentUser.dislikedCommentIds
+        dislikedCommentIds: window.currentUser.dislikedCommentIds,
+        subscriberCount: window.currentUser.subscriberCount,
+        subscribedChannelIds: window.currentUser.subscribedChannelIds
       },
       entities: {
         users: { [window.currentUser.id]: window.currentUser }
