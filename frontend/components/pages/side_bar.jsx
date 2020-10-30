@@ -20,7 +20,7 @@ class SideBar extends React.Component {
       const channel = this.props.users[channelId];
 
       return (
-        <Link to={`/users/${channelId}`}>
+        <Link to={`/users/${channelId}`} className="side-bar-subscription-link">
           {channel.username}
         </Link>
       );
@@ -56,15 +56,11 @@ class SideBar extends React.Component {
           <span className="side-bar-link-text">Liked videos</span>
         </NavLink>
         <div className="side-bar-spacer"></div>
-        <div className="side-bar-subscriptions" >
-          <p className="side-bar-link-text">SUBSCRIPTIONS</p>
-          {this.renderSubscriptions()}
-        </div>
+        <p className="side-bar-link-text">SUBSCRIPTIONS</p>
+        {this.renderSubscriptions()}
       </div>
     );
   }
-
-
 }
 
 export default SideBar;
