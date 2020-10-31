@@ -12,7 +12,8 @@ const mSTP = ({ entities, session }, ownProps) => {
     uploader: entities.users[ownProps.uploaderId],
     liked: session.likedVideoIds.includes(ownProps.videoId),
     disliked: session.dislikedVideoIds.includes(ownProps.videoId),
-    uploadDate: parseDate(video.created_at)
+    uploadDate: parseDate(video.created_at),
+    subscribed: session.subscribedChannelIds.includes(ownProps.uploaderId)
   };
 };
 

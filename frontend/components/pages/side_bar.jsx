@@ -16,6 +16,8 @@ class SideBar extends React.Component {
   }
 
   renderSubscriptions() {
+    if (!this.props.subscribedChannelIds) return;
+
     const subscriptions = this.props.subscribedChannelIds.map(channelId => {
       const channel = this.props.users[channelId];
 

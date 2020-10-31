@@ -128,7 +128,7 @@ class VideoDescription extends React.Component {
               <p className="video-description-text">{this.props.video.description}</p>
             </div>
           </div>
-          <button className="video-uploader-subscribe">SUBSCRIBE</button>
+          <button className={"video-uploader-subscribe " + (this.props.subscribed ? "subscribed" : "")}>SUBSCRIBE</button>
         </div>
       </div>
 
