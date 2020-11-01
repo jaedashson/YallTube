@@ -18,6 +18,10 @@ import {
   RECEIVE_COMMENT_VOTE,
   REMOVE_COMMENT_VOTE
 } from "../actions/comment_votes_actions";
+import {
+  RECEIVE_SUBSCRIPTION,
+  REMOVE_SUBSCRIPTION
+} from "../actions/subscriptions_actions";
 
 const defaultState = {
   id: null,
@@ -25,7 +29,11 @@ const defaultState = {
   likedVideoIds: [],
   dislikedVideoIds: [],
   uploadedVideoIds: [],
-  viewedVideoIds: []
+  viewedVideoIds: [],
+  likedCommentIds: [],
+  dislikedCommentIds: [],
+  subscriberCount: [],
+  subscribedChannelIds: []
 };
 
 const sessionReducer = (state = defaultState, action) => {
@@ -33,6 +41,7 @@ const sessionReducer = (state = defaultState, action) => {
   let newState;
   let videoVote;
   let commentVote;
+  let subscription;
   switch(action.type) {
     case RECEIVE_EMAIL_ATTEMPT:
       newState = cloneDeep(state);
@@ -113,6 +122,17 @@ const sessionReducer = (state = defaultState, action) => {
         newState["dislikedCommentIds"] = removeElementFromArray(newState["dislikedVideoIds"], commentVote.comment_id);
       }
       
+      return newState;
+
+    case RECEIVE_SUBSCRIPTION:
+      newState = cloneDeep(state);
+      subscription = action.subscription;
+      newState["subscribedChannelIds"].push(subscription.channel_id);
+      return newState;
+    case REMOVE_SUBSCRIPTION:
+      newState = cloneDeep(state);
+      subscription = action.subscription;
+      newState["subscribedChannelIds"] = removeElementFromArray(newState["subscribedChannelIds"], subscription.channel_id);
       return newState;
     default:
       return state;
