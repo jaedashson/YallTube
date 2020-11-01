@@ -136,7 +136,7 @@ class VideoDescription extends React.Component {
             <div className="video-uploader-icon">{this.props.uploader.username[0]}</div>
             <div className="video-description-main">
               <p className="video-uploader">{this.props.uploader.username}</p>
-              <p className="video-uploader-subscribers">29.4k subscribers</p>
+              <p className="video-uploader-subscribers">{this.props.uploader.subscriberCount} subscribers</p>
               <p className="video-description-text">{this.props.video.description}</p>
             </div>
           </div>
