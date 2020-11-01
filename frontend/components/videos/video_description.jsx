@@ -15,6 +15,8 @@ class VideoDescription extends React.Component {
   handleClickLike(e) {
     e.preventDefault();
 
+    if (!this.props.currentUserId) return;
+
     // If current user has not voted on this video
     // Create a like
     if (!this.props.liked && !this.props.disliked) {
@@ -54,6 +56,8 @@ class VideoDescription extends React.Component {
   handleClickDislike(e) {
     e.preventDefault();
 
+    if (!this.props.currentUserId) return;
+
     // If current user has not voted on this video
     // Create a dislike
     if (!this.props.liked && !this.props.disliked) {
@@ -92,6 +96,8 @@ class VideoDescription extends React.Component {
 
   handleClickSubscribe(e) {
     e.preventDefault();
+
+    if (!this.props.currentUserId) return;
 
     if (!this.props.subscribed) {
       this.props.createSubscription({
