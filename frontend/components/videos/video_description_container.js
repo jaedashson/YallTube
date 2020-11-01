@@ -1,6 +1,7 @@
 import VideoDescription from "./video_description";
 import { connect } from "react-redux";
 import { createVideoVote, destroyVideoVote } from "../../actions/video_votes_actions";
+import { createSubscription, destroySubscription } from "../../actions/subscriptions_actions";
 import { parseDate } from "../../util/videos_info_util";
 
 const mSTP = ({ entities, session }, ownProps) => {
@@ -20,7 +21,9 @@ const mSTP = ({ entities, session }, ownProps) => {
 const mDTP = dispatch => {
   return {
     createVideoVote: vote => dispatch(createVideoVote(vote)),
-    destroyVideoVote: vote => dispatch(destroyVideoVote(vote))
+    destroyVideoVote: vote => dispatch(destroyVideoVote(vote)),
+    createSubscription: subscription => dispatch(createSubscription(subscription)),
+    destroySubscription: subscription => dispatch(destroySubscription(subscription))
   };
 };
 

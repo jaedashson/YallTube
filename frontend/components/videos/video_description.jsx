@@ -9,7 +9,7 @@ class VideoDescription extends React.Component {
 
     this.handleClickLike = this.handleClickLike.bind(this);
     this.handleClickDislike = this.handleClickDislike.bind(this);
-    this.handleSubscribe = this.handleSubscribe.bind(this);
+    this.handleClickSubscribe = this.handleClickSubscribe.bind(this);
   }
 
   handleClickLike(e) {
@@ -90,8 +90,20 @@ class VideoDescription extends React.Component {
     }
   }
 
-  handleSubscribe(e) {
+  handleClickSubscribe(e) {
     e.preventDefault();
+
+    if (!this.props.subscribed) {
+      this.props.createSubscription({
+        subscriber_id: this.props.currentUserId,
+        channel_id: this.props.uploader.id
+      });
+    } else {
+      this.props.destroySubscription({
+        subscriber_id: this.props.currentUserId,
+        channel_id: this.props.uploader.id
+      });
+    }
   }
 
   render() {
@@ -128,7 +140,12 @@ class VideoDescription extends React.Component {
               <p className="video-description-text">{this.props.video.description}</p>
             </div>
           </div>
-          <button className={"video-uploader-subscribe " + (this.props.subscribed ? "subscribed" : "")}>{"SUBSCRIBE" + (this.props.subscribed ? "D" : "")}</button>
+          <button
+            className={"video-uploader-subscribe " + (this.props.subscribed ? "subscribed" : "")}
+            onClick={this.handleClickSubscribe}
+          >
+            {"SUBSCRIBE" + (this.props.subscribed ? "D" : "")}
+          </button>
         </div>
       </div>
 
