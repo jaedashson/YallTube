@@ -15,6 +15,12 @@ class Api::VideosController < ApplicationController
     render :index
   end
 
+  # GET /api/videos_by_uploader_id
+  def index_by_uploader_id
+    @videos = Video.where('uploader_id IN (?)', params[:uploaderIds])
+    render :index
+  end
+
   # GET /api/videos/:videoId
   def show
     @video = Video.find_by(id: params[:id])

@@ -20,6 +20,14 @@ export const fetchVideos = videoIds => {
   });
 };
 
+export const fetchSubscriptions = uploaderIds => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/videos_by_uploader_id",
+    data: { uploaderIds }
+  });
+};
+
 export const createVideo = formData => {
   return $.ajax({
     method: "POST",

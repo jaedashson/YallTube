@@ -16,6 +16,7 @@ import HomePageContainer from "./pages/home_page_container";
 import LikedVideosPageContainer from "./pages/liked_videos_page_container";
 import YourVideosPageContainer from "./pages/your_videos_page_container";
 import HistoryPageContainer from "./pages/history_page_container";
+import SubscriptionsPageContainer from "./pages/subscriptions_page_container";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
 
       <Switch>
         <Route exact path="/" component={HomePageContainer} />
+        <ProtectedRoute path="/subscriptions" component={SubscriptionsPageContainer} />
         <ProtectedRoute path="/history" component={HistoryPageContainer} />
         <ProtectedRoute path="/your_videos" component={YourVideosPageContainer} />
         <ProtectedRoute path="/liked_videos" component={LikedVideosPageContainer} />
