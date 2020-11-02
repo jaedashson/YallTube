@@ -15,7 +15,7 @@ class Api::SubscriptionsController < ApplicationController
     @subscription = Subscription
       .where(subscriber_id: subscription_params[:subscriber_id])
       .where(channel_id: subscription_params[:channel_id]).first
-    # debugger
+      
     if @subscription.destroy
       render :show
     else
