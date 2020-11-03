@@ -77,6 +77,14 @@ export const fetchSubscriptions = uploaderIds => dispatch => {
   });
 };
 
+export const fetchSearch = searchTerm => dispatch => {
+  return APIUtil.fetchSearch(searchTerm).then(videos => {
+    return dispatch(receiveVideos(videos));
+  }, error => {
+    return dispatch(receiveVideoErrors(error.responseJSON));
+  });
+};
+
 // Need to establish difference between createVideo and attachVideo
 export const createVideo = video => dispatch => {
   return APIUtil.createVideo(video).then(video => {
