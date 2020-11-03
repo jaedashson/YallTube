@@ -28,6 +28,14 @@ export const fetchSubscriptions = uploaderIds => {
   });
 };
 
+export const fetchSearch = searchTerm => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/videos_search",
+    data: { searchTerm }
+  });
+};
+
 export const createVideo = formData => {
   return $.ajax({
     method: "POST",
