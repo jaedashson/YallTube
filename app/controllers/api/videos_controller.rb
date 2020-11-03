@@ -21,6 +21,15 @@ class Api::VideosController < ApplicationController
     render :index
   end
 
+  # GET /api/videos_search
+  # Currently only searches video titles
+  def search
+    search_term = params[:searchTerm]
+    search_words = search_term.split.map { |word| "%#{word}%" }
+    @videos = Video.where("title ILIKE ANY ( array[?] )", search_words)
+    render :index
+  end
+
   # GET /api/videos/:videoId
   def show
     @video = Video.find_by(id: params[:id])

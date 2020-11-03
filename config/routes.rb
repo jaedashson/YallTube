@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
     get 'videos_by_id', to: 'videos#index_by_id'
     get 'videos_by_uploader_id', to: 'videos#index_by_uploader_id'
+    get 'videos_search', to: 'videos#search'
     
     resources :views, only: [:create]
 
