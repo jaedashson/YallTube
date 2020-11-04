@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SearchBar extends React.Component {
@@ -17,6 +18,10 @@ class SearchBar extends React.Component {
 
   handleSearch(e) {
     e.preventDefault();
+    debugger
+    
+    // Turn search result into query URL
+    this.props.history.push("/testpath");
   }
 
   render() {
@@ -38,4 +43,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

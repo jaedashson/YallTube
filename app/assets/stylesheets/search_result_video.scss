@@ -1,0 +1,35 @@
+.search-result-video {
+  display: flex;
+  font-family: 'Robot', sans-serif;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.search-thumbnail {
+  width: 360px;
+  height: 202px;
+}
+
+.search-result-info {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-video-title {
+  color: #030303;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.search-result-video-views-date {
+  margin-top: 4px;
+  color: #606060;
+}
+
+.search-result-video-uploader {
+  margin-top: 6px;
+  color: #606060;
+  text-decoration: none;
+}

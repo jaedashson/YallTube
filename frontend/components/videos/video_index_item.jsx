@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { parseDate } from "../../util/videos_info_util";
 
-
 class VideoIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +32,6 @@ class VideoIndexItem extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default VideoIndexItem;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "./search_bar";
+import SearchBarContainer from "./search_bar_container";
 import SignInButtonContainer from "./sign_in_button_container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -29,7 +29,7 @@ class NavBar extends React.Component {
         </div>
 
         <div className="search-container">
-          <SearchBar />
+          <SearchBarContainer />
         </div>
 
         <div className="nav-bar-buttons">
