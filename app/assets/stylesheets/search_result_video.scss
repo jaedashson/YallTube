@@ -1,8 +1,9 @@
 .search-result-video {
+  margin-bottom: 16px;
   display: flex;
   font-family: 'Robot', sans-serif;
   font-size: 13px;
-  margin-bottom: 8px;
+  color: #060606;
 }
 
 .search-thumbnail {
@@ -10,15 +11,15 @@
   height: 202px;
 }
 
-.search-result-info {
-  margin-left: 8px;
+.search-result-video-info {
+  margin-left: 16px;
   display: flex;
   flex-direction: column;
 }
 
 .search-result-video-title {
   color: #030303;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   text-decoration: none;
 }
