@@ -11,7 +11,7 @@ class Recommendations extends React.Component {
     this.state = {
       recommendations: null,
       loaded: false
-    }
+    };
   };
 
   componentDidMount() {

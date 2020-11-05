@@ -22,7 +22,7 @@ class SideBar extends React.Component {
       const channel = this.props.users[channelId];
 
       return (
-        <Link to={`/users/${channelId}`} className="side-bar-subscription-link">
+        <Link to={`/users/${channelId}`} className="side-bar-subscription-link" key={channelId}>
           {channel.username}
         </Link>
       );

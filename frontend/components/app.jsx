@@ -17,6 +17,7 @@ import LikedVideosPageContainer from "./pages/liked_videos_page_container";
 import YourVideosPageContainer from "./pages/your_videos_page_container";
 import HistoryPageContainer from "./pages/history_page_container";
 import SubscriptionsPageContainer from "./pages/subscriptions_page_container";
+import SearchResultsPageContainer from "./search/search_results_page_container";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <ProtectedRoute path="/upload" component={UploadPageContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <Route path="/search" component={SearchResultsPageContainer} />
       </Switch>
     </div>
   )
