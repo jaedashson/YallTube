@@ -20,6 +20,16 @@ class ChannelPage extends React.Component {
       .then(action => this.setState({ loaded: true }));
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.channelId === prevProps.channelId) return;
+
+    this.props.fetchSubscriptions([this.props.channelId])
+      .then(action => {
+        return this.props.fetchUsers([this.props.channelId]);
+      })
+      .then(action => this.setState({ loaded: true }));    
+  }
+
   handleClickSubscribe(e) {
     e.preventDefault();
 
@@ -28,12 +38,12 @@ class ChannelPage extends React.Component {
     if (!this.props.subscribed) {
       this.props.createSubscription({
         subscriber_id: this.props.currentUserId,
-        channel_id: this.props.uploader.id
+        channel_id: this.props.channelId
       });
     } else {
       this.props.destroySubscription({
         subscriber_id: this.props.currentUserId,
-        channel_id: this.props.uploader.id
+        channel_id: this.props.channelId
       });
     }
   }
