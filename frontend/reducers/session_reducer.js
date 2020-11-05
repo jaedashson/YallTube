@@ -62,9 +62,9 @@ const sessionReducer = (state = defaultState, action) => {
       newState["dislikedCommentIds"] = action.currentUser.dislikedCommentIds;
       return newState;
     case LOGOUT_CURRENT_USER:
-      newState = cloneDeep(state);
-      newState["id"] = null;
-      return newState;
+      // newState = cloneDeep(state);
+      // newState["id"] = null;
+      return defaultState;
     case RECEIVE_VIEW:
       newState = cloneDeep(state);
       if (!newState["viewedVideoIds"].includes(action.view.video_id)) {
