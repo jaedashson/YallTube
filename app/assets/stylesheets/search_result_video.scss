@@ -29,8 +29,21 @@
   color: #606060;
 }
 
+.search-result-video-uploader-container {
+  margin-top: 12px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .search-result-video-uploader {
-  margin-top: 6px;
+  margin-left: 4px;
   color: #606060;
   text-decoration: none;
+}
+
+.search-result-video-description {
+  margin-top: 12px;
+  color: #606060;
 }

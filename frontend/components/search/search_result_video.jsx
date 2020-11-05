@@ -22,9 +22,12 @@ class SearchResultVideo extends React.Component {
           <Link to={`/videos/${this.props.video.id}`} className="search-result-video-title">{this.props.video.title}</Link>
           <p className="search-result-video-views-date">{this.props.video.viewCount} views • {parseDate(this.props.video.created_at)}</p>
 
+          <Link to={`/users/${this.props.uploader.id}`} className="search-result-video-uploader-container">
+            <div className="user-icon-reply">{this.props.uploader.username[0]}</div>
+            <p className="search-result-video-uploader">{this.props.uploader.username}</p>
+          </Link>
 
-          
-          <Link to={`/users/${this.props.uploader.id}`} className="search-result-video-uploader">{this.props.uploader.username}</Link>
+          {/* <Link to={`/users/${this.props.uploader.id}`} className="search-result-video-uploader">{this.props.uploader.username}</Link> */}
 
 
 
