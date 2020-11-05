@@ -138,7 +138,7 @@ class Reply extends React.Component {
             <span className={"comment-score " + (this.props.liked ? "comment-voted" : "")}>{this.props.reply.likeCount - this.props.reply.dislikeCount}</span>
             <FontAwesomeIcon
               icon="thumbs-down"
-              className={"comment-thumb " + (this.props.disliked ? "comment-voted" : "")}
+              className={"comment-thumb comment-thumb-down " + (this.props.disliked ? "comment-voted" : "")}
               onClick={this.handleClickDislike}
             />
             <button

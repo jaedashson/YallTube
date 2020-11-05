@@ -225,7 +225,7 @@ class Comment extends React.Component {
             <span className={"comment-score " + (this.props.liked ? "comment-voted" : "")}>{this.props.comment.likeCount - this.props.comment.dislikeCount}</span>
             <FontAwesomeIcon
               icon="thumbs-down"
-              className={"comment-thumb " + (this.props.disliked ? "comment-voted" : "")}
+              className={"comment-thumb comment-thumb-down " + (this.props.disliked ? "comment-voted" : "")}
               onClick={this.handleClickDislike}
             />
             <button
