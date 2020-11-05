@@ -54,6 +54,22 @@
   padding-bottom: 12px;
 }
 
+.side-bar-link-text-subscriptions-header {
+  color: #606060;
+  font-weight: 500;
+}
+
 .side-bar-subscription-link {
-  padding: 0 30px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #030303;
+  text-decoration: none;
+  margin-top: 8px;
+}
+
+.side-bar-subscription-link-text {
+  margin-left: 20px;
+  margin-top: 4px;
 }

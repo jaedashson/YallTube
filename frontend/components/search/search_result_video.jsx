@@ -26,12 +26,6 @@ class SearchResultVideo extends React.Component {
             <div className="user-icon-reply">{this.props.uploader.username[0]}</div>
             <p className="search-result-video-uploader">{this.props.uploader.username}</p>
           </Link>
-
-          {/* <Link to={`/users/${this.props.uploader.id}`} className="search-result-video-uploader">{this.props.uploader.username}</Link> */}
-
-
-
-
           <p className="search-result-video-description">{`${this.props.video.description.substring(0, 120)}` + (this.props.video.description.length > 120 ? "..." : "")}</p>
         </div>
       </div>
