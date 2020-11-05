@@ -18,6 +18,7 @@ import YourVideosPageContainer from "./pages/your_videos_page_container";
 import HistoryPageContainer from "./pages/history_page_container";
 import SubscriptionsPageContainer from "./pages/subscriptions_page_container";
 import SearchResultsPageContainer from "./search/search_results_page_container";
+import ChannelPageContainer from "./pages/channel_page_container";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <Route path="/search" component={SearchResultsPageContainer} />
+        <Route path="/users/:channelId" component={ChannelPageContainer} />
       </Switch>
     </div>
   )
