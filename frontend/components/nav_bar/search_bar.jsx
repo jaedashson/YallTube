@@ -20,8 +20,6 @@ class SearchBar extends React.Component {
     e.preventDefault();
     
     const searchQuery = this.state.searchTerm.split(" ").join("+");
-
-    // Turn search result into query URL
     this.props.history.push(`/search?q=${searchQuery}`);
   }
 
